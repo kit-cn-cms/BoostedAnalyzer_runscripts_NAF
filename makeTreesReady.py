@@ -9,7 +9,7 @@ if len(sys.argv)<=2:
   print "sample combination depends on the direcotries the trees are in"
   print "will also merge the cutflows, copy the folder with the JobScripts and create the Yield Tables"
   print "usage:"
-  print "python makeTreesReady.py JOBLIST.TXT OUTPUT_DIRECTORY"
+  print "python makeTreesReady.py OUTPUT_DIRECTORY JOBLIST.TXT "
   exit(0)
 
 outPath = sys.argv[1]
@@ -20,7 +20,10 @@ print "Path to skimmed Samples ", outPath
 sampleListFile=open(sampleList,"r")
 jobFiles=list(sampleListFile)
 print jobFiles
-log=open(outPath+"/addedTrees/AnalysisLog.txt","w")
+
+call(["mkdir",outPath+"/addedTrees"])
+call(["mkdir",outPath+"/addedTrees/AnalysisConfigs"])
+log=open(outPath+"/addedTrees/AnalysisConfigs/AnalysisLog.txt","w")
 
 samples=[]
 sampleFiles=[]
@@ -82,7 +85,7 @@ for s in samples:
   log.write("\n")
 
 #copy the scripts to make the the trees and the sampleList.txt to the output folder
-call(["cp","-r","output",outPath+"/addedTrees/"])
+call(["cp","-r","output",outPath+"/addedTrees/JObScripts"])
 print "copied the job scripts"
 
 call(["cp",sampleList,sampleList+"_original"])
@@ -132,7 +135,7 @@ if everythingAllright==True:
 log.write("hadded Trees and merged Cutflows\n\n")
 AllCutflows_nominal=[]
 AllCutflows_JESUP=[]
-AllCutflows_JEDOWN=[]
+AllCutflows_JESDOWN=[]
 MergedCutflows_JESUP=[]
 MergedCutflows_JESDOWN=[]
 MergedCutflows_nominal=[]
@@ -149,12 +152,6 @@ for s in sampleFiles:
   subSamplecutflows_JESUP=[]
   subSamplecutflows_JESDOWN=[]
   subSamples=[]
-  AllCutflows_nominal=[]
-  AllCutflows_JESUP=[]
-  AllCutflows_JEDOWN=[]
-  MergedCutflows_JESUP=[]
-  MergedCutflows_JESDOWN=[]
-  MergedCutflows_nominal=[]
 
   for f in s[1:]:
     ff = f+"_Tree.root"
@@ -256,29 +253,35 @@ for s in sampleFiles:
   log.write("\n")
 print "added trees and merged the cutflows"
 
+yieldpaths=outPath+"/addedTrees/CutflowTables/"
+call(["mkdir",yieldpaths])
 # doint the yield tables
 if len(AllCutflows_nominal)>0:
-  on=addedPath+"/addedTrees/SubSamples_nominal"
-  call(["python","makeYieldTables.py",on]+AllCutflows_nominal)
+  on=yieldpaths+"SubSamples_nominal"
+  call(["python","makeCutflowTables.py",on]+AllCutflows_nominal)
 if len(AllCutflows_JESUP)>0:
-  on=addedPath+"/addedTrees/SubSamples_JESUP"
-  call(["python","makeYieldTables.py",on]+AllCutflows_JESUP)
+  on=yieldpaths+"SubSamples_JESUP"
+  call(["python","makeCutflowTables.py",on]+AllCutflows_JESUP)
 if len(AllCutflows_JESDOWN)>0:
-  on=addedPath+"/addedTrees/SubSamples_JESDOWN"
-  call(["python","makeYieldTables.py",on]+AllCutflows_JESDOWN)
+  on=yieldpaths+"SubSamples_JESDOWN"
+  call(["python","makeCutflowTables.py",on]+AllCutflows_JESDOWN)
 
 if len(MergedCutflows_nominal)>0:
-  on=addedPath+"/addedTrees/Merged_nominal"
-  call(["python","makeYieldTables.py",on]+MergedCutflows_nominal)
+  on=yieldpaths+"Merged_nominal"
+  call(["python","makeCutflowTables.py",on]+MergedCutflows_nominal)
 if len(MergedCutflows_JESUP)>0:
-  on=addedPath+"/addedTrees/Merged_JESUP"
-  call(["python","makeYieldTables.py",on]+MergedCutflows_JESUP)
+  on=yieldpaths+"Merged_JESUP"
+  call(["python","makeCutflowTables.py",on]+MergedCutflows_JESUP)
 if len(MergedCutflows_JESDOWN)>0:
-  on=addedPath+"/addedTrees/Merged_JESDOWN"
-  call(["python","makeYieldTables.py",on]+MergedCutflows_JESDOWN)
+  on=yieldpaths+"Merged_JESDOWN"
+  call(["python","makeCutflowTables.py",on]+MergedCutflows_JESDOWN)
 
 log.close()
 
+#finally collect BoostedTTH and MiniAODHelper Software and put them in a tarball
+call(["tar","-a","-cf",outPath+"/addedTrees/AnalysisConfigs/CMSSW.tar.gz","/afs/desy.de/user/k/kelmorab/CMSSW_7_2_3/src/BoostedTTH","/afs/desy.de/user/k/kelmorab/CMSSW_7_2_3/src/MiniAOD"])
+call(["tar","-a","-cf",outPath+"/addedTrees/AnalysisConfigs/runscripts.tar.gz","/afs/desy.de/user/k/kelmorab/run2"])
+print "created tarball with used software"
 
 
 
