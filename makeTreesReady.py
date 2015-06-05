@@ -98,6 +98,7 @@ for s in sampleFiles:
     #print f
     tmpfile=open("tmp.txt","w")
     ff = f+"_Tree.root"
+    cff=ff.replace("Tree.root","Cutflow.txt")
     call(["du",ff],stdout=tmpfile,stderr=tmpfile)
     tmpfile.close()
     tmpfile=open("tmp.txt","r")
@@ -106,10 +107,21 @@ for s in sampleFiles:
     tmpfile.close()
     #print size
     size=0
-    print firstpart
+    sizecutflow=0
+    #print firstpart
     if firstpart.find("cannot access")==-1:
       size=int(firstpart)
-    if size<100:
+    tmpfile=open("tmp.txt","w")
+    call(["du",cff],stdout=tmpfile,stderr=tmpfile)
+    tmpfile.close()
+    tmpfile=open("tmp.txt","r")
+    bufferf=list(tmpfile)
+    firstpart=bufferf[0].split("\t")[0]
+    tmpfile.close()
+    if firstpart.find("cannot access")==-1:
+      sizecutflow=int(firstpart)
+    print size, sizecutflow
+    if size<100 or sizecutflow<1:
       print "something wrong with "+ff
       everythingAllright=False 
       for job in jobFiles:
@@ -160,7 +172,7 @@ for s in sampleFiles:
     if ff.find("JESUP")>=0:
       trees_JESUP.append(ff)
     if ff.find("JESDOWN")>=0:
-      trees_JEDOWN.append(ff)
+      trees_JESDOWN.append(ff)
     cff=f+"_Cutflow.txt"
     sf=f.rsplit("_",1)[0]
     #print sf 
@@ -185,7 +197,7 @@ for s in sampleFiles:
         if sf==subsample[0]:
           subsample.append(cff)
     if cff.find("JESDOWN")>=0:
-      cutflows_JEDOWN.append(cff)
+      cutflows_JESDOWN.append(cff)
       for subsample in subSamplecutflows_JESDOWN:
         if sf==subsample[0]:
           subsample.append(cff)

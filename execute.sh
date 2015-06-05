@@ -12,7 +12,7 @@ source $VO_CMS_SW_DIR/cmsset_default.sh
 
 cd /afs/desy.de/user/k/kelmorab/CMSSW_7_2_3/src
 eval `scram runtime -sh`
-cd /afs/desy.de/user/k/kelmorab/BoostedAnalyzer_runscripts_NAF
+cd /afs/desy.de/user/k/kelmorab/run2
 # program to execute
 ./$INPUTSCRIPT cmsRun /afs/desy.de/user/k/kelmorab/CMSSW_7_2_3/src/BoostedTTH/BoostedAnalyzer/test/PreSel_cfg.py
 

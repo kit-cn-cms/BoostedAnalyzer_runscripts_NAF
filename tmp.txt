@@ -1,1 +1,1 @@
-8720	/nfs/dust/cms/user/kelmorab/13TeV_ttHF/ttW/MC_MadGraph_ttW_nominal_2_Tree.root
+7480	/nfs/dust/cms/user/kelmorab/13TeV_puID/ttW/MC_MadGraph_ttW_nominal_2_Tree.root
