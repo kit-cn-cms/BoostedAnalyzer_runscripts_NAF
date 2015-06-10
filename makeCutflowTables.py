@@ -106,7 +106,7 @@ for sample in samples:
 write_head(out,["cutflow steps"]+s)
 for step in samples[0][1]:
   line=[]
-  line.append(step)
+  line.append(step.replace(">","$>$").replace("<","$<$"))
   i=samples[0][1].index(step)
   for s in samples:
     line.append(s[2][i])
@@ -135,7 +135,7 @@ for sample in samples:
 write_head(out,["cutflow steps"]+s)
 for step in samples[0][1]:
   line=[]
-  line.append(step)
+  line.append(step.replace(">","$>$").replace("<","$<$"))
   i=samples[0][1].index(step)
   for s in samples:
     print s
