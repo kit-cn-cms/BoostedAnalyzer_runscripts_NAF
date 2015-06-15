@@ -28,7 +28,8 @@ PATTERN2="root~"
 PATTERN3="ttbar"
 PATTERN4="JetsToLNu"
 PATTERN5="JetsToLL"
-PATTERN6="BoostedTTH_MiniAOD_"
+PATTERN6="miniaod_"
+
 
 for i in `ls -1 $FILEDIR/* | grep $PATTERN1 | grep $PATTERN6 | grep -v $PATTERN2 | grep -v -f blacklist.txt `
 do

@@ -42,8 +42,8 @@ if usexroot:
 else:
   FileList=files
 
-##write files where the tree could not be found in this file
 blacklist=open("blacklist.txt","w")
+
 ##now count the events
 for f in FileList:
   if usexroot:
@@ -53,11 +53,20 @@ for f in FileList:
   tree=tf.Get("Events")
   if tree==None:
     blacklist.write(f+"\n")
+    tf.Close()
     continue
   hpE=ROOT.TH1D("hpE","hpE",100,-10,10)
   hnE=ROOT.TH1D("hnE","hnE",100,-10,10)
-  tree.Project("hpE","GenEventInfoProduct_generator__SIM.obj.weights_","GenEventInfoProduct_generator__SIM.obj.weights_>0")
-  tree.Project("hnE","GenEventInfoProduct_generator__SIM.obj.weights_","GenEventInfoProduct_generator__SIM.obj.weights_<0")
+  nJetPTHigh=tree.GetEntries("patJets_slimmedJets__PAT.obj.pt_>=1400.0")
+  nMETHigh=tree.GetEntries("patMETs_slimmedMETs__PAT.obj.pt_>=800.0")
+  if nJetPTHigh>=1 or  nMETHigh>=1:
+    print f, " found events with abnormally large values for jetPT and MET :", nJetPTHigh ,nMETHigh
+    blacklist.write(f+"\n")
+    tf.Close()
+    continue
+  tree.GetEntries()
+  tree.Project("hpE","GenEventInfoProduct_generator__HLT.obj.weights_","GenEventInfoProduct_generator__HLT.obj.weights_>0")
+  tree.Project("hnE","GenEventInfoProduct_generator__HLT.obj.weights_","GenEventInfoProduct_generator__HLT.obj.weights_<0")
   np=hpE.GetEntries()
   nn=hnE.GetEntries()
   print "done with File ", f
@@ -72,6 +81,4 @@ totalNumber=totalPos-totalNeg
 print "total number of positive events: "+str(int(totalPos))
 print "total number of negative events: "+str(int(totalNeg))
 print "total number of events: "+str(int(totalNumber))
-print "check the blacklist.txt file for problematic input samples."
-print "get-filenames.sh will ignore files in this list."
 

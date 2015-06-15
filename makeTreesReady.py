@@ -1,6 +1,9 @@
 import sys
 from subprocess import call
 from datetime import date
+import os
+import ROOT
+import glob
 
 if len(sys.argv)<=2:
   print "script to manage the BoostedAnalyzer output trees"
@@ -19,7 +22,7 @@ print "Path to skimmed Samples ", outPath
 
 sampleListFile=open(sampleList,"r")
 jobFiles=list(sampleListFile)
-print jobFiles
+#print jobFiles
 
 call(["mkdir",outPath+"/addedTrees"])
 call(["mkdir",outPath+"/addedTrees/AnalysisConfigs"])
@@ -70,7 +73,7 @@ for job in jobFiles:
 
 #print samples
 #print "individual files:"
-#print sampleFiles
+print sampleFiles
 #exit(0)
 
 sampleListFile.close()
@@ -92,12 +95,28 @@ call(["cp",sampleList,sampleList+"_original"])
 # check each file for size and existence
 everythingAllright=True
 newSampleListFile=open("output/sampleListe_Problems.txt","w")
+ROOT.gErrorIgnoreLevel=ROOT.kError
 for s in sampleFiles:
   #print s[0]
   for f in s[1:]:
-    #print f
+    thisJobisOK=False
+    thisJobFile="NOTFOUND"
+    InitialEventsFromCutflow=-1
+    FinalEventsFromCutflow=-1
+    nEventsFromInputFiles=0
+    nEventsFromOutputTree=0
+    size=0
+    sizecutflow=0
+    ffexists=False
+    cffexists=False
+    treeIsGood=False
+    logFilehasTreeWritten=False
+    logFileIsGood=True
+ 
+    thisJobInputFiles=[]
     tmpfile=open("tmp.txt","w")
     ff = f+"_Tree.root"
+    print "checking ", ff
     cff=ff.replace("Tree.root","Cutflow.txt")
     call(["du",ff],stdout=tmpfile,stderr=tmpfile)
     tmpfile.close()
@@ -105,10 +124,6 @@ for s in sampleFiles:
     bufferf=list(tmpfile)
     firstpart=bufferf[0].split("\t")[0]
     tmpfile.close()
-    #print size
-    size=0
-    sizecutflow=0
-    #print firstpart
     if firstpart.find("cannot access")==-1:
       size=int(firstpart)
     tmpfile=open("tmp.txt","w")
@@ -120,21 +135,80 @@ for s in sampleFiles:
     tmpfile.close()
     if firstpart.find("cannot access")==-1:
       sizecutflow=int(firstpart)
-    print size, sizecutflow
-    if size<100 or sizecutflow<1:
+    
+# check existence and get number of events from cutflow and output tree
+    ffexists=os.path.exists(ff)
+    cffexists=os.path.exists(cff)
+    if cffexists and sizecutflow>1:
+      thisCutflowFile=open(cff,"r")
+      cfflines=list(thisCutflowFile)
+      for cffline in cfflines:
+        if "all" in cffline:
+          InitialEventsFromCutflow=int(cffline.replace(" ","").split(":")[2])
+      FinalEventsFromCutflow=int(cfflines[len(cfflines)-1].replace(" ","").split(":")[2])
+    #print InitialEventsFromCutflow, FinalEventsFromCutflow
+
+    ftf=ROOT.TFile(ff,"READ")
+    ftree=ftf.Get("MVATree")
+    if ftree!=None:
+      nEventsFromOutputTree=ftree.GetEntries()
+      treeIsGood=True
+    ftf.Close()
+    #print nEventsFromOutputTree
+#find jobfile corresponding to output tree
+    for job in jobFiles:
+      foundjobfile=False
+      filename=job.rsplit("\n",1)[0]
+      filef=open(filename,"r")
+      lines=list(filef)
+      for l in lines:
+        if l.find(f)>=0:
+          print "corresponing job file : "+filename
+          thisJobFile=filename
+          for ll in lines:
+            if "FILE_NAMES" in ll:
+              bufferf=ll.split("\"",1)[1]
+              bufferf=bufferf.rsplit("\"",1)[0]
+              thisJobInputFiles=bufferf.split(" ")
+          #print thisJobInputFiles
+          foundjobfile=True
+          break
+      filef.close()
+      if foundjobfile:
+        break
+#get total number of input events from input trees
+    for thisinfile in thisJobInputFiles:
+      #print thisinfile
+      if thisinfile=="" or thisinfile==" ":
+        continue
+      tf=ROOT.TFile(thisinfile,"READ")
+      tree=tf.Get("Events") 
+      nEventsFromInputFiles+=tree.GetEntries()
+      tf.Close()
+    #print nEventsFromInputFiles
+# check the logfiles
+# might want to not do this in case people dont delete the old logfiles first
+    if checklogs:
+      logFiles=glob.glob(thisJobFile.replace("output","logs").replace(".sh","")+".*")
+      #print logFiles
+      for logf in logFiles:
+        thisLogFile=open(logf,"r")
+        thisLogFileLines=list(thisLogFile)
+        for thisLogFileline in thisLogFileLines:
+          if "Tree Written" in thisLogFileline:
+            logFilehasTreeWritten=True     
+      logFileIsGood=logFilehasTreeWritten
+
+    thisJobisOK = size>100 and sizecutflow>1 and ffexists and cffexists and treeIsGood and InitialEventsFromCutflow==nEventsFromInputFiles and FinalEventsFromCutflow==nEventsFromOutputTree and logFileIsGood
+    #print size>100 , sizecutflow>1 , ffexists , cffexists , treeIsGood , InitialEventsFromCutflow==nEventsFromInputFiles , FinalEventsFromCutflow==nEventsFromOutputTree , logFileIsGood
+    #print InitialEventsFromCutflow, nEventsFromInputFiles , FinalEventsFromCutflow, nEventsFromOutputTree 
+
+
+    if thisJobisOK==False:
       print "something wrong with "+ff
       everythingAllright=False 
-      for job in jobFiles:
-        filename=job.rsplit("\n",1)[0]
-        filef=open(filename,"r")
-        lines=list(filef)
-        #print lines
-        #print f
-        for l in lines:
-          if l.find(f)>=0:
-            print "corresponing job file :"+filename
-            newSampleListFile.write(filename+"\n")
-        filef.close()
+      print "corresponing job file :"+thisJobFile
+      newSampleListFile.write(thisJobFile+"\n")
 newSampleListFile.close()
 
 if everythingAllright==False:
@@ -291,7 +365,7 @@ if len(MergedCutflows_JESDOWN)>0:
 log.close()
 
 #finally collect BoostedTTH and MiniAODHelper Software and put them in a tarball
-call(["tar","-a","-cf",outPath+"/addedTrees/AnalysisConfigs/CMSSW.tar.gz","/afs/desy.de/user/k/kelmorab/CMSSW_7_2_3/src/BoostedTTH","/afs/desy.de/user/k/kelmorab/CMSSW_7_2_3/src/MiniAOD"])
+call(["tar","-a","-cf",outPath+"/addedTrees/AnalysisConfigs/CMSSW.tar.gz","/afs/desy.de/user/k/kelmorab/CMSSW723/CMSSW_7_2_3/src/BoostedTTH","/afs/desy.de/user/k/kelmorab/CMSSW723/CMSSW_7_2_3/src/MiniAOD"])
 call(["tar","-a","-cf",outPath+"/addedTrees/AnalysisConfigs/runscripts.tar.gz","/afs/desy.de/user/k/kelmorab/run2"])
 print "created tarball with used software"
 
