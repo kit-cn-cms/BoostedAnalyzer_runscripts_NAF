@@ -53,18 +53,9 @@ for f in FileList:
   tree=tf.Get("Events")
   if tree==None:
     blacklist.write(f+"\n")
-    tf.Close()
     continue
   hpE=ROOT.TH1D("hpE","hpE",100,-10,10)
   hnE=ROOT.TH1D("hnE","hnE",100,-10,10)
-  nJetPTHigh=tree.GetEntries("patJets_slimmedJets__PAT.obj.pt_>=1400.0")
-  nMETHigh=tree.GetEntries("patMETs_slimmedMETs__PAT.obj.pt_>=800.0")
-  if nJetPTHigh>=1 or  nMETHigh>=1:
-    print f, " found events with abnormally large values for jetPT and MET :", nJetPTHigh ,nMETHigh
-    blacklist.write(f+"\n")
-    tf.Close()
-    continue
-  tree.GetEntries()
   tree.Project("hpE","GenEventInfoProduct_generator__HLT.obj.weights_","GenEventInfoProduct_generator__HLT.obj.weights_>0")
   tree.Project("hnE","GenEventInfoProduct_generator__HLT.obj.weights_","GenEventInfoProduct_generator__HLT.obj.weights_<0")
   np=hpE.GetEntries()

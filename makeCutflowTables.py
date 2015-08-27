@@ -27,6 +27,12 @@ def write_head(file,columns):
     file.write(columns[-1]+' \\\\ \n')
     file.write('\\hline\n')
 
+def isfloat(value):
+  try:
+    float(value)
+    return True
+  except ValueError:
+    return False
 
 
 
@@ -38,7 +44,7 @@ if len(sys.argv)<=2:
 
 first=True
 samples=[]
-suffixes=["MC_MadGraph_","MC_aMCatNLO_"]
+suffixes=["MC_MadGraph_","MC_aMCatNLO_","MC_powheg_","MC_Powheg_","MC_PowHeg_"]
 affixes=["_nominal_Cutflow.txt","_JESDOWN_Cutflow.txt","_JESUP_Cutflow.txt"]
 outfile = sys.argv[1]
 if "/" not in outfile:
@@ -76,7 +82,11 @@ for filename in sys.argv[2:]:
     nGen.append(splitline[2])
   for line in lines:
     splitline=line.split(" : ")
-    yields.append(splitline[3])
+    buffval=splitline[3]
+    if isfloat(buffval):
+      buffval=round(float(buffval),2)
+    yields.append(str(buffval))
+    print "here", yields
   sample.append(steps)
   sample.append(nGen)
   sample.append(yields)
