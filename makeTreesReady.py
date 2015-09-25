@@ -5,6 +5,8 @@ import os
 import ROOT
 import glob
 
+# changed to handle new analyzer where JES trees are doen with the same scripts
+
 if len(sys.argv)<=2:
   print "script to manage the BoostedAnalyzer output trees"
   print "open every file in the given JobList.txt and reads its contents"
@@ -12,11 +14,20 @@ if len(sys.argv)<=2:
   print "sample combination depends on the direcotries the trees are in"
   print "will also merge the cutflows, copy the folder with the JobScripts and create the Yield Tables"
   print "usage:"
-  print "python makeTreesReady.py OUTPUT_DIRECTORY JOBLIST.TXT "
+  print "python makeTreesReady.py [-j] UTPUT_DIRECTORY JOBLIST.TXT "
+  print "-j  also handle JES trees if they dont have their own JobScripts"
   exit(0)
 
-outPath = sys.argv[1]
-sampleList=sys.argv[2]
+DONEWJESVARIATION=False
+if sys.argv[1]=="-j":
+  DONEWJESVARIATION=True
+  outPath = sys.argv[2]
+  sampleList=sys.argv[3]
+else :
+  outPath = sys.argv[1]
+  sampleList=sys.argv[2]
+
+checklogs=False
 
 print "Path to skimmed Samples ", outPath
 
@@ -67,14 +78,21 @@ for job in jobFiles:
       sampleAlreadyExists=True
       if outSampleFile not in s:
         s.append(outSampleFile)
+        if DONEWJESVARIATION:
+          s.append(outSampleFile.replace("nominal","JESUP"))
+          s.append(outSampleFile.replace("nominal","JESDOWN"))
   if sampleAlreadyExists==False:
-    sampleFiles.append([outSamplePath,outSampleFile])
+    if DONEWJESVARIATION:
+      sampleFiles.append([outSamplePath,outSampleFile,outSampleFile.replace("nominal","JESUP"),outSampleFile.replace("nominal","JESDOWN")])
+    else:
+      sampleFiles.append([outSamplePath,outSampleFile])
   filef.close()
 
 #print samples
 #print "individual files:"
 print sampleFiles
 #exit(0)
+
 
 sampleListFile.close()
 
@@ -162,7 +180,7 @@ for s in sampleFiles:
       filef=open(filename,"r")
       lines=list(filef)
       for l in lines:
-        if l.find(f)>=0:
+        if l.find(f)>=0 or l.find(f.replace("JESUP","nominal"))>=0 or l.find(f.replace("JESDOWN","nominal"))>=0:
           print "corresponing job file : "+filename
           thisJobFile=filename
           for ll in lines:
@@ -200,8 +218,8 @@ for s in sampleFiles:
       logFileIsGood=logFilehasTreeWritten
 
     thisJobisOK = size>100 and sizecutflow>1 and ffexists and cffexists and treeIsGood and InitialEventsFromCutflow==nEventsFromInputFiles and FinalEventsFromCutflow==nEventsFromOutputTree and logFileIsGood
-    #print size>100 , sizecutflow>1 , ffexists , cffexists , treeIsGood , InitialEventsFromCutflow==nEventsFromInputFiles , FinalEventsFromCutflow==nEventsFromOutputTree , logFileIsGood
-    #print InitialEventsFromCutflow, nEventsFromInputFiles , FinalEventsFromCutflow, nEventsFromOutputTree 
+    print size>100 , sizecutflow>1 , ffexists , cffexists , treeIsGood , InitialEventsFromCutflow==nEventsFromInputFiles , FinalEventsFromCutflow==nEventsFromOutputTree , logFileIsGood
+    print InitialEventsFromCutflow, nEventsFromInputFiles , FinalEventsFromCutflow, nEventsFromOutputTree 
 
 
     if thisJobisOK==False:
@@ -225,6 +243,7 @@ AllCutflows_JESDOWN=[]
 MergedCutflows_JESUP=[]
 MergedCutflows_JESDOWN=[]
 MergedCutflows_nominal=[]
+print sampleFiles
 for s in sampleFiles:
   name=s[0].rsplit("/",1)[1]
   addedPath=s[0].rsplit("/",1)[0]
@@ -365,7 +384,7 @@ if len(MergedCutflows_JESDOWN)>0:
 log.close()
 
 #finally collect BoostedTTH and MiniAODHelper Software and put them in a tarball
-call(["tar","-a","-cf",outPath+"/addedTrees/AnalysisConfigs/CMSSW.tar.gz","/afs/desy.de/user/k/kelmorab/CMSSW723/CMSSW_7_2_3/src/BoostedTTH","/afs/desy.de/user/k/kelmorab/CMSSW723/CMSSW_7_2_3/src/MiniAOD"])
+call(["tar","-a","-cf",outPath+"/addedTrees/AnalysisConfigs/CMSSW.tar.gz","/afs/desy.de/user/k/kelmorab/CMSSW_7_2_3/src/BoostedTTH","/afs/desy.de/user/k/kelmorab/CMSSW_7_2_3/src/MiniAOD"])
 call(["tar","-a","-cf",outPath+"/addedTrees/AnalysisConfigs/runscripts.tar.gz","/afs/desy.de/user/k/kelmorab/run2"])
 print "created tarball with used software"
 

@@ -1,6 +1,0 @@
-0 : all : 199700 : 5084.822
-1 : First PV is good PV : 199635 : 5083.033
-2 : Single lepton trigger : 51485 : 1329.7353
-3 : == 1 loose lepton : 42564 : 1099.6938
-4 : == 1 tight lepton same flavor : 37173 : 959.1841
-5 : == 0 loose leptons different flavor : 33012 : 844.8258

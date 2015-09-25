@@ -42,10 +42,15 @@ if usexroot:
 else:
   FileList=files
 
+print "N files ", len(FileList)
+nfiles=len(FileList)
+print "counting events"
+ifile=0
 ##write files where the tree could not be found in this file
 blacklist=open("blacklist.txt","w")
 ##now count the events
 for f in FileList:
+  print f
   if usexroot:
     tf=ROOT.TFile.Open(str(f))
   else:
@@ -60,11 +65,12 @@ for f in FileList:
   tree.Project("hnE","GenEventInfoProduct_generator__SIM.obj.weights_","GenEventInfoProduct_generator__SIM.obj.weights_<0")
   np=hpE.GetEntries()
   nn=hnE.GetEntries()
-  print "done with File ", f
+  print "done with File ", ifile, "/", nfiles, f
   print np, nn
   totalPos+=np
   totalNeg+=nn
   tf.Close()
+  ifile+=1
 
 blacklist.close()
 

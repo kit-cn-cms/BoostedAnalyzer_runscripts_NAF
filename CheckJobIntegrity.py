@@ -183,12 +183,12 @@ for s in sampleFiles:
       logFileIsGood=logFilehasTreeWritten
 
     thisJobisOK = size>100 and sizecutflow>1 and ffexists and cffexists and treeIsGood and InitialEventsFromCutflow==nEventsFromInputFiles and FinalEventsFromCutflow==nEventsFromOutputTree and logFileIsGood
-    #print size>100 , sizecutflow>1 , ffexists , cffexists , treeIsGood , InitialEventsFromCutflow==nEventsFromInputFiles , FinalEventsFromCutflow==nEventsFromOutputTree , logFileIsGood
+    print size>100 , sizecutflow>1 , ffexists , cffexists , treeIsGood , InitialEventsFromCutflow==nEventsFromInputFiles , FinalEventsFromCutflow==nEventsFromOutputTree , logFileIsGood
     #print InitialEventsFromCutflow, nEventsFromInputFiles , FinalEventsFromCutflow, nEventsFromOutputTree 
 
 
     if thisJobisOK==False:
-      print "something wrong with "+ff
+      print " ------------- something wrong with "+ff+" -----------------------"
       everythingAllright=False 
       print "corresponing job file :"+thisJobFile
       newSampleListFile.write(thisJobFile+"\n")

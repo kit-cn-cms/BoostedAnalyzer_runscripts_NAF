@@ -2,14 +2,14 @@
 
 INSAMPLE="9125" #TTH125
 #INSAMPLE="2500" #TTbarIncl
-ERA="2015_72x" #Current Era
+ERA="2015_74x" #Current Era
 MAX_EVENTS="999999999" 
 PU_STR="all" # used for PU reweighting, not sure what it does "2012A_13July,2012A_06Aug,2012B_13July,2012C_PR,2012C_24Aug,2012D_PR"
 STR_DATASET="all" # dont know where this is used
 #SAMPLE_NAME="TTH_Inclusive_M_125_8TeV_53xOn53x"
 OUTFOLDER_NAME="/nfs/dust/cms/user/kelmorab/test/"
 #OUTFOLDER_NAME="/storage/9/mildner/BNtrees/"
-
+DOSYSTEMATICS="TRUE"
 
 FILEDIR=$1
 OUTFOLDER_NAME=$2
@@ -19,6 +19,8 @@ XS=$5
 MCEVENTS=$6
 NFILES=$7
 SYSTEMATIC=$8
+
+echo $FILEDIR
 
 COUNTER=0
 NUMBER=0
@@ -30,7 +32,7 @@ PATTERN4="JetsToLNu"
 PATTERN5="JetsToLL"
 PATTERN6="BoostedTTH_MiniAOD_"
 
-for i in `ls -1 $FILEDIR/* | grep $PATTERN1 | grep $PATTERN6 | grep -v $PATTERN2 | grep -v -f blacklist.txt `
+for i in `ls -1 $FILEDIR/* | grep $PATTERN1 | grep -v $PATTERN2 | grep -v -f blacklist.txt `
 do
 	FILE=output/${NAME}_${SYSTEMATIC}_${NUMBER}
 
@@ -41,12 +43,12 @@ do
 		echo -en 'export FILE_NAMES="' >> ${FILE}.sh
 	fi
 
-	echo -en $i" " >> ${FILE}.sh
+	echo -en "file:"$i" " >> ${FILE}.sh
 	((COUNTER+=1))
 
 	if [ "$COUNTER" = $NFILES ]
 	then
-		echo -e '"\n\nexport OUTFILE_NAME="'${OUTFOLDER_NAME}'/'${NAME}'_'${SYSTEMATIC}'_'${NUMBER}'"' >> ${FILE}.sh
+		echo -e '"\n\nexport OUTFILE_NAME="'${OUTFOLDER_NAME}'/'${NAME}'_nominal_'${NUMBER}'"' >> ${FILE}.sh
 		echo -e '\nexport INSAMPLE="'${INSAMPLE}'"' >> ${FILE}.sh
 		echo -e '\nexport ERA="'${ERA}'"' >> ${FILE}.sh
 		echo -e '\nexport MAX_EVENTS="'${MAX_EVENTS}'"' >> ${FILE}.sh
@@ -54,7 +56,9 @@ do
 		echo -e '\nexport STR_DATASET="'${STR_DATASET}'"' >> ${FILE}.sh
 		echo -e '\nexport XS="'${XS}'"' >> ${FILE}.sh
 		echo -e '\nexport MCEVENTS="'${MCEVENTS}'"' >> ${FILE}.sh
-		echo -e '\nexport SYSTEMATIC="'${SYSTEMATIC}'"' >> ${FILE}.sh
+		echo -e '\nexport ISDATA="FALSE"' >> ${FILE}.sh
+		echo -e '\nexport DOSYSTEMATICS="TRUE"' >> ${FILE}.sh
+#		echo -e '\nexport SYSTEMATIC="'${SYSTEMATIC}'"' >> ${FILE}.sh
 #		echo -e '\nexport SAMPLE_NAME="'${SAMPLE_NAME}'"' >> ${FILE}.sh
 
 		echo -e '\n\nexec $*' >> ${FILE}.sh
@@ -69,7 +73,7 @@ done
 
 if [ "$COUNTER" -ne 0 ]
 then
-		echo -e '"\n\nexport OUTFILE_NAME="'${OUTFOLDER_NAME}'/'${NAME}'_'${SYSTEMATIC}'_'${NUMBER}'"' >> ${FILE}.sh
+		echo -e '"\n\nexport OUTFILE_NAME="'${OUTFOLDER_NAME}'/'${NAME}'_nominal_'${NUMBER}'"' >> ${FILE}.sh
 		echo -e '\nexport INSAMPLE="'${INSAMPLE}'"' >> ${FILE}.sh
 		echo -e '\nexport ERA="'${ERA}'"' >> ${FILE}.sh
 		echo -e '\nexport MAX_EVENTS="'${MAX_EVENTS}'"' >> ${FILE}.sh
@@ -77,7 +81,9 @@ then
 		echo -e '\nexport STR_DATASET="'${STR_DATASET}'"' >> ${FILE}.sh
 		echo -e '\nexport XS="'${XS}'"' >> ${FILE}.sh
 		echo -e '\nexport MCEVENTS="'${MCEVENTS}'"' >> ${FILE}.sh
-		echo -e '\nexport SYSTEMATIC="'${SYSTEMATIC}'"' >> ${FILE}.sh
+		echo -e '\nexport ISDATA="FALSE"' >> ${FILE}.sh
+		echo -e '\nexport DOSYSTEMATICS="TRUE"' >> ${FILE}.sh
+#		echo -e '\nexport SYSTEMATIC="'${SYSTEMATIC}'"' >> ${FILE}.sh
 #		echo -e '\nexport SAMPLE_NAME="'${SAMPLE_NAME}'"' >> ${FILE}.sh
 
 		echo -e '\n\nexec $*' >> ${FILE}.sh
