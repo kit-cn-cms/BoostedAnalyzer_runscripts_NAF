@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # creates scripts to run cmssw on naf cluster
-# usage: ./get_filenames.py /folder/containing/rootfiles filepattern_without_wildcards name [number_of_jobs XS sum_pos_minus_neg_events sampleID]
+# usage: ./get_filenames.py /folder/containing/rootfiles/ filename_pattern_without_wildcards outputname [number_of_jobs XS sum_pos_minus_neg_events sampleID]
+# example
+#./get_filenames.py /pnfs/desy.de/cms/tier2/store/mc/RunIISpring15DR74/TT_TuneCUETP8M1_13TeV-powheg-pythia8/MINIAODSIM/Asympt25ns_MCRUN2_74_V9_ext3-v1/ - ttbar 500 832.0 95192472
 import os
 import sys
 import stat   
@@ -19,11 +21,11 @@ if len(sys.argv) > 6:
     mcevents=sys.argv[6]
 if len(sys.argv) > 7:
     sampleID=sys.argv[7]
-
-outpath='/nfs/dust/cms/user/hmildner/trees/'
-scriptpath='/nfs/dust/cms/user/hmildner/CMSSW_7_2_3/src/BoostedTTH/runscripts/scripts'
-cmsswcfgpath='/nfs/dust/cms/user/hmildner/CMSSW_7_2_3/src/BoostedTTH/BoostedAnalyzer/test/boostedAnalysis_nosel_cfg.py'
-cmsswpath='/nfs/dust/cms/user/hmildner/CMSSW_7_2_3/'
+        
+outpath='/nfs/dust/cms/user/hmildner/trees0925/'
+scriptpath='/afs/desy.de/user/h/hmildner/BoostedAnalyzer_runscripts_NAF/alternative_runscripts_python/scripts_s15'
+cmsswcfgpath='/afs/desy.de/user/h/hmildner/CMSSW_7_4_6_patch6/src/BoostedTTH/BoostedAnalyzer/test/boostedAnalysis_test_cfg.py'
+cmsswpath='/afs/desy.de/user/h/hmildner/CMSSW_7_4_6_patch6/'
 
 print 'path',path
 print 'samplename',samplename
@@ -38,6 +40,19 @@ print 'cmsswpath',cmsswpath
 
 if not os.path.exists(scriptpath):
     os.makedirs(scriptpath)
+
+if not os.path.exists(outpath):
+    os.makedirs(outpath)
+
+if not os.path.exists(cmsswpath):
+    print 'WRONG CMSSW PATH!'
+    print cmsswpath
+    sys.exit()
+
+if not os.path.exists(cmsswcfgpath):
+    print 'WRONG CMSSW CONFIG PATH!'
+    print cmsswcfgpath
+    sys.exit()
 
 
 script="""#!/bin/bash
