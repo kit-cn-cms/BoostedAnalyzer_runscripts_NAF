@@ -15,7 +15,7 @@ if len(sys.argv)<=2:
   print "will also merge the cutflows, copy the folder with the JobScripts and create the Yield Tables"
   print "usage:"
   print "python makeTreesReady.py [-j] UTPUT_DIRECTORY JOBLIST.TXT "
-  print "-j  also handle JES trees if they dont have their own JobScripts"
+  print "-j  also handle JES/JER trees if they dont have their own JobScripts"
   exit(0)
 
 DONEWJESVARIATION=False
@@ -81,9 +81,11 @@ for job in jobFiles:
         if DONEWJESVARIATION:
           s.append(outSampleFile.replace("nominal","JESUP"))
           s.append(outSampleFile.replace("nominal","JESDOWN"))
+          s.append(outSampleFile.replace("nominal","JERUP"))
+          s.append(outSampleFile.replace("nominal","JERDOWN"))
   if sampleAlreadyExists==False:
     if DONEWJESVARIATION:
-      sampleFiles.append([outSamplePath,outSampleFile,outSampleFile.replace("nominal","JESUP"),outSampleFile.replace("nominal","JESDOWN")])
+      sampleFiles.append([outSamplePath,outSampleFile,outSampleFile.replace("nominal","JESUP"),outSampleFile.replace("nominal","JESDOWN"),outSampleFile.replace("nominal","JERUP"),outSampleFile.replace("nominal","JERDOWN")])
     else:
       sampleFiles.append([outSamplePath,outSampleFile])
   filef.close()
@@ -114,6 +116,7 @@ call(["cp",sampleList,sampleList+"_original"])
 everythingAllright=True
 newSampleListFile=open("output/sampleListe_Problems.txt","w")
 ROOT.gErrorIgnoreLevel=ROOT.kError
+JobsToRedo=[]
 for s in sampleFiles:
   #print s[0]
   for f in s[1:]:
@@ -180,7 +183,7 @@ for s in sampleFiles:
       filef=open(filename,"r")
       lines=list(filef)
       for l in lines:
-        if l.find(f)>=0 or l.find(f.replace("JESUP","nominal"))>=0 or l.find(f.replace("JESDOWN","nominal"))>=0:
+        if l.find(f)>=0 or l.find(f.replace("JESUP","nominal"))>=0 or l.find(f.replace("JESDOWN","nominal"))>=0 or l.find(f.replace("JERUP","nominal"))>=0 or l.find(f.replace("JERDOWN","nominal"))>=0:
           print "corresponing job file : "+filename
           thisJobFile=filename
           for ll in lines:
@@ -226,7 +229,12 @@ for s in sampleFiles:
       print "something wrong with "+ff
       everythingAllright=False 
       print "corresponing job file :"+thisJobFile
-      newSampleListFile.write(thisJobFile+"\n")
+      if thisJobFile not in JobsToRedo:
+        JobsToRedo.append(thisJobFile)
+    print JobsToRedo
+
+for j in JobsToRedo:
+  newSampleListFile.write(j+"\n")
 newSampleListFile.close()
 
 if everythingAllright==False:
@@ -242,6 +250,10 @@ AllCutflows_JESUP=[]
 AllCutflows_JESDOWN=[]
 MergedCutflows_JESUP=[]
 MergedCutflows_JESDOWN=[]
+AllCutflows_JERUP=[]
+AllCutflows_JERDOWN=[]
+MergedCutflows_JERUP=[]
+MergedCutflows_JERDOWN=[]
 MergedCutflows_nominal=[]
 print sampleFiles
 for s in sampleFiles:
@@ -250,12 +262,18 @@ for s in sampleFiles:
   trees_nominal=[]
   trees_JESUP=[]
   trees_JESDOWN=[]
+  trees_JERUP=[]
+  trees_JERDOWN=[]
   cutflows_nominal=[]
   cutflows_JESUP=[]
   cutflows_JESDOWN=[]
+  cutflows_JERUP=[]
+  cutflows_JERDOWN=[]
   subSamplecutflows_nominal=[]
   subSamplecutflows_JESUP=[]
   subSamplecutflows_JESDOWN=[]
+  subSamplecutflows_JERUP=[]
+  subSamplecutflows_JERDOWN=[]
   subSamples=[]
 
   for f in s[1:]:
@@ -266,6 +284,10 @@ for s in sampleFiles:
       trees_JESUP.append(ff)
     if ff.find("JESDOWN")>=0:
       trees_JESDOWN.append(ff)
+    if ff.find("JERUP")>=0:
+      trees_JERUP.append(ff)
+    if ff.find("JERDOWN")>=0:
+      trees_JERDOWN.append(ff)
     cff=f+"_Cutflow.txt"
     sf=f.rsplit("_",1)[0]
     #print sf 
@@ -277,6 +299,10 @@ for s in sampleFiles:
         subSamplecutflows_JESUP.append([sf])
       if cff.find("JESDOWN")>=0:      
         subSamplecutflows_JESDOWN.append([sf])
+      if cff.find("JERUP")>=0:      
+        subSamplecutflows_JERUP.append([sf])
+      if cff.find("JERDOWN")>=0:      
+        subSamplecutflows_JERDOWN.append([sf])
     #print "subsamples", subSamples, "\n"
     #print "subsample cutflows", subSamplecutflows_nominal, "\n"
     if cff.find("nominal")>=0:
@@ -292,6 +318,16 @@ for s in sampleFiles:
     if cff.find("JESDOWN")>=0:
       cutflows_JESDOWN.append(cff)
       for subsample in subSamplecutflows_JESDOWN:
+        if sf==subsample[0]:
+          subsample.append(cff)
+    if cff.find("JERUP")>=0:
+      cutflows_JERUP.append(cff)
+      for subsample in subSamplecutflows_JERUP:
+        if sf==subsample[0]:
+          subsample.append(cff)
+    if cff.find("JERDOWN")>=0:
+      cutflows_JERDOWN.append(cff)
+      for subsample in subSamplecutflows_JERDOWN:
         if sf==subsample[0]:
           subsample.append(cff)
 
@@ -355,6 +391,47 @@ for s in sampleFiles:
       AllCutflows_JESDOWN.append(mn)
     MergedCutflows_JESDOWN.append(mn)
     log.write(mn+"\n")
+
+  if len(trees_JERUP)>0:
+    an=addedPath+"/addedTrees/"+name+"_JERUP.root"
+    mn=addedPath+"/addedTrees/"+name+"_JERUP_Cutflow.txt"
+    call(["rm","-f",an])
+    call(["hadd",an]+trees_JERUP)
+    call(["python","merge_cutflow.py",mn]+cutflows_JERUP)
+    log.write(an+"\n")
+    if len(subSamplecutflows_JERUP)>1:
+      for subsample in subSamplecutflows_JERUP:
+        ssn=subsample[0].rsplit("/",1)[1]
+        #print ssn
+        smn=addedPath+"/addedTrees/"+ssn+"_Cutflow.txt"
+        call(["python","merge_cutflow.py",smn]+subsample[1:])
+        log.write(smn+"\n")
+        AllCutflows_JERUP.append(smn)
+    else:
+      AllCutflows_JERUP.append(mn)
+    MergedCutflows_JERUP.append(mn)
+    log.write(mn+"\n")
+
+  if len(trees_JERDOWN)>0:
+    an=addedPath+"/addedTrees/"+name+"_JERDOWN.root"
+    mn=addedPath+"/addedTrees/"+name+"_JERDOWN_Cutflow.txt"
+    call(["rm","-f",an])
+    call(["hadd",an]+trees_JERDOWN)
+    call(["python","merge_cutflow.py",mn]+cutflows_JERDOWN)
+    log.write(an+"\n")
+    if len(subSamplecutflows_JERDOWN)>1:
+      for subsample in subSamplecutflows_JERDOWN:
+        ssn=subsample[0].rsplit("/",1)[1]
+        #print ssn
+        smn=addedPath+"/addedTrees/"+ssn+"_Cutflow.txt"
+        call(["python","merge_cutflow.py",smn]+subsample[1:])
+        log.write(smn+"\n")
+        AllCutflows_JERDOWN.append(smn)
+    else:
+      AllCutflows_JERDOWN.append(mn)
+    MergedCutflows_JERDOWN.append(mn)
+    log.write(mn+"\n")
+
   log.write("\n")
 print "added trees and merged the cutflows"
 
@@ -370,6 +447,13 @@ if len(AllCutflows_JESUP)>0:
 if len(AllCutflows_JESDOWN)>0:
   on=yieldpaths+"SubSamples_JESDOWN"
   call(["python","makeCutflowTables.py",on]+AllCutflows_JESDOWN)
+if len(AllCutflows_JERUP)>0:
+  on=yieldpaths+"SubSamples_JERUP"
+  call(["python","makeCutflowTables.py",on]+AllCutflows_JERUP)
+if len(AllCutflows_JERDOWN)>0:
+  on=yieldpaths+"SubSamples_JERDOWN"
+  call(["python","makeCutflowTables.py",on]+AllCutflows_JERDOWN)
+
 
 if len(MergedCutflows_nominal)>0:
   on=yieldpaths+"Merged_nominal"
@@ -380,12 +464,17 @@ if len(MergedCutflows_JESUP)>0:
 if len(MergedCutflows_JESDOWN)>0:
   on=yieldpaths+"Merged_JESDOWN"
   call(["python","makeCutflowTables.py",on]+MergedCutflows_JESDOWN)
-
+if len(MergedCutflows_JERUP)>0:
+  on=yieldpaths+"Merged_JERUP"
+  call(["python","makeCutflowTables.py",on]+MergedCutflows_JERUP)
+if len(MergedCutflows_JERDOWN)>0:
+  on=yieldpaths+"Merged_JERDOWN"
+  call(["python","makeCutflowTables.py",on]+MergedCutflows_JERDOWN)
 log.close()
 
 #finally collect BoostedTTH and MiniAODHelper Software and put them in a tarball
 call(["tar","-a","-cf",outPath+"/addedTrees/AnalysisConfigs/CMSSW.tar.gz","/afs/desy.de/user/k/kelmorab/CMSSW_7_2_3/src/BoostedTTH","/afs/desy.de/user/k/kelmorab/CMSSW_7_2_3/src/MiniAOD"])
-call(["tar","-a","-cf",outPath+"/addedTrees/AnalysisConfigs/runscripts.tar.gz","/afs/desy.de/user/k/kelmorab/run2"])
+call(["tar","-a","-cf",outPath+"/addedTrees/AnalysisConfigs/runscripts.tar.gz","/afs/desy.de/user/k/kelmorab/runNew"])
 print "created tarball with used software"
 
 

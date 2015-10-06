@@ -12,7 +12,7 @@ source $VO_CMS_SW_DIR/cmsset_default.sh
 
 cd /afs/desy.de/user/k/kelmorab/CMSSW_7_4_6_patch6/src
 eval `scram runtime -sh`
-cd /afs/desy.de/user/k/kelmorab/run2Spring15
+cd /afs/desy.de/user/k/kelmorab/runThesisBkg
 # program to execute
 ./$INPUTSCRIPT cmsRun /afs/desy.de/user/k/kelmorab/CMSSW_7_4_6_patch6/src/BoostedTTH/BoostedAnalyzer/test/BaseLineSel_cfg.py
 

@@ -25,16 +25,18 @@ echo $FILEDIR
 COUNTER=0
 NUMBER=0
 
-PATTERN1="root"
+PATTERN1=".root"
 PATTERN2="root~"
 PATTERN3="ttbar"
 PATTERN4="JetsToLNu"
 PATTERN5="JetsToLL"
 PATTERN6="BoostedTTH_MiniAOD_"
+PATTERN6="failed"
 
-for i in `ls -1 $FILEDIR/* | grep $PATTERN1 | grep -v $PATTERN2 | grep -v -f blacklist.txt `
+for i in `ls -1 $FILEDIR/*.root | grep $PATTERN1 | grep -v $PATTERN2 |  grep -v $PATTERN6  | grep -v -f blacklist.txt `
 do
-	FILE=output/${NAME}_${SYSTEMATIC}_${NUMBER}
+	#echo "$i"
+        FILE=output/${NAME}_${SYSTEMATIC}_${NUMBER}
 
 	if [ "$COUNTER" = 0 ]
 	then
