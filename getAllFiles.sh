@@ -1,16 +1,10 @@
 #!/bin/bash
 
-# samples without FatJets
-#./get-filenames.sh "/pnfs/desy.de/cms/tier2/store/mc/RunIISpring15DR74/TT_TuneCUETP8M1_13TeV-powheg-pythia8/MINIAODSIM/Asympt25ns_MCRUN2_74_V9-v2/*" /nfs/dust/cms/user/kelmorab/Spring15_Base20thJuly/ttbar MC_powheg_TTbar 2500 832.0 19899500 5 nominal
-#./get-filenames.sh "/nfs/dust/cms/user/kelmorab/MINIAOD/RunIISpring15DR74/ttHTobb_M125_13TeV_powheg_pythia8/MINIAODSIM/Asympt25ns_MCRUN2_74_V9-v1/" /nfs/dust/cms/user/kelmorab/Spring15_Base20thJuly/tthbb MC_powheg_tthbb 9125 0.2934 3933404 1 nominal
 
+./get-filenames.sh "/pnfs/desy.de/cms/tier2/store/user/kelmorab/TT_TuneCUETP8M1_13TeV-powheg-pythia8/BoostedTTH_MiniAOD/*/*" /nfs/dust/cms/user/kelmorab/ThesisSamples/ttbar MC_powheg_TTbar 2500 831.76 115091972 10 nominal
 
-
-# samples WITH FatJets
-#./get-filenames.sh "/pnfs/desy.de/cms/tier2/store/user/kelmorab/TT_TuneCUETP8M1_13TeV-powheg-pythia8/BoostedTTH_MiniAOD/*/*" /nfs/dust/cms/user/kelmorab/ThesisSamples/ttbar MC_powheg_TTbar 2500 831.76 115091972 10 nominal
-
-#./get-filenames.sh "/pnfs/desy.de/cms/tier2/store/user/kelmorab/ttHTobb_M125_13TeV_powheg_pythia8/BoostedTTH_MiniAOD/150924_124753/*" /nfs/dust/cms/user/kelmorab/ThesisSamples/tthbb MC_powheg_tthbb 9125 0.2934 3933404 1 nominal
-#./get-filenames.sh "/pnfs/desy.de/cms/tier2/store/user/kelmorab/ttHToNonbb_M125_13TeV_powheg_pythia8/BoostedTTH_MiniAOD/150922_132156/*" /nfs/dust/cms/user/kelmorab/ThesisSamples/tthNonbb MC_powheg_tthNonbb 9125 0.2151 3800598 1 nominal
+./get-filenames.sh "/pnfs/desy.de/cms/tier2/store/user/kelmorab/ttHTobb_M125_13TeV_powheg_pythia8/BoostedTTH_MiniAOD/150924_124753/*" /nfs/dust/cms/user/kelmorab/ThesisSamples/tthbb MC_powheg_tthbb 9125 0.2934 3933404 1 nominal
+./get-filenames.sh "/pnfs/desy.de/cms/tier2/store/user/kelmorab/ttHToNonbb_M125_13TeV_powheg_pythia8/BoostedTTH_MiniAOD/150922_132156/*" /nfs/dust/cms/user/kelmorab/ThesisSamples/tthNonbb MC_powheg_tthNonbb 9125 0.2151 3800598 1 nominal
 
 #rest of backgrounds
 ./get-filenames.sh "/pnfs/desy.de/cms/tier2/store/user/kelmorab/ST_t-channel_top_4f_leptonDecays_13TeV-powheg-pythia8_TuneCUETP8M1/BoostedTTH_MiniAOD/150922_095835/*" /nfs/dust/cms/user/kelmorab/ThesisSamples/SingleT STttop 2500 136.02 3299800 10 nominal
@@ -33,6 +27,5 @@
 ./get-filenames.sh "/pnfs/desy.de/cms/tier2/store/user/kelmorab/WW_TuneCUETP8M1_13TeV-pythia8/BoostedTTH_MiniAOD/150922_120605/*" /nfs/dust/cms/user/kelmorab/ThesisSamples/DiBoson WW 2500 118.7 994416 10 nominal
 ./get-filenames.sh "/pnfs/desy.de/cms/tier2/store/user/kelmorab/WZ_TuneCUETP8M1_13TeV-pythia8/BoostedTTH_MiniAOD/150922_120921/*" /nfs/dust/cms/user/kelmorab/ThesisSamples/DiBoson WZ 2500 44.9 991232 10 nominal
 ./get-filenames.sh "/pnfs/desy.de/cms/tier2/store/user/kelmorab/ZZ_TuneCUETP8M1_13TeV-pythia8/BoostedTTH_MiniAOD/150922_120944/*" /nfs/dust/cms/user/kelmorab/ThesisSamples/DiBoson ZZ 2500 15.4 996168 10 nominal
-
 
 
