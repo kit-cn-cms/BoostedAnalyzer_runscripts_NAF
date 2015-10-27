@@ -33,6 +33,7 @@ def get_vars(jobconfig):
     argument+=" analysisType="+str(jobconfig["analysisType"])
     argument+=" inputFiles="+str(jobconfig["inputFiles"])
     argument+=" maxEvents="+str(jobconfig["maxEvents"])
+    argument+=" globalTag="+str(jobconfig["globalTag"])
     argument+="\n"
     return argument
     
@@ -159,10 +160,9 @@ for row in reader:
         if 'true' in row['isData'].lower():
             jobconfig['isData']=True            
     jobconfig['analysisType']=user_config.analysisType
-    if 'gobalTag' in reader.fieldnames:
-        jobconfig['globalTag']=row['globalTag']
+    jobconfig['globalTag']=row['globalTag']
     jobconfig['isBoostedMiniAOD']=user_config.isBoostedMiniAOD
-    jobconfig['makeSystematicsTrees']=user_config.systematics and not isData
+    jobconfig['makeSystematicsTrees']=user_config.systematics and not jobconfig['isData']
     jobconfig['maxEvents']=999999999
     
     create_jobs(name,dataset,jobconfig)
