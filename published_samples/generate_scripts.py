@@ -79,6 +79,7 @@ def get_dataset_files(dataset):
             nfiles+=1
 
     print nfiles,'files with total size',size/(1024*1024),'MB containing',nevents,'events'
+    print files,events_in_files
     return files,events_in_files
 
 def create_jobs(name,dataset,jobconfig):
@@ -97,7 +98,7 @@ def create_jobs(name,dataset,jobconfig):
     for f,nev in zip(files,events):
         nevents_in_job+=nev
         files_in_job.append(f)
-        if nevents_in_job>user_config.min_events_per_job:
+        if nevents_in_job>user_config.min_events_per_job or f==files[-1]:
             ijob+=1
             create_script(name,ijob,files_in_job,nevents_in_job,eventsinsample,jobconfig)
             nevents_in_job=0
