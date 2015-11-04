@@ -9,14 +9,15 @@ pattern=''
 path=''
 files=[]
 if len(sys.argv) > 1 and sys.argv[1]=='-f':
-    files = [os.path.join(root, name)
-             for root, dirs, files in os.walk('./'+path)
-             for name in files
-             if pattern in name and name.endswith((".sh"))]
     if len(sys.argv) > 2:
         path= sys.argv[2]+'/'
     if len(sys.argv) > 3:
         pattern= sys.argv[3]
+
+    files = [os.path.join(root, name)
+             for root, dirs, files in os.walk('./'+path)
+             for name in files
+             if pattern in name and name.endswith((".sh"))]
 
 else:
     files=sys.argv[1:]
