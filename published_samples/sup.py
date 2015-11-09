@@ -1,6 +1,7 @@
 #!/usr/bin/env python
-# submits alls *.sh files to cluster
-# usage: ./sup.py path/to/scripts [script_pattern]
+# submits all *.sh files to cluster, either all scripts in a folder or just a list of files
+# usage: ./sup.py -f path/to/scripts [script_pattern]
+# or ./sup.py arbitrary number of filesnames
 import os
 import sys
 import datetime

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-# submits all *.sh files to cluster
-# usage: ./sup.py path/to/scripts [script_pattern]
+# checks if the jobs corresponding to a list scripts finished successful
+# usage: ./check_jobs.py joblist.txt
 import os
 import sys
 import datetime

@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# usage: ./generate_scripts.py
+# need to configure user_config.py
+
 import das_client
 import csv
 import os
