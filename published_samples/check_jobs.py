@@ -39,12 +39,12 @@ def check_job(j):
             files_ok=False
             missing_files.append(c)
     nevents2=events_from_cutflow(cutflow)
-    if not files_ok and nevents!=nevents2:
-        return "files missing and wrong number of events, missing files: "+",".join(missing_files)+", nevents == "+nevents+"!="+nevents2+" == nevents in cutflow"
+    if not files_ok and nevents!=nevents2 and nevents>0 and nevents2>0:
+        return j+": files missing and wrong number of events, missing files: "+(",".join(missing_files))+", nevents == "+str(nevents)+"!="+str(nevents2)+" == nevents in cutflow"
     if files_ok and nevents!=nevents2:
-        return "wrong number of events, nevents == "+nevents+"!="+nevents2+" == nevents in cutflow"
+        return j+": wrong number of events, nevents == "+str(nevents)+"!="+str(nevents2)+" == nevents in cutflow"
     if not files_ok and nevents==nevents2:
-        return "files missing: "+",".join(missing_files)
+        return j+": files missing: "+",".join(missing_files)
     
 logfile= sys.argv[1]
 print 'the following jobs didnt finish successfully'
