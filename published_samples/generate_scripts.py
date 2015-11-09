@@ -83,7 +83,6 @@ def get_dataset_files(dataset):
             nfiles+=1
 
     print nfiles,'files with total size',size/(1024*1024),'MB containing',nevents,'events'
-    print files,events_in_files
     return files,events_in_files
 
 def create_jobs(name,dataset,jobconfig):
