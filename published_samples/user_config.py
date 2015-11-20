@@ -1,12 +1,11 @@
-# default config parameters, can be overwritten by csv file
-outpath='/nfs/dust/cms/user/hmildner/trees1027/'
-scriptpath='scripts1027'
-samplelist='SampleListOct27.csv'
-dataset_column='boosted_dataset'
+outpath='/nfs/dust/cms/user/hmildner/trees1111/' # path of output of analyzer
+scriptpath='scriptsNov11' # folder containing shell scripts that will have to be run on cluster
+samplelist='SampleListNov07.csv' # samples list
+dataset_column='boosted_dataset' # run on the column with dataset or boosted_dataset?
 cmsswcfgpath='/afs/desy.de/user/h/hmildner/CMSSW_7_4_14/src/BoostedTTH/BoostedAnalyzer/test/boostedAnalysis_hannes_cfg.py'
 cmsswpath='/afs/desy.de/user/h/hmildner/CMSSW_7_4_14/'
-dbs="prod/phys03"
-min_events_per_job=50000
-systematics=True
-isBoostedMiniAOD=True
-analysisType='SL'
+dbs="prod/phys03" # dbs instance: boosted miniaod is in prod/phys03, standard miniaod in prod/global
+min_events_per_job=50000 # min number of events per job 
+systematics=False # create extra trees with JES/JER systematics?
+isBoostedMiniAOD=True # do the inputs contain fat jets?
+analysisType='SL' # this is usually SL
