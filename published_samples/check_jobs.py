@@ -59,3 +59,5 @@ for line in f_list:
         print check
 print "please resubmit"
 print " ".join(failed_jobs)
+if len(failed_jobs)==0:
+    print 'all jobs finished successfully!'

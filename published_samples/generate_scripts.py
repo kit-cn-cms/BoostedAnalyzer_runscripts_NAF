@@ -9,6 +9,7 @@ import stat
 import sys
 import datetime
 import user_config
+
 store_prefix='file:/pnfs/desy.de/cms/tier2/'
 
 def get_metainfo(path,nevents_in_job):
@@ -101,7 +102,7 @@ def create_jobs(name,dataset,jobconfig):
     for f,nev in zip(files,events):
         nevents_in_job+=nev
         files_in_job.append(f)
-        if nevents_in_job>user_config.min_events_per_job or f==files[-1]:
+        if nevents_in_job>user_config.min_events_per_job or f==files[-1] or len(files_in_job)==100:
             ijob+=1
             create_script(name,ijob,files_in_job,nevents_in_job,eventsinsample,jobconfig)
             nevents_in_job=0
