@@ -30,7 +30,7 @@ def check_job(j):
             nevents=parse(line)
         if 'cutflow' in line:
             cutflow=parse(line)
-        if 'check' in line:
+        if 'check' in line and 'nominal' in line:
             check.append(parse(line))
     files_ok=True
     missing_files=[]
