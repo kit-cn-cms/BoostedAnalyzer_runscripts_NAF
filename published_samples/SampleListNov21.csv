@@ -9,7 +9,7 @@ stbar_tchan,/ST_t-channel_antitop_4f_leptonDecays_13TeV-powheg-pythia8_TuneCUETP
 st_tWchan,/ST_tW_top_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1/RunIISpring15MiniAODv2-74X_mcRun2_asymptotic_v4-v2/MINIAODSIM,995600,1,35.9,0.03605866,/ST_tW_top_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1/hmildner-Boostedv3MiniAOD-48d296d5134b571af584b706fd9b3b0a/USER,74X_mcRun2_asymptotic_v4,FALSE
 stbar_tWchan,/ST_tW_antitop_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1/RunIISpring15MiniAODv2-74X_mcRun2_asymptotic_v4-v1/MINIAODSIM,988500,1,35.9,0.03631765,/ST_tW_antitop_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1/hmildner-Boostedv3MiniAOD-48d296d5134b571af584b706fd9b3b0a/USER,74X_mcRun2_asymptotic_v4,FALSE
 ,,,,,,,,
-st_schan,/ST_s-channel_4f_leptonDecays_13TeV-amcatnlo-pythia8_TuneCUETP8M1/RunIISpring15MiniAODv2-74X_mcRun2_asymptotic_v4-v1/MINIAODSIM,984400,0.6231,3.44,0.0034945144,/ST_s-channel_4f_leptonDecays_13TeV-amcatnlo-pythia8_TuneCUETP8M1/hmildner-Boostedv3MiniAOD-48d296d5134b571af584b706fd9b3b0a/USER,74X_mcRun2_asymptotic_v4,FALSE
+st_schan,/ST_s-channel_4f_leptonDecays_13TeV-amcatnlo-pythia8_TuneCUETP8M1/RunIISpring15MiniAODv2-74X_mcRun2_asymptotic_v4-v1/MINIAODSIM,984400,0.6231,3.44,0.0056082722,/ST_s-channel_4f_leptonDecays_13TeV-amcatnlo-pythia8_TuneCUETP8M1/hmildner-Boostedv3MiniAOD-48d296d5134b571af584b706fd9b3b0a/USER,74X_mcRun2_asymptotic_v4,FALSE
 ,,,,,,,,
 ttZ_hadr,/TTZToQQ_TuneCUETP8M1_13TeV-amcatnlo-pythia8/RunIISpring15MiniAODv2-74X_mcRun2_asymptotic_v4-v1/MINIAODSIM,749800,0.4687,0.611,0.0017386,/TTZToQQ_TuneCUETP8M1_13TeV-amcatnlo-pythia8/hmildner-Boostedv3MiniAOD-48d296d5134b571af584b706fd9b3b0a/USER,74X_mcRun2_asymptotic_v4,FALSE
 ,,,,,,,,
