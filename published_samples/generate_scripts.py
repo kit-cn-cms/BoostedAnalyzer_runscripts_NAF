@@ -11,16 +11,16 @@ import datetime
 
 store_prefix='file:/pnfs/desy.de/cms/tier2/'
 
-def get_metainfo(path,nevents_in_job):
+def get_metainfo(path,nevents_in_job,jobconfig):
     meta='#meta nevents : '+str(nevents_in_job)+'\n'
     meta+='#meta cutflow : '+path+'_nominal_Cutflow.txt\n'
-    if user_config.systematics:
+    if user_config.systematics and not jobconfig['isData']:
         meta+='#meta check : '+path+'_JESUP_Cutflow.txt\n'
         meta+='#meta check : '+path+'_JESDOWN_Cutflow.txt\n'
         meta+='#meta check : '+path+'_JERUP_Cutflow.txt\n'
         meta+='#meta check : '+path+'_JERDOWN_Cutflow.txt\n'
     meta+='#meta check : '+path+'_nominal_Tree.root\n'
-    if user_config.systematics:
+    if user_config.systematics and not jobconfig['isData']:
         meta+='#meta check : '+path+'_JESUP_Tree.root\n'
         meta+='#meta check : '+path+'_JESDOWN_Tree.root\n'
         meta+='#meta check : '+path+'_JERUP_Tree.root\n'
@@ -52,7 +52,7 @@ def create_script(name,ijob,files_in_job,nevents_in_job,eventsinsample,jobconfig
     script+='source $VO_CMS_SW_DIR/cmsset_default.sh\n'
     script+='cd '+user_config.cmsswpath+'/src\neval `scram runtime -sh`\n'
     script+='cmsRun '+user_config.cmsswcfgpath+get_vars(jobconfig)
-    script+=get_metainfo(outfilename,nevents_in_job)
+    script+=get_metainfo(outfilename,nevents_in_job,jobconfig)
     filename=current_scriptpath+'/'+name+'/'+name+'_'+str(ijob)+'.sh'
     f=open(filename,'w')
     f.write(script)
@@ -115,8 +115,8 @@ if len(sys.argv) > 1:
     assert cfgname[-3:]=='.py'
     user_config=__import__(cfgname[:-3])
 else:
-    user_config=__import__('user_config')
-    
+    print 'usage: ./generate_scripts.py user_config.py'
+   
     
 
 print 'outpath',user_config.outpath
