@@ -8,7 +8,6 @@ import os
 import stat
 import sys
 import datetime
-import user_config
 
 store_prefix='file:/pnfs/desy.de/cms/tier2/'
 
@@ -110,6 +109,16 @@ def create_jobs(name,dataset,jobconfig):
 
 
 #-------------------------------    
+#import user_config
+if len(sys.argv) > 1:
+    cfgname=sys.argv[1]
+    assert cfgname[-3:]=='.py'
+    user_config=__import__(cfgname[:-3])
+else:
+    user_config=__import__('user_config')
+    
+    
+
 print 'outpath',user_config.outpath
 print 'scriptpath',user_config.scriptpath
 print 'cmsswcfgpath',user_config.cmsswcfgpath
