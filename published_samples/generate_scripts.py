@@ -38,6 +38,7 @@ def get_vars(jobconfig):
     argument+=" inputFiles="+str(jobconfig["inputFiles"])
     argument+=" maxEvents="+str(jobconfig["maxEvents"])
     argument+=" globalTag="+str(jobconfig["globalTag"])
+    argument+=" generatorName="+str(jobconfig['usedGenerator'])
     argument+="\n"
     return argument
     
@@ -172,7 +173,11 @@ for row in reader:
     jobconfig['isData']=False
     if 'isData' in reader.fieldnames:
         if 'true' in row['isData'].lower():
-            jobconfig['isData']=True            
+            jobconfig['isData']=True
+    jobconfig['usedGenerator']='notSpecified'
+    if 'usedGenerator' in reader.fieldnames:
+        if row['usedGenerator'] != '':
+            jobconfig['usedGenerator']=row['usedGenerator']
     jobconfig['analysisType']=user_config.analysisType
     jobconfig['globalTag']=row['globalTag']
     jobconfig['isBoostedMiniAOD']=user_config.isBoostedMiniAOD
