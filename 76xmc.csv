@@ -36,7 +36,7 @@ DYJetsToLL2,/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/RunIIFall15
 WJets,/WJetsToLNu_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/RunIIFall15MiniAODv2-PU25nsData2015v1_76X_mcRun2_asymptotic_v12-v1/MINIAODSIM,24156124,,61526.7,,,76X_mcRun2_asymptotic_v12,FALSE
 
 ,,,,,,,,
-el,reminiaod,/SingleElectron/Run2015D-16Dec2015-v1/MINIAOD,,,,1,/SingleElectron/kelmorab-Boostedv4MiniAODsilverJson-290149863c84c1a35489ba7f9a981c60/USER,76X_dataRun2_v15,TRUE
+el_reminiaod,/SingleElectron/Run2015D-16Dec2015-v1/MINIAOD,,,,1,/SingleElectron/kelmorab-Boostedv4MiniAODsilverJson-290149863c84c1a35489ba7f9a981c60/USER,76X_dataRun2_v15,TRUE
 mu_reminiaod,/SingleMuon/Run2015D-16Dec2015-v1/MINIAOD,,,,1,/SingleMuon/kelmorab-Boostedv4MiniAODsilverJson-290149863c84c1a35489ba7f9a981c60/USER,76X_dataRun2_v15,TRUE
 
 
