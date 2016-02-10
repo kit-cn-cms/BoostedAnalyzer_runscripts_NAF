@@ -109,7 +109,7 @@ for c in samples['category']:
              fobj_out.write(c+','+str(s)+','+nevents+','+str(NposmNnegoNtot)+','+str(XS)+','+str(weights)+','+str(boosted_dataset1).replace("'","").replace(","," | ")	  		     +','+globalTag_mc+','+true_or_false+','+generator+'\n')
         if(data_or_mc=='"data"'):
              true_or_false='TRUE'
-	     fobj_out.write(c+','+str(s)+','+nevents+',,,,'+str(boosted_dataset1).replace("'","").replace(","," | ")+','+globalTag_data+','+true_or_false+', '+'\n')
+	     fobj_out.write(c+','+str(s)+','+nevents+',,,,'+str(boosted_dataset1).replace("'","").replace(","," | ")+','+globalTag_data+','+true_or_false+',-'+'\n')
         
         
         #print c+','+str(s)+','+str(nevents)+',Npos-Nneg/Ntotal,'+str(XS)+','+str(weights)+',boosted_dataset,'+globalTag+',FALSE'
