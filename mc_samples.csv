@@ -1,6 +1,4 @@
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
+
 stbar_tWchan,/ST_tW_antitop_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1/RunIIFall15MiniAODv2-PU25nsData2015v1_76X_mcRun2_asymptotic_v12-v1/MINIAODSIM,999400,1,35.6,0.0356213728237,[None],76X_mcRun2_asymptotic_v12,FALSE,Powheg
 ,,,,,,,,
 WW,/WW_TuneCUETP8M1_13TeV-pythia8/RunIIFall15MiniAODv2-PU25nsData2015v1_76X_mcRun2_asymptotic_v12-v1/MINIAODSIM,988418,1,118.7,0.120090892719,[None],76X_mcRun2_asymptotic_v12,FALSE,pythia8
