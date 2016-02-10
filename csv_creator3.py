@@ -82,9 +82,9 @@ globalTag_data='76X_dataRun2_v15'
 #print categorys
 #category=categorys['ttbar']
 #print category
-fobj_out = open("mc_samples.csv","w")
+fobj_out = open("auto_samples.csv","w")
 for c in samples['category']:
-    fobj_out.write(',,,,,,,,'+'\n')
+    fobj_out.write(',,,,,,,,,'+'\n')
     categorys=samples['category']
     category=categorys[c]
     dataset=get_datasets(category['dataset_wildcard'])
