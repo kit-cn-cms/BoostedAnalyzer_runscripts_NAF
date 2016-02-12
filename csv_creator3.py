@@ -35,23 +35,27 @@ def get_generator(dataset):
         return '?'
     else:
         print tmp1[0].replace('["','').replace('"]','').replace('", "',' ')
-    #print tmp1[0][2:-2].replace('", "',' ')
-    #return tmp1[0][2:-2].replace('", "',' ')
         return tmp1[0].replace('["','').replace('"]','').replace('", "',' ')
 
 def get_boosted(parent_dataset):
     print 'looking for boosted datasets in prod/phys03'
-    tmp=os.popen("python das_client.py --limit=20 --query='child dataset="+parent_dataset+" instance=prod/phys03'"+" --format=plain").read()
-    tmp1=tmp.rstrip().split('\n')[3:]
-    #if not tmp1:
+    #tmp=os.popen("python das_client.py --limit=20 --query='child dataset="+parent_dataset+" instance=prod/phys03'"+" --format=plain").read() #for list of sets
+    tmp=os.popen("python das_client.py --limit=20 --query='child dataset="+parent_dataset+" instance=prod/phys03'"+" --format=plain"+" | grep kelmorab").read()
+    #tmp1=tmp.rstrip().split('\n')[3:] #for list of sets
+    tmp1=tmp.rstrip().split('\n')[0:]
+    #if not tmp1: #for list of sets
      #   print '?'
      #   return '?'
-    #else:
+    #else:   # for list of sets
      #   print tmp1[0]
-    #print tmp1[0].replace("'","")
-    #return tmp1[0].replace("'","")
-    print str(tmp1).replace("'","").replace(","," | ")
-    return tmp1
+    #print str(tmp1).replace("'","").replace(","," | ")
+    # return tmp1  # for list of sets
+    if(tmp1[0]==''):
+         print 'none'
+         return 'none'
+    else:
+         print tmp1[0]
+         return tmp1[0]
 
 samples = {'category': {'ttbar': {'name' : 'ttbar' , 'dataset_wildcard': '/TT_TuneCUETP8M1_13TeV*powheg-pythia8*/RunIIFall15MiniAODv2*76X_mcRun2_asymptotic_v12*/MINIAODSIM' ,        					  'XS': 831.76, 'NposmNnegoNtot' : 1, 'boosted_dataset' : '/TT_TuneCUETP8M1_13TeV-powheg-pythia8/*Boostedv4MiniAOD*/USER' , 'generator' : 'POWHEG'},
 			'ttHbb': {'name' : 'ttHbb' , 'dataset_wildcard': '/ttHTobb_M125_13TeV*powheg_pythia8*/RunIIFall15MiniAODv2*76X_mcRun2_asymptotic_v12*/MINIAODSIM' , 
@@ -89,7 +93,7 @@ for c in samples['category']:
     category=categorys[c]
     dataset=get_datasets(category['dataset_wildcard'])
     XS=category['XS'] #in pb
-    NposmNnegoNtot=category['NposmNnegoNtot']
+    #NposmNnegoNtot=category['NposmNnegoNtot']
     #boosted_dataset=category['boosted_dataset']
     #generator=category['generator']
     #boosted_dataset_wildcard=get_boosted_datasets(category['boosted_dataset'])
@@ -99,6 +103,10 @@ for c in samples['category']:
         generator=get_generator(s)
         data_or_mc=get_type(s)
         boosted_dataset1=get_boosted(s)
+        if(generator.find("amc")==-1 and generator.find("aMC")==-1):
+             NposmNnegoNtot=1
+        else:
+             NposmNnegoNtot=0
         if(NposmNnegoNtot==0):
              weights=XS/(float(nevents)*1)*1000
         else:
