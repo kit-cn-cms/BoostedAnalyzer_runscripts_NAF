@@ -66,9 +66,10 @@ for f in FileList:
   np=hpE.GetEntries()
   nn=hnE.GetEntries()
   print "done with File ", ifile, "/", nfiles, f
-  print np, nn
   totalPos+=np
   totalNeg+=nn
+  cumulFraction=(totalPos-totalNeg)/(totalPos+totalNeg)
+  print "npos, nneg, cumulFraction ", np, nn, cumulFraction
   tf.Close()
   ifile+=1
 
