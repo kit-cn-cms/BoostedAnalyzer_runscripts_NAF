@@ -39,6 +39,7 @@ def get_vars(jobconfig):
     argument+=" skipEvents="+str(jobconfig["skipEvents"])
     argument+=" maxEvents="+str(jobconfig["maxEvents"])
     argument+=" globalTag="+str(jobconfig["globalTag"])
+    argument+=" generatorName="+str(jobconfig['generatorName'])
     argument+=" additionalSelection="+str(jobconfig['additionalSelection'])
     argument+="\n"
     return argument
