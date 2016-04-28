@@ -7,6 +7,8 @@ import csv
 import os
 import stat
 import sys
+import glob
+import ROOT
 import datetime
 
 store_prefix='file:/pnfs/desy.de/cms/tier2/'
@@ -68,21 +70,34 @@ def create_script(name,ijob,files_in_job,nevents_in_job,eventsinsample,jobconfig
 
 def get_dataset_files(dataset):
     print 'getting files for',dataset
-    data=das_client.get_data("https://cmsweb.cern.ch","file dataset="+dataset+" instance="+user_config.dbs,0,0,0)
+    
     nevents=0
     size=0
     nfiles=0
     files=[]
     events_in_files=[]
-    for d in data['data']:
-#        print d
-        for f in d['file']:
-            if not 'nevents' in f: continue
-            files.append(store_prefix+f['name'])
-            events_in_files.append(f['nevents'])
-            nevents+=f['nevents']
-            size+=f['size']
-            nfiles+=1
+    
+    dasdata=das_client.get_data("https://cmsweb.cern.ch","file dataset="+dataset+" instance="+user_config.dbs,0,0,0)
+    dirdata=glob.glob(dataset.strip("'")+'/*/*')
+    if len(dasdata['data'])>0:
+      for d in dasdata['data']:
+  #        print d
+          for f in d['file']:
+              if not 'nevents' in f: continue
+              files.append(store_prefix+f['name'])
+              events_in_files.append(f['nevents'])
+              nevents+=f['nevents']
+              size+=f['size']
+              nfiles+=1
+    elif len(dirdata)>0:
+      for f in dirdata:
+        files.append('file:'+f)
+        tfile=ROOT.TFile(f)
+        ttree=tfile.Get('Events')
+        events_in_files.append(ttree.GetEntries())
+        nevents+=ttree.GetEntries()
+        size+=os.path.getsize(f)
+        nfiles+=1
 
     print nfiles,'files with total size',size/(1024*1024),'MB containing',nevents,'events'
     return files,events_in_files
