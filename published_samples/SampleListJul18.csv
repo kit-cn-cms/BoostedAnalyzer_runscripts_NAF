@@ -1,0 +1,7 @@
+name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,isData,generator,additionalSelection,isreHLT
+,,,,,,,,,,,
+ttHbb,/ttHTobb_M125_13TeV_powheg_pythia8/RunIISpring16MiniAODv2-PUSpring16RAWAODSIM_reHLT_80X_mcRun2_asymptotic_v14-v1/MINIAODSIM,3912212,1,0.2918,0.000074587,,80X_mcRun2_asymptotic_2016_miniAODv2_v1,FALSE,POWHEG,NONE,TRUE
+,,,,,,,,,,,
+ttbar_incl,/TT_TuneCUETP8M1_13TeV-powheg-pythia8/RunIISpring16MiniAODv2-PUSpring16RAWAODSIM_reHLT_80X_mcRun2_asymptotic_v14_ext3-v1/MINIAODSIM,92925926,1,831.76,0.0089507852,,80X_mcRun2_asymptotic_2016_miniAODv2_v1,FALSE,POWHEG,NONE,TRUE
+,,,,,,,,,,,
+Z+Jets,/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16_80X_mcRun2_asymptotic_2016_miniAODv2_v0_ext1-v1/MINIAODSIM,49877138,1,6025.2,0.1208008366,,80X_mcRun2_asymptotic_2016_miniAODv2_v1,FALSE,notSpecified,NONE,FALSE
