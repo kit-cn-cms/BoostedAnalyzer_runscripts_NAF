@@ -98,7 +98,7 @@ def check_auth(key):
         msg  = "WARNING: das_client is running without user credentials/X509 proxy, create proxy via 'voms-proxy-init -voms cms -rfc'"
         print(msg, file=sys.stderr)
 
-class DASOptionParser: 
+class DASOptionParser:
     """
     DAS cache client option parser
     """
@@ -106,26 +106,26 @@ class DASOptionParser:
         usage  = "Usage: %prog [options]\n"
         usage += "For more help please visit https://cmsweb.cern.ch/das/faq"
         self.parser = OptionParser(usage=usage)
-        self.parser.add_option("-v", "--verbose", action="store", 
+        self.parser.add_option("-v", "--verbose", action="store",
                                type="int", default=0, dest="verbose",
              help="verbose output")
-        self.parser.add_option("--query", action="store", type="string", 
+        self.parser.add_option("--query", action="store", type="string",
                                default=False, dest="query",
              help="specify query for your request")
         msg  = "host name of DAS cache server, default is https://cmsweb.cern.ch"
-        self.parser.add_option("--host", action="store", type="string", 
+        self.parser.add_option("--host", action="store", type="string",
                        default='https://cmsweb.cern.ch', dest="host", help=msg)
         msg  = "start index for returned result set, aka pagination,"
         msg += " use w/ limit (default is 0)"
-        self.parser.add_option("--idx", action="store", type="int", 
+        self.parser.add_option("--idx", action="store", type="int",
                                default=0, dest="idx", help=msg)
         msg  = "number of returned results (default is 10),"
         msg += " use --limit=0 to show all results"
-        self.parser.add_option("--limit", action="store", type="int", 
+        self.parser.add_option("--limit", action="store", type="int",
                                default=10, dest="limit", help=msg)
         msg  = 'specify return data format (json or plain), default plain.'
         self.parser.add_option("--format", action="store", type="string",
-                               default="plain", dest="format", help=msg)
+                               default="json", dest="format", help=msg)
         msg  = 'query waiting threshold in sec, default is 5 minutes'
         self.parser.add_option("--threshold", action="store", type="int",
                                default=300, dest="threshold", help=msg)
