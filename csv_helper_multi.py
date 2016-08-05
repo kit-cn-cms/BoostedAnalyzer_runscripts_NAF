@@ -84,7 +84,11 @@ def get_datatypes(json_array):
     for i in range(nresults):
       try:
         index_=search_index(json_array[i].get("data","none")[0].get("dataset","none"),"datatype")
-        datatype_array.append(json_array[i].get("data","none")[0].get("dataset","none")[index_].get("datatype","none"))
+        datatype=json_array[i].get("data","none")[0].get("dataset","none")[index_].get("datatype","none")
+        if(datatype=="mc"):
+	  datatype_array.append("FALSE")
+	if(datatype=="data"):
+	  datatype_array.append("TRUE")
       except AttributeError:
 	datatype_array.append("look at me again")
     return datatype_array
@@ -110,7 +114,8 @@ def get_generators(json_array):
       try:
         index_=search_index(json_array[i].get("data","none")[0].get("dataset","none"),"mcm")
         generator_array.append(json_array[i].get("data","none")[0].get("dataset","none")[index_].get("mcm","none").get("generators","none"))
-      except AttributeError:
+        #print json_array[i].get("data","none")[0].get("dataset","none")[index_].get("mcm","none").get("generators","none")
+      except (AttributeError, TypeError):
 	generator_array.append("look at me again")
     return generator_array
 
@@ -194,11 +199,94 @@ def merge_ext(name_array):
 	    #print dup[1]
         #dups.append(dup[1])
     return dups
+  
+def merge_run(name_array):
+    ext=[]
+    ext_name=[]
+    for i in range(len(name_array)):
+      if(name_array[i].find("Run20")!=-1):
+	        pos=name_array[i].find("Run20")
+	        ext.append(i)
+	        ext_str=name_array[i][pos:pos+8]
+	        ext_name.append(name_array[i].replace(ext_str,""))
+      else:
+	        ext.append(0)
+	        ext_name.append(name_array[i])
+    duplicates=list_duplicates(ext_name)
+    dups=[]
+    #print duplicates[0]
+    for dup in duplicates:
+	    dups.append(dup[1])
+	    #print dup[1]
+        #dups.append(dup[1])
+    return dups
 
 
+def get_reHLT(names_array):
+  reHLT_array=[]
+  for name in names_array:
+    if(name.find("reHLT")==-1):
+      reHLT_array.append("FALSE")
+    else:
+      reHLT_array.append("TRUE")
+  return reHLT_array
 
-
-
+def remove_duplicates(duplicates_array,names,jsons,nevents,nfiles,datatypes,globaltags,generators,boosted_datasets,is_reHLTs,neg_fractions,weights,xs):
+  dupls=[]
+  for duplicate in duplicates_array:
+    #print duplicate
+    nevents_tmp=0
+    nfiles_tmp=0
+    neg_fractions_tmp=0
+    names_tmp='"'
+    globaltags_tmp=globaltags[duplicate[0]]
+    datatypes_tmp=datatypes[duplicate[0]]
+    generators_tmp=generators[duplicate[0]]
+    jsons_tmp=jsons[duplicate[0]]
+    is_reHLTs_tmp=is_reHLTs[duplicate[0]]
+    boosted_datasets_tmp=[]
+    for i in range(len(duplicate)):
+      dupl_position=duplicate[i]
+      dupls.append(dupl_position)
+      #print dupl_position
+      nevents_tmp+=nevents[dupl_position]
+      nfiles_tmp+=nfiles[dupl_position]
+      neg_fractions_tmp+=neg_fractions[dupl_position]
+      boosted_datasets_tmp+=boosted_datasets[dupl_position]
+      if(i==0):
+	names_tmp+=names[dupl_position]
+      else:
+	names_tmp+=","+names[dupl_position]
+    names_tmp+='"'
+    neg_fractions_tmp=neg_fractions_tmp/len(duplicate)
+    weights_tmp=float(xs)*1000/(neg_fractions_tmp*nevents_tmp)
+    #print nevents_tmp,nfiles_tmp,neg_fractions_tmp,weights_tmp,boosted_datasets_tmp,names_tmp
+    names.append(names_tmp)
+    jsons.append(jsons_tmp)
+    nevents.append(nevents_tmp)
+    nfiles.append(nfiles_tmp)
+    datatypes.append(datatypes_tmp)
+    globaltags.append(globaltags_tmp)
+    generators.append(generators_tmp)
+    is_reHLTs.append(is_reHLTs_tmp)
+    boosted_datasets.append(boosted_datasets_tmp)
+    neg_fractions.append(neg_fractions_tmp)
+    weights.append(weights_tmp)
+  dupls=sorted(dupls,reverse=True)
+  #print dupls
+  for i in dupls:
+    del names[i]
+    del jsons[i]
+    del nevents[i]
+    del nfiles[i]
+    del datatypes[i]
+    del globaltags[i]
+    del generators[i]
+    del boosted_datasets[i]
+    del is_reHLTs[i]
+    del neg_fractions[i]
+    del weights[i]
+  
 
 """
 #dataset_wildcard="/TT_TuneCUETP8M1_13TeV*powheg-pythia8*/RunIIFall15MiniAODv2*76X_mcRun2_asymptotic_v12*/MINIAODSIM"
