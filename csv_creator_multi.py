@@ -1,4 +1,3 @@
-#usage type: python csv_creator_multi.py dataset.csv
 import csv
 import sys
 import csv_helper_multi as chm
@@ -32,20 +31,6 @@ for row in csv_array:
     #print nevents
     print "getting number of files ..."
     nfiles=chm.get_nfiles(jsons)
-    """
-    n_toosmall=0
-    for i in range(len(nfiles)):
-        if(nfiles[i]<100):
-	    n_toosmall+=1
-    for k in range(n_toosmall):
-	for l in range(len(nfiles)):
-	    if(nfiles[l]<100):
-		nfiles.pop(l)
-		jsons.pop(l)
-		nevents.pop(l)
-		names.pop(l)
-		break
-    """
     #print "############################ nfiles ################################"
     #print nfiles
     print "getting datatype mc or data ..."
@@ -72,7 +57,15 @@ for row in csv_array:
     weights=chm.get_weights(nevents,neg_fractions,float(row[2]))
     #print "############################ weights ################################"
     #print weights
-    duplicates_array=chm.merge_ext(names)
+    print "getting is_reHLT ..."
+    is_reHLTs=chm.get_reHLT(names)
+    
+    #################### this section ddeals with finding extensions and putting them together in the csv file ##########################
+    duplicates_ext_array=chm.merge_ext(names)
+    chm.remove_duplicates(duplicates_ext_array,names,jsons,nevents,nfiles,datatypes,globaltags,generators,boosted_datasets,is_reHLTs,neg_fractions,weights,row[2])
+    duplicates_Run_array=chm.merge_run(names)
+    chm.remove_duplicates(duplicates_Run_array,names,jsons,nevents,nfiles,datatypes,globaltags,generators,boosted_datasets,is_reHLTs,neg_fractions,weights,row[2])
+    """
     dupls=[]
     for duplicate in duplicates_array:
       #print duplicate
@@ -84,6 +77,7 @@ for row in csv_array:
       datatypes_tmp=datatypes[duplicate[0]]
       generators_tmp=generators[duplicate[0]]
       jsons_tmp=jsons[duplicate[0]]
+      is_reHLTs_tmp=is_reHLTs[duplicate[0]]
       boosted_datasets_tmp=[]
       for i in range(len(duplicate)):
 	dupl_position=duplicate[i]
@@ -108,6 +102,7 @@ for row in csv_array:
       datatypes.append(datatypes_tmp)
       globaltags.append(globaltags_tmp)
       generators.append(generators_tmp)
+      is_reHLTs.append(is_reHLTs_tmp)
       boosted_datasets.append(boosted_datasets_tmp)
       neg_fractions.append(neg_fractions_tmp)
       weights.append(weights_tmp)
@@ -122,11 +117,13 @@ for row in csv_array:
       del globaltags[i]
       del generators[i]
       del boosted_datasets[i]
+      del is_reHLTs[i]
       del neg_fractions[i]
       del weights[i]
     #print "names new "
     #print names
-
+    #############################################################################################################################
+    """
     xs=float(row[2])
     print "writing found datasets and their information ..."
     fobj_out.write(",,,,,,,,,,,"+'\n')
@@ -150,6 +147,6 @@ for row in csv_array:
         #print datatypes[i]
         #print generators[i]
         #print "test"
-        fobj_out.write(str(row[0])+','+str(names[i])+','+str(nevents[i])+','+str(neg_fractions[i])+','+str(xs)+','+str(weights[i])+','+boosted_datasets_string+','+str(globaltags[i])+','+str(datatypes[i])+','+str(generators[i][0])+','+'none'+','+'isreHLT'+'\n')
+        fobj_out.write(str(row[0])+','+str(names[i])+','+str(nevents[i])+','+str(neg_fractions[i])+','+str(xs)+','+str(weights[i])+','+boosted_datasets_string+','+str(globaltags[i])+','+str(datatypes[i])+','+str(generators[i])+','+'none'+','+str(is_reHLTs[i])+'\n')
 
 fobj_out.close
