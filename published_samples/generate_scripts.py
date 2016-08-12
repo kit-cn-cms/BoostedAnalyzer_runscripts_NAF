@@ -2,12 +2,14 @@
 # usage: ./generate_scripts.py
 # need to configure user_config.py
 
-import das_client
+#import das_client
 import csv
 import os
 import stat
 import sys
 import datetime
+import imp
+das_client=imp.load_source("das_client", "/cvmfs/cms.cern.ch/slc6_amd64_gcc481/cms/das_client/v02.17.04/bin/das_client.py")
 
 store_prefix='file:/pnfs/desy.de/cms/tier2/'
 
@@ -69,7 +71,10 @@ def create_script(name,ijob,files_in_job,nevents_in_job,eventsinsample,jobconfig
 
 def get_dataset_files(dataset):
     print 'getting files for',dataset
-    data=das_client.get_data("https://cmsweb.cern.ch","file dataset="+dataset+" instance="+user_config.dbs,0,0,0)
+    ckey=das_client.x509()
+    cert=das_client.x509()
+    das_client.check_auth(ckey)
+    data=das_client.get_data("https://cmsweb.cern.ch","file dataset="+dataset+" instance="+user_config.dbs,0,0,0,300,ckey,cert)
     nevents=0
     size=0
     nfiles=0
@@ -179,7 +184,7 @@ for row in reader:
             jobconfig['isData']=True
     if 'isreHLT' in reader.fieldnames:
         if 'true' in row['isreHLT'].lower():
-            jobconfig['isreHLT']=True
+            jobconfig['isreHLT']=True        
     if 'generator' in reader.fieldnames:
         if row['generator'] != '':
             jobconfig['generatorName']=row['generator']
