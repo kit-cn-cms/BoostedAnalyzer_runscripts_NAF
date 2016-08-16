@@ -9,7 +9,9 @@ import stat
 import sys
 import datetime
 import imp
-das_client=imp.load_source("das_client", "/cvmfs/cms.cern.ch/slc6_amd64_gcc481/cms/das_client/v02.17.04/bin/das_client.py")
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+das_client=imp.load_source("das_client", "/cvmfs/cms.cern.ch/slc6_amd64_gcc530/cms/das_client/v02.17.04/bin/das_client.py")
 
 store_prefix='file:/pnfs/desy.de/cms/tier2/'
 
