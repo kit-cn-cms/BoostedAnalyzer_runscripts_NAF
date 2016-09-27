@@ -32,7 +32,9 @@ if usexroot:
     query=f.replace("dataset=/","")
     if query[0]=="/":
       query=query.lstrip("/")
+    print "https://cmsweb.cern.ch/das/makepy?dataset=/"+query+"&instance=prod/global"
     queryOutput=urllib2.urlopen("https://cmsweb.cern.ch/das/makepy?dataset=/"+query+"&instance=prod/global")
+
     qlines=list(queryOutput)
     for qline in qlines:
       if "root" in qline and "store" in qline:
