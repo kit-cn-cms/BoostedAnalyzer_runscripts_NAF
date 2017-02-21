@@ -38,13 +38,11 @@ def get_vars(jobconfig):
     argument+=" isData="+str(jobconfig["isData"])
     argument+=" isBoostedMiniAOD="+str(jobconfig["isBoostedMiniAOD"])
     argument+=" makeSystematicsTrees="+str(jobconfig["makeSystematicsTrees"])
-    argument+=" analysisType="+str(jobconfig["analysisType"])
     argument+=" inputFiles="+str(jobconfig["inputFiles"])
     argument+=" maxEvents="+str(jobconfig["maxEvents"])
     argument+=" globalTag="+str(jobconfig["globalTag"])
     argument+=" generatorName="+str(jobconfig['generatorName'])
     argument+=" additionalSelection="+str(jobconfig['additionalSelection'])
-    argument+=" isreHLT="+str(jobconfig["isreHLT"])
     argument+="\n"
     return argument
     
@@ -180,20 +178,15 @@ for row in reader:
     jobconfig={}
     jobconfig['weight']=weight
     jobconfig['isData']=False
-    jobconfig['isreHLT']=False
     if 'isData' in reader.fieldnames:
         if 'true' in row['isData'].lower():
             jobconfig['isData']=True
-    if 'isreHLT' in reader.fieldnames:
-        if 'true' in row['isreHLT'].lower():
-            jobconfig['isreHLT']=True        
     if 'generator' in reader.fieldnames:
         if row['generator'] != '':
             jobconfig['generatorName']=row['generator']
     if 'additionalSelection' in reader.fieldnames:
         if row['additionalSelection'] != '':
             jobconfig['additionalSelection']=row['additionalSelection']
-    jobconfig['analysisType']=user_config.analysisType
     jobconfig['globalTag']=row['globalTag']
     jobconfig['isBoostedMiniAOD']=user_config.isBoostedMiniAOD
     jobconfig['makeSystematicsTrees']=user_config.systematics and not jobconfig['isData']

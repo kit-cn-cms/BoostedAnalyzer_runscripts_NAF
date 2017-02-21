@@ -1,11 +1,10 @@
-outpath='/nfs/dust/cms/user/hmildner/trees1124/' # path of output of analyzer
-scriptpath='scriptsNov24' # folder containing shell scripts that will have to be run on cluster
-samplelist='SampleListNov21.csv' # samples list
+outpath='/nfs/dust/cms/user/matsch/ntuples/Spring17/v1/' # path of output of analyzer
+scriptpath='runScripts_Spring17_2017-02-21' # folder containing shell scripts that will have to be run on cluster
+samplelist='SampleListSpring17.csv' # samples list
 dataset_column='boosted_dataset' # run on the column with dataset or boosted_dataset?
-cmsswcfgpath='/afs/desy.de/user/h/hmildner/CMSSW_7_4_15/src/BoostedTTH/BoostedAnalyzer/test/boostedAnalysis_hannes_cfg.py'
-cmsswpath='/afs/desy.de/user/h/hmildner/CMSSW_7_4_15/'
+cmsswcfgpath='/afs/desy.de/user/m/matsch/CMSSW_8_0_26_patch1/src/BoostedTTH/BoostedAnalyzer/test/boostedAnalysis_ntuples-Spring17_cfg.py'
+cmsswpath='/afs/desy.de/user/m/matsch/CMSSW_8_0_26_patch1/'
 dbs="prod/phys03" # dbs instance: boosted miniaod is in prod/phys03, standard miniaod in prod/global
 min_events_per_job=50000 # min number of events per job 
 systematics=False # create extra trees with JES/JER systematics?
-isBoostedMiniAOD=True # do the inputs contain fat jets?
-analysisType='SL' # this is usually SL
+isBoostedMiniAOD=False # do the inputs contain fat jets?
