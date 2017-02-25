@@ -18,17 +18,17 @@ store_prefix='file:/pnfs/desy.de/cms/tier2/'
 def get_metainfo(path,nevents_in_job,jobconfig):
     meta='#meta nevents : '+str(nevents_in_job)+'\n'
     meta+='#meta cutflow : '+path+'_nominal_Cutflow.txt\n'
-    if user_config.systematics and not jobconfig['isData']:
-        meta+='#meta check : '+path+'_JESUP_Cutflow.txt\n'
-        meta+='#meta check : '+path+'_JESDOWN_Cutflow.txt\n'
-        meta+='#meta check : '+path+'_JERUP_Cutflow.txt\n'
-        meta+='#meta check : '+path+'_JERDOWN_Cutflow.txt\n'
+#    if user_config.systematics and not jobconfig['isData']:
+#        meta+='#meta check : '+path+'_JESUP_Cutflow.txt\n'
+#        meta+='#meta check : '+path+'_JESDOWN_Cutflow.txt\n'
+#        meta+='#meta check : '+path+'_JERUP_Cutflow.txt\n'
+#        meta+='#meta check : '+path+'_JERDOWN_Cutflow.txt\n'
     meta+='#meta check : '+path+'_nominal_Tree.root\n'
-    if user_config.systematics and not jobconfig['isData']:
-        meta+='#meta check : '+path+'_JESUP_Tree.root\n'
-        meta+='#meta check : '+path+'_JESDOWN_Tree.root\n'
-        meta+='#meta check : '+path+'_JERUP_Tree.root\n'
-        meta+='#meta check : '+path+'_JERDOWN_Tree.root\n'
+#    if user_config.systematics and not jobconfig['isData']:
+#        meta+='#meta check : '+path+'_JESUP_Tree.root\n'
+#        meta+='#meta check : '+path+'_JESDOWN_Tree.root\n'
+#        meta+='#meta check : '+path+'_JERUP_Tree.root\n'
+#        meta+='#meta check : '+path+'_JERDOWN_Tree.root\n'
     return meta
 
 def get_vars(jobconfig):
@@ -37,17 +37,69 @@ def get_vars(jobconfig):
     argument+=" weight="+str(jobconfig["weight"])
     argument+=" isData="+str(jobconfig["isData"])
     argument+=" isBoostedMiniAOD="+str(jobconfig["isBoostedMiniAOD"])
-    argument+=" makeSystematicsTrees="+str(jobconfig["makeSystematicsTrees"])
     argument+=" inputFiles="+str(jobconfig["inputFiles"])
     argument+=" maxEvents="+str(jobconfig["maxEvents"])
     argument+=" globalTag="+str(jobconfig["globalTag"])
     argument+=" generatorName="+str(jobconfig['generatorName'])
     argument+=" additionalSelection="+str(jobconfig['additionalSelection'])
+    argument+=" systematicVariations="+str(jobconfig['systematicVariations'])
     argument+="\n"
     return argument
+
+
+def get_list_of_systematics(filename):
+    systs=[]
+    with open(filename,"r") as f:
+        systs=f.readlines()
+    systs=[s.rstrip('\n') for s in systs]
+    systs=[s.rstrip('\t') for s in systs]
+    good_systs=[s for s in systs if not (s.startswith("#") or len(s)==0)]
+    if len(good_systs) != len(set(good_systs)):
+        print "ERROR specifying list of systematics: DUPLICATE ENTRIES"
+        sys.exit()
+    if not "nominal" in good_systs:
+        print "WARNING: no 'nominal' variation specified...adding it"
+        good_systs.insert(0,"nominal")
+
+    print "Systematic variations:"
+    for syst in good_systs:
+        print "  '"+syst+"'"
+
+    return good_systs
+
+
+def split_for_systematic_variations(jobconfig):
+    jobconfigs=[]
+    
+    if jobconfig['isData']:
+        cfg=jobconfig.copy()
+        cfg['systematicVariations']="nominal"
+        cfg['nSystematicVariationsPerJob']=1
+        jobconfigs.append(cfg)
+    else:
+        systs_str=""
+        isyst=1
+        for syst in jobconfig['systematicVariations']:
+            if len(systs_str)>0:
+                systs_str+=","
+            systs_str+=str(syst)
+            if isyst < jobconfig['nSystematicVariationsPerJob']:
+                isyst+=1
+            else:
+                cfg=jobconfig.copy()
+                cfg['systematicVariations']=systs_str
+                jobconfigs.append(cfg)
+                systs_str=""
+                isyst=1
+        if len(systs_str)>0:
+            cfg=jobconfig.copy()
+            cfg['systematicVariations']=systs_str
+            jobconfigs.append(cfg)
+
+    return jobconfigs    
     
 
-def create_script(name,ijob,files_in_job,nevents_in_job,eventsinsample,jobconfig):
+def create_script(name,ijob,isyst,files_in_job,nevents_in_job,eventsinsample,jobconfig):
     outfilename=user_config.outpath+'/'+name+'/'+name+'_'+str(ijob)
     jobconfig['inputFiles']=','.join(files_in_job)
     jobconfig['outName']=outfilename
@@ -58,7 +110,7 @@ def create_script(name,ijob,files_in_job,nevents_in_job,eventsinsample,jobconfig
     script+='cd '+user_config.cmsswpath+'/src\neval `scram runtime -sh`\n'
     script+='cmsRun '+user_config.cmsswcfgpath+get_vars(jobconfig)
     script+=get_metainfo(outfilename,nevents_in_job,jobconfig)
-    filename=current_scriptpath+'/'+name+'/'+name+'_'+str(ijob)+'.sh'
+    filename=current_scriptpath+'/'+name+'/'+name+'_'+str(ijob)+'_'+str(isyst)+'.sh'
     f=open(filename,'w')
     f.write(script)
     f.close()
@@ -66,7 +118,13 @@ def create_script(name,ijob,files_in_job,nevents_in_job,eventsinsample,jobconfig
     print 'created script',filename
     st = os.stat(filename)
     os.chmod(filename, st.st_mode | stat.S_IEXEC)
+    
 
+def create_scripts(name,ijob,files_in_job,nevents_in_job,eventsinsample,jobconfig):
+    jobconfigs=split_for_systematic_variations(jobconfig)
+    for isyst,cfg in enumerate(jobconfigs):
+        print "copying jobs for systematic variations "+str(isyst+1)+": "+str(cfg['systematicVariations'])
+        create_script(name,ijob,isyst+1,files_in_job,nevents_in_job,eventsinsample,cfg)
 
 
 def get_dataset_files(dataset):
@@ -81,7 +139,6 @@ def get_dataset_files(dataset):
     files=[]
     events_in_files=[]
     for d in data['data']:
-#        print d
         for f in d['file']:
             if not 'nevents' in f: continue
             files.append(store_prefix+f['name'])
@@ -103,6 +160,7 @@ def create_jobs(name,dataset,jobconfig):
     if not os.path.exists(folder):
         os.makedirs(folder)       
     if not os.path.exists(user_config.outpath+'/'+name):
+        #print ">>>> os.makedirs("+str(user_config.outpath+'/'+name)+")"
         os.makedirs(user_config.outpath+'/'+name)       
 
     
@@ -111,7 +169,7 @@ def create_jobs(name,dataset,jobconfig):
         files_in_job.append(f)
         if nevents_in_job>user_config.min_events_per_job or f==files[-1] or len(files_in_job)==100:
             ijob+=1
-            create_script(name,ijob,files_in_job,nevents_in_job,eventsinsample,jobconfig)
+            create_scripts(name,ijob,files_in_job,nevents_in_job,eventsinsample,jobconfig)
             nevents_in_job=0
             files_in_job=[]
 
@@ -132,6 +190,7 @@ print 'scriptpath',user_config.scriptpath
 print 'cmsswcfgpath',user_config.cmsswcfgpath
 print 'cmsswpath',user_config.cmsswpath
 print 'samplelist',user_config.samplelist
+print 'systematicVariations',user_config.systematicVariations
 
 # check paths
 current_scriptpath=user_config.scriptpath
@@ -189,8 +248,9 @@ for row in reader:
             jobconfig['additionalSelection']=row['additionalSelection']
     jobconfig['globalTag']=row['globalTag']
     jobconfig['isBoostedMiniAOD']=user_config.isBoostedMiniAOD
-    jobconfig['makeSystematicsTrees']=user_config.systematics and not jobconfig['isData']
     jobconfig['maxEvents']=999999999
+    jobconfig['systematicVariations']=get_list_of_systematics(user_config.systematicVariations)
+    jobconfig['nSystematicVariationsPerJob']=user_config.nSystematicVariationsPerJob
     
     create_jobs(name,dataset,jobconfig)
 
