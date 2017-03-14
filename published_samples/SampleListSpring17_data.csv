@@ -1,0 +1,4 @@
+name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,isData,generator,additionalSelection
+,,,,,,,,,,
+data_SingleElectron_2016B-G_03Feb2017,,,,,1,/SingleElectron/mschrode-Skim-V1_3j20_1l20-7e751fab435e7fe727885a8a37d5b3d3/USER,80X_dataRun2_2016SeptRepro_v7,TRUE,NONE,NONE
+data_SingleMuon_2016B-G_03Feb2017,,,,,1,/SingleMuon/mschrode-Skim-V1_3j20_1l20-7e751fab435e7fe727885a8a37d5b3d3/USER,80X_dataRun2_2016SeptRepro_v7,TRUE,NONE,NONE
