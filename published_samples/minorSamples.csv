@@ -6,7 +6,7 @@ st_tchan,/ST_t-channel_top_4f_inclusiveDecays_TuneCUETP8M2T4_13TeV-powhegV2-mads
 ,,,,,,,,,,
 stbar_tchan,/ST_t-channel_antitop_4f_inclusiveDecays_TuneCUETP8M2T4_13TeV-powhegV2-madspin/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM,3928063,1,80.95,0.0206081216111,/ST_t-channel_antitop_4f_inclusiveDecays_TuneCUETP8M2T4_13TeV-powhegV2-madspin/mwassmer-Skim-V1_3j20_1l20-a9e761f18a2602500895f5e48b093b84/USER,80X_mcRun2_asymptotic_2016_TrancheIV_v8,FALSE,POWHEG,none
 ,,,,,,,,,,
-st_tWchan,"/ST_tW_top_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M2T4/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM,/ST_tW_top_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M2T4/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM",1984048,1,35.85,0.0180691192955,,80X_mcRun2_asymptotic_2016_TrancheIV_v8,FALSE,POWHEG,none
+st_tWchan,"/ST_tW_top_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M2T4/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM",1984048,1,35.85,0.0180691192955,/ST_tW_antitop_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M2T4/mwassmer-Skim-V1_3j20_1l20-a9e761f18a2602500895f5e48b093b84/USER,80X_mcRun2_asymptotic_2016_TrancheIV_v8,FALSE,POWHEG,none
 ,,,,,,,,,,
 stbar_tWchan,/ST_tW_antitop_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M2T4/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM,998276,1,35.85,0.0359119121365,/ST_tW_antitop_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M2T4/mwassmer-Skim-V1_3j20_1l20-a9e761f18a2602500895f5e48b093b84/USER,80X_mcRun2_asymptotic_2016_TrancheIV_v8,FALSE,POWHEG,none
 ,,,,,,,,,,
