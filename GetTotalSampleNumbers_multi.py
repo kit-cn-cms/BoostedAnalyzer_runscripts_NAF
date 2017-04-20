@@ -1,7 +1,8 @@
 import ROOT
 import sys
 import urllib2
-
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
 
 def GetTotalSampleNumbers(name):
     files=[]
@@ -16,15 +17,7 @@ def GetTotalSampleNumbers(name):
     if usexroot:
       #print "in xroot condition"
       for f in files:
-        query=f.replace("dataset=/","")
-        if query[0]=="/":
-          query=query.lstrip("/")
-        queryOutput=urllib2.urlopen("https://cmsweb.cern.ch/das/makepy?dataset=/"+query+"&instance=prod/global")
-        qlines=list(queryOutput)
-        #print "qlines ",qlines
-        for qline in qlines:
-          if "root" in qline and "store" in qline:
-            FileList.append("root://xrootd-cms.infn.it//"+qline.replace("'","").replace(",","").replace("]","").replace(";","").replace(" ","").replace(")","").strip())
+            FileList.append("root://xrootd-cms.infn.it//"+f)
       #print "Filelist ",FileList
     
     else:
