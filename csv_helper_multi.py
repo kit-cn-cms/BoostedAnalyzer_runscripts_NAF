@@ -170,6 +170,12 @@ def get_generators(name_array):
     for i in range(nresults):
         if name_array[i].find("powheg")!=-1:
             generator_array.append("POWHEG")
+        elif name_array[i].find("amc")!=-1:
+            generator_array.append("aMC")
+        elif name_array[i].find("madgraph")!=-1:
+            generator_array.append("MadGraph")
+        elif name_array[i].find("pythia")!=-1:
+            generator_array.append("pythia8")
         else:
             generator_array.append("notSpecified")
     return generator_array
