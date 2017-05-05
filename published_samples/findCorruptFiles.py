@@ -5,9 +5,14 @@ import glob
 brokenFiles=[]
 indirs=sys.argv[1:]
 
+
 fileList=[]
 for dir in indirs:
-  fileList+=glob.glob(dir+"/*.root")
+  if "*" in dir:
+    fileList+=glob.glob(dir)
+  else:
+    fileList+=glob.glob(dir+"/*.root")
+
 
 #print fileList
 for fil in fileList:
