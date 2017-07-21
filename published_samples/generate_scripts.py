@@ -10,11 +10,13 @@ import sys
 import datetime
 import imp
 import ssl
+import glob
+import ROOT
 ssl._create_default_https_context = ssl._create_unverified_context
 das_client=imp.load_source("das_client", "/cvmfs/cms.cern.ch/slc6_amd64_gcc530/cms/das_client/v02.17.04/bin/das_client.py")
 
 store_prefix='file:/pnfs/desy.de/cms/tier2/'
-
+#store_prefix="root://xrootd-cms.infn.it//"
 def get_metainfo(path,nevents_in_job,jobconfig):
     meta='#meta nevents : '+str(nevents_in_job)+'\n'
     meta+='#meta cutflow : '+path+'_nominal_Cutflow.txt\n'
@@ -43,6 +45,7 @@ def get_vars(jobconfig):
     argument+=" generatorName="+str(jobconfig['generatorName'])
     argument+=" additionalSelection="+str(jobconfig['additionalSelection'])
     argument+=" systematicVariations="+str(jobconfig['systematicVariations'])
+    argument+=" dataEra="+str(jobconfig['dataEra'])
     argument+="\n"
     return argument
 
@@ -107,6 +110,7 @@ def create_script(name,ijob,isyst,files_in_job,nevents_in_job,eventsinsample,job
     script='#!/bin/bash\n'
     script+='export VO_CMS_SW_DIR=/cvmfs/cms.cern.ch\n'
     script+='source $VO_CMS_SW_DIR/cmsset_default.sh\n'
+    #script+='export X509_USER_PROXY=/nfs/dust/cms/user/mwassmer/proxy/x509up_u26621\n'
     script+='cd '+user_config.cmsswpath+'/src\neval `scram runtime -sh`\n'
     script+='cmsRun '+user_config.cmsswcfgpath+get_vars(jobconfig)
     script+=get_metainfo(outfilename,nevents_in_job,jobconfig)
@@ -129,24 +133,41 @@ def create_scripts(name,ijob,files_in_job,nevents_in_job,eventsinsample,jobconfi
 
 def get_dataset_files(dataset):
     print 'getting files for',dataset
+    datasets=[x.strip("'") for x in dataset.split(',')]
+    print datasets
     ckey=das_client.x509()
     cert=das_client.x509()
     das_client.check_auth(ckey)
-    data=das_client.get_data("https://cmsweb.cern.ch","file dataset="+dataset+" instance="+user_config.dbs,0,0,0,300,ckey,cert)
     nevents=0
     size=0
     nfiles=0
     files=[]
     events_in_files=[]
-    for d in data['data']:
-        for f in d['file']:
-            if not 'nevents' in f: continue
-            files.append(store_prefix+f['name'])
-            events_in_files.append(f['nevents'])
-            nevents+=f['nevents']
-            size+=f['size']
-            nfiles+=1
-
+    
+    for dataset in datasets:
+		data=das_client.get_data("https://cmsweb.cern.ch","file dataset="+dataset+" instance="+user_config.dbs,0,0,0,300,ckey,cert)
+		for d in data['data']:
+		    for f in d['file']:
+		        if not 'nevents' in f: continue
+		        files.append(store_prefix+f['name'])
+		        events_in_files.append(f['nevents'])
+		        nevents+=f['nevents']
+		        size+=f['size']
+		        nfiles+=1
+    
+    
+    #if nfiles==0:
+    #print "give directory where the files are located"
+    #directory = str(raw_input("directory? "))
+    #files=glob.glob(directory+"/*")
+    #nfiles=len(files)
+    #chain=ROOT.TChain("Events","Events")
+    #nevents_tmp=0
+    #for f in files:
+    #    chain.Add(f)
+    #    events_in_files.append(chain.GetEntries()-nevents_tmp)
+    #    nevents_tmp=chain.GetEntries()
+    #nevents=chain.GetEntries()
     print nfiles,'files with total size',size/(1024*1024),'MB containing',nevents,'events'
     return files,events_in_files
 
@@ -251,6 +272,7 @@ for row in reader:
     jobconfig['maxEvents']=999999999
     jobconfig['systematicVariations']=get_list_of_systematics(user_config.systematicVariations)
     jobconfig['nSystematicVariationsPerJob']=user_config.nSystematicVariationsPerJob
+    jobconfig['dataEra']=row['run']
     
     create_jobs(name,dataset,jobconfig)
 
