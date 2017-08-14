@@ -14,20 +14,22 @@ fobj.close()
 
 
 fobj_out=open("auto_samples.csv","w")
-fobj_out.write('name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,IsData,generator,additionalSelection'+'\n')
+fobj_out.write('name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,IsData,generator,additionalSelection,run'+'\n')
 
 for row in csv_array:
     print "getting names for ...",row[1]
     names=chm.get_names(row[1])
-    if(len(names)==0):
-      continue
-    print "############################ names ################################"
+    name_duplicates=chm.list_duplicates(names)
+    if len(names)==0 or next(name_duplicates,0)!=0:
+        print "no datasets have been found for this query or there are duplicate datasets in the response" 
+        continue
+    print "############################ dataset names ################################"
     print names
     jsons=[]
     nevents=[]
     n_tried=0
     while True:
-        if n_tried>25:
+        if n_tried>5:
             break
         print "getting jsons for corresponding datasets ..."
         jsons=chm.get_jsons(names)
@@ -39,7 +41,8 @@ for row in csv_array:
         if not 0 in nevents:
             break
         n_tried+=1
-    if n_tried>25:
+    if n_tried>5:
+        print "somehow the event numbers could not be determined"
         continue
     #print "############################ nevents ################################"
     #print nevents
@@ -51,19 +54,19 @@ for row in csv_array:
     files=chm.get_first_files(names)
     #print "############################# first files ################################"
     #print files
-    print "getting datatype mc or data ..."
+    print "getting datatype mc (FALSE) or data (TRUE) ..."
     datatypes=chm.get_datatypes(jsons)
-    #print "############################ datatypes ################################"
+    print "############################ datatypes ################################"
     #print datatypes
     print "getting globaltags ..."
-    globaltags=chm.get_globaltags(jsons)
+    globaltags=chm.get_globaltags(datatypes)
     #print "############################ globaltags ################################"
     #print globaltags
     print "getting generators ..."
     generators=chm.get_generators(names)
     #print "############################ generators ################################"
     #print generators
-    print "getting boosted datasets ..."
+    print "getting boosted/skimmed datasets ..."
     boosted_datasets=chm.get_children_names_(names)
     print "############################ boosted datasets ################################"
     print boosted_datasets
@@ -76,11 +79,13 @@ for row in csv_array:
     #print "############################ weights ################################"
     #print weights
     #print "getting is_reHLT ..."
+    print "getting runs ..."
+    runs=chm.get_runs(names)
     is_reHLTs=chm.get_reHLT(names)
     
-    #################### this section ddeals with finding extensions and putting them together in the csv file ##########################
+    #################### this section deals with finding extensions and putting them together in the csv file ##########################
     duplicates_ext_array=chm.merge_ext(names)
-    chm.remove_duplicates(duplicates_ext_array,names,jsons,nevents,nfiles,datatypes,globaltags,generators,boosted_datasets,is_reHLTs,neg_fractions,weights,row[2])
+    chm.remove_duplicates(duplicates_ext_array,names,jsons,nevents,nfiles,datatypes,globaltags,generators,boosted_datasets,is_reHLTs,neg_fractions,weights,runs,row[2])
     #duplicates_Run_array=chm.merge_run(names)
     #chm.remove_duplicates(duplicates_Run_array,names,jsons,nevents,nfiles,datatypes,globaltags,generators,boosted_datasets,is_reHLTs,neg_fractions,weights,row[2])
     
@@ -111,6 +116,6 @@ for row in csv_array:
         #print datatypes[i]
         #print generators[i]
         #print "test"
-        fobj_out.write(str(row[0])+"_"+str(i)+','+str(names[i])+','+str(nevents[i])+','+str(neg_fractions[i])+','+str(xs)+','+str(weights[i])+','+boosted_datasets_string+','+'80X_mcRun2_asymptotic_2016_TrancheIV_v8'+','+str(datatypes[i])+','+str(generators[i])+','+'NONE'+'\n')
+        fobj_out.write(str(row[0])+"_"+str(i)+','+str(names[i])+','+str(nevents[i])+','+str(neg_fractions[i])+','+str(xs)+','+str(weights[i])+','+boosted_datasets_string+','+str(globaltags[i])+','+str(datatypes[i])+','+str(generators[i])+','+'NONE'+','+str(runs[i])+'\n')
 
 fobj_out.close
