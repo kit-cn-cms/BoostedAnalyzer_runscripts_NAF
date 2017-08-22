@@ -15,8 +15,8 @@ import ROOT
 ssl._create_default_https_context = ssl._create_unverified_context
 das_client=imp.load_source("das_client", "/cvmfs/cms.cern.ch/slc6_amd64_gcc530/cms/das_client/v02.17.04/bin/das_client.py")
 
-store_prefix='file:/pnfs/desy.de/cms/tier2/'
-#store_prefix="root://xrootd-cms.infn.it//"
+#store_prefix='file:/pnfs/desy.de/cms/tier2/'
+store_prefix="root://xrootd-cms.infn.it//"
 def get_metainfo(path,nevents_in_job,jobconfig):
     meta='#meta nevents : '+str(nevents_in_job)+'\n'
     meta+='#meta cutflow : '+path+'_nominal_Cutflow.txt\n'
@@ -46,6 +46,7 @@ def get_vars(jobconfig):
     argument+=" additionalSelection="+str(jobconfig['additionalSelection'])
     argument+=" systematicVariations="+str(jobconfig['systematicVariations'])
     argument+=" dataEra="+str(jobconfig['dataEra'])
+    argument+=" dataset="+str(jobconfig['dataTrigger'])
     argument+="\n"
     return argument
 
@@ -273,6 +274,7 @@ for row in reader:
     jobconfig['systematicVariations']=get_list_of_systematics(user_config.systematicVariations)
     jobconfig['nSystematicVariationsPerJob']=user_config.nSystematicVariationsPerJob
     jobconfig['dataEra']=row['run']
+    jobconfig['dataTrigger']=row['dataTrigger']
     
     create_jobs(name,dataset,jobconfig)
 
