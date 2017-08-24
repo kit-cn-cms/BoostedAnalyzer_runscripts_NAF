@@ -46,7 +46,7 @@ def get_vars(jobconfig):
     argument+=" additionalSelection="+str(jobconfig['additionalSelection'])
     argument+=" systematicVariations="+str(jobconfig['systematicVariations'])
     argument+=" dataEra="+str(jobconfig['dataEra'])
-    argument+=" dataset="+str(jobconfig['dataTrigger'])
+    #argument+=" dataset="+str(jobconfig['dataTrigger'])
     argument+="\n"
     return argument
 
@@ -274,7 +274,7 @@ for row in reader:
     jobconfig['systematicVariations']=get_list_of_systematics(user_config.systematicVariations)
     jobconfig['nSystematicVariationsPerJob']=user_config.nSystematicVariationsPerJob
     jobconfig['dataEra']=row['run']
-    jobconfig['dataTrigger']=row['dataTrigger']
+    #jobconfig['dataTrigger']=row['dataTrigger']
     
     create_jobs(name,dataset,jobconfig)
 
