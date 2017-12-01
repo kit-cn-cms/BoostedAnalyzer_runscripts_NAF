@@ -68,7 +68,7 @@ for i in range(len(samples)):
 #samples=["ttbar_isr_up","ttbar_isr_down","ttbar_fsr_up","ttbar_fsr_down","ttbar_ue_up","ttbar_ue_down","ttbar_hdamp_up","ttbar_hdamp_down","ttbar_color_reco"]
 #samples=["ttbar_mtop1665","ttbar_mtop1695","ttbar_mtop1715","ttbar_mtop1735","ttbar_mtop1755","ttbar_mtop1785"]
 #samples=["QCD_HT50to100","QCD_HT100to200","QCD_HT200to300","QCD_HT300to500","QCD_HT500to700","QCD_HT700to1000","QCD_HT1000to1500","QCD_HT1500to2000","QCD_HT2000toInf"]
-samples=[sample for sample in samples if sample.find("DM_powheg_axialvector")!=-1]
+samples=[sample for sample in samples if sample.find("DMV_NNPDF30_Axial")!=-1]
 
 #systematics=get_list_of_systematics("systematicVariations.txt")
 #systematics_,systematics_numbers=get_splitting_of_systematics(systematics,nsystematicvariations)	

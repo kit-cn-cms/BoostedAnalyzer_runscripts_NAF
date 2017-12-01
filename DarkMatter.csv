@@ -1,4 +1,5 @@
-#DM_powheg_vector,/*DMV*Axial*gSM-0p25*gDM-1p0*powheg*/RunIISummer16*TrancheIV*/MINIAODSIM,1.
+DM_powheg_axial_vector,/*DMV*Axial*gSM-0p25*gDM-1p0*powheg*/RunIISummer16*TrancheIV*/MINIAODSIM,1.
+DM_powheg_vector,/*DMV*Vector*gSM-0p25*gDM-1p0*powheg*/RunIISummer16*TrancheIV*/MINIAODSIM,1.
 #DM_madgraph,/*DM*madgraph*/RunIISummer16*TrancheIV*/MINIAODSIM,1.
 #ADD_Monojet,/*MonoJet*/*TrancheIV*/MINIAODSIM,1.
 #Scalar_Monojet_madgraph,/Scalar*MonoJ*/*TrancheIV*/MINIAODSIM,1.
@@ -18,5 +19,5 @@
 #GJets,/GJets_HT-600ToInf*/*TrancheIV*/MINIAODSIM,93.47
 #Wjets_to_LNu,/*WJetsToLNu_Tune*madgraph*/*Moriond*TrancheIV*/MINIAODSIM,0.006945
 #MET_data,/MET/Run2016*-03Feb2017*/MINIAOD,1.
-JetHT_data,/JetHT/Run2016*-03Feb2017*/MINIAOD,1.
-SinglePhoton_data,/SinglePhoton/Run2016*-03Feb2017*/MINIAOD,1.
+#JetHT_data,/JetHT/Run2016*-03Feb2017*/MINIAOD,1.
+#SinglePhoton_data,/SinglePhoton/Run2016*-03Feb2017*/MINIAOD,1.
