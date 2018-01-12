@@ -1,5 +1,7 @@
 DM_powheg_axial_vector,/*DMV*Axial*gSM-0p25*gDM-1p0*powheg*/RunIISummer16*TrancheIV*/MINIAODSIM,1.
 DM_powheg_vector,/*DMV*Vector*gSM-0p25*gDM-1p0*powheg*/RunIISummer16*TrancheIV*/MINIAODSIM,1.
+DM_powheg_scalar,/*DMS*Scalar*gSM-1p0*gDM-1p0*powheg*/RunIISummer16*TrancheIV*/MINIAODSIM,1.
+DM_powheg_pseudo_scalar,/*DMS*Pseudo*gSM-1p0*gDM-1p0*powheg*/RunIISummer16*TrancheIV*/MINIAODSIM,1.
 #DM_madgraph,/*DM*madgraph*/RunIISummer16*TrancheIV*/MINIAODSIM,1.
 #ADD_Monojet,/*MonoJet*/*TrancheIV*/MINIAODSIM,1.
 #Scalar_Monojet_madgraph,/Scalar*MonoJ*/*TrancheIV*/MINIAODSIM,1.
