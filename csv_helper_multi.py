@@ -14,7 +14,7 @@ def get_data_(dataset):
     ckey=dc.x509()
     cert=dc.x509()
     dc.check_auth(ckey)
-    data=dc.get_data("https://cmsweb.cern.ch","dataset="+dataset+" instance=prod/global",0,0,0,500,ckey,cert)
+    data=dc.get_data("https://cmsweb.cern.ch","dataset dataset="+dataset+" instance=prod/global status=*",0,0,0,500,ckey,cert)
     return data
 """
 def get_data_(dataset):
