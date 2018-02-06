@@ -1,4 +1,4 @@
-name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,IsData,generator,additionalSelection,run
+name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,isData,generator,additionalSelection,run
 ,,,,,,,,,,,
 ,,,,,,,,,,,
 ,,,,,,,,,,,
