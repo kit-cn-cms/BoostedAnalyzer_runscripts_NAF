@@ -33,7 +33,7 @@ for filename in sys.argv[2:]:
     f.close()
 ff=open(outfile,"w")
 for a,b,c,d in zip(numbers,steps,sumlist,yieldlist):
-    print str(a)+" : "+str(b)+" : "+str(c)+" : "+str(d)
-    ff.write(str(a)+" : "+str(b)+" : "+str(c)+" : "+str(d)+"\n")
+    print str(a)+" : "+str(b)+" : "+str(c)+" : "+str(d)+" : "+str(1.*c/sumlist[0])+" : "+str(1.*d/yieldlist[0])
+    ff.write(str(a)+" : "+str(b)+" : "+str(c)+" : "+str(d)+" : "+str(1.*c/sumlist[0])+" : "+str(1.*d/yieldlist[0])+"\n")
 
 ff.close

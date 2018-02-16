@@ -14,7 +14,7 @@ fobj.close()
 
 
 fobj_out=open("auto_samples.csv","w")
-fobj_out.write('name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,IsData,generator,additionalSelection,run'+'\n')
+fobj_out.write('name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,isData,generator,additionalSelection,run'+'\n')
 
 for row in csv_array:
     print "getting names for ...",row[1]
