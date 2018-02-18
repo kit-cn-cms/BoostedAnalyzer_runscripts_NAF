@@ -48,11 +48,11 @@ def get_first_file(dataset_name):
         for f in d['file']:
             if not 'nevents' in f: continue
             files.append(f['name'])
-            if(len(files)>=3):
+            if(len(files)>=2):
                 break
-        if(len(files)>=3):
+        if(len(files)>=2):
             break
-    return files[0]
+    return files
 
 def get_first_files(dataset_names):
     first_files_array=[]
@@ -195,7 +195,7 @@ def get_generators(name_array):
     return generator_array
 
 def get_x(name):
-    if(name.lower().find("amc")==-1):
+    if(name[0].lower().find("amc")==-1):
         x=1
     else:
         x=0.
