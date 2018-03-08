@@ -48,9 +48,9 @@ def get_first_file(dataset_name):
         for f in d['file']:
             if not 'nevents' in f: continue
             files.append(f['name'])
-            if(len(files)>=2):
+            if(len(files)>=3):
                 break
-        if(len(files)>=2):
+        if(len(files)>=3):
             break
     return files
 
@@ -246,7 +246,7 @@ def get_children_array(parent_dataset):
 	except TypeError:
             continue
 	#print "teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeest",child_candidate
-	if(child_candidate.find("mwassmer")!=-1):
+	if(child_candidate.find("mwassmer")!=-1 and child_candidate.find("MonoJet")!=-1):
 	    name_array.append(child_candidate)
         #print "#children ",len(name_array)
     return name_array
@@ -287,12 +287,15 @@ def merge_ext(name_array):
       if(name_array[i].find("_ext")!=-1):
 	        pos=name_array[i].find("_ext")
 	        #ext.append(i)
-	        ext_str=name_array[i][pos:pos+5]
+	        ext_str=name_array[i][pos:pos+8]
 	        ext_name.append(name_array[i].replace(ext_str,""))
 	        n_exts+=1
       else:
 	        #ext.append(0)
-	        ext_name.append(name_array[i])
+	        pos=name_array[i].find("/MINIAODSIM")
+	        ext_str=name_array[i][pos-3:pos]
+	        #print ext_str
+	        ext_name.append(name_array[i].replace(ext_str,""))
     if n_exts==0:
         return []
     else:
