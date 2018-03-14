@@ -7,6 +7,7 @@ fobj = open(sys.argv[1],"rb")
 reader=csv.reader(fobj)
 csv_array=[]
 for row in reader:
+    print row[0]
     if row[0].find("#")!=-1:
         continue
     csv_array.append(row)
@@ -104,7 +105,8 @@ for row in csv_array:
         if len(boosted_datasets[i])>0:
             boosted_datasets_string=str(boosted_datasets[i][0])
         else:
-           boosted_datasets_string="" 
+           boosted_datasets_string=""
+        name = str(names[i]).split("/")[1]
         #write the csv entry
         #print names[i]
         #print nevents[i]
@@ -116,6 +118,6 @@ for row in csv_array:
         #print datatypes[i]
         #print generators[i]
         #print "test"
-        fobj_out.write(str(row[0])+"_"+str(i)+','+str(names[i])+','+str(nevents[i])+','+str(neg_fractions[i])+','+str(xs)+','+str(weights[i])+','+boosted_datasets_string+','+str(globaltags[i])+','+str(datatypes[i])+','+str(generators[i])+','+'NONE'+','+str(runs[i])+'\n')
+        fobj_out.write(name+"_"+str(i)+','+str(names[i])+','+str(nevents[i])+','+str(neg_fractions[i])+','+str(xs)+','+str(weights[i])+','+boosted_datasets_string+','+str(globaltags[i])+','+str(datatypes[i])+','+str(generators[i])+','+'NONE'+','+str(runs[i])+'\n')
 
 fobj_out.close

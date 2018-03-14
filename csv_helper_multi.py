@@ -52,7 +52,7 @@ def get_first_file(dataset_name):
                 break
         if(len(files)>=3):
             break
-    return files[0]
+    return files
 
 def get_first_files(dataset_names):
     first_files_array=[]
@@ -171,9 +171,9 @@ def get_globaltags(datatype_array):
     globaltag_array=[]
     for i in range(nresults):
         if datatype_array[i]=="TRUE":
-            globaltag_array.append("80X_dataRun2_2016SeptRepro_v7")
+            globaltag_array.append("94X_dataRun2_ReReco_EOY17_v2")
         elif datatype_array[i]=="FALSE":
-            globaltag_array.append("80X_mcRun2_asymptotic_2016_TrancheIV_v8")
+            globaltag_array.append("94X_mc2017_realistic_v12")
         else:
             globaltag_array.append("look at me again")
     return globaltag_array
@@ -195,9 +195,7 @@ def get_generators(name_array):
     return generator_array
 
 def get_x(name):
-    if(name.lower().find("amc")==-1):
-        x=1
-    else:
+    if(name[0].lower().find("amc")!=-1 or name[0].lower().find("powheg")!=-1):
         x=0.
         while True:
             try:
@@ -206,6 +204,8 @@ def get_x(name):
                 x=0.
             if x!=0.:
                 break
+    else:
+        x=1.
     return x
 
 def get_xs(name_array):
@@ -287,12 +287,14 @@ def merge_ext(name_array):
       if(name_array[i].find("_ext")!=-1):
 	        pos=name_array[i].find("_ext")
 	        #ext.append(i)
-	        ext_str=name_array[i][pos:pos+5]
+	        ext_str=name_array[i][pos:pos+8]
 	        ext_name.append(name_array[i].replace(ext_str,""))
 	        n_exts+=1
       else:
 	        #ext.append(0)
-	        ext_name.append(name_array[i])
+	        pos=name_array[i].find("/MINIAODSIM")
+	        ext_str=name_array[i][pos-3:pos]
+	        ext_name.append(name_array[i].replace(ext_str,""))
     if n_exts==0:
         return []
     else:
