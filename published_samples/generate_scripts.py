@@ -282,13 +282,19 @@ for row in reader:
     jobconfig['systematicVariations']=get_list_of_systematics(user_config.systematicVariations)
     jobconfig['nSystematicVariationsPerJob']=user_config.nSystematicVariationsPerJob
     jobconfig['dataEra']=row['run']
-    jobconfig['ProduceMemNtuples']=user_config.ProduceMemNtuples
-    jobconfig['useJson']=user_config.useJson
-    jobconfig['calcBJetness']=user_config.calcBJetness
     #jobconfig['dataTrigger']=row['dataTrigger']
-    jobconfig['ProduceMemNtuples']=user_config.ProduceMemNtuples
-    jobconfig['useJson']=user_config.useJson
-    jobconfig['calcBJetness']=user_config.calcBJetness
+    if hasattr(user_config,"ProduceMemNtuples"):
+      jobconfig['ProduceMemNtuples']=user_config.ProduceMemNtuples
+    else:
+      jobconfig['ProduceMemNtuples']=False
+    if hasattr(user_config,"useJson"):
+      jobconfig['useJson']=user_config.useJson
+    else:
+      jobconfig['useJson']=False
+    if hasattr(user_config,"calcBJetness"):
+      jobconfig['calcBJetness']=user_config.calcBJetness
+    else:
+      jobconfig['calcBJetness']=False
     
     create_jobs(name,dataset,jobconfig)
 
