@@ -50,6 +50,9 @@ def get_vars(jobconfig):
     argument+=" useJson="+str(jobconfig['useJson'])
     argument+=" calcBJetness="+str(jobconfig['calcBJetness'])
     #argument+=" dataset="+str(jobconfig['dataTrigger'])
+    argument+=" ProduceMemNtuples="+str(jobconfig['ProduceMemNtuples'])
+    argument+=" useJson="+str(jobconfig['useJson'])
+    argument+=" calcBJetness="+str(jobconfig['calcBJetness'])
     argument+="\n"
     return argument
 
@@ -281,6 +284,9 @@ for row in reader:
     jobconfig['useJson']=user_config.useJson
     jobconfig['calcBJetness']=user_config.calcBJetness
     #jobconfig['dataTrigger']=row['dataTrigger']
+    jobconfig['ProduceMemNtuples']=user_config.ProduceMemNtuples
+    jobconfig['useJson']=user_config.useJson
+    jobconfig['calcBJetness']=user_config.calcBJetness
     
     create_jobs(name,dataset,jobconfig)
 
