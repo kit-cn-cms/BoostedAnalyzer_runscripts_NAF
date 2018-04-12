@@ -6,7 +6,9 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 def GetTotalSampleNumbers(name):
     files=[]
-    files.append(name)
+    for file in name:
+        files.append(file)
+    #files.append(name)
     usexroot=True
     totalNumber=0
     totalPos=0
