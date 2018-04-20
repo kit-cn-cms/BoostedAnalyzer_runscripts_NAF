@@ -13,8 +13,8 @@ import ssl
 import glob
 import ROOT
 ssl._create_default_https_context = ssl._create_unverified_context
-das_client=imp.load_source("das_client", "/cvmfs/cms.cern.ch/slc6_amd64_gcc530/cms/das_client/v02.17.04/bin/das_client.py")
-
+#das_client=imp.load_source("das_client", "/cvmfs/cms.cern.ch/slc6_amd64_gcc530/cms/das_client/v02.17.04/bin/das_client.py")
+import Utilities.General.cmssw_das_client as das_client
 #store_prefix='file:/pnfs/desy.de/cms/tier2/'
 store_prefix="root://xrootd-cms.infn.it//"
 def get_metainfo(path,nevents_in_job,jobconfig):
@@ -136,9 +136,9 @@ def get_dataset_files(dataset):
     print 'getting files for',dataset
     datasets=[x.strip("'") for x in dataset.split(',')]
     print datasets
-    ckey=das_client.x509()
-    cert=das_client.x509()
-    das_client.check_auth(ckey)
+    #ckey=das_client.x509()
+    #cert=das_client.x509()
+    #das_client.check_auth(ckey)
     nevents=0
     size=0
     nfiles=0
@@ -146,7 +146,7 @@ def get_dataset_files(dataset):
     events_in_files=[]
     
     for dataset in datasets:
-		data=das_client.get_data("https://cmsweb.cern.ch","file dataset="+dataset+" instance="+user_config.dbs,0,0,0,300,ckey,cert)
+		data=das_client.get_data("file dataset="+dataset+" instance="+user_config.dbs)
 		for d in data['data']:
 		    for f in d['file']:
 		        if not 'nevents' in f: continue
@@ -275,7 +275,8 @@ for row in reader:
     jobconfig['nSystematicVariationsPerJob']=user_config.nSystematicVariationsPerJob
     jobconfig['dataEra']=row['run']
     #jobconfig['dataTrigger']=row['dataTrigger']
-    
+    if dataset=="''":
+        continue
     create_jobs(name,dataset,jobconfig)
 
 f_list.close()
