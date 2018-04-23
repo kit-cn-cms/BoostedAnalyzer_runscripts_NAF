@@ -163,9 +163,9 @@ def get_globaltags(datatype_array):
     globaltag_array=[]
     for i in range(nresults):
         if datatype_array[i]=="TRUE":
-            globaltag_array.append("94X_dataRun2_ReReco_EOY17_v2")
+            globaltag_array.append("94X_dataRun2_ReReco_EOY17_v6")
         elif datatype_array[i]=="FALSE":
-            globaltag_array.append("94X_mc2017_realistic_v12")
+            globaltag_array.append("94X_mc2017_realistic_v13")
         else:
             globaltag_array.append("look at me again")
     return globaltag_array
@@ -302,8 +302,8 @@ def merge_ext(name_array):
 def get_runs(name_array):
     run_array=[]
     for i in range(len(name_array)):
-        if(name_array[i].find("Run2016")!=-1):
-            pos=name_array[i].find("Run2016")
+        if(name_array[i].find("Run2017")!=-1):
+            pos=name_array[i].find("Run2017")
             run_str=name_array[i][pos+3:pos+8]
             run_array.append(run_str)
         else:
