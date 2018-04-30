@@ -7,6 +7,7 @@ fobj = open(sys.argv[1],"rb")
 reader=csv.reader(fobj)
 csv_array=[]
 for row in reader:
+    print row[0]
     if row[0].find("#")!=-1:
         continue
     csv_array.append(row)
@@ -105,8 +106,7 @@ for row in csv_array:
             boosted_datasets_string=str(boosted_datasets[i][0])
         else:
            boosted_datasets_string=""
-	name = str(names[i]).split("/")[1]
-	#print name 
+        name = str(names[i]).split("/")[1]
         #write the csv entry
         #print names[i]
         #print nevents[i]

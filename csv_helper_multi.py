@@ -6,43 +6,30 @@ from collections import defaultdict
 from multiprocessing import Pool
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
-dc=imp.load_source("das_client", "/cvmfs/cms.cern.ch/slc6_amd64_gcc530/cms/das_client/v02.17.04/bin/das_client.py")
+import Utilities.General.cmssw_das_client as das_client
 # gets the json for a given dataset with wildcards
 
 def get_data_(dataset):
     #print 'getting files for',dataset
-    ckey=dc.x509()
-    cert=dc.x509()
-    dc.check_auth(ckey)
-    data=dc.get_data("https://cmsweb.cern.ch","dataset="+dataset+" instance=prod/global",0,0,0,500,ckey,cert)
+    data=None
+    if "*" in dataset:
+        data=das_client.get_data("dataset dataset="+dataset+" instance=prod/global status=VALID")
+    else:
+        data=das_client.get_data("dataset dataset="+dataset+" instance=prod/global")
     return data
 """
-def get_data_(dataset):
-    host="https://cmsweb.cern.ch"
-    dataset_string="dataset="
-    instance=" instance=prod/phys03"
-    start_number=0
-    max_entries=0
-    wait_time=300
-    ckey=dc.x509()
-    cert=dc.x509()
-    dc.check_auth(ckey)
-    return dc.get_data(host,dataset_string+dataset+instance,start_number,max_entries,wait_time,ckey,cert)
+def get_data__(dataset):
+    data=das_client.get_data("dataset dataset="+dataset+" instance=prod/global")
+    return data
 """
 def get_children(dataset):
     #print dataset
-    ckey=dc.x509()
-    cert=dc.x509()
-    dc.check_auth(ckey)
-    data=dc.get_data("https://cmsweb.cern.ch","child dataset="+dataset+" instance=prod/phys03",0,0,0,500,ckey,cert)
+    data=das_client.get_data("child dataset="+dataset+" instance=prod/phys03")
     #print data
     return data
 
 def get_first_file(dataset_name):
-    ckey=dc.x509()
-    cert=dc.x509()
-    dc.check_auth(ckey)
-    data=dc.get_data("https://cmsweb.cern.ch","file dataset="+dataset_name,0,0,0,500,ckey,cert)
+    data=das_client.get_data("file dataset="+dataset_name)
     files=[]
     for d in data['data']:
         for f in d['file']:
@@ -63,13 +50,15 @@ def get_first_files(dataset_names):
     pool.join()
     return first_files_array
 
-def search_index(array,key):
-    #print "length ",len(array)
+def search_index(array,key,subkey=None):
     for i in range(len(array)):
-        #print array[i]
-        #if(str(array[i].get(key,"none"))!="none"):
         if key in array[i]:
-            return i
+            if subkey!=None:
+                dict_ = array[i].get(key,"none")
+                if search_index(dict_,subkey)!="none":
+                    return i
+            else:
+                return i
     return "none"
 
 def get_names(dataset_wildcard_):
@@ -88,6 +77,8 @@ def get_names(dataset_wildcard_):
             name_array.append(results.get("data","none")[i].get("dataset","none")[index1].get("name","none"))
         else:
             continue
+        if name_array[-1]==None:
+            name_array.pop()
     return name_array
 
 
@@ -119,11 +110,12 @@ def get_nevents(json_array):
     index1="none"
     index2="none"
     for i in range(nresults):
-        index1=search_index(json_array[i].get("data","none"),"dataset")
+        index1=search_index(json_array[i].get("data","none"),"dataset","nevents")
         if index1!="none":
             index2=search_index(json_array[i].get("data","none")[index1].get("dataset","none"),"nevents")
-	#print index1
-	#print index2
+            #print json_array[i].get("data","none")[index1].get("dataset","none")
+	print "index1 ",index1
+	print "index2 ",index2
 	if index1!="none" and index2!="none":
             nevents_array.append(json_array[i].get("data","none")[index1].get("dataset","none")[index2].get("nevents","none"))
         else:
@@ -195,9 +187,7 @@ def get_generators(name_array):
     return generator_array
 
 def get_x(name):
-    if(name[0].lower().find("amc")==-1):
-        x=1
-    else:
+    if(name[0].lower().find("amc")!=-1 or name[0].lower().find("powheg")!=-1):
         x=0.
         while True:
             try:
@@ -206,6 +196,8 @@ def get_x(name):
                 x=0.
             if x!=0.:
                 break
+    else:
+        x=1.
     return x
 
 def get_xs(name_array):
@@ -294,7 +286,6 @@ def merge_ext(name_array):
 	        #ext.append(0)
 	        pos=name_array[i].find("/MINIAODSIM")
 	        ext_str=name_array[i][pos-3:pos]
-	        #print ext_str
 	        ext_name.append(name_array[i].replace(ext_str,""))
     if n_exts==0:
         return []
