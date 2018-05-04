@@ -27,4 +27,25 @@ if not os.path.exists('logs'):
     os.makedirs('logs')
 
 for f in files:
-    call(['qsub', '-cwd', '-S', '/bin/bash','-q','short.q','-l', 'h=bird*', '-hard','-l', 'os=sld6', '-l' ,'h_vmem=2000M', '-l', 's_vmem=2000M' ,'-o', 'logs/$JOB_NAME.o$JOB_ID', '-e', 'logs/$JOB_NAME.e$JOB_ID', f])
+    filename = f.split("/")[-1][:-3]
+    # writing submit script file
+    pathSubmitScript = path + "/submitFile_"+filename+".sub"
+    codeSubmitScript = "universe = vanilla\n"
+    codeSubmitScript += "should_transfer_files = IF_NEEDED\n"
+    codeSubmitScript += "executable = /bin/bash\n"
+    codeSubmitScript += "arguments = " + f + "\n"
+    codeSubmitScript += "error = logs/" + filename + "_$(Cluster).out\n"
+    codeSubmitScript += "output = logs/" + filename + "_$(Cluster).err\n"
+    codeSubmitScript += "notification = Never\n"
+    codeSubmitScript += "priority = 0\n"
+    codeSubmitScript += "request_memory = 2000M\n"
+    #codeSubmitScript += "request_disk = 2000M\n"
+    codeSubmitScript += "queue"
+
+    fileSubmitScript = open(pathSubmitScript, "w")
+    fileSubmitScript.write(codeSubmitScript)
+    fileSubmitScript.close()
+
+    print "submitting script", f
+    command = "condor_submit " + pathSubmitScript
+    call(command.split())
