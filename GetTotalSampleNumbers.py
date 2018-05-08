@@ -32,7 +32,9 @@ if usexroot:
     query=f.replace("dataset=/","")
     if query[0]=="/":
       query=query.lstrip("/")
+    print "https://cmsweb.cern.ch/das/makepy?dataset=/"+query+"&instance=prod/global"
     queryOutput=urllib2.urlopen("https://cmsweb.cern.ch/das/makepy?dataset=/"+query+"&instance=prod/global")
+
     qlines=list(queryOutput)
     for qline in qlines:
       if "root" in qline and "store" in qline:
@@ -66,9 +68,10 @@ for f in FileList:
   np=hpE.GetEntries()
   nn=hnE.GetEntries()
   print "done with File ", ifile, "/", nfiles, f
-  print np, nn
   totalPos+=np
   totalNeg+=nn
+  cumulFraction=(totalPos-totalNeg)/(totalPos+totalNeg)
+  print "npos, nneg, cumulFraction ", np, nn, cumulFraction
   tf.Close()
   ifile+=1
 
