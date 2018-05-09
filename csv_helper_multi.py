@@ -35,9 +35,9 @@ def get_first_file(dataset_name):
         for f in d['file']:
             if not 'nevents' in f: continue
             files.append(f['name'])
-            if(len(files)>=3):
+            if(len(files)>=15):
                 break
-        if(len(files)>=3):
+        if(len(files)>=15):
             break
     return files
 
@@ -341,14 +341,14 @@ def remove_duplicates(duplicates_array,names,jsons,nevents,nfiles,datatypes,glob
       #print dupl_position
       nevents_tmp+=nevents[dupl_position]
       nfiles_tmp+=nfiles[dupl_position]
-      neg_fractions_tmp+=neg_fractions[dupl_position]
+      neg_fractions_tmp+=nevents[dupl_position]*neg_fractions[dupl_position]
       #boosted_datasets_tmp+=boosted_datasets[dupl_position]
       if(i==0):
 	names_tmp+=names[dupl_position]
       else:
 	names_tmp+=","+names[dupl_position]
     names_tmp+='"'
-    neg_fractions_tmp=neg_fractions_tmp/len(duplicate)
+    neg_fractions_tmp=neg_fractions_tmp/nevents_tmp
     try:
       weights_tmp=float(xs)*1000/(neg_fractions_tmp*nevents_tmp)
     except ZeroDivisionError:

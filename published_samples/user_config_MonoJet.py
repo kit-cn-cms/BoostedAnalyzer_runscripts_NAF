@@ -1,11 +1,11 @@
 outpath='/nfs/dust/cms/user/mwassmer/DarkMatter/ntuples/' # path of output of analyzer
 scriptpath='MonoJet_skims' # folder containing shell scripts that will have to be run on cluster
-samplelist='../main_backgrounds.csv' # samples list
+samplelist='../sm_backgrounds.csv' # samples list
 dataset_column='boosted_dataset' # run on the column with dataset or boosted_dataset?
-cmsswcfgpath='/nfs/dust/cms/user/mwassmer/DarkMatter/CMSSW_8_0_26_patch2/src/BoostedTTH/BoostedAnalyzer/test/DarkMatter_cfg_v4.py'
+cmsswcfgpath='/nfs/dust/cms/user/mwassmer/DarkMatter/CMSSW_8_0_26_patch2/src/BoostedTTH/BoostedAnalyzer/test/DarkMatter_cfg_v5.py'
 cmsswpath='/nfs/dust/cms/user/mwassmer/DarkMatter/CMSSW_8_0_26_patch2/'
 dbs="prod/phys03" # dbs instance: boosted miniaod is in prod/phys03, standard miniaod in prod/global
-min_events_per_job=50000 # min number of events per job 
+min_events_per_job=40000 # min number of events per job 
 isBoostedMiniAOD=False # do the inputs contain fat jets?
-systematicVariations='systematicVariations_none.txt'
+systematicVariations='systematicVariations_used.txt'
 nSystematicVariationsPerJob=5
