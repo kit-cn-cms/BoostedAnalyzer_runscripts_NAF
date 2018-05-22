@@ -43,9 +43,10 @@ def get_splitting_of_systematics(systematics,nvariations):
 
 
 
-files_path="/nfs/dust/cms/user/mwassmer/DarkMatter/ntuples/"
-scripts_path="/nfs/dust/cms/user/mwassmer/DarkMatter/BoostedAnalyzer_runscripts_NAF/published_samples/MonoJet/"
-nsystematicvariations=2 #specifiy how many variations one job used, needs to be the same which was used in generate scripts
+files_path="/nfs/dust/cms/user/swieland/Darkmatter/ntuples_control/"
+scripts_path="/nfs/dust/cms/user/swieland/Darkmatter/BoostedAnalyzer_runscripts_NAF/published_samples/MonoJet_skims_control/"
+# scripts_path="/nfs/dust/cms/user/swieland/Darkmatter/BoostedAnalyzer_runscripts_NAF/published_samples/MonoJet_signal/"
+nsystematicvariations=5 #specifiy how many variations one job used, needs to be the same which was used in generate scripts
 
 #use this code snippet to find the samples in the scripts path automatically
 
@@ -68,14 +69,16 @@ for i in range(len(samples)):
 #samples=["ttbar_isr_up","ttbar_isr_down","ttbar_fsr_up","ttbar_fsr_down","ttbar_ue_up","ttbar_ue_down","ttbar_hdamp_up","ttbar_hdamp_down","ttbar_color_reco"]
 #samples=["ttbar_mtop1665","ttbar_mtop1695","ttbar_mtop1715","ttbar_mtop1735","ttbar_mtop1755","ttbar_mtop1785"]
 #samples=["QCD_HT50to100","QCD_HT100to200","QCD_HT200to300","QCD_HT300to500","QCD_HT500to700","QCD_HT700to1000","QCD_HT1000to1500","QCD_HT1500to2000","QCD_HT2000toInf"]
-samples=[sample for sample in samples if sample.find("DMV_NNPDF30_Axial")!=-1]
+# samples=[sample for sample in samples if sample.find("DMV_NNPDF30_Axial")!=-1]
+samples=[sample for sample in samples if sample.find("MET")==-1]
+print samples
 
-#systematics=get_list_of_systematics("systematicVariations.txt")
-#systematics_,systematics_numbers=get_splitting_of_systematics(systematics,nsystematicvariations)	
+systematics=get_list_of_systematics("systematicVariations_used.txt")
+systematics_,systematics_numbers=get_splitting_of_systematics(systematics,nsystematicvariations)	
 
-#use in case of data since there are no systematic variations
-systematics_=[["nominal"]]
-systematics_numbers=[1]
+# use in case of data since there are no systematic variations
+# systematics_=[["nominal"]]
+# systematics_numbers=[1]
 		
 #print systematics	
 print systematics_numbers
@@ -153,4 +156,4 @@ for sample in samples:
 		print " "
 		print "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 		print "resubmitting ..."
-		os.system("python sup.py "+missing_files)
+		os.system("python submit.py "+missing_files)
