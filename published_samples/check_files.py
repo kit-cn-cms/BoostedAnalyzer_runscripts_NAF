@@ -45,6 +45,7 @@ def get_splitting_of_systematics(systematics,nvariations):
 
 files_path="/nfs/dust/cms/user/mwassmer/DarkMatter/ntuples/"
 scripts_path="/nfs/dust/cms/user/mwassmer/DarkMatter/BoostedAnalyzer_runscripts_NAF/published_samples/MonoJet_skims_alternative/"
+
 nsystematicvariations=5 #specifiy how many variations one job used, needs to be the same which was used in generate scripts
 
 #use this code snippet to find the samples in the scripts path automatically
@@ -63,9 +64,10 @@ print samples
 #systematics=get_list_of_systematics("systematicVariations_used.txt")
 #systematics_,systematics_numbers=get_splitting_of_systematics(systematics,nsystematicvariations)	
 
-#use in case of data since there are no systematic variations
-systematics_=[["nominal"]]
-systematics_numbers=[1]
+
+# use in case of data since there are no systematic variations
+# systematics_=[["nominal"]]
+# systematics_numbers=[1]
 		
 #print systematics	
 print systematics_numbers
@@ -143,4 +145,4 @@ for sample in samples:
 		print " "
 		print "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 		print "resubmitting ..."
-		os.system("python sup.py "+missing_files)
+		os.system("python submit.py "+missing_files)
