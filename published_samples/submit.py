@@ -79,7 +79,9 @@ def writeSubmitCode(script, isArray, nTasks):
     submitCode += "RequestDisk = 1000000\n"
     submitCode += "getenv = True\n"
     submitCode += "environment = X509_USER_PROXY=/nfs/dust/cms/user/mwassmer/proxy/x509up_u26621\n"
-    submitCode += "+RequestRuntime = 21600\n"
+    submitCode += "use_x509userproxy = True\n"
+    submitCode += "x509userproxy = /nfs/dust/cms/user/mwassmer/proxy/x509up_u26621\n"
+    submitCode += "+RequestRuntime = 86400\n" #24 hours
     if isArray:
         submitCode += "error = logs/" + fileName + "_$(Cluster)_$(ProcId).err\n"
         submitCode += "output = logs/" + fileName + "_$(Cluster)_$(ProcID).out\n"
