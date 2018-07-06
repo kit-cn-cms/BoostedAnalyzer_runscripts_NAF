@@ -13,10 +13,10 @@ import ssl
 import glob
 import ROOT
 ssl._create_default_https_context = ssl._create_unverified_context
-das_client=imp.load_source("das_client", "/cvmfs/cms.cern.ch/slc6_amd64_gcc530/cms/das_client/v02.17.04/bin/das_client.py")
-
-#store_prefix='file:/pnfs/desy.de/cms/tier2/'
-store_prefix="root://xrootd-cms.infn.it//"
+#das_client=imp.load_source("das_client", "/cvmfs/cms.cern.ch/slc6_amd64_gcc530/cms/das_client/v02.17.04/bin/das_client.py")
+import Utilities.General.cmssw_das_client as das_client
+store_prefix='file:/pnfs/desy.de/cms/tier2/'
+#store_prefix="root://xrootd-cms.infn.it//"
 def get_metainfo(path,nevents_in_job,jobconfig):
     meta='#meta nevents : '+str(nevents_in_job)+'\n'
     meta+='#meta cutflow : '+path+'_nominal_Cutflow.txt\n'
@@ -38,17 +38,14 @@ def get_vars(jobconfig):
     argument+=" outName="+str(jobconfig["outName"])
     argument+=" weight="+str(jobconfig["weight"])
     argument+=" isData="+str(jobconfig["isData"])
-    argument+=" isBoostedMiniAOD="+str(jobconfig["isBoostedMiniAOD"])
+    #argument+=" isBoostedMiniAOD="+str(jobconfig["isBoostedMiniAOD"])
     argument+=" inputFiles="+str(jobconfig["inputFiles"])
     argument+=" maxEvents="+str(jobconfig["maxEvents"])
     argument+=" globalTag="+str(jobconfig["globalTag"])
-    argument+=" generatorName="+str(jobconfig['generatorName'])
-    argument+=" additionalSelection="+str(jobconfig['additionalSelection'])
+    #argument+=" generatorName="+str(jobconfig['generatorName'])
+    #argument+=" additionalSelection="+str(jobconfig['additionalSelection'])
     argument+=" systematicVariations="+str(jobconfig['systematicVariations'])
     argument+=" dataEra="+str(jobconfig['dataEra'])
-    argument+=" ProduceMemNtuples="+str(jobconfig['ProduceMemNtuples'])
-    argument+=" useJson="+str(jobconfig['useJson'])
-    argument+=" calcBJetness="+str(jobconfig['calcBJetness'])
     #argument+=" dataset="+str(jobconfig['dataTrigger'])
     argument+="\n"
     return argument
@@ -139,9 +136,9 @@ def get_dataset_files(dataset):
     print 'getting files for',dataset
     datasets=[x.strip("'") for x in dataset.split(',')]
     print datasets
-    ckey=das_client.x509()
-    cert=das_client.x509()
-    das_client.check_auth(ckey)
+    #ckey=das_client.x509()
+    #cert=das_client.x509()
+    #das_client.check_auth(ckey)
     nevents=0
     size=0
     nfiles=0
@@ -149,10 +146,21 @@ def get_dataset_files(dataset):
     events_in_files=[]
     
     for dataset in datasets:
-		data=das_client.get_data("https://cmsweb.cern.ch","file dataset="+dataset+" instance="+user_config.dbs,0,0,0,300,ckey,cert)
+		data=das_client.get_data("file dataset="+dataset+" instance="+user_config.dbs)
 		for d in data['data']:
 		    for f in d['file']:
 		        if not 'nevents' in f: continue
+		        # hack to avoid problem with new_pmx samples and same child dataset name ...
+		        if "ttHTobb" in f['name'] and "180617_091548" in f['name']:
+		            print "skipping ttHTobb new pmx file"
+		            continue
+		        if "ST_t-channel" in f['name'] and "180618_081310" in f['name']:
+		            print "skipping single top new_pmx file"
+		            continue
+		        if "SingleMuon" in f['name'] and "Run2017C" in f['name'] and "180617_220957" in f['name']:
+		            print "skiping single muon files from job which was killed"
+		            continue
+		        ###
 		        files.append(store_prefix+f['name'])
 		        events_in_files.append(f['nevents'])
 		        nevents+=f['nevents']
@@ -265,23 +273,21 @@ for row in reader:
     if 'isData' in reader.fieldnames:
         if 'true' in row['isData'].lower():
             jobconfig['isData']=True
-    if 'generator' in reader.fieldnames:
-        if row['generator'] != '':
-            jobconfig['generatorName']=row['generator']
-    if 'additionalSelection' in reader.fieldnames:
-        if row['additionalSelection'] != '':
-            jobconfig['additionalSelection']=row['additionalSelection']
+    #if 'generator' in reader.fieldnames:
+        #if row['generator'] != '':
+            #jobconfig['generatorName']=row['generator']
+    #if 'additionalSelection' in reader.fieldnames:
+        #if row['additionalSelection'] != '':
+            #jobconfig['additionalSelection']=row['additionalSelection']
     jobconfig['globalTag']=row['globalTag']
-    jobconfig['isBoostedMiniAOD']=user_config.isBoostedMiniAOD
+    #jobconfig['isBoostedMiniAOD']=user_config.isBoostedMiniAOD
     jobconfig['maxEvents']=999999999
     jobconfig['systematicVariations']=get_list_of_systematics(user_config.systematicVariations)
     jobconfig['nSystematicVariationsPerJob']=user_config.nSystematicVariationsPerJob
     jobconfig['dataEra']=row['run']
-    jobconfig['ProduceMemNtuples']=user_config.ProduceMemNtuples
-    jobconfig['useJson']=user_config.useJson
-    jobconfig['calcBJetness']=user_config.calcBJetness
     #jobconfig['dataTrigger']=row['dataTrigger']
-    
+    if dataset=="''":
+        continue
     create_jobs(name,dataset,jobconfig)
 
 f_list.close()

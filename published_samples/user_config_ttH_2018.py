@@ -1,0 +1,11 @@
+outpath='/nfs/dust/cms/user/mwassmer/ttH_2018/ntuples/' # path of output of analyzer
+scriptpath='ttH_2018' # folder containing shell scripts that will have to be run on cluster
+samplelist='../samplelist_ttH_2018_final.csv' # samples list
+dataset_column='boosted_dataset' # run on the column with dataset or boosted_dataset?
+cmsswcfgpath='/nfs/dust/cms/user/mwassmer/ttH_2018/dev/CMSSW_9_4_6/src/BoostedTTH/BoostedAnalyzer/test/boostedAnalysis_ntuples-ICHEP18_cg.py'
+cmsswpath='/nfs/dust/cms/user/mwassmer/ttH_2018/dev/CMSSW_9_4_6/'
+dbs="prod/phys03" # dbs instance: boosted miniaod is in prod/phys03, standard miniaod in prod/global
+min_events_per_job=50000 # min number of events per job 
+isBoostedMiniAOD=False # do the inputs contain fat jets?
+systematicVariations='systematicVariations_no_sources.txt'
+nSystematicVariationsPerJob=4
