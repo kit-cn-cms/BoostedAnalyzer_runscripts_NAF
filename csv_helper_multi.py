@@ -13,7 +13,7 @@ def get_data_(dataset):
     #print 'getting files for',dataset
     data=None
     if "*" in dataset:
-        data=das_client.get_data("dataset dataset="+dataset+" instance=prod/global status=*")
+        data=das_client.get_data("dataset dataset="+dataset+" instance=prod/global status=VALID")
     else:
         data=das_client.get_data("dataset dataset="+dataset+" instance=prod/global")
     return data
@@ -35,9 +35,9 @@ def get_first_file(dataset_name):
         for f in d['file']:
             if not 'nevents' in f: continue
             files.append(f['name'])
-            if(len(files)>=3):
+            if(len(files)>=15):
                 break
-        if(len(files)>=3):
+        if(len(files)>=15):
             break
     return files
 
@@ -187,25 +187,28 @@ def get_generators(name_array):
     return generator_array
 
 def get_x(name):
-    if(name[0].lower().find("amc")!=-1 or name[0].lower().find("powheg")!=-1):
+    #print "blablablablablablablablaaaaaaaaaaaaaa",name[0]
+    if (name[0].find("Run2017")==-1):
         x=0.
-        while True:
+        n_tried=0
+        while True and n_tried<5:
             try:
                 x=gts.GetTotalSampleNumbers(name)
             except ReferenceError:
                 x=0.
             if x!=0.:
                 break
+            n_tried+=1
     else:
         x=1.
     return x
 
 def get_xs(name_array):
-    #pool=Pool(processes=len(name_array))
-    #xs=pool.map(get_x,name_array)
-    xs=[]
-    for name in name_array:
-        xs.append(get_x(name))
+    pool=Pool(processes=len(name_array))
+    xs=pool.map(get_x,name_array)
+    #xs=[]
+    #for name in name_array:
+        #xs.append(get_x(name))
     return xs
 
 def get_weights(nevents_array,neg_fractions_array,xs):
@@ -238,7 +241,7 @@ def get_children_array(parent_dataset):
 	except TypeError:
             continue
 	#print "teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeest",child_candidate
-	if(child_candidate.find("mwassmer")!=-1):
+	if(child_candidate.find("KIT_tthbb_sl_skims_MC")!=-1 or child_candidate.find("KIT_tthbb_sl_skims_DATA")!=-1):
 	    name_array.append(child_candidate)
         #print "#children ",len(name_array)
     return name_array
@@ -341,14 +344,14 @@ def remove_duplicates(duplicates_array,names,jsons,nevents,nfiles,datatypes,glob
       #print dupl_position
       nevents_tmp+=nevents[dupl_position]
       nfiles_tmp+=nfiles[dupl_position]
-      neg_fractions_tmp+=neg_fractions[dupl_position]
+      neg_fractions_tmp+=nevents[dupl_position]*neg_fractions[dupl_position]
       #boosted_datasets_tmp+=boosted_datasets[dupl_position]
       if(i==0):
 	names_tmp+=names[dupl_position]
       else:
 	names_tmp+=","+names[dupl_position]
     names_tmp+='"'
-    neg_fractions_tmp=neg_fractions_tmp/len(duplicate)
+    neg_fractions_tmp=neg_fractions_tmp/nevents_tmp
     try:
       weights_tmp=float(xs)*1000/(neg_fractions_tmp*nevents_tmp)
     except ZeroDivisionError:
