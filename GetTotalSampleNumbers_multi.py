@@ -8,12 +8,10 @@ def GetTotalSampleNumbers(name):
     files=[]
     for file in name:
         files.append(file)
-    #files.append(name)
     usexroot=True
     totalNumber=0
-    totalPos=0
-    totalNeg=0
-    #hnE=ROOT.TH1F("hnE","hnE",100,-10,10)
+    totweights = 0
+    totevents = 0
     FileList=[]
     print files
     if usexroot:
@@ -32,7 +30,7 @@ def GetTotalSampleNumbers(name):
     ifile=0
     ##now count the events
     if(nfiles>0):
-	for f in FileList[0:10]:
+	for f in FileList:
 	    print f
 	    if usexroot:
 	      tf=ROOT.TFile.Open(str(f))
@@ -41,28 +39,21 @@ def GetTotalSampleNumbers(name):
 	    tree=tf.Get("Events")
 	    if tree==None:
 	      continue
-	    hpE=ROOT.TH1D("hpE","hpE",100,-10,10)
-	    hnE=ROOT.TH1D("hnE","hnE",100,-10,10)
-	    tree.Project("hpE","GenEventInfoProduct_generator__SIM.obj.weights_","GenEventInfoProduct_generator__SIM.obj.weights_>0")
-	    tree.Project("hnE","GenEventInfoProduct_generator__SIM.obj.weights_","GenEventInfoProduct_generator__SIM.obj.weights_<0")
-	    np=hpE.GetEntries()
-	    nn=hnE.GetEntries()
+	    tree.Draw("1.>>totweights(1,0,2)","GenEventInfoProduct_generator__SIM.obj.weights_","goff")
+	    weights = ROOT.gDirectory.Get("totweights")
+	    totweights += weights.Integral()
+	    totevents += weights.GetEntries()
 	    print "done with File ", ifile, "/", nfiles, f
-	    totalPos+=np
-	    totalNeg+=nn
-	    cumulFraction=(totalPos-totalNeg)/(totalPos+totalNeg)
-	    print "npos, nneg, cumulFraction ", np, nn, cumulFraction
+	    cumulFraction=totweights/totevents
+	    print "sum of entries, sum of gen weights, cumulFraction(sow/soe) ",totevents,totweights, cumulFraction
 	    tf.Close()
 	    ifile+=1
-	totalNumber=totalPos-totalNeg   
     else:
-	totalPos=0
-	totalNeg=0
-	cumulFraction=0
+	cumulFraction=0.
 
     
-    print "total number of positive events: "+str(int(totalPos))
-    print "total number of negative events: "+str(int(totalNeg))
-    print "total number of events: "+str(int(totalNumber))
-
+    #print "total number of positive events: "+str(int(totalPos))
+    #print "total number of negative events: "+str(int(totalNeg))
+    #print "total number of events: "+str(int(totalNumber))
+    print "returning fraction: "+str(cumulFraction)
     return cumulFraction
