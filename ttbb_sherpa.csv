@@ -1,3 +1,0 @@
-name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,IsData,generator,additionalSelection,run
-,,,,,,,,,,
-ttbb_0,/ttbb_4FS_OpenLoops_13TeV-sherpa/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM,19660298,1,1.0,5.08639289191e-05,/ttbb_4FS_OpenLoops_13TeV-sherpa/mwassmer-Skim-V1_3j20_1l20-a9e761f18a2602500895f5e48b093b84/USER,80X_mcRun2_asymptotic_2016_TrancheIV_v8,FALSE,notSpecified,NONE,
