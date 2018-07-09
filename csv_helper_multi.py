@@ -189,13 +189,15 @@ def get_generators(name_array):
 def get_x(name):
     if(name[0].lower().find("amc")!=-1 or name[0].lower().find("powheg")!=-1):
         x=0.
-        while True:
+        n_tried=0
+        while True and n_tried<5:
             try:
                 x=gts.GetTotalSampleNumbers(name)
             except ReferenceError:
                 x=0.
             if x!=0.:
                 break
+            n_tried+=1
     else:
         x=1.
     return x

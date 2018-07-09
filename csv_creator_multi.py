@@ -15,17 +15,24 @@ fobj.close()
 
 
 fobj_out=open("auto_samples.csv","w")
+
+# header for the csv file
 fobj_out.write('name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,isData,generator,additionalSelection,run'+'\n')
 
 for row in csv_array:
+    # search for datasets in DAS with the given DAS dataset containing wildcards (*) in general
     print "getting names for ...",row[1]
     names=chm.get_names(row[1])
+    
+    # search for duplicates in the found dataset names (fail-safe)
     name_duplicates=chm.list_duplicates(names)
     if len(names)==0 or next(name_duplicates,0)!=0:
         print "no datasets have been found for this query or there are duplicate datasets in the response" 
         continue
+    
     print "############################ dataset names ################################"
     print names
+    
     jsons=[]
     nevents=[]
     n_tried=0
@@ -33,12 +40,18 @@ for row in csv_array:
         if n_tried>5:
             break
         print "getting jsons for corresponding datasets ..."
-        jsons=chm.get_jsons(names)
+        # if there are too many datasets there are some problems retriving information about all of them -> make bunches of datasets and treat each bunch separately
+        if len(names)<10:
+            jsons=chm.get_jsons(names)
+        else:
+            for i in range(len(names)//10):
+                jsons+=chm.get_jsons(names[i*10:(i+1)*10])
         #print "############################ jsons ################################"
         #print jsons
         print "getting event numbers ..."
         nevents=chm.get_nevents(jsons)
         print nevents
+        # check if all datasets have a number of events differently from zero
         if not 0 in nevents:
             break
         n_tried+=1
@@ -117,7 +130,7 @@ for row in csv_array:
         #print globaltags[i]
         #print datatypes[i]
         #print generators[i]
-        #print "test"
         fobj_out.write(name+','+str(names[i])+','+str(nevents[i])+','+str(neg_fractions[i])+','+str(xs)+','+str(weights[i])+','+boosted_datasets_string+','+str(globaltags[i])+','+str(datatypes[i])+','+str(generators[i])+','+'NONE'+','+str(runs[i])+'\n')
+        fobj_out.flush()
 
 fobj_out.close
