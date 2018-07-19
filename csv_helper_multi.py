@@ -187,7 +187,7 @@ def get_generators(name_array):
     return generator_array
 
 def get_x(name):
-    if(name[0].lower().find("amc")!=-1 or name[0].lower().find("powheg")!=-1):
+    if(name[0].lower().find("amc")!=-1 or name[0].lower().find("powheg")!=-1 or name[0].lower().find("madgraph")!=-1):
         x=0.
         n_tried=0
         while True and n_tried<5:

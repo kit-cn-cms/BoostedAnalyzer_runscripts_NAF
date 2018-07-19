@@ -32,7 +32,7 @@ for row in csv_array:
     
     print "############################ dataset names ################################"
     print names
-    
+    print "# names: ",len(names)    
     jsons=[]
     nevents=[]
     n_tried=0
@@ -44,13 +44,16 @@ for row in csv_array:
         if len(names)<10:
             jsons=chm.get_jsons(names)
         else:
-            for i in range(len(names)//10):
+            for i in range((len(names)//10)+1):
+                #print i
                 jsons+=chm.get_jsons(names[i*10:(i+1)*10])
         #print "############################ jsons ################################"
         #print jsons
+        #print len(jsons)
         print "getting event numbers ..."
         nevents=chm.get_nevents(jsons)
         print nevents
+        print "# nevents: ",len(nevents)
         # check if all datasets have a number of events differently from zero
         if not 0 in nevents:
             break
