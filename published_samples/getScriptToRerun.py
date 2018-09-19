@@ -59,20 +59,25 @@ for iarg,arg in enumerate(arguments):
   if "-v"==arg:
     vetolist=arguments[iarg+1].split(",")
 
-infiles=glob.glob(indir+"/*.o*")
+infiles=[]
+if not ".out" in indir:
+  infiles=glob.glob(indir+"/*.out")
+else:
+  infiles=glob.glob(indir)
+
 undoneList=[]
 doneList=[]
 qstatjobslist=[]
 ListOfAllEmptyTrees=[]
-tempfile=open("tempqstatfile.txt","w")
-cmd="qstat -xml"
-subprocess.call([cmd],shell=True,stdout=tempfile)
-tempfile.close()
-tree=ET.parse("tempqstatfile.txt")
-root=tree.getroot()
-for j in root[0]:
-  #print j[0].text
-  qstatjobslist.append(j[2].text)
+#tempfile=open("tempqstatfile.txt","w")
+#cmd="qstat -xml"
+#subprocess.call([cmd],shell=True,stdout=tempfile)
+#tempfile.close()
+#tree=ET.parse("tempqstatfile.txt")
+#root=tree.getroot()
+#for j in root[0]:
+#  #print j[0].text
+#  qstatjobslist.append(j[2].text)
 #print qstatjobslist
 #exit(0)
 ntuplesToDelete=[]
@@ -86,9 +91,9 @@ for fi in infiles:
     print "ignoring (perhaps still running): ", fi
     continue
   propername=fi.replace(indir+"/","").split(".o")[0]
-  if propername in qstatjobslist and ignoreQstat==False:
-    print "job ist still running ", propername
-    continue
+#  if propername in qstatjobslist and ignoreQstat==False:
+#    print "job ist still running ", propername
+#    continue
   
   # If the jobs are not still running we check the log files for several things
   # check stdout file 
@@ -98,16 +103,19 @@ for fi in infiles:
   treeWasWritten=False
   diskQuotaProblem=False
   segmentationViolation=False
+  shellscriptPath=""
   for l in reversed(ifl): 
     if "Tree Written" in l:
       treeWasWritten=True
       #break
     if "creating tree writer" in l:
       ntupleNames.append(l.rsplit(" ")[-1].replace("\n","")+"_Tree.root")
+    if l.startswith("./"):
+      shellscriptPath=l.replace("./","").replace("\n","")
   propername=fi.replace(indir+"/","").split(".o")[0]
   ifi.close()
   # now check the corresponding error file
-  errorfilename=fi.replace(".o",".e")
+  errorfilename=fi.replace(".out",".err")
   efi=open(errorfilename,"r")
   efl=list(efi)
   for l in reversed(efl):
@@ -118,9 +126,22 @@ for fi in infiles:
   efi.close()
   anyProblem = diskQuotaProblem or segmentationViolation
   if treeWasWritten==False or anyProblem==True:
-    undoneList.append(propername)
+    if shellscriptPath!="":
+      undoneList.append(shellscriptPath)
+    else:
+      undoneList.append(propername)
     ntuplesToDelete+=ntupleNames
-    print "PROBLEM WITH JOB ", propername
+    errorcodes=[]
+    if segmentationViolation:
+      errorcodes.append("segmentationViolation")
+    if diskQuotaProblem:
+      errorcodes.append("diskQuotaProblem")
+    if treeWasWritten==False:
+      errorcodes.append("TreeWriterNotProperlyEnded")
+    if errorcodes!=[]:
+      print "PROBLEM WITH JOB ", propername, shellscriptPath, errorcodes
+    else:
+      print "PROBLEM WITH JOB ", propername, shellscriptPath
   
   # now we check whether there are problems with the root files themselves
   allNTuplesAreGood=True
@@ -130,6 +151,7 @@ for fi in infiles:
   #print ntupleNames
   if treeWasWritten==True and anyProblem==False:
     for ntf in ntupleNames:
+#      print ntf
       if checkROOTFiles(ntf)==False:
 	allNTuplesAreGood=False
         problematicTrees+=ntupleNames
