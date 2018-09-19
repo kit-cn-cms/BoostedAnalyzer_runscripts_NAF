@@ -5,10 +5,11 @@ import ROOT
 import subprocess
 import xml.etree.ElementTree as ET
 
-removeRecovered=False
+checkIfRecovered=False
 deleteTheNTuples=False
 deleteTheEMPTYNTuples=False
 ignoreQstat=True
+noCheckROOTFiles=False
 
 def checkROOTFiles(path=""):
   isGOOD=True
@@ -16,7 +17,7 @@ def checkROOTFiles(path=""):
   if rf==None or len(rf.GetListOfKeys())==0 or rf.TestBit(ROOT.TFile.kZombie):
     isGOOD=False
     print "BROKEN    ", path
-  elif removeRecovered and rf.TestBit(ROOT.TFile.kRecovered):
+  elif checkIfRecovered and rf.TestBit(ROOT.TFile.kRecovered):
     isGOOD=False
     print "BROKEN    ", path
   else:
@@ -39,17 +40,18 @@ def checkROOTFiles(path=""):
 arguments=sys.argv[1:]
 if len(arguments)==0 or "-h" in arguments or not "-d" in arguments:
   print "usage"
-  print "python getScriptToRerun.py [--removeRecovered] [--delete] -d LOGPATH [-v VETOLIST]"
-  print "--removeRecovered: Also flag those jobs as problematic of the keys of the root files could be recovered"
+  print "python getScriptToRerun.py [--checkIfRecovered] [--delete] -d LOGPATH [-v VETOLIST]"
+  print "--checkIfRecovered: Also flag those jobs as problematic of the keys of the root files could be recovered"
   print "--delete: Actually delete the root files that belong to the problematic jobs"
-  print "-d LOGPATH: Path to log files to be analyzed"
+  print "-d LOGPATH: Path to directory with log files to be analyzed OR string with wildcard expression of the files"
   print "-v VETOLIST: these log files are ignored. Use a space separated list here. e.g. -v file1,file2,file3"
+  print "--noCheckROOTFiles: Skip checking root files for problems. Faster but less thorough."
 
 indir=""
 vetolist=[]
 for iarg,arg in enumerate(arguments):
-  if "--removeRecovered"==arg:
-    removeRecovered=True
+  if "--checkIfRecovered"==arg:
+    checkIfRecovered=True
   if "--removeEmpty"==arg:
     deleteTheEMPTYNTuples=True
   if "--delete"==arg:
@@ -58,6 +60,9 @@ for iarg,arg in enumerate(arguments):
     indir=arguments[iarg+1]
   if "-v"==arg:
     vetolist=arguments[iarg+1].split(",")
+  if "--noCheckROOTFiles"==arg:
+    noCheckROOTFiles=True
+
 
 infiles=[]
 if not ".out" in indir:
@@ -142,7 +147,9 @@ for fi in infiles:
       print "PROBLEM WITH JOB ", propername, shellscriptPath, errorcodes
     else:
       print "PROBLEM WITH JOB ", propername, shellscriptPath
-  
+
+  if noCheckROOTFiles:
+    continue  
   # now we check whether there are problems with the root files themselves
   allNTuplesAreGood=True
   allNTuplesAreEmpty=False
