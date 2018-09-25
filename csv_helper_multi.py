@@ -204,11 +204,11 @@ def get_x(name):
     return x
 
 def get_xs(name_array):
-    pool=Pool(processes=len(name_array))
-    xs=pool.map(get_x,name_array)
-    #xs=[]
-    #for name in name_array:
-        #xs.append(get_x(name))
+    #pool=Pool(processes=len(name_array))
+    #xs=pool.map(get_x,name_array)
+    xs=[]
+    for name in name_array:
+        xs.append(get_x(name))
     return xs
 
 def get_weights(nevents_array,neg_fractions_array,xs):
