@@ -44,7 +44,7 @@ for row in csv_array:
         if len(names)<10:
             jsons=chm.get_jsons(names)
         else:
-            for i in range(len(names)//10):
+            for i in range((len(names)//10)+1):
                 jsons+=chm.get_jsons(names[i*10:(i+1)*10])
         #print "############################ jsons ################################"
         #print jsons
