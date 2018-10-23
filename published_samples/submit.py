@@ -25,7 +25,7 @@ if "--help" in sys.argv or "-h" in sys.argv:
     print("\tpython submit.py -f path/to/folder 'pattern'\n")
     print("submit all jobs together as an array (only for non-array jobs, i.e. no inception!):")
     print("\tpython submit.py -a desired/array/name.sh file1.sh file2.sh")
-    print("\tpython submit-py -a desired/array/name.sh -f path/to/folder 'pattern'")
+    print("\tpython submit.py -a desired/array/name.sh -f path/to/folder 'pattern'")
     sys.exit()
 
 if "-a" in sys.argv:
