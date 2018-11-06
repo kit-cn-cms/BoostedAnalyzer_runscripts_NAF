@@ -9,3 +9,4 @@ min_events_per_job=100000 # min number of events per job
 isBoostedMiniAOD=False # do the inputs contain fat jets?
 systematicVariations='systematicVariations_no_sources.txt'
 nSystematicVariationsPerJob=4
+ProduceMemNtuples=False

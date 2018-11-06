@@ -45,6 +45,7 @@ def get_vars(jobconfig):
     #argument+=" generatorName="+str(jobconfig['generatorName'])
     #argument+=" additionalSelection="+str(jobconfig['additionalSelection'])
     argument+=" systematicVariations="+str(jobconfig['systematicVariations'])
+    argument+=" ProduceMemNtuples="+str(jobconfig['ProduceMemNtuples'])
     argument+=" dataEra="+str(jobconfig['dataEra'])
     #argument+=" dataset="+str(jobconfig['dataTrigger'])
     argument+="\n"
@@ -285,6 +286,7 @@ for row in reader:
     jobconfig['systematicVariations']=get_list_of_systematics(user_config.systematicVariations)
     jobconfig['nSystematicVariationsPerJob']=user_config.nSystematicVariationsPerJob
     jobconfig['dataEra']=row['run']
+    jobconfig['ProduceMemNtuples']=user_config.ProduceMemNtuples
     #jobconfig['dataTrigger']=row['dataTrigger']
     if dataset=="''":
         continue
