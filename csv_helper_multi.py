@@ -29,15 +29,15 @@ def get_children(dataset):
     return data
 
 def get_first_file(dataset_name):
-    data=das_client.get_data("file dataset="+dataset_name)
+    data=das_client.get_data("file dataset="+dataset_name+" instance=prod/global")
     files=[]
     for d in data['data']:
         for f in d['file']:
             if not 'nevents' in f: continue
             files.append(f['name'])
-            if(len(files)>=15):
+            if(len(files)>=5):
                 break
-        if(len(files)>=15):
+        if(len(files)>=5):
             break
     return files
 
@@ -163,9 +163,9 @@ def get_globaltags(datatype_array):
     globaltag_array=[]
     for i in range(nresults):
         if datatype_array[i]=="TRUE":
-            globaltag_array.append("94X_dataRun2_ReReco_EOY17_v6")
+            globaltag_array.append("94X_dataRun2_v6")
         elif datatype_array[i]=="FALSE":
-            globaltag_array.append("94X_mc2017_realistic_v13")
+            globaltag_array.append("94X_mc2017_realistic_v14")
         else:
             globaltag_array.append("look at me again")
     return globaltag_array
@@ -187,11 +187,12 @@ def get_generators(name_array):
     return generator_array
 
 def get_x(name):
+    #print name
     #print "blablablablablablablablaaaaaaaaaaaaaa",name[0]
     if (name[0].find("Run2017")==-1):
         x=0.
         n_tried=0
-        while True and n_tried<5:
+        while True and n_tried<3:
             try:
                 x=gts.GetTotalSampleNumbers(name)
             except ReferenceError:
@@ -282,14 +283,15 @@ def merge_ext(name_array):
       if(name_array[i].find("_ext")!=-1):
 	        pos=name_array[i].find("_ext")
 	        #ext.append(i)
-	        ext_str=name_array[i][pos:pos+8]
+	        ext_str=name_array[i][pos:pos+5]
 	        ext_name.append(name_array[i].replace(ext_str,""))
 	        n_exts+=1
       else:
 	        #ext.append(0)
-	        pos=name_array[i].find("/MINIAODSIM")
-	        ext_str=name_array[i][pos-3:pos]
-	        ext_name.append(name_array[i].replace(ext_str,""))
+	        #pos=name_array[i].find("/MINIAODSIM")
+	        #ext_str=name_array[i][pos-3:pos]
+	        #ext_name.append(name_array[i].replace(ext_str,""))
+	        ext_name.append(name_array[i])
     if n_exts==0:
         return []
     else:
