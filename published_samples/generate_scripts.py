@@ -145,42 +145,50 @@ def get_dataset_files(dataset):
     nfiles=0
     files=[]
     events_in_files=[]
-    
+    is_dataset_string = True
     for dataset in datasets:
-		data=das_client.get_data("file dataset="+dataset+" instance="+user_config.dbs)
-		for d in data['data']:
-		    for f in d['file']:
-		        if not 'nevents' in f: continue
-		        # hack to avoid problem with new_pmx samples and same child dataset name ...
-		        if "ttHTobb" in f['name'] and "180617_091548" in f['name']:
-		            print "skipping ttHTobb new pmx file"
-		            continue
-		        if "ST_t-channel" in f['name'] and "180618_081310" in f['name']:
-		            print "skipping single top new_pmx file"
-		            continue
-		        if "SingleMuon" in f['name'] and "Run2017C" in f['name'] and "180617_220957" in f['name']:
-		            print "skiping single muon files from job which was killed"
-		            continue
-		        ###
-		        files.append(store_prefix+f['name'])
-		        events_in_files.append(f['nevents'])
-		        nevents+=f['nevents']
-		        size+=f['size']
-		        nfiles+=1
+        if "pnfs" in dataset:
+            is_dataset_string = False
+            break
     
+    if is_dataset_string:
+        for dataset in datasets:
+                    data=das_client.get_data("file dataset="+dataset+" instance="+user_config.dbs)
+                    for d in data['data']:
+                        for f in d['file']:
+                            if not 'nevents' in f: continue
+                            # hack to avoid problem with new_pmx samples and same child dataset name ...
+                            if "ttHTobb" in f['name'] and "180617_091548" in f['name']:
+                                print "skipping ttHTobb new pmx file"
+                                continue
+                            if "ST_t-channel" in f['name'] and "180618_081310" in f['name']:
+                                print "skipping single top new_pmx file"
+                                continue
+                            if "SingleMuon" in f['name'] and "Run2017C" in f['name'] and "180617_220957" in f['name']:
+                                print "skiping single muon files from job which was killed"
+                                continue
+                            ###
+                            files.append(store_prefix+f['name'])
+                            events_in_files.append(f['nevents'])
+                            nevents+=f['nevents']
+                            size+=f['size']
+                            nfiles+=1
+    else:
+        for dataset in datasets:
+            directory = dataset
+            print directory+"/Skim_*.root"
+            files+=glob.glob(directory+"/Skim_*.root")
+        
+        nfiles=len(files)
+        chain=ROOT.TChain("Events","Events")
+        nevents_tmp=0
+        for f in files:
+            print f
+            chain.Add(f)
+            events_in_files.append(chain.GetEntries()-nevents_tmp)
+            nevents_tmp=chain.GetEntries()
+        nevents=chain.GetEntries()
     
-    #if nfiles==0:
-    #print "give directory where the files are located"
-    #directory = str(raw_input("directory? "))
-    #files=glob.glob(directory+"/*")
-    #nfiles=len(files)
-    #chain=ROOT.TChain("Events","Events")
-    #nevents_tmp=0
-    #for f in files:
-    #    chain.Add(f)
-    #    events_in_files.append(chain.GetEntries()-nevents_tmp)
-    #    nevents_tmp=chain.GetEntries()
-    #nevents=chain.GetEntries()
     print nfiles,'files with total size',size/(1024*1024),'MB containing',nevents,'events'
     return files,events_in_files
 
