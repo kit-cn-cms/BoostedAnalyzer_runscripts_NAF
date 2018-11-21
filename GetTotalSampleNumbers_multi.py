@@ -39,7 +39,7 @@ def GetTotalSampleNumbers(name):
 	    tree=tf.Get("Events")
 	    if tree==None:
 	      continue
-	    tree.Draw("1.>>totweights(1,0,2)","GenEventInfoProduct_generator__SIM.obj.weights_[0]*1.0","goff")
+	    tree.Draw("1.>>totweights(1,0,2)","GenEventInfoProduct_generator__SIM.obj.weight()*1.0","goff")
 	    weights = ROOT.gDirectory.Get("totweights")
 	    totweights += weights.Integral()
 	    totevents += weights.GetEntries()
