@@ -1,0 +1,3 @@
+name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,isData,generator,additionalSelection,run
+,,,,,,,,,,
+TTbb_Powheg_Openloops,/TTbb_Powheg_Openloops/asaibel-RunIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v1-18783c0a07109245951450a1a4f55409/USER,4216500,11.7159234722,1.0,2.02428365815e-05,,94X_mc2017_realistic_v14,FALSE,notSpecified,NONE,
