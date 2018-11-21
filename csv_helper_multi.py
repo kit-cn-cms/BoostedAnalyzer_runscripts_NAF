@@ -350,7 +350,7 @@ def remove_duplicates(duplicates_array,names,jsons,nevents,nfiles,datatypes,glob
       else:
 	names_tmp+=","+names[dupl_position]
     names_tmp+='"'
-    neg_fractions_tmp=neg_fractions_tmp/nevents_tmp
+    neg_fractions_tmp=neg_fractions_tmp*1.0/nevents_tmp
     try:
       weights_tmp=float(xs)*1000/(neg_fractions_tmp*nevents_tmp)
     except ZeroDivisionError:
