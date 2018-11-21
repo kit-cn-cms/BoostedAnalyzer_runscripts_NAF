@@ -47,6 +47,7 @@ def get_vars(jobconfig):
     argument+=" systematicVariations="+str(jobconfig['systematicVariations'])
     argument+=" dataEra="+str(jobconfig['dataEra'])
     #argument+=" dataset="+str(jobconfig['dataTrigger'])
+    argument+=" neventsToProcess="+str(jobconfig['neventsToProcess'])
     argument+="\n"
     return argument
 
@@ -107,6 +108,7 @@ def create_script(name,ijob,isyst,files_in_job,nevents_in_job,eventsinsample,job
     outfilename=user_config.outpath+'/'+name+'/'+name+'_'+str(ijob)
     jobconfig['inputFiles']=','.join(files_in_job)
     jobconfig['outName']=outfilename
+    jobconfig['neventsToProcess']=nevents_in_job
 
     script='#!/bin/bash\n'
     script+='export VO_CMS_SW_DIR=/cvmfs/cms.cern.ch\n'
