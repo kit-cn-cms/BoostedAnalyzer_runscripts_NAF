@@ -190,7 +190,7 @@ def get_dataset_files(dataset):
             events_in_files.append(chain.GetEntries()-nevents_tmp)
             nevents_tmp=chain.GetEntries()
         nevents=chain.GetEntries()
-        # at this point the files from the filesystem do not have the store prefix
+
         #adding missing store_prefix
         files_without_prefix=files
         files=[]
