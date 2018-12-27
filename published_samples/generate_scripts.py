@@ -15,9 +15,9 @@ import ROOT
 ssl._create_default_https_context = ssl._create_unverified_context
 #das_client=imp.load_source("das_client", "/cvmfs/cms.cern.ch/slc6_amd64_gcc530/cms/das_client/v02.17.04/bin/das_client.py")
 import Utilities.General.cmssw_das_client as das_client
-#store_prefix='file:/pnfs/desy.de/cms/tier2/'
+store_prefix='file:/pnfs/desy.de/cms/tier2/'
 #store_prefix="root://xrootd-cms.infn.it//"
-store_prefix='file:'
+#store_prefix='file:'
 
 def get_metainfo(path,nevents_in_job,jobconfig):
     meta='#meta nevents : '+str(nevents_in_job)+'\n'
@@ -190,12 +190,13 @@ def get_dataset_files(dataset):
             events_in_files.append(chain.GetEntries()-nevents_tmp)
             nevents_tmp=chain.GetEntries()
         nevents=chain.GetEntries()
-    
-    #adding missing store_prefix
-    files_without_prefix=files
-    files=[]
-    for f in files_without_prefix:
-        files.append(store_prefix+f)
+        # at this point the files from the filesystem do not have the store prefix
+        #adding missing store_prefix
+        files_without_prefix=files
+        files=[]
+        for f in files_without_prefix:
+            files.append('file:'+f)
+            
     print nfiles,'files with total size',size/(1024*1024),'MB containing',nevents,'events'
     return files,events_in_files
 
