@@ -15,8 +15,8 @@ import ROOT
 ssl._create_default_https_context = ssl._create_unverified_context
 #das_client=imp.load_source("das_client", "/cvmfs/cms.cern.ch/slc6_amd64_gcc530/cms/das_client/v02.17.04/bin/das_client.py")
 import Utilities.General.cmssw_das_client as das_client
-store_prefix='file:/pnfs/desy.de/cms/tier2/'
-#store_prefix="root://xrootd-cms.infn.it//"
+#store_prefix='file:/pnfs/desy.de/cms/tier2/'
+store_prefix="root://xrootd-cms.infn.it//"
 def get_metainfo(path,nevents_in_job,jobconfig):
     meta='#meta nevents : '+str(nevents_in_job)+'\n'
     meta+='#meta cutflow : '+path+'_nominal_Cutflow.txt\n'
@@ -112,7 +112,7 @@ def create_script(name,ijob,isyst,files_in_job,nevents_in_job,eventsinsample,job
     script='#!/bin/bash\n'
     script+='export VO_CMS_SW_DIR=/cvmfs/cms.cern.ch\n'
     script+='source $VO_CMS_SW_DIR/cmsset_default.sh\n'
-    #script+='export X509_USER_PROXY=/nfs/dust/cms/user/mwassmer/proxy/x509up_u26621\n'
+    script+='export X509_USER_PROXY=/nfs/dust/cms/user/vdlinden/VOMSPROXY/vomsproxy\n'
     script+='cd '+user_config.cmsswpath+'/src\neval `scram runtime -sh`\n'
     script+='cmsRun '+user_config.cmsswcfgpath+get_vars(jobconfig)
     script+=get_metainfo(outfilename,nevents_in_job,jobconfig)

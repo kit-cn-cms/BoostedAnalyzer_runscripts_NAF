@@ -78,9 +78,9 @@ def writeSubmitCode(script, isArray, nTasks):
     submitCode += "RequestMemory = 2000\n"
     submitCode += "RequestDisk = 2000000\n"
     submitCode += "getenv = True\n"
-    submitCode += "environment = X509_USER_PROXY=/afs/desy.de/user/k/kelmorab/proxy/proxy\n"
+    submitCode += "environment = X509_USER_PROXY=/nfs/dust/cms/user/vdlinden/VOMSPROXY/vomsproxy\n"
     submitCode += "use_x509userproxy = True\n"
-    submitCode += "x509userproxy = /afs/desy.de/user/k/kelmorab/proxy/proxy\n"
+    submitCode += "x509userproxy = /nfs/dust/cms/user/vdlinden/VOMSPROXY/vomsproxy\n"
     submitCode += "+RequestRuntime = 86400\n" #24 hours
 #    submitCode += "max_retries = 3\n"
 #    submitCode += "retry_until = ExitCode == 0\n"
