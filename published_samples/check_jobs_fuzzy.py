@@ -42,7 +42,10 @@ def check_job(j):
     if not files_ok and nevents!=nevents2 and nevents>0 and nevents2>0:
         return j+": files missing and wrong number of events, missing files: "+(",".join(missing_files))+", nevents == "+str(nevents)+"!="+str(nevents2)+" == nevents in cutflow"
     if files_ok and nevents!=nevents2:
-        return j+": wrong number of events, nevents == "+str(nevents)+"!="+str(nevents2)+" == nevents in cutflow"
+        if float(nevents) == 0 or float(nevents2) == 0:
+            return j+": wrong number of events, nevents == "+str(nevents)+"!="+str(nevents2)+" == nevents in cutflow"
+	if abs(1 - (float(nevents) / float(nevents2))) >= 0.01:
+	    return j+": wrong number of events, nevents == "+str(nevents)+"!="+str(nevents2)+" == nevents in cutflow"
     if not files_ok and nevents==nevents2:
         return j+": files missing: "+",".join(missing_files)
     
