@@ -1,5 +1,7 @@
 import glob
 import os
+import optparse
+import sys
 
 def get_list_of_systematics(filename):
     systs=[]
@@ -41,72 +43,86 @@ def get_splitting_of_systematics(systematics,nvariations):
     return systematics_,systematics_numbers
 
 
+parser = optparse.OptionParser("usage: %prog [options] sample1 sample2")
 
+parser.add_option("-f", "--filespath", dest="files_path", type="string",help="Specify the base directory of the ntuples")
+parser.add_option("-s", "--scriptspath", dest="scripts_path", type="string",help="Specify the base directory of the scripts")
+parser.add_option("-n", "--nsysvars", dest="nsysvars", type="int",help="Number of JEC sources which were processed by the BoostedAnalyzer jobs. This has to be the same as was used during ntupling.")
+parser.add_option("-j", "--jecfile", dest="jecfile",type="string",help="Specfiy the path to the txt file containing the JEC sources used for the ntupling. This has to be the same as was used during ntupling.")
+parser.add_option("-d", "--data", dest="data",action="store_true",default=False,help="If this flag is given, you are looking at data, so only nominal ntuples are checked." )
+parser.add_option("-r", "--resubmit", dest="resubmit",action="store_true",default=False,help="If this flag is given, jobs are resubmitted for the missing files." )
 
-files_path="/nfs/dust/cms/user/mwassmer/ntuples/mem_ntuples/"
-scripts_path="/nfs/dust/cms/user/mwassmer/BoostedAnalyzer_runscripts_NAF/published_samples/ttbar_isr_fsr_additional_mem_ntuples/"
-nsystematicvariations=2 #specifiy how many variations one job used, needs to be the same which was used in generate scripts
+(options, args) = parser.parse_args()
+
+if not options.files_path:
+    parser.error('filespath not given, but is necessary')
+if not options.scripts_path:
+    parser.error('scriptspath not given, but is necessary')
+if not options.nsysvars:
+    parser.error('nsysvars not given, but is necessary')
+if not options.jecfile and not options.data:
+    parser.error('jecfile not given, but is necessary')
+
+files_path = os.path.abspath(options.files_path)
+scripts_path = os.path.abspath(options.scripts_path)
+nsystematicvariations = options.nsysvars  if not options.data else 1 #specifiy how many variations one job used, needs to be the same which was used in generate scripts
+jec_file = os.path.abspath(options.jecfile) if not options.data else ""
+
+print "\n"
+print "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+print "||| base path for ntuples: ",files_path," |||"
+print "||| base path for scripts: ",scripts_path," |||"
+print "||| jec sources file: ",jec_file," |||" 
+print "||| number of JEC variations per boostedanalyzer job: ",nsystematicvariations," |||"
+print "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
 
 #use this code snippet to find the samples in the scripts path automatically
-
-samples=[x[0] for x in os.walk(scripts_path)]
-del samples[0]
-print samples
-for i in range(len(samples)):
-    samples[i]=samples[i].replace(scripts_path,"")
+print "\n"
+samples = []
+if len(args)==0:
+    samples=[x[0] for x in os.walk(scripts_path)]
+    del samples[0]
+else:
+    samples=args
 #print samples
+for i in range(len(samples)):
+    samples[i]=os.path.basename(os.path.normpath(samples[i]))
+print "samples: "
+for sample in samples:
+    print sample
+print "\n"
 
-# or check for specific datasets
-#samples=["st_schan_amc_pythia_CUETP8M1","st_tWchan_powheg_pythia_CUETP8M1","st_tWchan_powheg_pythia_CUETP8M2T4","st_tchan_powheg_herwig","st_tchan_powheg_pythia_CUETP8M1","st_tchan_powheg_pythia_CUETP8M2T4","stbar_tWchan_powheg_pythia_CUETP8M1","stbar_tWchan_powheg_pythia_CUETP8M2T4","stbar_tchan_powheg_herwig","stbar_tchan_powheg_pythia_CUETP8M1","stbar_tchan_powheg_pythia_CUETP8M2T4"]
-#samples=["Wjets-HT-70-100_madgraph_pythia_CUETP8M1","Wjets-HT-100-200_madgraph_pythia_CUETP8M1","Wjets-HT-200-400_madgraph_pythia_CUETP8M1","Wjets-HT-400-600_madgraph_pythia_CUETP8M1","Wjets-HT-600-800_madgraph_pythia_CUETP8M1","Wjets-HT-800-1200_madgraph_pythia_CUETP8M1","Wjets-HT-1200-2500_madgraph_pythia_CUETP8M1","Wjets-HT-2500-Inf_madgraph_pythia_CUETP8M1"]
-#samples=["WJets-HT-70-100_0","WJets-HT-100-200_0","WJets-HT-200-400_0","WJets-HT-400-600_0","WJets-HT-600-800_0","WJets-HT-800-1200_0","WJets-HT-1200-2500_0","WJets-HT-2500-Inf_0"]
-#samples=["WW_pythia_CUETP8M1","WZ_pythia_CUETP8M1","ZZ_pythia_CUETP8M1"]
-#samples=["WW_0","WZ_0","ZZ_0"]
-#samples=["ttW_hadr_amc_pythia_CUETP8M1","ttW_lept_amc_pythia_CUETP8M1","ttZ_hadr_amc_pythia_CUETP8M1","ttZ_lept_amc_pythia_CUETP8M1"]
-#samples=["ttW_hadr_0","ttW_lept_0","ttW_lept_1","ttZ_hadr_0","ttZ_lept_0"]
-#samples=["Zjets_m5to50-HT-70-100_madgraph_pythia_CUETP8M1","Zjets_m5to50-HT-100-200_madgraph_pythia_CUETP8M1","Zjets_m5to50-HT-200-400_madgraph_pythia_CUETP8M1","Zjets_m5to50-HT-400-600_madgraph_pythia_CUETP8M1","Zjets_m5to50-HT-600-Inf_madgraph_pythia_CUETP8M1"]
-#samples=["Zjets_m50toInf-HT-70-100_madgraph_pythia_CUETP8M1","Zjets_m50toInf-HT-100-200_madgraph_pythia_CUETP8M1","Zjets_m50toInf-HT-200-400_madgraph_pythia_CUETP8M1","Zjets_m50toInf-HT-400-600_madgraph_pythia_CUETP8M1","Zjets_m50toInf-HT-600-800_madgraph_pythia_CUETP8M1","Zjets_m50toInf-HT-800-1200_madgraph_pythia_CUETP8M1","Zjets_m50toInf-HT-1200-2500_madgraph_pythia_CUETP8M1","Zjets_m50toInf-HT-2500-Inf_madgraph_pythia_CUETP8M1"]
-#samples=["Zjets_m5to50-HT-70-100_0","Zjets_m5to50-HT-100-200_0","Zjets_m5to50-HT-200-400_0","Zjets_m5to50-HT-400-600_0","Zjets_m5to50-HT-600-Inf_0"]
-#samples=["Zjets_m50toInf-HT-70-100_0","Zjets_m50toInf-HT-100-200_0","Zjets_m50toInf-HT-200-400_0","Zjets_m50toInf-HT-400-600_0","Zjets_m50toInf-HT-600-800_0","Zjets_m50toInf-HT-800-1200_0","Zjets_m50toInf-HT-1200-2500_0","Zjets_m50toInf-HT-2500-Inf_0"]
-#samples=["SingleElectron_Run2016B","SingleElectron_Run2016C","SingleElectron_Run2016D","SingleElectron_Run2016E","SingleElectron_Run2016F","SingleElectron_Run2016G","SingleElectron_Run2016Hv2","SingleElectron_Run2016Hv3"]
-#samples=["SingleMuon_Run2016B","SingleMuon_Run2016C","SingleMuon_Run2016D","SingleMuon_Run2016E","SingleMuon_Run2016F","SingleMuon_Run2016G","SingleMuon_Run2016Hv2","SingleMuon_Run2016Hv3"]
-#samples=["ttbb_amc","ttbb_sherpa_ol"]
-#samples=["ttbar_isr_up","ttbar_isr_down","ttbar_fsr_up","ttbar_fsr_down","ttbar_ue_up","ttbar_ue_down","ttbar_hdamp_up","ttbar_hdamp_down","ttbar_color_reco"]
-#samples=["ttbar_mtop1665","ttbar_mtop1695","ttbar_mtop1715","ttbar_mtop1735","ttbar_mtop1755","ttbar_mtop1785"]
-#samples=["QCD_HT50to100","QCD_HT100to200","QCD_HT200to300","QCD_HT300to500","QCD_HT500to700","QCD_HT700to1000","QCD_HT1000to1500","QCD_HT1500to2000","QCD_HT2000toInf"]
-#samples=["ttbar_excl_SL_0"]
-#samples=["ttbar_excl_DL_0"]
-#samples=["st_schan_0","st_tWchan_0","st_tWchan_1","st_tchan_0","st_tchan_1","st_tchan_2","stbar_tWchan_0","stbar_tWchan_1","stbar_tchan_0","stbar_tchan_1","stbar_tchan_2"]
-#samples=["ttHbb_0","ttHnonbb_0"]
-#samples=["ttbar_isr_up","ttbar_isr_down"]
-
+#samples=[sample for sample in samples if sample.find("pythia")!=-1]
 #use in case of jes/jer systematics in the systematicVariations file
-#systematics=get_list_of_systematics("systematicVariations.txt")
-#systematics_,systematics_numbers=get_splitting_of_systematics(systematics,nsystematicvariations)	
-
-#use in case of data since there are no systematic variations
-systematics_=[["nominal"]]
-systematics_numbers=[1]
+if not options.data:
+    systematics=get_list_of_systematics(jec_file)
+    systematics_,systematics_numbers=get_splitting_of_systematics(systematics,nsystematicvariations)	
+else:
+    #use in case of data since there are no systematic variations
+    systematics_=[["nominal"]]
+    systematics_numbers=[1]
 
 #use in case of you want to check slimmed ntuples
 #systematics_=[["slimmed_ntuples"]]
 #systematics_numbers=[1]
 		
-#print systematics	
+print "assignment between shell script numbering and processed systematic JEC variations"	
 print systematics_numbers
-print systematics_	
+print systematics_
+print "\n"
 #print systematics
 
 for sample in samples:
-    print "-----------------------------------------------------------------------------------------------------------------------------------------------------------------------"
     print "-----------------------------------------------------------------------------------------------------------------------------------------------------------------------"
     print ""
     print "looking at sample ##################", sample, " ##################"
     print ""
     for systematic_number,systematics in zip(systematics_numbers,systematics_):
+                print "-----------------------------------------------------------------------------------"
 		sample_sh=sample+"/"+sample+"_*_"+str(systematic_number)+".sh"
 		print "looking at systematics ",systematics
-		scripts=glob.glob(scripts_path+sample_sh)
+		#print "looking after ",os.path.join(scripts_path,sample_sh)
+		scripts=glob.glob(os.path.join(scripts_path,sample_sh))
 		#print scripts
 		nscripts=len(scripts)
 		#print "number of scripts is ",nscripts
@@ -114,7 +130,7 @@ for sample in samples:
 		sample_roots=[]
 		script_numbers=[]
 		for script in scripts:
-			script_numbers.append(script.replace(scripts_path+sample+"/"+sample+"_","").replace("_"+str(systematic_number)+".sh",""))
+			script_numbers.append(script.replace(os.path.join(scripts_path,sample)+"/"+sample+"_","").replace("_"+str(systematic_number)+".sh",""))
 		#print script_numbers
 		for systematic in systematics:
 			if(systematic=="nominal" or systematic=="slimmed_ntuples"):
@@ -129,10 +145,10 @@ for sample in samples:
 		nfiles=0
 		files=[]
 		for sample_root in sample_roots:
-			#print files_path+sample_root
 			test=[]
 			for variation in sample_root:
-				test+=glob.glob(files_path+variation)
+                                #print "looking after ",os.path.join(files_path,variation)
+				test+=glob.glob(os.path.join(files_path,variation))
 			#print test
 			files.append(test)
 			nfiles+=len(test)
@@ -144,30 +160,27 @@ for sample in samples:
 		    continue
 		else:
 		    print "number of scripts does not correspond to the number of files"
-		    print "searching which files are missing"
-		missing_files=""	
+		    print "searching which files are missing ..."
+		    print "\n"
+		missing_files=""
+		n_missing_scripts = 0
 		for number in script_numbers:
 			missing_file=False
 			#print number
 			for files_,systematic in zip(files,systematics):
 				if(systematic=="nominal" or systematic=="slimmed_ntuples"):
-					if not (files_path+sample+"/"+sample+"_"+number+"_"+str(systematic)+"_Tree.root" in files_):
+					if not (os.path.join(files_path,sample)+"/"+sample+"_"+number+"_"+str(systematic)+"_Tree.root" in files_):
 						missing_file=True
 				else:
-					if not ((files_path+sample+"/"+sample+"_"+number+"_"+str(systematic)+"up_Tree.root" in files_) and (files_path+sample+"/"+sample+"_"+number+"_"+str(systematic)+"down_Tree.root" in files_)):
+					if not ((os.path.join(files_path,sample)+"/"+sample+"_"+number+"_"+str(systematic)+"up_Tree.root" in files_) and (os.path.join(files_path,sample)+"/"+sample+"_"+number+"_"+str(systematic)+"down_Tree.root" in files_)):
 						missing_file=True
 			if missing_file:
+                                n_missing_scripts+=1
 				#print scripts_path+sample+"/"+sample+"_"+number+"_"+str(systematic_number)+".sh"
-				missing_files+=" "+scripts_path+sample+"/"+sample+"_"+number+"_"+str(systematic_number)+".sh"
+				missing_files+=" "+os.path.join(scripts_path,sample)+"/"+sample+"_"+number+"_"+str(systematic_number)+".sh"
                 
-                print "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-                print " "
-		print "copy this string in sup.py to resubmit the missing jobs"
-		print " "
-		print missing_files
-		print " "
-		print "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-		print "resubmitting ..."
-                os.system("python sup.py "+missing_files)
-
+		print "Have to resubmit ", n_missing_scripts, " scripts."
+                if options.resubmit:
+                    print "resubmitting ", n_missing_scripts, " scripts ..."
+                    os.system("python submit.py "+missing_files)
 
