@@ -1,0 +1,4 @@
+name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,isData,generator,additionalSelection,run
+,,,,,,,,,,,
+TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_new_pmx,/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v1/MINIAODSIM,43732445,301.062559276,365.46,2.77574356775E-05,,94X_mc2017_realistic_v17,FALSE,POWHEG,NONE,
+,,,,,,,,,,,

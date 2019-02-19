@@ -1,0 +1,12 @@
+outpath                     = '/nfs/dust/cms/user/vdlinden/ttH_2018/ntuples/ntuples_ttbarMatching' # path of output of analyzer
+scriptpath                  = 'ttbarMatcher_trainSample' # folder containing shell scripts that will have to be run on cluster
+samplelist                  = 'ttbarMatcher_trainSample.csv' # samples list
+dataset_column              = 'dataset' # run on the column with dataset or boosted_dataset?
+cmsswcfgpath                = '/nfs/dust/cms/user/vdlinden/CMSSW/CMSSW_9_4_10/src/BoostedTTH/BoostedAnalyzer/test/boostedAnalysis_ntuples-ttbarmatcher.py'
+cmsswpath                   = '/nfs/dust/cms/user/vdlinden/CMSSW/CMSSW_9_4_10/'
+dbs                         = "prod/global" # dbs instance: boosted miniaod is in prod/phys03, standard miniaod in prod/global
+min_events_per_job          = 100000 # min number of events per job 
+isBoostedMiniAOD            = False # do the inputs contain fat jets?
+systematicVariations        = 'noSysts.txt'
+nSystematicVariationsPerJob = 1
+ProduceMemNtuples           = False
