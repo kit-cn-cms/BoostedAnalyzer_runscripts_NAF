@@ -188,8 +188,11 @@ def get_generators(name_array):
 
 def get_x(name):
     #print name
-    #print "blablablablablablablablaaaaaaaaaaaaaa",name[0]
-    if (name[0].find("Run2017")==-1):
+    # print "blablablablablablablablaaaaaaaaaaaaaa",name[0], "Run2016" not in name[0]
+    # if (name[0].find("Run2016")==-1 or name[0].find("Run2017")==-1 or name[0].find("Run2018")==-1):
+    if ("Run2016" in name[0] or "Run2017" in name[0] or "Run2018" in name[0]):
+        x=1.
+    else:
         x=0.
         n_tried=0
         while True and n_tried<3:
@@ -200,8 +203,8 @@ def get_x(name):
             if x!=0.:
                 break
             n_tried+=1
-    else:
-        x=1.
+    # else:
+        # x=1.
     return x
 
 def get_xs(name_array):
@@ -438,4 +441,4 @@ for key,value in json_array[0].get("data","none")[0].get("dataset","none")[blabl
     print value
     print "##############"
     print json_array[0].get("data","none")[0].get("dataset","none")[blabla].get("result","none")[0].get(key).get("GlobalTag","none")
-"""
+""
