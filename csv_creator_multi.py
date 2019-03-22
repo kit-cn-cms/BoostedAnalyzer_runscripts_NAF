@@ -14,7 +14,7 @@ for row in reader:
 fobj.close()
 
 
-fobj_out=open("auto_samples.csv","w")
+fobj_out=open("auto_samples_"+sys.argv[1],"w")
 
 # header for the csv file
 fobj_out.write('name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,isData,generator,additionalSelection,run'+'\n')
