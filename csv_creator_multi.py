@@ -120,6 +120,10 @@ for row in csv_array:
         else:
            boosted_datasets_string=""
         name = str(names[i]).split("/")[1]
+        if "new_pmx" in names[i]:
+            name = name+"_new_pmx"
+        if "-v2" in names[i]:
+            name = name+"_v2"
         #write the csv entry
         #print names[i]
         #print nevents[i]

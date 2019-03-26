@@ -163,9 +163,9 @@ def get_globaltags(datatype_array):
     globaltag_array=[]
     for i in range(nresults):
         if datatype_array[i]=="TRUE":
-            globaltag_array.append("94X_dataRun2_v6")
+            globaltag_array.append("94X_dataRun2_v11")
         elif datatype_array[i]=="FALSE":
-            globaltag_array.append("94X_mc2017_realistic_v14")
+            globaltag_array.append("94X_mc2017_realistic_v17")
         else:
             globaltag_array.append("look at me again")
     return globaltag_array

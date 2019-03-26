@@ -15,6 +15,7 @@ import ROOT
 ssl._create_default_https_context = ssl._create_unverified_context
 #das_client=imp.load_source("das_client", "/cvmfs/cms.cern.ch/slc6_amd64_gcc530/cms/das_client/v02.17.04/bin/das_client.py")
 import Utilities.General.cmssw_das_client as das_client
+
 store_prefix='file:/pnfs/desy.de/cms/tier2/'
 #store_prefix="root://xrootd-cms.infn.it//"
 #store_prefix='file:'
@@ -155,7 +156,13 @@ def get_dataset_files(dataset):
     
     if is_dataset_string:
         for dataset in datasets:
+                    store_prefix = ""
+                    if "USER" in dataset:
+                        store_prefix = "file:/pnfs/desy.de/cms/tier2/"
+                    else:
+                        store_prefix = "root://xrootd-cms.infn.it//"
                     data=das_client.get_data("file dataset="+dataset+" instance="+user_config.dbs)
+                    print data
                     for d in data['data']:
                         for f in d['file']:
                             if not 'nevents' in f: continue
@@ -176,6 +183,7 @@ def get_dataset_files(dataset):
                             size+=f['size']
                             nfiles+=1
     else:
+        store_prefix = "file:"
         for dataset in datasets:
             directory = dataset
             print directory+"/Skim_*.root"
@@ -190,12 +198,20 @@ def get_dataset_files(dataset):
             events_in_files.append(chain.GetEntries()-nevents_tmp)
             nevents_tmp=chain.GetEntries()
         nevents=chain.GetEntries()
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> f8a63e608681efe04c0927842e7ecaefe29bbea9
         #adding missing store_prefix
         files_without_prefix=files
         files=[]
         for f in files_without_prefix:
+<<<<<<< HEAD
             files.append('file:'+f)
+=======
+            files.append(store_prefix+f)
+>>>>>>> f8a63e608681efe04c0927842e7ecaefe29bbea9
             
     print nfiles,'files with total size',size/(1024*1024),'MB containing',nevents,'events'
     return files,events_in_files
@@ -267,6 +283,16 @@ if not os.path.exists(user_config.cmsswpath):
 if not os.path.exists(user_config.cmsswcfgpath):
     print 'WRONG CMSSW CONFIG PATH!'
     print user_config.cmsswcfgpath
+    sys.exit()
+    
+if user_config.dataset_column == "dataset" and not user_config.dbs == "prod/global":
+    print "If you use the dataset column which is for global samples, you have to you prod/global as dbs instance"
+    print "You used ",user_config.dbs
+    sys.exit()
+    
+if user_config.dataset_column == "boosted_dataset" and not user_config.dbs == "prod/phys03":
+    print "If you use the boosted_dataset column which is for user samples, you have to you prod/phys03 as dbs instance"
+    print "You used ",user_config.dbs
     sys.exit()
 
 # read list with samples
