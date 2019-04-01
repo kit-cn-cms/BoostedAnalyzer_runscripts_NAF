@@ -1,6 +1,6 @@
 ttHbb,/ttHTobb_M125_TuneCUETP8M2_ttHtranche3_13TeV-powheg-pythia8/RunIISummer16MiniAODv3*-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2*/MINIAODSIM,0.2953
 ttHnonbb,/ttHToNonbb_M125_TuneCUETP8M2_ttHtranche3_13TeV-powheg-pythia8/RunIISummer16MiniAODv3*-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,0.2118
-ttbar_inkl,/TT_TuneCUETP8M2T4*_13TeV-powheg*-pythia8/RunIISummer16MiniAODv3*-PUMoriond17_94X_mcRun2_asymptotic_v3*-v1/MINIAODSIM,831.76
+ttbar_inkl,/TT_TuneCUETP8M2T4_13TeV-powheg-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM,831.76
 ttbar_excl_SL,/TTToSemilepton_TuneCUETP8M2_ttHtranche3_13TeV-powheg-pythia8/RunIISummer16MiniAODv3*-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,365.46
 ttbar_excl_DL,/TTTo2L2Nu_TuneCUETP8M2_ttHtranche3_13TeV-powheg-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM,88.34
 ttbar_hdamp,/TT_hdamp*_TuneCUETP8M2T4_13TeV-powheg-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X*/MINIAODSIM,
@@ -22,6 +22,12 @@ Wjets-HT-800-1200,/WjetsToLNu_HT-800To1200_TuneCUETP8M1_13TeV-madgraphMLM-pythia
 Wjets-HT-1200-2500,/WjetsToLNu_HT-1200To2500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3*-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,1.329
 Wjets-HT-2500-Inf,/WjetsToLNu_HT-2500ToInf_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3*-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,0.03216
 #,,
+WJetsToLNu_Pt-100To250,/WJetsToLNu_Pt-100To250_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*/MINIAODSIM,689.75
+WJetsToLNu_Pt-250To400,/WJetsToLNu_Pt-250To400_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*/MINIAODSIM,24.507
+WjetsToLNu_Pt-400To600,/WjetsToLNu_Pt-400To600_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*/MINIAODSIM,3.1101
+#,,
+#,,
+#,,
 Zjets_m5to50-HT-70-100,/DYJetsToLL_M-5to50_HT-70to100_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3*-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,302.2
 Zjets_m5to50-HT-100-200,/DYJetsToLL_M-5to50_HT-100to200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3*-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,224.2
 Zjets_m5to50-HT-200-400,/DYJetsToLL_M-5to50_HT-200to400_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3*-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,37.2
@@ -36,6 +42,10 @@ Zjets_m50toInf-HT-600-800,/DYJetsToLL_M-50_HT-600to800_TuneCUETP8M1_13TeV-madgra
 Zjets_m50toInf-HT-800-1200,/DYJetsToLL_M-50_HT-800to1200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3*-PUMoriond17_94X_mcRun2_asymptotic_v3*-v1/MINIAODSIM,0.6304
 Zjets_m50toInf-HT-1200-2500,/DYJetsToLL_M-50_HT-1200to2500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3*-PUMoriond17_94X_mcRun2_asymptotic_v3*-v1/MINIAODSIM,0.1514
 Zjets_m50toInf-HT-2500-Inf,/DYJetsToLL_M-50_HT-2500toInf_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3*-PUMoriond17_94X_mcRun2_asymptotic_v3*-v1/MINIAODSIM,0.003565
+#,,
+#DYJetsToLL_Pt-50To100,/DYJetsToLL_Pt-50To100_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*/MINIAODSIM,363.81
+#DYJetsToLL_Pt-100To250,/DYJetsToLL_Pt-100To250_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*/MINIAODSIM,84.015
+#DYJetsToLL_Pt-250To400,/DYJetsToLL_Pt-250To400_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*/MINIAODSIM,3.2283
 #,,
 ttW_hadr,/TTWJetsToQQ_TuneCUETP8M1_13TeV-amcatnloFXFX-madspin-pythia8/RunIISummer16MiniAODv3*-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,0.4062
 ttW_lept,/TTWJetsToLNu_TuneCUETP8M1_13TeV-amcatnloFXFX-madspin-pythia8/RunIISummer16MiniAODv3*-PUMoriond17_94X_mcRun2_asymptotic_v3*_ext1-v2/MINIAODSIM,0.2043
@@ -66,3 +76,10 @@ SingleMuonE,/SingleMuon/Run2016E*17Jul2018*/MINIAOD,1
 SingleMuonF,/SingleMuon/Run2016F*17Jul2018*/MINIAOD,1
 SingleMuonG,/SingleMuon/Run2016G*17Jul2018*/MINIAOD,1
 SingleMuonH,/SingleMuon/Run2016H*17Jul2018*/MINIAOD,1
+,,
+,,
+,,
+,,
+,,
+#,,
+#,,
