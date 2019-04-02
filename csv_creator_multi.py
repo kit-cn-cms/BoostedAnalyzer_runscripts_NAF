@@ -105,7 +105,7 @@ for row in csv_array:
     
     xs=float(row[2])
     print "writing found datasets and their information ..."
-    fobj_out.write(",,,,,,,,,,"+'\n')
+    fobj_out.write(",,,,,,,,,,,"+'\n')
     # loop over all the datasets which fit to the dataset with wildcards
     for i in range(len(jsons)):
 	#concatenate the found boosted datasets to get them in one column

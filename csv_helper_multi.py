@@ -441,4 +441,4 @@ for key,value in json_array[0].get("data","none")[0].get("dataset","none")[blabl
     print value
     print "##############"
     print json_array[0].get("data","none")[0].get("dataset","none")[blabla].get("result","none")[0].get(key).get("GlobalTag","none")
-""
+"""
