@@ -52,3 +52,7 @@ SingleMuonB,/SingleMuon/Run2018B*17Sep2018*/MINIAOD,1
 SingleMuonC,/SingleMuon/Run2018C*17Sep2018*/MINIAOD,1
 SingleMuonD,/SingleMuon/Run2018D*PromptReco*/MINIAOD,1
 #,,
+SingleElectronA,/EGamma/Run2018A*17Sep2018*/MINIAOD,1
+SingleElectronB,/EGamma/Run2018B*17Sep2018*/MINIAOD,1
+SingleElectronC,/EGamma/Run2018C*17Sep2018*/MINIAOD,1
+SingleElectronD,/EGamma/Run2018D*PromptReco*v2/MINIAOD,1
