@@ -9,7 +9,7 @@ import time
 import optparse
 
 
-def submitToBatch(workdir, list_of_shells, memory_, disk_, runtime_, use_proxy, proxy_dir_, name_ ):
+def submitToBatch(workdir, list_of_shells, memory_, disk_, runtime_, use_proxy, proxy_dir_, name_, scheduler_ ):
     ''' submit the list of shell script to the NAF batch system '''
 
     if name_!="":
@@ -22,7 +22,7 @@ def submitToBatch(workdir, list_of_shells, memory_, disk_, runtime_, use_proxy, 
     submitScript = writeSubmitScript(workdir, arrayScript, len(list_of_shells), memory_, disk_, runtime_, use_proxy, proxy_dir_, name_)
         
     # submit the whole thing
-    jobID = condorSubmit( submitScript )
+    jobID = condorSubmit( submitScript, scheduler_ )
     return [jobID]
 
 def writeArrayScript(workdir, files, name_):
@@ -91,8 +91,8 @@ Queue Environment From ("""
     print("wrote submit script "+str(path))
     return path
 
-def condorSubmit(submitPath):
-    submitCommand = "condor_submit -terse -name bird-htc-sched12.desy.de " + submitPath
+def condorSubmit(submitPath, scheduler):
+    submitCommand = "condor_submit -terse -name "+scheduler+" "+ submitPath
     print("submitting:")
     print(submitCommand)
     tries = 0
@@ -118,12 +118,12 @@ def condorSubmit(submitPath):
 
 
 
-def monitorJobStatus(jobIDs = None):
+def monitorJobStatus(jobIDs = None, scheduler = "bird-htc-sched13.desy.de"):
     allfinished = False
     errorcount = 0
     print("checking job status in condor_q ...")
 
-    command = ["condor_q", "-name", "bird-htc-sched12.desy.de"]
+    command = ["condor_q", "-name", opts.scheduler]
     if jobIDs:
         command += jobIDs
         command = [str(c) for c in command]
@@ -200,6 +200,8 @@ if __name__ == "__main__":
     parser.add_option("-n","--name",type="string",default="",dest="name",metavar = "NAME",
         help = "Name for this submit job")
 
+    parser.add_option("-s","--scheduler",type="string",default="bird-htc-sched13.desy.de",dest="scheduler",metavar="SCHED",
+        help = "Name of scheduler")
     (opts, args) = parser.parse_args()
 
     if opts.useproxy and not opts.vomsproxy:
@@ -233,12 +235,12 @@ if __name__ == "__main__":
 
 
     # submit to batch
-    jobIDs = submitToBatch(workdir, submit_files, opts.memory, str(int(opts.disk)*1000), str(int(opts.runtime)*60), opts.useproxy, opts.vomsproxy, opts.name)
+    jobIDs = submitToBatch(workdir, submit_files, opts.memory, str(int(opts.disk)*1000), str(int(opts.runtime)*60), opts.useproxy, opts.vomsproxy, opts.name, opts.scheduler)
     print("submitted jobs with IDs: {}".format(jobIDs))
     
     # monitor job status
     if opts.monitorStatus:
-        monitorJobStatus(jobIDs)
+        monitorJobStatus(jobIDs, opts.scheduler)
 
     print("done.")
 
