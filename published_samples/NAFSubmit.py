@@ -123,7 +123,7 @@ def monitorJobStatus(jobIDs = None, scheduler = "bird-htc-sched13.desy.de"):
     errorcount = 0
     print("checking job status in condor_q ...")
 
-    command = ["condor_q", "-name", opts.scheduler]
+    command = ["condor_q", "-name", scheduler]
     if jobIDs:
         command += jobIDs
         command = [str(c) for c in command]
