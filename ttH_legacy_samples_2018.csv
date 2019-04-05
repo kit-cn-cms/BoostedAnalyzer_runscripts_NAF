@@ -92,9 +92,11 @@ WW_TuneCP5_13TeV-pythia8_v2,/WW_TuneCP5_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_
 ,,,,,,,,,,,
 ZZ_TuneCP5_13TeV-pythia8_v2,/ZZ_TuneCP5_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM,1979000,0.999888446861,31.734,0.0160371603953,,102X_upgrade2018_realistic_v18,FALSE,pythia8,NONE,2018
 ,,,,,,,,,,,
+THW_ctcvcp_5f_Hincl_13TeV_madgraph_pythia8,/THW_ctcvcp_5f_Hincl_13TeV_madgraph_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,14998988,0.998276395631,0.002879,1.92277693983e-07,,102X_upgrade2018_realistic_v18,FALSE,MadGraph,NONE,2018
 THW_5f_Hincl_13TeV_madgraph_pythia8,/THW_5f_Hincl_13TeV_madgraph_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,1499997,0.999336823582,0.002879,1.92061087585e-06,,102X_upgrade2018_realistic_v18,FALSE,MadGraph,NONE,2018
 ,,,,,,,,,,,
 THQ_4f_Hincl_13TeV_madgraph_pythia8,/THQ_4f_Hincl_13TeV_madgraph_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,3375995,0.993496269675,0.07425,2.21374922654e-05,,102X_upgrade2018_realistic_v18,FALSE,MadGraph,NONE,2018
+THQ_ctcvcp_4f_Hincl_13TeV_madgraph_pythia8,/THQ_ctcvcp_4f_Hincl_13TeV_madgraph_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,29683974,0.993736953564,0.07425,2.51711452335e-06,,102X_upgrade2018_realistic_v18,FALSE,MadGraph,NONE,2018
 ,,,,,,,,,,,
 SingleMuon_v2,/SingleMuon/Run2018A-17Sep2018-v2/MINIAOD,241608232,1.0,1.0,4.13893182249e-06,,102X_dataRun2_Sep2018ABC_v2,TRUE,notSpecified,NONE,2018A
 ,,,,,,,,,,,
