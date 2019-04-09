@@ -159,7 +159,7 @@ def get_dataset_files(dataset):
                     else:
                         store_prefix = "root://xrootd-cms.infn.it//"
                     data=das_client.get_data("file dataset="+dataset+" instance="+user_config.dbs)
-                    print data
+                    #print data
                     for d in data['data']:
                         for f in d['file']:
                             if not 'nevents' in f: continue
