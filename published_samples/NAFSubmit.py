@@ -92,7 +92,7 @@ Queue Environment From ("""
     return path
 
 def condorSubmit(submitPath):
-    submitCommand = "condor_submit -terse -name "+ submitPath
+    submitCommand = "condor_submit -terse "+ submitPath
     print("submitting:")
     print(submitCommand)
     tries = 0
