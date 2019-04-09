@@ -9,7 +9,7 @@ import time
 import optparse
 
 
-def submitToBatch(workdir, list_of_shells, memory_, disk_, runtime_, use_proxy, proxy_dir_, name_, scheduler_ ):
+def submitToBatch(workdir, list_of_shells, memory_, disk_, runtime_, use_proxy, proxy_dir_, name_ ):
     ''' submit the list of shell script to the NAF batch system '''
 
     if name_!="":
@@ -22,7 +22,7 @@ def submitToBatch(workdir, list_of_shells, memory_, disk_, runtime_, use_proxy, 
     submitScript = writeSubmitScript(workdir, arrayScript, len(list_of_shells), memory_, disk_, runtime_, use_proxy, proxy_dir_, name_)
         
     # submit the whole thing
-    jobID = condorSubmit( submitScript, scheduler_ )
+    jobID = condorSubmit( submitScript)
     return [jobID]
 
 def writeArrayScript(workdir, files, name_):
@@ -91,8 +91,8 @@ Queue Environment From ("""
     print("wrote submit script "+str(path))
     return path
 
-def condorSubmit(submitPath, scheduler):
-    submitCommand = "condor_submit -terse -name "+scheduler+" "+ submitPath
+def condorSubmit(submitPath):
+    submitCommand = "condor_submit -terse -name "+ submitPath
     print("submitting:")
     print(submitCommand)
     tries = 0
@@ -118,12 +118,12 @@ def condorSubmit(submitPath, scheduler):
 
 
 
-def monitorJobStatus(jobIDs = None, scheduler = "bird-htc-sched13.desy.de"):
+def monitorJobStatus(jobIDs = None):
     allfinished = False
     errorcount = 0
     print("checking job status in condor_q ...")
 
-    command = ["condor_q", "-name", scheduler]
+    command = ["condor_q"]
     if jobIDs:
         command += jobIDs
         command = [str(c) for c in command]
@@ -136,31 +136,41 @@ def monitorJobStatus(jobIDs = None, scheduler = "bird-htc-sched13.desy.de"):
         a.wait()
         qstat = a.communicate()[0]
 
-        nrunning = -1
-        queryline = [line for line in qstat.split("\n") if "Total for query" in line] 
-        if len(queryline) == 1:
-            jobsRunning = int(re.findall(r'\ [0-9]+\ running', queryline[0])[0][1:-8])
-            jobsIdle = int(re.findall(r'\ [0-9]+\ idle', queryline[0])[0][1:-5])
-            jobsHeld = int(re.findall(r'\ [0-9]+\ held', queryline[0])[0][1:-5])
+        nrunning = 0
+        querylines = [line for line in qstat.split("\n") if "Total for query" in line] 
 
-            nrunning = jobsRunning + jobsIdle + jobsHeld
-
-            print("{:4d} running | {:4d} idling | {:4d} held |\t total: {:4d}".format(jobsRunning, jobsIdle, jobsHeld, nrunning))
-
-            errorcount = 0
-            if nrunning == 0:
-                print("waiting on no more jobs - exiting loop")
-                allfinished=True
-        else:
+        # check if query matches
+        if len(querylines) == 0:
             errorcount += 1
             # sometimes condor_q is not reachable - if this happens a lot something is probably wrong
-        
             print("line does not match query")
             if errorcount == 30:
                 print("something is off - condor_q has not worked for 15 minutes ...")
-                print("exiting condor_q (jobs are probably still in queue")
-                sys.exit()
+                time.sleep(120)
+            if errorcount == 100:
+                print("this does not work anymore - removing jobs")
+                command[0] = "condor_rm"
+                a = subprocess.Popen(command, stdout = subprocess.PIPE, stderr = subprocess.STDOUT, stdin = subprocess.PIPE)
+                return
+            continue
 
+        errorcount = 0
+        # sum all jobs that are still idle or running
+        jobsRunning = 0
+        jobsIdle = 0
+        jobsHeld = 0
+        for line in querylines:
+            jobsRunning += int(re.findall(r'\ [0-9]+\ running', queryline[0])[0][1:-8])
+            jobsIdle += int(re.findall(r'\ [0-9]+\ idle', queryline[0])[0][1:-5])
+            jobsHeld += int(re.findall(r'\ [0-9]+\ held', queryline[0])[0][1:-5])
+
+        nrunning += jobsRunning + jobsIdle + jobsHeld
+
+        print("{:4d} running | {:4d} idling | {:4d} held |\t total: {:4d}".format(jobsRunning, jobsIdle, jobsHeld, nrunning))
+
+        if nrunning == 0:
+            print("waiting on no more jobs - exiting loop")
+            allfinished=True
 
     print("all jobs are finished - exiting monitorJobStatus")
     return
@@ -200,8 +210,6 @@ if __name__ == "__main__":
     parser.add_option("-n","--name",type="string",default="",dest="name",metavar = "NAME",
         help = "Name for this submit job")
 
-    parser.add_option("-s","--scheduler",type="string",default="bird-htc-sched13.desy.de",dest="scheduler",metavar="SCHED",
-        help = "Name of scheduler")
     (opts, args) = parser.parse_args()
 
     if opts.useproxy and not opts.vomsproxy:
@@ -235,12 +243,12 @@ if __name__ == "__main__":
 
 
     # submit to batch
-    jobIDs = submitToBatch(workdir, submit_files, opts.memory, str(int(opts.disk)*1000), str(int(opts.runtime)*60), opts.useproxy, opts.vomsproxy, opts.name, opts.scheduler)
+    jobIDs = submitToBatch(workdir, submit_files, opts.memory, str(int(opts.disk)*1000), str(int(opts.runtime)*60), opts.useproxy, opts.vomsproxy, opts.name)
     print("submitted jobs with IDs: {}".format(jobIDs))
     
     # monitor job status
     if opts.monitorStatus:
-        monitorJobStatus(jobIDs, opts.scheduler)
+        monitorJobStatus(jobIDs)
 
     print("done.")
 
