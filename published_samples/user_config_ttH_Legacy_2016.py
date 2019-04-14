@@ -1,11 +1,11 @@
 outpath='/nfs/dust/cms/user/mwassmer/ttH_2019/ntuples_2016/' # path of output of analyzer
 scriptpath='ttH_Legacy_2016' # folder containing shell scripts that will have to be run on cluster
-samplelist='../' # samples list
+samplelist='../auto_samples_datasets_legacy_2016.csv' # samples list
 dataset_column='boosted_dataset' # run on the column with dataset or boosted_dataset?
 cmsswcfgpath='/nfs/dust/cms/user/mwassmer/ttH_2019/Preparations/CMSSW_9_4_13/src/BoostedTTH/BoostedAnalyzer/test/boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg.py'
 cmsswpath='/nfs/dust/cms/user/mwassmer/ttH_2019/Preparations/CMSSW_9_4_13/'
 dbs="prod/phys03" # dbs instance: boosted miniaod is in prod/phys03, standard miniaod in prod/global
-min_events_per_job=100000 # min number of events per job 
+min_events_per_job=50000 # min number of events per job 
 isBoostedMiniAOD=False # do the inputs contain fat jets?
 systematicVariations='systematicVariations_no_sources.txt'
 nSystematicVariationsPerJob=4
