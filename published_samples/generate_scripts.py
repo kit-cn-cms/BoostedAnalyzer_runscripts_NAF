@@ -198,20 +198,12 @@ def get_dataset_files(dataset):
             events_in_files.append(chain.GetEntries()-nevents_tmp)
             nevents_tmp=chain.GetEntries()
         nevents=chain.GetEntries()
-<<<<<<< HEAD
-
-=======
     
->>>>>>> f8a63e608681efe04c0927842e7ecaefe29bbea9
         #adding missing store_prefix
         files_without_prefix=files
         files=[]
         for f in files_without_prefix:
-<<<<<<< HEAD
-            files.append('file:'+f)
-=======
             files.append(store_prefix+f)
->>>>>>> f8a63e608681efe04c0927842e7ecaefe29bbea9
             
     print nfiles,'files with total size',size/(1024*1024),'MB containing',nevents,'events'
     return files,events_in_files

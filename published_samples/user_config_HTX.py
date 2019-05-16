@@ -1,0 +1,12 @@
+outpath='/nfs/dust/cms/user/pkraemer/ttH_HTXS/variateNtuples' # path of output of analyzer
+scriptpath='ttH_HTXS_variations' # folder containing shell scripts that will have to be run on cluster
+samplelist='../only_ttH.csv' # samples list
+dataset_column='boosted_dataset' # run on the column with dataset or boosted_dataset?
+cmsswcfgpath='/nfs/dust/cms/user/pkraemer/CMSSW/9_4_10/CMSSW_9_4_10/src/BoostedTTH/BoostedAnalyzer/test/HTXSTutorial_cfg.py'
+cmsswpath='/nfs/dust/cms/user/pkraemer/CMSSW/9_4_10/CMSSW_9_4_10'
+dbs="prod/phys03" # dbs instance: boosted miniaod is in prod/phys03, standard miniaod in prod/global
+min_events_per_job=100000 # min number of events per job 
+isBoostedMiniAOD=False # do the inputs contain fat jets?
+systematicVariations='systematicVariations.txt'
+nSystematicVariationsPerJob=4
+ProduceMemNtuples=False
