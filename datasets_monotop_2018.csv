@@ -1,4 +1,4 @@
-#znunu,/ZJetsToNuNu_HT*/*RunIIAutumn18*102X_upgrade2018_realistic_v15*/MINIAODSIM,1.
+
 # cross sections from xsdb https://cms-gen-dev.cern.ch/xsdb
 # xs probably has to be scale by factor of 3 (3 neutrino generations)
 znunu_ht_100_200,/ZJetsToNuNu_HT-100To200_13TeV-madgraph/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,302.8
@@ -9,7 +9,11 @@ znunu_ht_800_1200,/ZJetsToNuNu_HT-800To1200_13TeV-madgraph/RunIIAutumn18MiniAOD-
 znunu_ht_1200_2500,/ZJetsToNuNu_HT-1200To2500_13TeV-madgraph/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,0.3419
 znunu_ht_2500_Inf,/ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,0.005146
 
-#wlnu,/WJetsToLNu_HT*/*RunIIAutumn18*102X_upgrade2018_realistic_v15*/MINIAODSIM,1.
+# xs from https://twiki.cern.ch/twiki/bin/viewauth/CMS/SummaryTable1G25ns#DY_Z
+zll,/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,6225.42
+
+# xs from https://twiki.cern.ch/twiki/bin/viewauth/CMS/StandardModelCrossSectionsat13TeV
+wlnu,/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM,61526.7
 # cross sections from xsdb https://cms-gen-dev.cern.ch/xsdb
 wlnu_ht_70_100,/WJetsToLNu_HT-70To100_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,1.
 wlnu_ht_100_200,/WJetsToLNu_HT-100To200_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,1395.0
