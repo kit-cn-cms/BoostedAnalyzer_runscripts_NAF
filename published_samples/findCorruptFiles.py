@@ -19,7 +19,7 @@ def checkROOTFiles(path=""):
     else:  
       nevents=tree.GetEntries()
       rf.Close()
-      if nevents<=0:
+      if nevents<0:
 	isGOOD=False
 	print "BROKEN    ", path
   if rf!=None:

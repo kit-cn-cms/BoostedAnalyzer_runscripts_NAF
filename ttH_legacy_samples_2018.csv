@@ -91,6 +91,8 @@ WW_TuneCP5_13TeV-pythia8,/WW_TuneCP5_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_upg
 ,,,,,,,,,,,
 ZZ_TuneCP5_13TeV-pythia8,/ZZ_TuneCP5_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM,1979000,0.999888446861,31.734,0.0160371603953,/ZZ_TuneCP5_13TeV-pythia8/mschrode-KIT_tthbb_skims_MC_94X_LEG_2018-b9899da800e5578fdd124c7a0a5f7739/USER,102X_upgrade2018_realistic_v18,FALSE,pythia8,NONE,2018
 ,,,,,,,,,,,
+WZ_TuneCP5_13TeV-pythia8,/WZ_TuneCP5_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v3/MINIAODSIM,3885000,0.999783318662,47.123,0.0121321011294,/WZ_TuneCP5_13TeV-pythia8/mschrode-KIT_tthbb_skims_MC_94X_LEG_2018-b9899da800e5578fdd124c7a0a5f7739/USER,102X_upgrade2018_realistic_v18,FALSE,pythia8,NONE,2018
+,,,,,,,,,,,
 THW_ctcvcp_5f_Hincl_13TeV_madgraph_pythia8,/THW_ctcvcp_5f_Hincl_13TeV_madgraph_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,14998988,0.998276395631,0.002879,1.92277693983e-07,/THW_ctcvcp_5f_Hincl_13TeV_madgraph_pythia8/mschrode-KIT_tthbb_skims_MC_94X_LEG_2018-b9899da800e5578fdd124c7a0a5f7739/USER,102X_upgrade2018_realistic_v18,FALSE,MadGraph,NONE,2018
 THW_5f_Hincl_13TeV_madgraph_pythia8,/THW_5f_Hincl_13TeV_madgraph_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,1499997,0.999336823582,0.002879,1.92061087585e-06,/THW_5f_Hincl_13TeV_madgraph_pythia8/mschrode-KIT_tthbb_skims_MC_94X_LEG_2018-b9899da800e5578fdd124c7a0a5f7739/USER,102X_upgrade2018_realistic_v18,FALSE,MadGraph,NONE,2018
 ,,,,,,,,,,,
