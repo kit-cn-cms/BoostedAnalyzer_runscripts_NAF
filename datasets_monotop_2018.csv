@@ -1,4 +1,3 @@
-
 # cross sections from xsdb https://cms-gen-dev.cern.ch/xsdb
 # xs probably has to be scale by factor of 3 (3 neutrino generations)
 znunu_ht_100_200,/ZJetsToNuNu_HT-100To200_13TeV-madgraph/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,302.8
@@ -8,10 +7,10 @@ znunu_ht_600_800,/ZJetsToNuNu_HT-600To800_13TeV-madgraph/RunIIAutumn18MiniAOD-10
 znunu_ht_800_1200,/ZJetsToNuNu_HT-800To1200_13TeV-madgraph/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,1.49
 znunu_ht_1200_2500,/ZJetsToNuNu_HT-1200To2500_13TeV-madgraph/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,0.3419
 znunu_ht_2500_Inf,/ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,0.005146
-
+#
 # xs from https://twiki.cern.ch/twiki/bin/viewauth/CMS/SummaryTable1G25ns#DY_Z
 zll,/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,6225.42
-
+#
 # xs from https://twiki.cern.ch/twiki/bin/viewauth/CMS/StandardModelCrossSectionsat13TeV
 wlnu,/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM,61526.7
 # cross sections from xsdb https://cms-gen-dev.cern.ch/xsdb
@@ -23,12 +22,12 @@ wlnu_ht_600_800,/WJetsToLNu_HT-600To800_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIA
 wlnu_ht_800_1200,/WJetsToLNu_HT-800To1200_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,5.366
 wlnu_ht_1200_2500,/WJetsToLNu_HT-1200To2500_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,1.074
 wlnu_ht_2500_Inf,/WJetsToLNu_HT-2500ToInf_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,0.008001
-
+#
 # cross sections from https://twiki.cern.ch/twiki/bin/view/LHCPhysics/TtbarNNLO#Top_quark_pair_cross_sections_at with BR(W->had)=0.6741
-ttbar_sl,/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/*RunIIAutumn18*102X_upgrade2018_realistic_v15*/MINIAODSIM,365.46
-ttbar_dl,/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/*RunIIAutumn18*102X_upgrade2018_realistic_v15*/MINIAODSIM,88.34
-ttbar_fh,/TTToHadronic_TuneCP5_13TeV-powheg-pythia8/*RunIIAutumn18*102X_upgrade2018_realistic_v15*/MINIAODSIM,377.96
-
+ttbar_sl,/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,365.46
+ttbar_dl,/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,88.34
+ttbar_fh,/TTToHadronic_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,377.96
+#
 # cross sections from https://twiki.cern.ch/twiki/bin/view/LHCPhysics/SingleTopRefXsec#Predictions_at_7_8_13_and_14_TeV with BR(W->had)=0.6741
 singletop_s_had,/ST_s-channel_4f_hadronicDecays_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v1/MINIAODSIM,6.96
 singletop_s_lep,/ST_s-channel_4f_leptonDecays_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v4/MINIAODSIM,3.36
@@ -36,14 +35,14 @@ singletop_t_t,/ST_t-channel_top_4f_InclusiveDecays_TuneCP5_13TeV-powheg-madspin-
 singletop_t_tbar,/ST_t-channel_antitop_4f_InclusiveDecays_TuneCP5_13TeV-powheg-madspin-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,80.95
 singletop_tW_t,/ST_tW_top_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v1/MINIAODSIM,35.85
 singletop_tw_tbar,/ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v1/MINIAODSIM,35.85
-
+#
 # xs from https://arxiv.org/pdf/1408.5243.pdf
 ww,/WW_TuneCP5*_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v*/MINIAODSIM,118.70
 # xs from https://arxiv.org/pdf/1105.0020.pdf
 wz,/WZ_TuneCP5*_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v*/MINIAODSIM,46.74
 # xs from https://arxiv.org/pdf/1405.2219.pdf
 zz,/ZZ_TuneCP5_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM,16.91
-
+#
 # cross sections from https://twiki.cern.ch/twiki/bin/viewauth/CMS/SummaryTable1G25ns#QCD
 qcd_ht_50_100,/QCD_HT50to100_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,1.
 qcd_ht_100_200,/QCD_HT100to200_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,27990000
