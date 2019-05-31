@@ -9,13 +9,13 @@ ttbar_excl_DL_hDamp,/TTTo2L2Nu_hdamp*TuneCP5*13TeV-powheg-pythia8/*12Apr2018_94X
 ttbar_excl_FH,/TTToHadronic_TuneCP5*13TeV-powheg-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,377.96
 #,,
 #,,
-st_schan,/ST_s-channel_4f_leptonDecays_TuneCP5*13TeV-amcatnlo-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,3.7
+st_schan,/ST_s-channel_4f_leptonDecays_TuneCP5*13TeV-amcatnlo-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,3.36
 st_tchan,/ST_t-channel_top_4f_inclusiveDecays_TuneCP5*13TeV-powhegV2-madspin-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,136.02
 stbar_tchan,/ST_t-channel_antitop_4f_inclusiveDecays_TuneCP5*13TeV-powhegV2-madspin-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,80.95
 st_tWchan,/ST_tW_top_5f_inclusiveDecays_TuneCP5*13TeV-powheg-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,35.85
 stbar_tWchan,/ST_tW_antitop_5f_inclusiveDecays_TuneCP5*13TeV-powheg-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,35.85
 #,,
-WJets,WJetsToLNu_TuneCP5*13TeV-madgraphMLM-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,61526
+WJets,/WJetsToLNu_TuneCP5*13TeV-madgraphMLM-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,61526
 #,,
 Wjets-HT-70-100,/WJetsToLNu_HT-70To100_TuneCP5*13TeV-madgraphMLM-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,1319
 Wjets-HT-100-200,/WJetsToLNu_HT-100To200_TuneCP5*13TeV-madgraphMLM-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,1345
@@ -47,8 +47,9 @@ ttZ_hadr,/TTZToQQ_TuneCP5*13TeV-amcatnlo-pythia8/*12Apr2018_94X_mc2017_realistic
 ttZ_lept,/TTZToLLNuNu_M-10_TuneCP5*13TeV-amcatnlo-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,0.2529
 #,,
 WW,/WW_TuneCP5*13TeV-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,118.7
+# xs from https://arxiv.org/pdf/1405.2219.pdf,,
 WZ,/WZ_TuneCP5*13TeV-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,47.13
-ZZ,/ZZ_TuneCP5*13TeV-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,31.7338
+ZZ,/ZZ_TuneCP5*13TeV-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,16.91
 #,,
 ttbb,/ttbb_4FS_ckm_NNPDF31_TuneCP5_amcatnlo_madspin_pythia/_94X_mc2017_realistic_v14*/MINIAODSIM,1
 #,,
