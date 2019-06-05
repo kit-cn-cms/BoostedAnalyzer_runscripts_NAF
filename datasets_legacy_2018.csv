@@ -16,6 +16,7 @@ stbar_tchannel,/ST_t-channel_antitop_4f_InclusiveDecays_TuneCP5*/*Autumn18MiniAO
 st_tWchannel,/ST_tW_top_5f_inclusiveDecays_TuneCP5*/*Autumn18MiniAOD-102X*v15_ext1-v1/MINIAODSIM,35.85
 stbar_tWchannel,/ST_tW_antitop_5f_inclusiveDecays_TuneCP5*/*Autumn18MiniAOD-102X*v15_ext1-v1/MINIAODSIM,35.85
 #,,
+Wjets_inklusive_amc,/WJetsToLNu_*J_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15*-v1/MINIAODSIM,1
 Wjets_inklusive,/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD*/MINIAODSIM,61526
 #WJets_JetBinned,/WJetsToLNu_*J_TuneCP5*/*Autumn18MiniAOD-102X*v15-v1/MINIAODSIM,1
 #WJets_HTBinned,/WJetsToLNu_HT*To*TuneCP5*/*Autumn18MiniAOD-102X*v15-v1/MINIAODSIM,1
@@ -28,7 +29,8 @@ WJets_HT_800-1200,/WJetsToLNu_HT-800To1200*TuneCP5*/*Autumn18MiniAOD-102X*v15-v1
 WJets_HT_1200-2500,/WJetsToLNu_HT-1200To2500*TuneCP5*/*Autumn18MiniAOD-102X*v15-v1/MINIAODSIM,1.329
 WJets_HT_2500-inf,/WJetsToLNu_HT-2500ToInf*TuneCP5*/*Autumn18MiniAOD-102X*v15-v1/MINIAODSIM,0.03216
 #,,
-#DYJets_JetBinned,/DYJetsToLL_*J_TuneCP5*/*Autumn18MiniAOD-102X*v15-v1/MINIAODSIM,1
+DYJets_amc,/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15*-v1/MINIAODSIM,6529
+DYJets_JetBinned,/DYJetsToLL_*J*_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,1
 #DYJets_pTBinned,/DY*JetsToLL_M-50_LHEZpT_*-*_TuneCP5*/*Autumn18MiniAOD-102X*v15-v1/MINIAODSIM,1
 #DYJets_pT_50-150,/DY*JetsToLL_M-50_LHEZpT_50-150_TuneCP5*/*Autumn18MiniAOD-102X*v15-v1/MINIAODSIM,1
 #DYJets_pT_150-250,/DY*JetsToLL_M-50_LHEZpT_150-250_TuneCP5*/*Autumn18MiniAOD-102X*v15-v1/MINIAODSIM,1
