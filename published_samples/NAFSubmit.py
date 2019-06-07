@@ -67,13 +67,15 @@ run_as_owner = true
 RequestMemory = {memory}
 RequestDisk = {disk}
 +RequestRuntime = {runtime}
+JobBatchName = {batchname}
 """.format(
         arg = arrayScript,
         dir = logdir,
         memory = memory_,
         disk = disk_,
         runtime = runtime_,
-        name = name_)
+        name = name_,
+        batchname = name_.split("_Tune")[0])
     if use_proxy:
         code+="""
 environment = X509_USER_PROXY={proxy_dir}
@@ -199,7 +201,7 @@ if __name__ == "__main__":
     parser.add_option("-d","--disk",type="string",default="2000",dest="disk",metavar = "DISK",
         help = "Amount of disk space in MB which is requested for the machines")
     
-    parser.add_option("-r","--runtime",type="string",default="180",dest="runtime",metavar = "RUNTIME",
+    parser.add_option("-r","--runtime",type="string",default="720",dest="runtime",metavar = "RUNTIME",
         help = "Amount of runtime in minutes which is requested for the machines")
     
     parser.add_option("-u","--useproxy",action="store_true",default=False,dest="useproxy",metavar = "USEPROXY",
