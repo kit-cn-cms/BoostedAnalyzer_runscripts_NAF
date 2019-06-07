@@ -16,7 +16,10 @@ stbar_tchan,/ST_t-channel_antitop_4f_inclusiveDecays_TuneCP5*13TeV-powhegV2-mads
 st_tWchan,/ST_tW_top_5f_inclusiveDecays_TuneCP5*13TeV-powheg-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,35.85
 stbar_tWchan,/ST_tW_antitop_5f_inclusiveDecays_TuneCP5*13TeV-powheg-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,35.85
 #,,
-WJets_amc,/WJetsToLNu*amcatnloFXFX-pythia8/RunIIFall17MiniAODv2-PU2017*/MINIAODSIM,1
+Wjets_amc_0J,/WJetsToLNu_0J*amcatnloFXFX-pythia8/RunIIFall17MiniAODv2-PU2017*/MINIAODSIM,50131.98
+Wjets_amc_1J,/WJetsToLNu_1J*amcatnloFXFX-pythia8/RunIIFall17MiniAODv2-PU2017*/MINIAODSIM,8426.09
+Wjets_amc_2J,/WJetsToLNu_2J*amcatnloFXFX-pythia8/RunIIFall17MiniAODv2-PU2017*/MINIAODSIM,3172.96
+,,
 WJets_madgraph,/WJetsToLNu_TuneCP5*13TeV-madgraphMLM-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,61526
 #,,
 #Wjets-HT-70-100,/WJetsToLNu_HT-70To100_TuneCP5*13TeV-madgraphMLM-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,1319
@@ -28,7 +31,10 @@ WJets_madgraph,/WJetsToLNu_TuneCP5*13TeV-madgraphMLM-pythia8/*12Apr2018_94X_mc20
 #Wjets-HT-1200-2500,/WJetsToLNu_HT-1200To2500_TuneCP5*13TeV-madgraphMLM-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,1.329
 #Wjets-HT-2500-Inf,/WJetsToLNu_HT-2500ToInf_TuneCP5*13TeV-madgraphMLM-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,0.03216
 #,,
-ZJets_amc_JetBinned,/DYJetsToLL_*J_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14*-v1/MINIAODSIM,1
+ZJets_amc_0J,/DYJetsToLL_0J_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14*-v1/MINIAODSIM,4620.52
+ZJets_amc_1J,/DYJetsToLL_1J_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14*-v1/MINIAODSIM,859.59
+ZJets_amc_2J,/DYJetsToLL_2J_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14*-v1/MINIAODSIM,338.26
+,,
 ZJets_amc,/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14*-v1/MINIAODSIM,6529
 #Zjets_m4to50-HT-70-100,/DYJetsToLL_M-4to50_HT-70to100_TuneCP5*13TeV-madgraphMLM-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,301.2
 #Zjets_m4to50-HT-100-200,/DYJetsToLL_M-4to50_HT-100to200_TuneCP5*13TeV-madgraphMLM-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,224.2
