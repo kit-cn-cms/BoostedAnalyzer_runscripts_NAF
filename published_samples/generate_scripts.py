@@ -297,7 +297,7 @@ for row in reader:
         weight=row['weight']
     else:
         weight='1'
-    if name=='': continue
+    if name=='' or name.startswith("#"): continue
     print 'creating jobs for', name
     jobconfig={}
     jobconfig['weight']=weight
