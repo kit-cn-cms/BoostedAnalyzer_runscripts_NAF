@@ -9,7 +9,7 @@ import time
 import optparse
 
 
-def submitToBatch(workdir, list_of_shells, memory_, disk_, runtime_, use_proxy, proxy_dir_, name_ ):
+def submitToBatch(workdir, list_of_shells, memory_ = "1000", disk_ = "1000000", runtime_ = "43200", use_proxy = False, proxy_dir_ = "", name_ = ""):
     ''' submit the list of shell script to the NAF batch system '''
 
     if name_!="":
