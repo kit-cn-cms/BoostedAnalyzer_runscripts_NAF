@@ -29,8 +29,8 @@ def checkROOTFiles(path=""):
             nevents=tree.GetEntries()
             rf.Close()
             if nevents<=0:
-	isGOOD="EMPTY"
-	print "EMPTY        ", path
+	            isGOOD="EMPTY"
+	            print "EMPTY        ", path
     if rf!=None:
         rf.Close()
     return isGOOD
@@ -74,20 +74,16 @@ undoneList=[]
 doneList=[]
 qstatjobslist=[]
 ListOfAllEmptyTrees=[]
-#tempfile=open("tempqstatfile.txt","w")
-#cmd="qstat -xml"
-#subprocess.call([cmd],shell=True,stdout=tempfile)
-#tempfile.close()
-#tree=ET.parse("tempqstatfile.txt")
-#root=tree.getroot()
-#for j in root[0]:
-#    #print j[0].text
-#    qstatjobslist.append(j[2].text)
-#print qstatjobslist
-#exit(0)
 ntuplesToDelete=[]
 
-for fi in infiles:
+nfilestoCheck = len(infiles)
+print("*")*30
+print("Checking {} logfiles".format(nfilestoCheck))
+print("*")*30
+
+for i,fi in enumerate(infiles):
+    if i % 50 == 0:
+        print("Checking file # {} of {}".format(i,nfilestoCheck))
     ignoreJob=False
     for v in vetolist:
         if v in fi:
@@ -165,11 +161,11 @@ for fi in infiles:
         for ntf in ntupleNames:
 #            print ntf
             if checkROOTFiles(ntf)==False:
-	allNTuplesAreGood=False
+                allNTuplesAreGood=False
                 problematicTrees+=ntupleNames
                 break
             elif checkROOTFiles(ntf)=="EMPTY":
-	emptyTrees.append(ntf)
+	            emptyTrees.append(ntf)
         if allNTuplesAreGood==False:
             undoneList.append(propername)
             ntuplesToDelete+=problematicTrees
