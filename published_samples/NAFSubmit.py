@@ -7,6 +7,7 @@ import stat
 import re
 import time
 import optparse
+import sys
 
 
 def submitToBatch(workdir, list_of_shells, memory_ = "1000", disk_ = "1000000", runtime_ = "43200", use_proxy = False, proxy_dir_ = "", name_ = ""):
@@ -185,6 +186,9 @@ if __name__ == "__main__":
     parser = optparse.OptionParser(usage="%prog [options] files")
     parser.add_option("-f","--folder", dest = "folder", default = None, metavar = "FOLDER",
         help = "Specify relative path to a folder from which all files are to be submitted.")
+
+    parser.add_option("--file", dest = "file", default = None, metavar = "FILE",
+        help = "Specify a .txt. file containing the paths to scripts.")
     
     parser.add_option("-p","--pattern", dest = "pattern", default = None, metavar = "'PATTERN'",
         help = "Specify a pattern to match files in FOLDER, e.g. '_test'.")
@@ -222,6 +226,9 @@ if __name__ == "__main__":
     if opts.folder:
         filepath = opts.folder+"/*.sh"
         submit_files = glob.glob(filepath)
+    if opts.file:
+        with open(opts.file) as f:
+            submit_files = list(f)
     else:
         submit_files = [f for f in args if f.endswith(".sh")]
 
