@@ -91,10 +91,6 @@ for i,fi in enumerate(infiles):
     if ignoreJob:
         print "ignoring (perhaps still running): ", fi
         continue
-    propername=fi.replace(indir+"/","").split(".o")[0]
-#    if propername in qstatjobslist and ignoreQstat==False:
-#        print "job ist still running ", propername
-#        continue
     
     # If the jobs are not still running we check the log files for several things
     # check stdout file 
@@ -112,8 +108,6 @@ for i,fi in enumerate(infiles):
             #break
         if "creating tree writer" in l:
             ntupleNames.append(l.rsplit(" ")[-1].replace("\n","")+"_Tree.root")
-        if l.startswith("./"):
-            shellscriptPath=l.replace("./","").replace("\n","")
     if ifl:            
         propername = (ifl[0].replace("starting dir:","")+"/"+ifl[1]).lstrip().replace('\n', '')
     else:
@@ -132,10 +126,7 @@ for i,fi in enumerate(infiles):
     efi.close()
     anyProblem = diskQuotaProblem or segmentationViolation
     if treeWasWritten==False or anyProblem==True:
-        if shellscriptPath!="":
-            undoneList.append(shellscriptPath)
-        else:
-            undoneList.append(propername)
+        undoneList.append(propername)
         ntuplesToDelete+=ntupleNames
         errorcodes=[]
         if segmentationViolation:
@@ -174,6 +165,7 @@ for i,fi in enumerate(infiles):
         ntuplesToDelete+=emptyTrees
     if deleteTheNTuples:
         for ntf in ntuplesToDelete:
+            print("removing {}").format(ntf)
             if os.path.exists(ntf):
                 os.remove(ntf) 
         ntuplesToDelete=[]
