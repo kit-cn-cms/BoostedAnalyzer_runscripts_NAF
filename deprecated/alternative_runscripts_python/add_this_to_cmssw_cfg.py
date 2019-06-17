@@ -1,0 +1,13 @@
+filenamestring=os.environ.get("FILENAMES")
+if filenamestring != None:
+    filenames=filenamestring.split(' ')
+if os.environ.get("OUTFILENAME") != None:
+    outfilename=os.environ.get("OUTFILENAME")
+if os.environ.get("XS") != None:
+    xs=os.environ.get("XS")
+if os.environ.get("MCEVENTS") != None:
+    mcevents=os.environ.get("MCEVENTS")
+if os.environ.get("SKIPEVENTS") != None:
+    skip=os.environ.get("SKIPEVENTS")
+if os.environ.get("MAXEVENTS") != None:
+    maxevents=os.environ.get("MAXEVENTS")

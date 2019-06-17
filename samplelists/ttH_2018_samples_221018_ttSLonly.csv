@@ -1,0 +1,5 @@
+name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,isData,generator,additionalSelection,run
+,,,,,,,,,,,
+TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_new_pmx,/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v1/MINIAODSIM,43732445,301.062559276,365.46,2.77574356775E-05,/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/mwassmer-KIT_tthbb_sl_skims_MC_new_pmx_94X-89d803256191092beb2b5f9476740fe1/USER,94X_mc2017_realistic_v14,FALSE,POWHEG,NONE,
+TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_v2,/TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2/MINIAODSIM,110085096,300.770043012,365.46,1.10376532495E-05,/TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8/mwassmer-KIT_tthbb_sl_skims_MC_v2_94X-89d803256191092beb2b5f9476740fe1/USER,94X_mc2017_realistic_v14,FALSE,POWHEG,NONE,
+,,,,,,,,,,,

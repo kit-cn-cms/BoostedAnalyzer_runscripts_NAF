@@ -1,0 +1,13 @@
+name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,isData,generator,additionalSelection,run
+,,,,,,,,,,,
+ttHTobb_M125_TuneCP5_13TeV-powheg-pythia8,/ttHTobb_M125_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v3/MINIAODSIM,11835999,0.527530776222,0.2953,4.72945094976e-05,,102X_upgrade2018_realistic_v18,FALSE,POWHEG,NONE,2018
+,,,,,,,,,,,
+ttHToNonbb_M125_TuneCP5_13TeV-powheg-pythia8_v2,/ttHToNonbb_M125_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM,7525991,0.52687804476,0.2118,5.3413638084e-05,,102X_upgrade2018_realistic_v18,FALSE,POWHEG,NONE,2018
+,,,,,,,,,,,
+TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8,/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,101550000,300.745639286,365.46,1.19663191947e-05,,102X_upgrade2018_realistic_v18,FALSE,POWHEG,NONE,2018
+,,,,,,,,,,,
+TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8,/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,64310000,72.061443662,88.34,1.90623275109e-05,,102X_upgrade2018_realistic_v18,FALSE,POWHEG,NONE,2018
+,,,,,,,,,,,
+TTToHadronic_TuneCP5_13TeV-powheg-pythia8,/TTToHadronic_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,133808000,313.52465,377.96,9.00932116952e-06,,102X_upgrade2018_realistic_v18,FALSE,POWHEG,NONE,2018
+,,,,,,,,,,,
+TTZToBB_TuneCP5_13TeV-amcatnlo-pythia8,/TTZToBB_TuneCP5_13TeV-amcatnlo-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,9782000,0.112065666118,0.106,9.66953589372e-05,,102X_upgrade2018_realistic_v18,FALSE,aMC,NONE,2018

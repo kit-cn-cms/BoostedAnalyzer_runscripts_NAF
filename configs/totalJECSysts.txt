@@ -1,0 +1,4 @@
+# total JEC and JER uncertainties
+JES
+JER
+
