@@ -226,7 +226,7 @@ if __name__ == "__main__":
     if opts.folder:
         filepath = opts.folder+"/*.sh"
         submit_files = glob.glob(filepath)
-    if opts.file:
+    elif opts.file:
         with open(opts.file) as f:
             submit_files = list(f)
     else:
