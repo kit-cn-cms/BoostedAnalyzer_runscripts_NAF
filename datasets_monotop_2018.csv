@@ -11,10 +11,13 @@ znunu_ht_2500_Inf,/ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph/*unIIAutumn18MiniAOD-
 # xs from https://twiki.cern.ch/twiki/bin/viewauth/CMS/SummaryTable1G25ns#DY_Z
 zll,/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,6225.42
 zll,/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,6225.42
+# xs from https://indico.cern.ch/event/673253/contributions/2756806/attachments/1541203/2416962/20171016_VJetsXsecsUpdate_PH-GEN.pdf (slide 13)
+zll_0J,/DYJetsToLL_0J_TuneCP5_13TeV-amcatnloFXFX-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,4620.52
+zll_1J,/DYJetsToLL_1J_TuneCP5_13TeV-amcatnloFXFX-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,859.59
+zll_2J,/DYJetsToLL_2J_TuneCP5_13TeV-amcatnloFXFX-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,338.26
 #
 # xs from https://twiki.cern.ch/twiki/bin/viewauth/CMS/StandardModelCrossSectionsat13TeV
 wlnu,/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM,61526.7
-#
 # xs from https://indico.cern.ch/event/673253/contributions/2756806/attachments/1541203/2416962/20171016_VJetsXsecsUpdate_PH-GEN.pdf (slide 13)
 wlnu_0J,/WJetsToLNu_0J_TuneCP5_13TeV-amcatnloFXFX-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,50131.98
 wlnu_1J,/WJetsToLNu_1J_TuneCP5_13TeV-amcatnloFXFX-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,8426.09
