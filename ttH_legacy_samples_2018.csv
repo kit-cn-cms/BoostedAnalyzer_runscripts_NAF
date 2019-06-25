@@ -44,7 +44,7 @@ DYJetsToLL_0J_TuneCP5_13TeV-amcatnloFXFX-pythia8,/DYJetsToLL_0J_TuneCP5_13TeV-am
 DYJetsToLL_1J_TuneCP5_13TeV-amcatnloFXFX-pythia8,/DYJetsToLL_1J_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,96753082,4688.67301999,859.59,1.89485769443E-06,/DYJetsToLL_1J_TuneCP5_13TeV-amcatnloFXFX-pythia8/swieland-KIT_tthbb_sl_skims_MC_102X_LEG_2018-b9899da800e5578fdd124c7a0a5f7739/USER,94X_mc2017_realistic_v17,FALSE,aMC,NONE,2018,
 DYJetsToLL_2J_TuneCP5_13TeV-amcatnloFXFX-pythia8,/DYJetsToLL_2J_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,61848731,2617.76479371,338.26,2.0892443129E-06,/DYJetsToLL_2J_TuneCP5_13TeV-amcatnloFXFX-pythia8/swieland-KIT_tthbb_sl_skims_MC_102X_LEG_2018-b9899da800e5578fdd124c7a0a5f7739/USER,94X_mc2017_realistic_v17,FALSE,aMC,NONE,2018,
 ,,,,,,,,,,,,
-DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8,/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,997561,17864.0648727,6529,0.0003663759179,,94X_mc2017_realistic_v17,FALSE,aMC,NONE,2018,
+,,,,,,,,,,,,
 ,,,,,,,,,,,,
 ,,,,,,,,,,,,
 TTWJetsToQQ_TuneCP5_13TeV-amcatnloFXFX-madspin-pythia8,/TTWJetsToQQ_TuneCP5_13TeV-amcatnloFXFX-madspin-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,835296,0.692279999136,0.4062,0.000702453746142,/TTWJetsToQQ_TuneCP5_13TeV-amcatnloFXFX-madspin-pythia8/mschrode-KIT_tthbb_skims_MC_94X_LEG_2018-b9899da800e5578fdd124c7a0a5f7739/USER,102X_upgrade2018_realistic_v18,FALSE,aMC,NONE,2018,
