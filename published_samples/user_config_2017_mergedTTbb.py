@@ -1,0 +1,12 @@
+outpath='/nfs/dust/cms/user/swieland/test' # path of output of analyzer
+scriptpath='mergedTTbb_2017' # folder containing shell scripts that will have to be run on cluster
+samplelist='../auto_samples_datasets_mergedttbb.csv' # samples list
+dataset_column='boosted_dataset' # run on the column with dataset or boosted_dataset?
+cmsswcfgpath='/nfs/dust/cms/user/swieland/ttH_legacy/devel/mergedTTbb/CMSSW_9_4_10/src/BoostedTTH/BoostedAnalyzer/test/boostedAnalysis_ntuples-ICHEP18_cg.py'
+cmsswpath='/nfs/dust/cms/user/swieland/ttH_legacy/devel/mergedTTbb/CMSSW_9_4_10/'
+dbs="prod/phys03" # dbs instance: boosted miniaod is in prod/phys03, standard miniaod in prod/global
+min_events_per_job=100000 # min number of events per job 
+isBoostedMiniAOD=False # do the inputs contain fat jets?
+systematicVariations='systematicVariations.txt'
+nSystematicVariationsPerJob=3
+ProduceMemNtuples=False
