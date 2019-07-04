@@ -205,7 +205,7 @@ if __name__ == "__main__":
     parser.add_option("-d","--disk",type="string",default="2000",dest="disk",metavar = "DISK",
         help = "Amount of disk space in MB which is requested for the machines")
     
-    parser.add_option("-r","--runtime",type="string",default="720",dest="runtime",metavar = "RUNTIME",
+    parser.add_option("-r","--runtime",type="string",default="1440",dest="runtime",metavar = "RUNTIME",
         help = "Amount of runtime in minutes which is requested for the machines")
     
     parser.add_option("-u","--useproxy",action="store_true",default=False,dest="useproxy",metavar = "USEPROXY",
@@ -226,7 +226,7 @@ if __name__ == "__main__":
     if opts.folder:
         filepath = opts.folder+"/*.sh"
         submit_files = glob.glob(filepath)
-    if opts.file:
+    elif opts.file:
         with open(opts.file) as f:
             submit_files = list(f)
     else:
