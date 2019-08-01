@@ -64,6 +64,7 @@ for iarg,arg in enumerate(arguments):
     noCheckROOTFiles=True
 
 
+print "globbing files"
 infiles=[]
 if not ".out" in indir:
   infiles=glob.glob(indir+"/*.out")
@@ -87,7 +88,13 @@ ListOfAllEmptyTrees=[]
 #exit(0)
 ntuplesToDelete=[]
 
+print "starting scan"
+loopCounter=0
+totalLength=len(infiles)
 for fi in infiles:
+  loopCounter+=1
+  if loopCounter%100==0:
+    print "at ", loopCounter, "of", totalLength
   ignoreJob=False
   for v in vetolist:
     if v in fi:

@@ -1,0 +1,6 @@
+name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,isData,generator,additionalSelection,run
+,,,,,,,,,,,
+ttHTobb_M125_TuneCP5_13TeV-powheg-pythia8_new_pmx,/ttHTobb_M125_TuneCP5_13TeV-powheg-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v1/MINIAODSIM,8000000,0.5271956726,0.2953,7.00166976289E-05,/pnfs/desy.de/cms/tier2/store/user/mwassmer/ttHTobb_M125_TuneCP5_13TeV-powheg-pythia8/KIT_tthbb_sl_skims_MC_new_pmx_94X/181019_155115/0000,94X_mc2017_realistic_v17,FALSE,POWHEG,NONE,
+,,,,,,,,,,,
+ttHToNonbb_M125_TuneCP5_13TeV-powheg-pythia8_new_pmx,/ttHToNonbb_M125_TuneCP5_13TeV-powheg-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v1/MINIAODSIM,7966779,0.5634446667,0.2118,4.71836912581E-05,/pnfs/desy.de/cms/tier2/store/user/mwassmer/ttHToNonbb_M125_TuneCP5_13TeV-powheg-pythia8/KIT_tthbb_sl_skims_MC_new_pmx_94X/181020_135500/0000,94X_mc2017_realistic_v17,FALSE,POWHEG,NONE,
+,,,,,,,,,,,
