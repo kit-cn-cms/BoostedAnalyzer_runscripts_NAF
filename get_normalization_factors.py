@@ -5,115 +5,85 @@ import glob
 import os
 import csv
 
-directory="/nfs/dust/cms/user/mwassmer/ntuples/weights/"
-samples=glob.glob(directory+"*")
-#print samples
-files=[]
-for sample in samples:
-    files.append(glob.glob(sample+"/*.root"))
-    
-############################################################    
-sample_dict={}
-with open('auto_samples_complete.csv', 'rb') as f:
+directory = "/nfs/dust/cms/user/kelmorab/ttH_2018/ntuples_v5/"
+samples = glob.glob(directory + "TT*")
+print (samples)
+files = []
+for i in range(len(samples)):
+    files.append(glob.glob(samples[i] + "/*nominal*.root"))
+
+############################################################
+sample_dict = {}
+with open("ttH_2018_samples_221018.csv", "rb") as f:
     reader = csv.reader(f)
     for row in reader:
-        sample_dict[row[0]]=row[1]
-    
+        sample_dict[row[0]] = row[1]
+
 ############################################################
-    
-#print files
-fobj_out=open("rate_factors_final/rate_factors.csv","w")
-fobj_out.write('name,weight,factor'+'\n')
+
+# print(files)
+fobj_out = open("rate_factors_final/rate_factors.csv", "w")
+fobj_out.write("name,weight,factor" + "\n")
+
+file_ = ROOT.TChain("MVATree", "MVATree")
+
+branches = [
+    "Weight_scale_variation_muR_1p0_muF_1p0",
+    "Weight_scale_variation_muR_2p0_muF_1p0",
+    "Weight_scale_variation_muR_0p5_muF_1p0",
+    "Weight_scale_variation_muR_1p0_muF_2p0",
+    "Weight_scale_variation_muR_1p0_muF_0p5",
+    "Weight_LHA_306000_nominal",
+    "Weight_LHA_306000_up",
+    "Weight_LHA_306000_down",
+]
 
 for i in range(len(samples)):
-    sample=samples[i].replace(directory,"")
-    if len(files[i])<2:
-    	continue
-    print sample
-    if not os.path.isdir("rate_factors_final/"+sample):
-        os.mkdir("rate_factors_final/"+sample)
-    file_=ROOT.TChain("MVATree","MVATree")
+    sample = samples[i].replace(directory, "")
+    if len(files[i]) < 2:
+        continue
+    print (sample)
+    if not os.path.isdir("rate_factors_final/" + sample):
+        os.mkdir("rate_factors_final/" + sample)
     for k in range(len(files[i])):
         file_.Add(files[i][k])
-    print file_.GetEntries()
-    if file_.GetEntries()<50000:
-    	print "not enough events in tree"
-    	continue
-    #file_.Draw("Weight_CSV")
-    
-    for branch in file_.GetListOfBranches():
-        branch_name=branch.GetName()
-        print branch_name
-        if branch_name.find("Weight")==-1:
-            continue
-        elif branch_name.find("CSV")!=-1:
-            continue
-        elif branch_name.find("Electron")!=-1:
-            continue
-        elif branch_name.find("Muon")!=-1:
-            continue
-        elif branch_name.find("Top")!=-1:
-            continue
-        elif branch_name.find("PU")!=-1:
-            continue
-        elif branch_name.find("pu")!=-1:
-            continue
-        elif branch_name.find("hdamp")!=-1:
-            continue
-        elif branch_name.find("Lepton")!=-1:
-            continue
-        elif branch_name.find("XS")!=-1:
-            continue
-        elif branch_name=="Weight":
-            continue
-        canvas=ROOT.TCanvas()
-        file_.DrawClone(branch_name+">>"+sample+branch_name+"(30,0,3)")
-        test = ROOT.gROOT.FindObject(sample+branch_name)
-        try:
-            if test.GetMean()>0.:
-                factor = 1./test.GetMean()
-            else: 
-                factor = 1.
-        except AttributeError:
-            continue
-        fobj_out.write('"'+str(sample_dict[sample])+'"'+","+str(branch_name)+","+str(factor)+'\n')
-        #print 1./test.GetMean()
-        canvas.Print("rate_factors_final/"+sample+"/"+branch_name+".pdf")
-        del canvas
-    del file_
-    
+    print (file_.GetEntries())
+    if file_.GetEntries() < 50000:
+        print ("not enough events in tree")
+        file_.Reset()
+        continue
+    # file_.Draw("Weight_CSV")
+    # file_.GetListOfBranches().Print()
+    for branch in branches:
+        branch_name = branch
+        print (branch_name)
+        if branch_name.find("muR") != -1 or branch_name.find("muF") != -1 or branch_name.find("LHA_306000") != -1:
+            # canvas=ROOT.TCanvas()
+            print ("!!!!!!!!!", branch_name, "!!!!!!!!!!")
+            file_.Draw(
+                "1." + ">>" + sample + branch_name + "(1,0,2)",
+                "Weight_XS*Weight_GEN_nom*" + branch_name + "*(" + branch_name + ">0.)" + "*(" + branch_name + "<2.)",
+                "goff",
+            )
+            file_.Draw(
+                "1." + ">>" + sample + branch_name + "nom" + "(1,0,2)",
+                "Weight_XS*Weight_GEN_nom" + "*(" + branch_name + ">0.)" + "*(" + branch_name + "<2.)",
+                "goff",
+            )
+            test_var = ROOT.gDirectory.Get(sample + branch_name)
+            test_nom = ROOT.gDirectory.Get(sample + branch_name + "nom")
+            try:
+                if test_nom.Integral() > 0.0 and test_var.Integral():
+                    factor = test_nom.Integral() / test_var.Integral()
+                    # print(factor)
+                else:
+                    factor = 1.0
+            except AttributeError:
+                factor = 1.0
+            fobj_out.write('"' + str(sample_dict[sample]) + '"' + "," + str(branch_name) + "," + str(factor) + "\n")
+        # print(1./test.GetMean())
+        # canvas.Print("rate_factors_final/"+sample+"/"+branch_name+".pdf")
+        # del canvas
+    file_.Reset()
+
 fobj_out.close
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"""
-    for branch in file_.GetListOfBranches():
-        branch_name=branch.GetName()
-	print branch_name
-        if branch_name.find("Weight")==-1:
-            continue
-        #canvas=ROOT.TCanvas()
-        file_.Draw(branch_name+">>"+sample+branch_name+"(30,0,3)","","")
-        test = ROOT.gROOT.FindObject(sample+branch_name)
-        #print branch_name,test.GetMean()
-        canvas.Print("rate_factors/"+sample+"/"+branch_name+".pdf")
-"""
