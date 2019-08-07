@@ -71,12 +71,12 @@ doublemuon_Run2018D,/DoubleMuon/*un2018D-PromptReco-v2/MINIAOD,1.
 egamma_Run2018A,/EGamma/*un2018A-17Sep2018-v2/MINIAOD,1.
 egamma_Run2018B,/EGamma/*un2018B-17Sep2018-v1/MINIAOD,1.
 egamma_Run2018C,/EGamma/*un2018C-17Sep2018-v1/MINIAOD,1.
-egamma_Run2018D,/EGamma/*un2018D-PromptReco-v2/MINIAOD,1.
+egamma_Run2018D,/EGamma/*un2018D-22Jan2019-v2/MINIAOD,1.
 #
 singlemuon_Run2018A,/SingleMuon/*un2018A-17Sep2018-v2/MINIAOD,1.
 singlemuon_Run2018B,/SingleMuon/*un2018B-17Sep2018-v1/MINIAOD,1.
 singlemuon_Run2018C,/SingleMuon/*un2018C-17Sep2018-v1/MINIAOD,1.
-singlemuon_Run2018D,/SingleMuon/*un2018D-PromptReco-v2/MINIAOD,1.
+singlemuon_Run2018D,/SingleMuon/*un2018D-22Jan2019-v2/MINIAOD,1.
 #
 met_Run2018A,/MET/*un2018A-17Sep2018-v1/MINIAOD,1.
 met_Run2018B,/MET/*un2018B-17Sep2018-v1/MINIAOD,1.
