@@ -3,7 +3,7 @@ ttHnonbb,/ttHToNonbb_M125_TuneCP5*13TeV-powheg-pythia8/*12Apr2018_94X_mc2017_rea
 ttHbb_ttToSemi,/ttHTobb_ttToSemiLep_M125_TuneCP5_13TeV-powheg-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14*-v1/MINIAODSIM,0.1297
 ttHbb_ttTo2L2Nu,/ttHTobb_ttTo2L2Nu_M125_TuneCP5_13TeV-powheg-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14*-v1/MINIAODSIM,0.0313
 #,,
-ttbar_excl_SL,/TTToSemiLeptonic*_TuneCP5*13TeV-powheg-pythia8/*12Apr2018*/MINIAODSIM,365.46
+ttbar_excl_SL,/TTToSemiLeptonic_TuneCP5*13TeV-powheg-pythia8/*12Apr2018*/MINIAODSIM,365.46
 ttbar_excl_SL_hDamp,/TTToSemiLeptonic_hdamp*_TuneCP5*13TeV-powheg-pythia8/*12Apr2018*/MINIAODSIM,365.46
 ttbar_excl_DL,/TTTo2L2Nu_*TuneCP5*13TeV-powheg-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,88.34
 ttbar_excl_DL_hDamp,/TTTo2L2Nu_hdamp*TuneCP5*13TeV-powheg-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,88.34
@@ -27,19 +27,19 @@ ZJets_amc_1J,/DYJetsToLL_1J_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIFall17MiniAO
 ZJets_amc_2J,/DYJetsToLL_2J_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14*-v1/MINIAODSIM,338.26
 #,,
 #,,
-ttW_hadr,/TTWJetsToQQ_TuneCP5*13TeV-amcatnloFXFX-madspin-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,0.4062
-ttW_lept,/TTWJetsToLNu_TuneCP5*13TeV-amcatnloFXFX-madspin-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,0.2043
-ttZ_hadr,/TTZToQQ_TuneCP5*13TeV-amcatnlo-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,0.5297
-ttZ_lept,/TTZToLLNuNu_M-10_TuneCP5*13TeV-amcatnlo-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,0.2529
+ttW_hadr,/TTWJetsToQQ_TuneCP5*13TeV-amcatnloFXFX-madspin-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,0.3708
+ttW_lept,/TTWJetsToLNu_TuneCP5*13TeV-amcatnloFXFX-madspin-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,0.1792
+ttZ_hadr,/TTZToQQ_TuneCP5*13TeV-amcatnlo-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,0.6012
+ttZ_lept,/TTZToLLNuNu_M-10_TuneCP5*13TeV-amcatnlo-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,0.2589
 #,,
 WW,/WW_TuneCP5*13TeV-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,118.7
 # xs from https://arxiv.org/pdf/1405.2219.pdf,,
-WZ,/WZ_TuneCP5*13TeV-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,47.13
-ZZ,/ZZ_TuneCP5*13TeV-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,16.91
+WZ,/WZ_TuneCP5*13TeV-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,65.5443
+ZZ,/ZZ_TuneCP5*13TeV-pythia8/*12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,15.8274
 #,,
 ttbb,/ttbb_4FS_ckm_NNPDF31_TuneCP5_amcatnlo_madspin_pythia/_94X_mc2017_realistic_v14*/MINIAODSIM,1
 #,,
-thw,/THW*Hincl_13TeV*/RunIIFall17MiniAODv2*/MINIAODSIM,0.002879
+thw,/THW*Hincl_13TeV*/RunIIFall17MiniAODv2*/MINIAODSIM,0.01517
 thq,/THQ*Hincl_13TeV*/RunIIFall17MiniAODv2*/MINIAODSIM,0.07425
 #,,
 SingleElectronB,/SingleElectron/Run2017B*31Mar2018*/MINIAOD,1
