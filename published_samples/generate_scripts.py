@@ -15,6 +15,17 @@ import ROOT
 ssl._create_default_https_context = ssl._create_unverified_context
 #das_client=imp.load_source("das_client", "/cvmfs/cms.cern.ch/slc6_amd64_gcc530/cms/das_client/v02.17.04/bin/das_client.py")
 import Utilities.General.cmssw_das_client as das_client
+import time
+import timeout_decorator
+from concurrent.futures import TimeoutError
+
+@timeout_decorator.timeout(30,use_signals=False)
+def get_n_events(root_file, tree_name):
+    f=ROOT.TFile.Open(root_file)
+    t=f.Get(tree_name)
+    n_events = t.GetEntries()
+    f.Close()
+    return n_events
 
 
 def get_metainfo(path,nevents_in_job,jobconfig):
@@ -147,7 +158,7 @@ def get_dataset_files(dataset):
     events_in_files=[]
     is_dataset_string = True
     for dataset in datasets:
-        if "pnfs" in dataset:
+        if "nfs" in dataset:
             is_dataset_string = False
             break
     
@@ -163,16 +174,6 @@ def get_dataset_files(dataset):
                     for d in data['data']:
                         for f in d['file']:
                             if not 'nevents' in f: continue
-                            # hack to avoid problem with new_pmx samples and same child dataset name ...
-                            if "ttHTobb" in f['name'] and "180617_091548" in f['name']:
-                                print "skipping ttHTobb new pmx file"
-                                continue
-                            if "ST_t-channel" in f['name'] and "180618_081310" in f['name']:
-                                print "skipping single top new_pmx file"
-                                continue
-                            if "SingleMuon" in f['name'] and "Run2017C" in f['name'] and "180617_220957" in f['name']:
-                                print "skiping single muon files from job which was killed"
-                                continue
                             ###
                             files.append(store_prefix+f['name'])
                             events_in_files.append(f['nevents'])
@@ -183,21 +184,27 @@ def get_dataset_files(dataset):
         store_prefix = "file:"
         for dataset in datasets:
             directory = dataset
-            print directory+"/Skim_*.root"
-            files+=glob.glob(directory+"/Skim_*.root")
+            print directory+"/*.root"
+            files+=glob.glob(directory+"/*.root")
         
         nfiles=len(files)
-        chain=ROOT.TChain("Events","Events")
-        nevents_tmp=0
+        files_without_prefix=[]
         for f in files:
             print f
-            chain.Add(f)
-            events_in_files.append(chain.GetEntries()-nevents_tmp)
-            nevents_tmp=chain.GetEntries()
-        nevents=chain.GetEntries()
+            n_events = 0
+            try:
+                n_events = get_n_events(f,"Events")
+            except TimeoutError:
+                continue
+            except timeout_decorator.timeout_decorator.TimeoutError:
+                print f," could not be included"
+                continue
+            events_in_files.append(n_events)
+            files_without_prefix.append(f)
+        
+        nevents=sum(events_in_files)
     
         #adding missing store_prefix
-        files_without_prefix=files
         files=[]
         for f in files_without_prefix:
             files.append(store_prefix+f)
@@ -231,96 +238,99 @@ def create_jobs(name,dataset,jobconfig):
 
 #-------------------------------    
 #import user_config
-if len(sys.argv) > 1:
-    cfgname=sys.argv[1]
-    assert cfgname[-3:]=='.py'
-    user_config=__import__(cfgname[:-3])
-else:
-    print 'usage: ./generate_scripts.py user_config.py'
-   
-    
-
-print 'outpath',user_config.outpath
-print 'scriptpath',user_config.scriptpath
-print 'cmsswcfgpath',user_config.cmsswcfgpath
-print 'cmsswpath',user_config.cmsswpath
-print 'samplelist',user_config.samplelist
-print 'systematicVariations',user_config.systematicVariations
-
-# check paths
-current_scriptpath=user_config.scriptpath
-if not os.path.exists(current_scriptpath):
-    os.makedirs(current_scriptpath)
-else:
-    current_scriptpath+=datetime.datetime.now().strftime("%Y%m%d%H%M%S")
-    os.makedirs(current_scriptpath)
-    
-if not os.path.exists(user_config.outpath):
-    os.makedirs(user_config.outpath)
-if not os.path.exists(user_config.outpath):
-    print 'COULD NOT CREATE OUTPATH!'
-    print user_config.outpath
-    sys.exit()
-if not os.path.exists(current_scriptpath):
-    print 'COULD NOT CREATE SCRIPTPATH!'
-    print current_scriptpath
-    sys.exit()
-if not os.path.exists(user_config.cmsswpath):
-    print 'WRONG CMSSW PATH!'
-    print user_config.cmsswpath
-    sys.exit()
-if not os.path.exists(user_config.cmsswcfgpath):
-    print 'WRONG CMSSW CONFIG PATH!'
-    print user_config.cmsswcfgpath
-    sys.exit()
-    
-if user_config.dataset_column == "dataset" and not user_config.dbs == "prod/global":
-    print "If you use the dataset column which is for global samples, you have to you prod/global as dbs instance"
-    print "You used ",user_config.dbs
-    sys.exit()
-    
-if user_config.dataset_column == "boosted_dataset" and not user_config.dbs == "prod/phys03":
-    print "If you use the boosted_dataset column which is for user samples, you have to you prod/phys03 as dbs instance"
-    print "You used ",user_config.dbs
-    sys.exit()
-
-# read list with samples
-csvfile=open(user_config.samplelist,'r') 
-reader = csv.DictReader(csvfile, delimiter=',')
-# create job list
-f_list=open(current_scriptpath+'/joblist.txt','w')
-
-for row in reader:
-    dataset="'"+row[user_config.dataset_column]+"'"
-    name=row['name']
-    if 'weight' in reader.fieldnames:
-        weight=row['weight']
+if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        cfgname=sys.argv[1]
+        assert cfgname[-3:]=='.py'
+        user_config=__import__(cfgname[:-3])
     else:
-        weight='1'
-    if name=='': continue
-    print 'creating jobs for', name
-    jobconfig={}
-    jobconfig['weight']=weight
-    jobconfig['isData']=False
-    if 'isData' in reader.fieldnames:
-        if 'true' in row['isData'].lower():
-            jobconfig['isData']=True
-    #if 'generator' in reader.fieldnames:
-        #if row['generator'] != '':
-            #jobconfig['generatorName']=row['generator']
-    #if 'additionalSelection' in reader.fieldnames:
-        #if row['additionalSelection'] != '':
-            #jobconfig['additionalSelection']=row['additionalSelection']
-    jobconfig['globalTag']=row['globalTag']
-    #jobconfig['isBoostedMiniAOD']=user_config.isBoostedMiniAOD
-    jobconfig['maxEvents']=999999999
-    jobconfig['systematicVariations']=get_list_of_systematics(user_config.systematicVariations)
-    jobconfig['nSystematicVariationsPerJob']=user_config.nSystematicVariationsPerJob
-    jobconfig['dataEra']=row['run']
-    jobconfig['ProduceMemNtuples']=user_config.ProduceMemNtuples
-    #jobconfig['dataTrigger']=row['dataTrigger']
-    if dataset=="''":
-        continue
-    create_jobs(name,dataset,jobconfig)
+        print 'usage: ./generate_scripts.py user_config.py'
+    
+        
 
-f_list.close()
+    print 'outpath',user_config.outpath
+    print 'scriptpath',user_config.scriptpath
+    print 'cmsswcfgpath',user_config.cmsswcfgpath
+    print 'cmsswpath',user_config.cmsswpath
+    print 'samplelist',user_config.samplelist
+    print 'systematicVariations',user_config.systematicVariations
+
+    # check paths
+    current_scriptpath=user_config.scriptpath
+    if not os.path.exists(current_scriptpath):
+        os.makedirs(current_scriptpath)
+    else:
+        current_scriptpath+=datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+        os.makedirs(current_scriptpath)
+        
+    if not os.path.exists(user_config.outpath):
+        os.makedirs(user_config.outpath)
+    if not os.path.exists(user_config.outpath):
+        print 'COULD NOT CREATE OUTPATH!'
+        print user_config.outpath
+        sys.exit()
+    if not os.path.exists(current_scriptpath):
+        print 'COULD NOT CREATE SCRIPTPATH!'
+        print current_scriptpath
+        sys.exit()
+    if not os.path.exists(user_config.cmsswpath):
+        print 'WRONG CMSSW PATH!'
+        print user_config.cmsswpath
+        sys.exit()
+    if not os.path.exists(user_config.cmsswcfgpath):
+        print 'WRONG CMSSW CONFIG PATH!'
+        print user_config.cmsswcfgpath
+        sys.exit()
+        
+    if user_config.dataset_column == "dataset" and not user_config.dbs == "prod/global":
+        print "If you use the dataset column which is for global samples, you have to you prod/global as dbs instance"
+        print "You used ",user_config.dbs
+        sys.exit()
+        
+    if user_config.dataset_column == "boosted_dataset" and not user_config.dbs == "prod/phys03":
+        print "If you use the boosted_dataset column which is for user samples, you have to you prod/phys03 as dbs instance"
+        print "You used ",user_config.dbs
+        sys.exit()
+
+    # read list with samples
+    csvfile=open(user_config.samplelist,'r') 
+    reader = csv.DictReader(csvfile, delimiter=',')
+    # create job list
+    f_list=open(current_scriptpath+'/joblist.txt','w')
+
+    for row in reader:
+        dataset="'"+row[user_config.dataset_column]+"'"
+        name=row['name']
+        if "#" in name:
+            continue
+        if 'weight' in reader.fieldnames:
+            weight=row['weight']
+        else:
+            weight='1'
+        if name=='': continue
+        print 'creating jobs for', name
+        jobconfig={}
+        jobconfig['weight']=weight
+        jobconfig['isData']=False
+        if 'isData' in reader.fieldnames:
+            if 'true' in row['isData'].lower():
+                jobconfig['isData']=True
+        #if 'generator' in reader.fieldnames:
+            #if row['generator'] != '':
+                #jobconfig['generatorName']=row['generator']
+        #if 'additionalSelection' in reader.fieldnames:
+            #if row['additionalSelection'] != '':
+                #jobconfig['additionalSelection']=row['additionalSelection']
+        jobconfig['globalTag']=row['globalTag']
+        #jobconfig['isBoostedMiniAOD']=user_config.isBoostedMiniAOD
+        jobconfig['maxEvents']=999999999
+        jobconfig['systematicVariations']=get_list_of_systematics(user_config.systematicVariations)
+        jobconfig['nSystematicVariationsPerJob']=user_config.nSystematicVariationsPerJob
+        jobconfig['dataEra']=row['run']
+        jobconfig['ProduceMemNtuples']=user_config.ProduceMemNtuples
+        #jobconfig['dataTrigger']=row['dataTrigger']
+        if dataset=="''":
+            continue
+        create_jobs(name,dataset,jobconfig)
+
+    f_list.close()
