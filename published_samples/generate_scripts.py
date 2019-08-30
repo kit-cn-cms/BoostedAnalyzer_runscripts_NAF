@@ -154,7 +154,7 @@ def get_dataset_files(dataset):
     if is_dataset_string:
         for dataset in datasets:
                     store_prefix = ""
-                    if "USER" in dataset:
+                    if "USER" in dataset or "TTZToQQ_TuneCP5_13TeV-amcatnlo-pythia8" in dataset:
                         store_prefix = "file:/pnfs/desy.de/cms/tier2/"
                     else:
                         store_prefix = "root://xrootd-cms.infn.it//"
@@ -207,6 +207,7 @@ def get_dataset_files(dataset):
 
 def create_jobs(name,dataset,jobconfig):
     files,events=get_dataset_files(dataset)
+    nevts_total=0
     nevents_in_job=0
     files_in_job=[]
     ijob=0
@@ -221,12 +222,17 @@ def create_jobs(name,dataset,jobconfig):
     
     for f,nev in zip(files,events):
         nevents_in_job+=nev
+        nevts_total+=nev
         files_in_job.append(f)
         if nevents_in_job>user_config.min_events_per_job or f==files[-1] or len(files_in_job)==100:
             ijob+=1
             create_scripts(name,ijob,files_in_job,nevents_in_job,eventsinsample,jobconfig)
             nevents_in_job=0
             files_in_job=[]
+            
+            if nevts_total>user_config.max_events_per_sample:
+                print("reached {} events. breaking for this sample".format(nevts_total))
+                return
 
 
 #-------------------------------    
@@ -273,7 +279,10 @@ if not os.path.exists(user_config.cmsswcfgpath):
     print 'WRONG CMSSW CONFIG PATH!'
     print user_config.cmsswcfgpath
     sys.exit()
-    
+   
+try:    user_config.max_events_per_sample
+except: user_config.max_events_per_sample = 9999999999
+
 if user_config.dataset_column == "dataset" and not user_config.dbs == "prod/global":
     print "If you use the dataset column which is for global samples, you have to you prod/global as dbs instance"
     print "You used ",user_config.dbs

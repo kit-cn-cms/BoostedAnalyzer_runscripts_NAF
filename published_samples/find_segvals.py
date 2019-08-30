@@ -6,11 +6,11 @@ import NAFSubmit
 parser = optparse.OptionParser()
 parser.add_option("-l", "--logdir", dest = "logdir",
     help = "path to directory with logfiles")
-parser.add_option("-d", "--dir", dest = "dir",
+parser.add_option("-d", "--dir", dest = "dir",default="",
     help = "directory of shell files as written in .out files")
 parser.add_option("--submit", "-s", dest = "submit", default = False, action = "store_true",
     help = "activate submissin of shell files")
-parser.add_option("-n", "--name", dest = "name",
+parser.add_option("-n", "--name", dest = "name", default="resubmit",
     help = "name of submit")
 (opts, args) = parser.parse_args()
 
@@ -44,7 +44,7 @@ for f in unique_files: print(f)
 
 if opts.submit:
     new_logdir = opts.dir
-    new_logdir = new_logdir+"/resubmit/"
+    new_logdir = new_logdir+"/{}/".format(opts.name)
     print(new_logdir)
     if not os.path.exists(new_logdir):
         os.makedirs(new_logdir)

@@ -25,7 +25,7 @@ def checkROOTFiles(path=""):
                 print "EMTPY        ", path
             elif nevents<0:
                 isGOOD=False
-		print "BROKEN        ", path
+                print "BROKEN        ", path
     if rf!=None:
         rf.Close()
     if isEMPTY: return "empty"
@@ -48,7 +48,8 @@ for dir in indirs:
 
 
 print "number of files   ", len(fileList)
-for fil in fileList:
+for i, fil in enumerate(fileList):
+    if i%100==0: print("checking file {}/{}".format(i, len(fileList)))
     status = checkROOTFiles(fil)
     if status=="broken":
         brokenFiles.append(fil) 

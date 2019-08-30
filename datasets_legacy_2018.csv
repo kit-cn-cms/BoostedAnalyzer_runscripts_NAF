@@ -20,7 +20,7 @@ Wjets_amc_0J,/WJetsToLNu_0J_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIAutumn18Mini
 Wjets_amc_1J,/WJetsToLNu_1J_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15*-v1/MINIAODSIM,8426.09
 Wjets_amc_2J,/WJetsToLNu_2J_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15*-v1/MINIAODSIM,3172.96
 #,,
-Wjets_inklusive,/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD*/MINIAODSIM,61526
+Wjets_inklusive,/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD*/MINIAODSIM,62877.2
 #WJets_JetBinned,/WJetsToLNu_*J_TuneCP5*/*Autumn18MiniAOD-102X*v15-v1/MINIAODSIM,1
 #WJets_HTBinned,/WJetsToLNu_HT*To*TuneCP5*/*Autumn18MiniAOD-102X*v15-v1/MINIAODSIM,1
 #,,
@@ -33,9 +33,9 @@ DYJets_2J,/DYJetsToLL_2J*_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIAutumn18MiniAO
 #,,
 ttW_hadr,/TTWJetsToQQ_TuneCP5*/*Autumn18MiniAOD-102X*v15-v1/MINIAODSIM,0.4062
 ttW_lept,/TTWJetsToLNu_TuneCP5*/*Autumn18MiniAOD-102X*v15_ext1-v2/MINIAODSIM,0.2043
-ttZ_hadr,/TTZToQQ_TuneCP5*/*Autumn18MiniAOD-102X*v15-v1/MINIAODSIM,0.5297
-ttZ_lept,/TTZToLLNuNu_M-10_TuneCP5*/*Autumn18MiniAOD-102X*v15_ext1-v2/MINIAODSIM,0.2529
-ttZ_bb,/TTZToBB_TuneCP5*/*Autumn18MiniAOD-102X*v15-v1/MINIAODSIM,0.118
+ttZ_hadr,/TTZToQQ_TuneCP5*/*Autumn18MiniAOD-102X*v15-v1/MINIAODSIM,0.6012
+ttZ_lept,/TTZToLLNuNu_M-10_TuneCP5*/*Autumn18MiniAOD-102X*v15_ext1-v2/MINIAODSIM,0.2589
+ttZ_bb,/TTZToBB_TuneCP5*/*Autumn18MiniAOD-102X*v15-v1/MINIAODSIM,0.13
 #,,
 WW,/WW_TuneCP5_13TeV*/*Autumn18MiniAOD*v15-v2/MINIAODSIM,118.7
 WZ,/WZ_TuneCP5_13TeV*/*Autumn18MiniAOD*v15-v3/MINIAODSIM,46.74
@@ -43,8 +43,8 @@ ZZ,/ZZ_TuneCP5_13TeV*/*Autumn18MiniAOD*v15-v2/MINIAODSIM,16.91
 #,,
 #ttbb,/ttbb*4FS*TuneCP5*/*Autumn18MiniAOD-102X*v15_ext1-v2/MINIAODSIM,1
 #,,
-THW,/THW*5f_Hincl*/*Autumn18MiniAOD*v15-v1/MINIAODSIM,0.002879
-THQ,/THQ*4f_Hincl*/*Autumn18MiniAOD*v15-v1/MINIAODSIM,0.07425
+THW,/THW*5f_Hincl*/*Autumn18MiniAOD*v15-v1/MINIAODSIM,0.1472
+THQ,/THQ*4f_Hincl*/*Autumn18MiniAOD*v15-v1/MINIAODSIM,0.7927
 #,,
 SingleMuonA,/SingleMuon/Run2018A*17Sep2018*/MINIAOD,1
 SingleMuonB,/SingleMuon/Run2018B*17Sep2018*/MINIAOD,1

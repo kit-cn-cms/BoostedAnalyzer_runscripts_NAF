@@ -31,7 +31,7 @@ jobs = [opts.jobpath+"/"+j.replace("\n","") for j in jobs]
 # loading broken files
 with open(opts.brokenfiles, "r") as f:
     broken = f.readlines()
-print("number of unique broken files: {}".format(len(broken)))
+#print("number of unique broken files: {}".format(len(broken)))
 
 # gather nominal root files
 brokenfiles = []
@@ -40,20 +40,18 @@ for b in broken:
     if not b.endswith("_Tree.root"):
         print("{} not a valid root file name - skip".format(b))
         continue
-
-    # split name and replace systematic name with nominal
-    split = b.split("_")
-    split[-2] = "nominal"
-    b = "_".join(split)
     brokenfiles.append(b)
 
 # remove doubles
 brokenfiles = list(set(brokenfiles))
-print("number of jobs which produced broken files: {}".format(len(brokenfiles)))
+print("number of broken files: {}".format(len(brokenfiles)))
 
 # loop over jobs
-failed_jobs = []
-for job in jobs:
+job_translation = {}
+print("looping over jobs")
+for i,job in enumerate(jobs):
+    if i%1000 == 0: print("job #{}/{}".format(i, len(jobs)))
+
     # open shell file
     with open(job, "r") as sf:
         lines = sf.readlines()
@@ -61,6 +59,9 @@ for job in jobs:
     for l in lines:
         if "#meta check" in l:
             rootfile = l.split(" : ")[-1].replace("\n","")
+        if "systematicVariations" in l:
+            variations = l.split("systematicVariations=")[-1].split(" ")[0].split(",")
+            #print(variations)
     if not rootfile:
         print("shell file {} does not contain 'meta check' line".format(job))
         continue
@@ -70,20 +71,41 @@ for job in jobs:
 
     while "//" in rootfile:
         rootfile = rootfile.replace("//","/")
-    if rootfile in brokenfiles:
-        print("found shellscript corresponding to rootfile {}".format(rootfile))
-        failed_jobs.append(job)
-        brokenfiles.remove(rootfile)
-    
-if not len(brokenfiles) == 0:
-    print("\n\n\nnot all broken root files found a corresponding shell script...")
-    print("these are missing:")
-    print("\n".join(brokenfiles))
-    exit()
+
+    for var in variations:
+        if var == "nominal":
+            names = [rootfile]
+        else:
+            key = rootfile.split("_")[-2]
+            names = [rootfile.replace("_"+key+"_","_"+var+"up_"), rootfile.replace("_"+key+"_","_"+var+"down_")]
+        for n in names:
+            if n in job_translation:
+                print("already in file list: {}".format(n))
+                
+            job_translation[n] = job
+
+failed_jobs = []
+missing = []
+for b in brokenfiles:
+    if b in job_translation:
+        failed_jobs.append(job_translation[b])
+    else:
+        print("could not find {} in job_translation map".format(b))
+        missing.append(b)
+
 
 print("\n\n\nall failed jobs were identified:")
-print("\n".join(failed_jobs))
+print("\n".join(list(set(failed_jobs))))
 
+if len(missing) > 0:
+    print("\n\n\nnot all broken root files found a corresponding shell script...")
+    print("\n".join(missing))
+
+print("\n\n\ntotal failed: {}".format(len(brokenfiles)))
+print("failed indentified: {}".format(len(failed_jobs)))
+print("unique shell scripts: {}".format(len(list(set(failed_jobs)))))
+print("still missing: {}".format(len(missing)))
+failed_jobs = list(set(failed_jobs))
 
 if opts.submit:
     new_logdir = opts.dir
