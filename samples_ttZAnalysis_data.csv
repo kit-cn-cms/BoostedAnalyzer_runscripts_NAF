@@ -1,0 +1,17 @@
+name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,isData,generator,additionalSelection,run
+,,,,,,,,,,,
+SingleMuon_2018A,/SingleMuon/Run2018A-17Sep2018-v2/MINIAOD,241608232,1,1,4.13893182249E-06,/SingleMuon/mschrode-KIT_tthbb_skims_DATA_94X_LEG_2018A-00255df0f57654b8d61f2ce50fdd9e79/USER,102X_dataRun2_v11,TRUE,notSpecified,NONE,2018A
+,,,,,,,,,,,
+SingleMuon_2018B,/SingleMuon/Run2018B-17Sep2018-v1/MINIAOD,119918017,1,1,8.33903048947E-06,"/pnfs/desy.de/cms/tier2/store/user/mschrode/SingleMuon/KIT_tthbb_skims_DATA_94X_LEG_2018B/190412_134251/0000,/pnfs/desy.de/cms/tier2/store/user/mschrode/SingleMuon/KIT_tthbb_skims_DATA_94X_LEG_2018B/190412_134251/0001,/pnfs/desy.de/cms/tier2/store/user/mschrode/SingleMuon/KIT_tthbb_skims_DATA_94X_LEG_2018B/190412_134251/0002",102X_dataRun2_v11,TRUE,notSpecified,NONE,2018B
+,,,,,,,,,,,
+SingleMuon_2018C,/SingleMuon/Run2018C-17Sep2018-v1/MINIAOD,110032072,1,1,9.08825928498E-06,/SingleMuon/mschrode-KIT_tthbb_skims_DATA_94X_LEG_2018C-78d2b7859cf47dd5a022a8e645e33225/USER,102X_dataRun2_v11,TRUE,notSpecified,NONE,2018C
+,,,,,,,,,,,
+SingleMuon_2018D,/SingleMuon/Run2018D-22Jan2019-v2/MINIAOD,514116477,1,1,1.94508451827E-06,"/pnfs/desy.de/cms/tier2/store/user/swieland/SingleMuon/KIT_tthbb_sl_skims_DATA_102X_LEG_2018D/190808_130310/0000,/pnfs/desy.de/cms/tier2/store/user/swieland/SingleMuon/KIT_tthbb_sl_skims_DATA_102X_LEG_2018D/190808_130310/0001",102X_dataRun2_Prompt_v14,TRUE,notSpecified,NONE,2018D
+,,,,,,,,,,,
+Egamma_2018A,/EGamma/Run2018A-17Sep2018-v2/MINIAOD,327843843,1,1,3.05023266824E-06,"/pnfs/desy.de/cms/tier2/store/user/mschrode/EGamma/KIT_tthbb_skims_DATA_94X_LEG_2018A/190412_134112/0000,/pnfs/desy.de/cms/tier2/store/user/mschrode/EGamma/KIT_tthbb_skims_DATA_94X_LEG_2018A/190412_134112/0001,/pnfs/desy.de/cms/tier2/store/user/mschrode/EGamma/KIT_tthbb_skims_DATA_94X_LEG_2018A/190412_134112/0002,/pnfs/desy.de/cms/tier2/store/user/mschrode/EGamma/KIT_tthbb_skims_DATA_94X_LEG_2018A/190412_134112/0003,/pnfs/desy.de/cms/tier2/store/user/mschrode/EGamma/KIT_tthbb_skims_DATA_94X_LEG_2018A/190412_134112/0004,/pnfs/desy.de/cms/tier2/store/user/mschrode/EGamma/KIT_tthbb_skims_DATA_94X_LEG_2018A/190412_134112/0005",102X_dataRun2_v11,TRUE,notSpecified,NONE,2018A
+,,,,,,,,,,,
+Egamma_2018B,/EGamma/Run2018B-17Sep2018-v1/MINIAOD,153822427,1,1,6.50100261388E-06,/EGamma/mschrode-KIT_tthbb_skims_DATA_94X_LEG_2018B-ee2989dcfeeca07ff205d9e0355d607e/USER,102X_dataRun2_v11,TRUE,notSpecified,NONE,2018B
+,,,,,,,,,,,
+Egamma_2018C,/EGamma/Run2018C-17Sep2018-v1/MINIAOD,147827904,1,1,6.7646227332E-06,/EGamma/mschrode-KIT_tthbb_skims_DATA_94X_LEG_2018C-78d2b7859cf47dd5a022a8e645e33225/USER,102X_dataRun2_v11,TRUE,notSpecified,NONE,2018C
+,,,,,,,,,,,
+Egamma_2018D,/EGamma/Run2018D-22Jan2019-v2/MINIAOD,754798781,1,1,1.32485640567E-06,"/pnfs/desy.de/cms/tier2/store/user/swieland/EGamma/KIT_tthbb_sl_skims_DATA_102X_LEG_2018D/190808_125927/0000,/pnfs/desy.de/cms/tier2/store/user/swieland/EGamma/KIT_tthbb_sl_skims_DATA_102X_LEG_2018D/190808_125927/0001,/pnfs/desy.de/cms/tier2/store/user/swieland/EGamma/KIT_tthbb_sl_skims_DATA_102X_LEG_2018D/190808_125927/0002",102X_dataRun2_Prompt_v14,TRUE,notSpecified,NONE,2018D
