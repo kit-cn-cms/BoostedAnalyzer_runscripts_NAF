@@ -21,7 +21,7 @@ DYJets_2J,/DYJetsToLL_2J*_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIAutumn18MiniAO
 #,,
 ttW_hadr,/TTWJetsToQQ_TuneCP5*/*Autumn18MiniAOD-102X*v15-v1/MINIAODSIM,0.3708
 ttW_lept,/TTWJetsToLNu_TuneCP5*/*Autumn18MiniAOD-102X*v15_ext1-v2/MINIAODSIM,0.1792
-ttZ_hadr,/TTZToQQ_TuneCP5*/*Autumn18MiniAOD-102X*v15-v1/MINIAODSIM,0.6012
+ttZ_hadr,/TTZToQQ_TuneCP5*/*Autumn18MiniAOD-102X*v15*v1/MINIAODSIM,0.6012
 ttZ_lept,/TTZToLLNuNu_M-10_TuneCP5*/*Autumn18MiniAOD-102X*v15_ext1-v2/MINIAODSIM,0.2589
 ttZ_bb,/TTZToBB_TuneCP5*/*Autumn18MiniAOD-102X*v15-v1/MINIAODSIM,0.13
 #,,

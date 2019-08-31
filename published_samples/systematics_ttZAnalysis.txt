@@ -2,7 +2,6 @@ JER
 JESAbsoluteStat
 JESAbsoluteScale
 JESAbsoluteMPFBias
-JESAbsoluteSample
 JESFragmentation
 JESSinglePionECAL
 JESSinglePionHCAL
