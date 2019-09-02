@@ -24,6 +24,7 @@ if not os.path.isabs(opts.dir):
     opts.dir = os.path.abspath(opts.dir)
 
 # loading jobs
+print("opening joblist.txt file to find all files")
 with open(opts.joblist, "r") as f:
     jobs = f.readlines()
 jobs = [opts.jobpath+"/"+j.replace("\n","") for j in jobs]
@@ -48,7 +49,7 @@ print("number of broken files: {}".format(len(brokenfiles)))
 
 # loop over jobs
 job_translation = {}
-print("looping over jobs")
+print("looping over jobs to get systematics of job")
 for i,job in enumerate(jobs):
     if i%1000 == 0: print("job #{}/{}".format(i, len(jobs)))
 
