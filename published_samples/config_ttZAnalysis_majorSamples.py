@@ -1,4 +1,4 @@
-outpath='/nfs/dust/cms/user/vdlinden/ttZAnalysis/' # path of output of analyzer
+outpath='/nfs/dust/cms/user/vdlinden/ttZAnalysis/ntuples' # path of output of analyzer
 scriptpath='ttZAnalysis_majorSamples' # folder containing shell scripts that will have to be run on cluster
 samplelist='../samples_ttZAnalysis_ttbar_ttH_ttZ.csv' # samples list
 dataset_column='boosted_dataset' # run on the column with dataset or boosted_dataset?
