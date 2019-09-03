@@ -11,7 +11,7 @@ python ../NAFSubmit.py -f $dir -o submit -n $dir
 
 * move to generated directory/submit
 * check which jobs have not finished
-* `python ../../find_broken_files.py --name=DIRNAME BASEPATHTONTUPLES/DIRNAME
+* `python ../../find_broken_files.py --name=DIRNAME BASEPATHTONTUPLES/DIRNAME`
 
 * move to generated directory/submit
 * resubmit broken files
