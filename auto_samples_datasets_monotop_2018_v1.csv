@@ -44,11 +44,11 @@ ST_tW_top_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8,/ST_tW_top_5f_inclusiv
 ,,,,,,,,,,,
 ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8,/ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v1/MINIAODSIM,7623000,34.9462291667,35.85,0.00013457454486,/ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8/mwassmer-KIT_Monotop_skims_102X_v1-68e97e16c88948904ed0cae9dc5f7861/USER,102X_upgrade2018_realistic_v19,FALSE,POWHEG,NONE,2018
 ,,,,,,,,,,,
-WW_TuneCP5_13TeV-pythia8,/WW_TuneCP5_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM,7850000,0.999485868056,118.7,0.0151287973063,,102X_upgrade2018_realistic_v19,FALSE,pythia8,NONE,2018
 WW_TuneCP5_PSweights_13TeV-pythia8,/WW_TuneCP5_PSweights_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,7958000,0.999498355107,118.7,0.0149232941863,/WW_TuneCP5_PSweights_13TeV-pythia8/mwassmer-KIT_Monotop_skims_102X_v1-68e97e16c88948904ed0cae9dc5f7861/USER,102X_upgrade2018_realistic_v19,FALSE,pythia8,NONE,2018
-WW_TuneCP5_13TeV-pythia8,/WW_TuneCP5_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,7065000,0.0,118.7,0.0,,102X_upgrade2018_realistic_v19,FALSE,pythia8,NONE,2018
 ,,,,,,,,,,,
 ZZ_TuneCP5_13TeV-pythia8,/ZZ_TuneCP5_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM,1979000,0.999885029695,16.91,0.0085457020573,/ZZ_TuneCP5_13TeV-pythia8/mwassmer-KIT_Monotop_skims_102X_v1-68e97e16c88948904ed0cae9dc5f7861/USER,102X_upgrade2018_realistic_v19,FALSE,pythia8,NONE,2018
+,,,,,,,,,,,
+WZ_TuneCP5_PSweights_13TeV-pythia8,/WZ_TuneCP5_PSweights_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,3893000,0.999781368523,46.74,0.012008790411,/WZ_TuneCP5_PSweights_13TeV-pythia8/mwassmer-KIT_Monotop_skims_102X_v1-68e97e16c88948904ed0cae9dc5f7861/USER,102X_upgrade2018_realistic_v19,FALSE,pythia8,NONE,2018
 ,,,,,,,,,,,
 QCD_HT50to100_TuneCP5_13TeV-madgraphMLM-pythia8,/QCD_HT50to100_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,38754230,0.999955301624,1.0,2.5804788287e-05,/QCD_HT50to100_TuneCP5_13TeV-madgraphMLM-pythia8/mwassmer-KIT_Monotop_skims_102X_v1-68e97e16c88948904ed0cae9dc5f7861/USER,102X_upgrade2018_realistic_v19,FALSE,MadGraph,NONE,2018
 ,,,,,,,,,,,
