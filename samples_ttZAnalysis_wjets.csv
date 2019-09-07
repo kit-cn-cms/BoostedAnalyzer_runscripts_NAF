@@ -1,0 +1,5 @@
+name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,isData,generator,additionalSelection,run
+,,,,,,,,,,,
+WJetsToLNu_0J_TuneCP5_13TeV-amcatnloFXFX-pythia8,/WJetsToLNu_0J_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,192288265,60978.9715432,50131.98,4.27545147309E-06,/WJetsToLNu_0J_TuneCP5_13TeV-amcatnloFXFX-pythia8/swieland-KIT_tthbb_sl_skims_MC_102X_LEG_2018-b9899da800e5578fdd124c7a0a5f7739/USER,102X_upgrade2018_realistic_v19,FALSE,aMC,NONE,2018
+,,,,,,,,,,,
+WJetsToLNu_1J_TuneCP5_13TeV-amcatnloFXFX-pythia8,/WJetsToLNu_1J_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,171669288,45507.6197469,8426.09,1.0785725598E-06,/WJetsToLNu_1J_TuneCP5_13TeV-amcatnloFXFX-pythia8/swieland-KIT_tthbb_sl_skims_MC_102X_LEG_2018-b9899da800e5578fdd124c7a0a5f7739/USER,102X_upgrade2018_realistic_v19,FALSE,aMC,NONE,2018

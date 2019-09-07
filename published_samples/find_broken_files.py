@@ -55,7 +55,7 @@ for dir in indirs:
         fileList+=glob.glob(dir+"/*.root")
 
 
-print "number of files   ", len(fileList)
+print("number of files: {}".format(len(fileList)))
 for i, fil in enumerate(fileList):
     if i%100==0: print("\n\033[1;31m{}\033[0m\n".format("checking file {}/{}".format(i, len(fileList))))
     status = checkROOTFiles(fil)
@@ -68,3 +68,7 @@ with open(name+"broken_files.txt", "w") as f:
     f.write("\n".join(brokenFiles))
 with open(name+"empty_files.txt", "w") as f:
     f.write("\n".join(emptyFiles))
+
+print("\033[1;31m{}\033[0m".format("number of files: {}".format(len(fileList))))
+print("\033[1;31m{}\033[0m".format("files broken: {}".format(len(brokenFiles))))
+print("\033[1;31m{}\033[0m".format("files empty: {}".format(len(emptyFiles))))
