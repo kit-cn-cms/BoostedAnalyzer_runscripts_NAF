@@ -91,17 +91,18 @@ for dataset in opts.dataset.split(","):
                 entries = getEntries(f)
                 if entries == 0: 
                     print("\tEMPTY: {}".format(os.path.basename(f)))
-                    continue
-
-                # append file and number of entries to current list
-                currentFiles.append(f)
-                currentEntries+=entries
+                else:
+                    # append file and number of entries to current list
+                    currentFiles.append(f)
+                    currentEntries+=entries
 
                 # if number of events large enough write copy/hadd command
                 if currentEntries >= int(opts.hadd_entries) or f == ntuplefiles[-1]:
                     currentOutName = outDataPath+"/"+outName.format(number=n, syst=systname)
                     # copying/hadding new file
-                    if len(currentFiles) == 1:
+                    if len(currentFiles) == 0:
+                        continue
+                    elif len(currentFiles) == 1:
                         cmd = "cp {} {}".format(currentFiles[-1], currentOutName)
                     else:
                         cmd = "hadd {} {}".format(currentOutName, " ".join(currentFiles))
