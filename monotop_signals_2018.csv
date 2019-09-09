@@ -1,0 +1,15 @@
+name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,isData,generator,additionalSelection,run
+,,,,,,,,,,,
+VectorMonotop_Mphi_2000_Mchi_1500,,149428,0.000003578,0.000003578,0.00669,"/nfs/dust/cms/user/mwassmer/MonoTop/signals_skims/VectorMonotop_Mphi_2000_Mchi_1500",102X_upgrade2018_realistic_v19,FALSE,MadGraph,NONE,2018
+,,,,,,,,,,,
+VectorMonotop_Mphi_2000_Mchi_500,,149146,0.01148,0.01148,0.00670,"/nfs/dust/cms/user/mwassmer/MonoTop/signals_skims/VectorMonotop_Mphi_2000_Mchi_500",102X_upgrade2018_realistic_v19,FALSE,MadGraph,NONE,2018
+,,,,,,,,,,,
+VectorMonotop_Mphi_1995_Mchi_1000,,149400,0.002341,0.002341,0.00669,"/nfs/dust/cms/user/mwassmer/MonoTop/signals_skims/VectorMonotop_Mphi_1995_Mchi_1000",102X_upgrade2018_realistic_v19,FALSE,MadGraph,NONE,2018
+,,,,,,,,,,,
+VectorMonotop_Mphi_1000_Mchi_1000,,147300,0.00004649,0.00004649,0.00679,"/nfs/dust/cms/user/mwassmer/MonoTop/signals_skims/VectorMonotop_Mphi_1000_Mchi_1000",102X_upgrade2018_realistic_v19,FALSE,MadGraph,NONE,2018
+,,,,,,,,,,,
+VectorMonotop_Mphi_3000_Mchi_1000,,149466,0.0007575,0.0007575,0.00669,"/nfs/dust/cms/user/mwassmer/MonoTop/signals_skims/VectorMonotop_Mphi_3000_Mchi_1000",102X_upgrade2018_realistic_v19,FALSE,MadGraph,NONE,2018
+,,,,,,,,,,,
+VectorMonotop_Mphi_200_Mchi_150,,149700,0.2488,0.2488,0.00668,"/nfs/dust/cms/user/mwassmer/MonoTop/signals_skims/VectorMonotop_Mphi_200_Mchi_150",102X_upgrade2018_realistic_v19,FALSE,MadGraph,NONE,2018
+,,,,,,,,,,,
+VectorMonotop_Mphi_195_Mchi_100,,149091,4.958,4.958,0.00671,"/nfs/dust/cms/user/mwassmer/MonoTop/signals_skims/VectorMonotop_Mphi_195_Mchi_100",102X_upgrade2018_realistic_v19,FALSE,MadGraph,NONE,2018
