@@ -1,6 +1,6 @@
 outpath='/nfs/dust/cms/user/lreuter/ttZ/ntuples' # path of output of analyzer
-scriptpath='ttZAnalysis_wjets' # folder containing shell scripts that will have to be run on cluster
-samplelist='../samples_ttZAnalysis_wjets.csv' # samples list
+scriptpath='ttZAnalysis_singlet' # folder containing shell scripts that will have to be run on cluster
+samplelist='../samples_ttZAnalysis_st_tchannel2.csv' # samples list
 dataset_column='boosted_dataset' # run on the column with dataset or boosted_dataset?
 cmsswcfgpath='/nfs/dust/cms/user/vdlinden/ttZAnalysis/CMSSW_ntupling/CMSSW_10_2_13/src/BoostedTTH/BoostedAnalyzer/test/ntupling_ttZAnalysis.py'
 cmsswpath='/nfs/dust/cms/user/vdlinden/ttZAnalysis/CMSSW_ntupling/CMSSW_10_2_13/'
