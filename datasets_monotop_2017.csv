@@ -46,11 +46,11 @@ singletop_tW_t,/ST_tW_top_5f_inclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pyth
 singletop_tw_tbar,/ST_tW_antitop_5f_inclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2/MINIAODSIM,35.85
 #
 # xs from https://arxiv.org/pdf/1408.5243.pdf
-ww,/WW_TuneCP5*_13TeV-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v*/MINIAODSIM,118.70
+ww,/WW_TuneCP5_13TeV-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2/MINIAODSIM,118.70
 # xs from https://arxiv.org/pdf/1105.0020.pdf
-wz,/WZ_TuneCP5*_13TeV-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v*/MINIAODSIM,46.74
+wz,/WZ_TuneCP5_13TeV-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,46.74
 # xs from https://arxiv.org/pdf/1405.2219.pdf
-zz,/ZZ_TuneCP5_13TeV-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM,16.91
+zz,/ZZ_TuneCP5_13TeV-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/MINIAODSIM,16.91
 #
 # cross sections from https://twiki.cern.ch/twiki/bin/viewauth/CMS/SummaryTable1G25ns#QCD
 qcd_ht_50_100,/QCD_HT50to100_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,1.
