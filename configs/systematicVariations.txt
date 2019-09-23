@@ -2,10 +2,9 @@
 JES		
 JER			
 
-# individual JEC uncertainties
+# individual JEC uncertainties (according to AN Sep23 2019)
 JESAbsoluteStat
 JESAbsoluteScale
-#JESAbsoluteFlavMap
 JESAbsoluteMPFBias
 JESFragmentation
 JESSinglePionECAL
@@ -13,21 +12,26 @@ JESSinglePionHCAL
 JESFlavorQCD
 JESTimePtEta
 JESRelativeJEREC1
-#JESRelativeJEREC2
-#JESRelativeJERHF
 JESRelativePtBB
 JESRelativePtEC1
-#JESRelativePtEC2
-#JESRelativePtHF
 JESRelativeBal
+RelativeSample
 JESRelativeFSR
 JESRelativeStatFSR
 JESRelativeStatEC
-#JESRelativeStatHF
 JESPileUpDataMC
 JESPileUpPtRef
 JESPileUpPtBB
 JESPileUpPtEC1
+
+
+
+#JESAbsoluteFlavMap
+#JESRelativeJEREC2
+#JESRelativeJERHF
+#JESRelativePtEC2
+#JESRelativePtHF
+#JESRelativeStatHF
 #JESPileUpPtEC2
 #JESPileUpPtHF
 #JESPileUpMuZero
@@ -52,6 +56,11 @@ JESPileUpPtEC1
 #JESTimeRunEF
 #JESTimeRunG
 #JESTimeRunH
+
+
+
+
+
 
 
 
