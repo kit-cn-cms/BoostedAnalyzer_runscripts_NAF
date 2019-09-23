@@ -13,19 +13,58 @@ def get_data_(dataset):
     #print 'getting files for',dataset
     data=None
     if "*" in dataset:
+        print("COMMAND: ", "dataset dataset="+dataset+" instance=prod/global status=VALID")
         data=das_client.get_data("dataset dataset="+dataset+" instance=prod/global status=VALID")
     else:
+        print("COMMAND: ", "dataset dataset="+dataset+" instance=prod/global")
         data=das_client.get_data("dataset dataset="+dataset+" instance=prod/global")
+        # print(data)
     return data
+
+def get_dataset_site(dataset):
+    data=None
+    if "*" in dataset:
+        print("COMMAND: ", "site dataset="+dataset+" instance=prod/global status=VALID")
+        data=das_client.get_data("site dataset="+dataset+" instance=prod/global status=VALID")
+    else:
+        print("COMMAND: ", "site dataset="+dataset+" instance=prod/global")
+        data=das_client.get_data("site dataset="+dataset+" instance=prod/global")
+        # print(data)
+    return data
+
+def checkifonNaf(siteData):
+    isOnNAF = False
+    for data in siteData['data']:
+        dic = data['site']
+        for d in dic:
+            if 'dataset_fraction' not in d:
+                continue
+            if d["name"] != "T2_DE_DESY":
+                continue
+            if d["dataset_fraction"] != "100.00%":
+                continue
+            print(d)
+            isOnNAF = True
+    return isOnNAF
 """
 def get_data__(dataset):
     data=das_client.get_data("dataset dataset="+dataset+" instance=prod/global")
     return data
 """
+def get_data_prodPhys03(dataset):
+    #print 'getting files for',dataset
+    data=None
+    if "*" in dataset:
+        data=das_client.get_data("dataset dataset="+dataset+" instance=prod/phys03 status=VALID")
+    else:
+        data=das_client.get_data("dataset dataset="+dataset+" instance=prod/phys03")
+    return data
+
 def get_children(dataset):
     #print dataset
     data=das_client.get_data("child dataset="+dataset+" instance=prod/phys03")
-    #print data
+    print("COOMMAND: child dataset="+dataset+" instance=prod/phys03")
+    # print data
     return data
 
 def get_first_file(dataset_name):
@@ -85,7 +124,7 @@ def get_names(dataset_wildcard_):
 def get_jsons(name_array):
     json_array=[]
     number_processes=len(name_array)
-    #print name_array
+    # print name_array
     #print number_processes
     pool=Pool(processes=number_processes)
     json_array=pool.map(get_data_,name_array)
@@ -121,6 +160,25 @@ def get_nevents(json_array):
         else:
             nevents_array.append(0)
     return nevents_array
+
+def get_size(json_array):
+    nresults=len(json_array)
+    size_array=[]
+    index1="none"
+    index2="none"
+    for i in range(nresults):
+        index1=search_index(json_array[i].get("data","none"),"dataset","size")
+        if index1!="none":
+            index2=search_index(json_array[i].get("data","none")[index1].get("dataset","none"),"size")
+            #print json_array[i].get("data","none")[index1].get("dataset","none")
+	print "index1 ",index1
+	print "index2 ",index2
+	if index1!="none" and index2!="none":
+            size_array.append(json_array[i].get("data","none")[index1].get("dataset","none")[index2].get("size","none"))
+        else:
+            size_array.append(0)
+    return size_array
+
 
 def get_nfiles(json_array):
     nresults=len(json_array)
@@ -226,6 +284,7 @@ def get_weights(nevents_array,neg_fractions_array,xs):
 
 def get_children_array(parent_dataset):
     results=get_children(parent_dataset)
+    print(results)
     nresults=results.get("nresults","none")
     status=results.get("status","notok")
     #nresults=get_children(parent_dataset).get("nresults","none")
@@ -244,8 +303,10 @@ def get_children_array(parent_dataset):
             child_candidate=results.get("data","none")[i].get("child","none")[index_].get("name","none")
 	except TypeError:
             continue
-	#print "teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeest",child_candidate
-	if(child_candidate.find("KIT_tthbb_sl_skims_MC")!=-1 or child_candidate.find("KIT_tthbb_sl_skims_DATA")!=-1):
+	print "teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeest",child_candidate
+	# if(child_candidate.find("KIT_tthbb_sl_skims_MC")!=-1 or child_candidate.find("KIT_tthbb_sl_skims_DATA")!=-1):
+	# if(child_candidate.find("KIT_tthbb_sl_skims_DATA_94X_LEG")!=-1):
+	if(child_candidate.find("KIT_tthbb")!=-1 and child_candidate.find("LEG")!=-1):
 	    name_array.append(child_candidate)
         #print "#children ",len(name_array)
     return name_array
@@ -442,3 +503,8 @@ for key,value in json_array[0].get("data","none")[0].get("dataset","none")[blabl
     print "##############"
     print json_array[0].get("data","none")[0].get("dataset","none")[blabla].get("result","none")[0].get(key).get("GlobalTag","none")
 """
+# /SingleMuon/vanderli-KIT_tthbb_sl_skims_DATA_94X_LEG_2017E-167c6797622b96a4af4b420364cc8dc3/USER
+# 2842016
+# /SingleMuon/vanderli-KIT_tthbb_sl_skims_DATA_94X_LEG_2017E-167c6797622b96a4af4b420364cc8dc3/USER
+# 2842016
+
