@@ -22,7 +22,7 @@ Todo
   * submit Jobs for desired sample with ```../../jobTools/NAFSubmit.py ```
     * ```python ../../jobTools/NAFSubmit.py -f DESIREDSAMPLE -o jobs -M 4000 -r 800 -n DESIREDSSAMPLE```
     * Hint: might be useful to use a for loop: 
-      ```for sample in *; do python ./../jobTools/NAFSubmit.py -f $sample -o jobs -M 4000 -r 800 -n $sample; done```
+      ```for sample in *; do python ../../jobTools/NAFSubmit.py -f $sample -o jobs -M 4000 -r 800 -n $sample; done```
 4. Wait for jobs to be finished
 5. Check if every Job ran successful
   * TODO EXPLAIN HOW TO CHECK and resubmit
