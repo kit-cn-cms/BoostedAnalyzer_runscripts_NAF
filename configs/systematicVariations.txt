@@ -15,7 +15,7 @@ JESRelativeJEREC1
 JESRelativePtBB
 JESRelativePtEC1
 JESRelativeBal
-RelativeSample
+JESRelativeSample
 JESRelativeFSR
 JESRelativeStatFSR
 JESRelativeStatEC
