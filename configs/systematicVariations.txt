@@ -24,16 +24,18 @@ JESPileUpPtRef
 JESPileUpPtBB
 JESPileUpPtEC1
 
+#Special forward sources
+JESRelativeJEREC2
+JESRelativeJERHF
+JESPileUpPtEC2
+JESRelativePtHF
+JESRelativePtEC2
+JESRelativeStatHF
+JESPileUpPtHF
+
 
 
 #JESAbsoluteFlavMap
-#JESRelativeJEREC2
-#JESRelativeJERHF
-#JESRelativePtEC2
-#JESRelativePtHF
-#JESRelativeStatHF
-#JESPileUpPtEC2
-#JESPileUpPtHF
 #JESPileUpMuZero
 #JESPileUpEnvelope
 #JESSubTotalPileUp
