@@ -131,8 +131,8 @@ for i,fi in enumerate(infiles):
     
     ifi.close()
     
-    if "SingleMuonF" in propername:
-        continue
+    # if "SingleMuonF" in propername:
+        # continue
     # now check the corresponding error file
     errorfilename=fi.replace(".out",".err")
     efi=open(errorfilename,"r")
