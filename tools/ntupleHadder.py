@@ -57,6 +57,39 @@ def getEntries(f):
     rf.Close()
     return entries
 
+def mergeCutflows(files):
+    first = True
+    for filename in files:
+        numbers=[]
+        steps=[]
+        nevents=[]
+        yields=[]
+        f = open(filename)
+        lines=f.read().splitlines()
+        if first:
+            nlines=len(lines)
+        else:
+            if len(lines)!=nlines:
+                print 'file', filename,'has wrong number of lines (',len(lines),')'
+                break
+        for line in lines:        
+            linelist=line.split(' : ')
+            numbers.append(linelist[0])
+            steps.append(linelist[1])
+            nevents.append(int(linelist[2]))
+            yields.append(float(linelist[3]))
+        if first:       
+            sumlist=list(nevents)
+            yieldlist=list(yields)
+            first=False
+        else:
+            sumlist = [sum(x) for x in zip(sumlist, nevents)]
+            yieldlist = [sum(x) for x in zip(yieldlist, yields)]
+        f.close()
+        text = ""
+    for a,b,c,d in zip(numbers,steps,sumlist,yieldlist):
+        text += str(a)+" : "+str(b)+" : "+str(c)+" : "+str(d)+"\n"
+    return text
 
 for dataset in opts.dataset.split(","):
     print("\n\n"+"="*50)
@@ -116,13 +149,17 @@ for dataset in opts.dataset.split(","):
                         cmd = "hadd {} {}".format(currentOutName, " ".join(currentFiles))
                     
                     print("\n\033[1;31m{}\033[0m\n".format(cmd))
-                    text = "1 : nevents : {} :".format(currentEntries)
+
+                    currentCutflows=[f.replace("_Tree","_Cutflow").replace(".root",".txt") for f in currentFiles]
+                    text = mergeCutflows(currentCutflows)
                     if opts.do: 
                         os.system(cmd)
                         with open(currentOutName.replace(".root","_Cutflow.txt"), "w") as txtf:
                             txtf.write(text)
                     print("\n\t"+text+"\n")
+                    # print("Current Entries {}".format(currentEntries))
                     currentFiles = []
+                    currentCutflows = []
                     currentEntries = 0
                     n+= 1
                     
