@@ -1,5 +1,5 @@
 # total JEC and JER uncertainties
-JES		
+#JES		
 JER			
 
 # individual JEC uncertainties (according to AN Sep23 2019)
@@ -33,8 +33,10 @@ JESRelativePtEC2
 JESRelativeStatHF
 JESPileUpPtHF
 
+# -> 28 sources
 #add. HEM source for 2018
 JESHEM
+# -> 29+nominal = 30 sources
 
 #JESAbsoluteFlavMap
 #JESPileUpMuZero
