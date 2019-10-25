@@ -3,6 +3,7 @@ import os
 import sys
 import glob
 import ROOT
+import pprint
 
 pnfs = "/pnfs/desy.de/cms/tier2/store/user/"
 naming = "ntuples_{syst}_Tree*.root"
@@ -91,6 +92,7 @@ def mergeCutflows(files):
         text += str(a)+" : "+str(b)+" : "+str(c)+" : "+str(d)+"\n"
     return text
 
+failedjobs = []
 for dataset in opts.dataset.split(","):
     print("\n\n"+"="*50)
     print("handling dataset {}".format(dataset))
@@ -154,6 +156,9 @@ for dataset in opts.dataset.split(","):
                     text = mergeCutflows(currentCutflows)
                     if opts.do: 
                         os.system(cmd)
+                        if getEntries(currentOutName) != currentEntries:
+                            print("WARNING # Events doesn't match up")
+                            failedjobs.append({dataset:systname})
                         with open(currentOutName.replace(".root","_Cutflow.txt"), "w") as txtf:
                             txtf.write(text)
                     print("\n\t"+text+"\n")
@@ -162,7 +167,12 @@ for dataset in opts.dataset.split(","):
                     currentCutflows = []
                     currentEntries = 0
                     n+= 1
-                    
+
+print("#"*50)
+print("Following hadds were problematic: ")
+for i in failedjobs:
+    pprint.pprint(i)                  
+print("#"*50)
 
                     
 
