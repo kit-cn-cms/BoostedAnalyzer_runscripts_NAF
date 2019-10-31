@@ -254,7 +254,7 @@ if __name__ == "__main__":
 
 
     # submit to batch
-    # jobIDs = submitToBatch(workdir, submit_files, opts.memory, str(int(opts.disk)*1000), str(int(opts.runtime)*60), opts.useproxy, opts.vomsproxy, opts.name)
+    jobIDs = submitToBatch(workdir, submit_files, opts.memory, str(int(opts.disk)*1000), str(int(opts.runtime)*60), opts.useproxy, opts.vomsproxy, opts.name)
     print("submitted jobs with IDs: {}".format(jobIDs))
     
     # monitor job status
