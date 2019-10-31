@@ -112,8 +112,6 @@ print systematics_
 print "\n"
 #print systematics
 
-filestoResubmit = []
-
 for sample in samples:
     print "-----------------------------------------------------------------------------------------------------------------------------------------------------------------------"
     print ""
@@ -182,11 +180,6 @@ for sample in samples:
 				missing_files+=" "+os.path.join(scripts_path,sample)+"/"+sample+"_"+number+"_"+str(systematic_number)+".sh"
                 
 		print "Have to resubmit ", n_missing_scripts, " scripts."
-		filestoResubmit.append(missing_files)
-    	        if options.resubmit:
+                if options.resubmit:
                     print "resubmitting ", n_missing_scripts, " scripts ..."
                     os.system("python submit.py "+missing_files)
-
-		with open("filesToResubmit.txt","w") as file:
-			for missingJob in filestoResubmit:
-				file.write(missingJob+"\n")
