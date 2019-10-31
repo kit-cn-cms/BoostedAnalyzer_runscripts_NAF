@@ -111,7 +111,7 @@ print systematics_numbers
 print systematics_
 print "\n"
 #print systematics
-
+redoList = []
 for sample in samples:
     print "-----------------------------------------------------------------------------------------------------------------------------------------------------------------------"
     print ""
@@ -180,6 +180,21 @@ for sample in samples:
 				missing_files+=" "+os.path.join(scripts_path,sample)+"/"+sample+"_"+number+"_"+str(systematic_number)+".sh"
                 
 		print "Have to resubmit ", n_missing_scripts, " scripts."
+		print(missing_files)
+		for f in missing_files.split(" "):
+			print(f)
+			if f != "":
+				redoList.append(f)
                 if options.resubmit:
                     print "resubmitting ", n_missing_scripts, " scripts ..."
                     os.system("python submit.py "+missing_files)
+
+with open("scriptsToRerun.txt","w")as f:
+    f.write("\n".join(redoList))
+print "#"*40
+print "jobs to repeat"
+print len(redoList)
+print " ".join(redoList)
+print ""
+print "#"*40
+
