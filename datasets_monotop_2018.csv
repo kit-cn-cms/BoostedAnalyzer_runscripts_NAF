@@ -20,10 +20,10 @@ zll_ht_70_100,/DYJetsToLL_M-50_HT-70to100_TuneCP5_PSweights_13TeV-madgraphMLM-py
 zll_ht_100_200,/DYJetsToLL_M-50_HT-100to200_TuneCP5_PSweights_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15*/MINIAODSIM,147.40
 zll_ht_200_400,/DYJetsToLL_M-50_HT-200to400_TuneCP5_PSweights_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15*/MINIAODSIM,40.99
 zll_ht_400_600,/DYJetsToLL_M-50_HT-400to600_TuneCP5_PSweights_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15*/MINIAODSIM,5.678
-zll_ht_600_800,/DYJetsToLL_M-50_HT-600to800_TuneCP5_PSweights_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15*/MINIAODSIM,1.367 
-zll_ht_800_1200,/DYJetsToLL_M-50_HT-800to1200_TuneCP5_PSweights_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15*/MINIAODSIM,0.6304 
-zll_ht_1200_2500,/DYJetsToLL_M-50_HT-1200to2500_TuneCP5_PSweights_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15*/MINIAODSIM,0.1514 
-zll_ht_2500_Inf,/DYJetsToLL_M-50_HT-2500toInf_TuneCP5_PSweights_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15*/MINIAODSIM,0.003565 
+zll_ht_600_800,/DYJetsToLL_M-50_HT-600to800_TuneCP5_PSweights_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15*/MINIAODSIM,1.367
+zll_ht_800_1200,/DYJetsToLL_M-50_HT-800to1200_TuneCP5_PSweights_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15*/MINIAODSIM,0.6304
+zll_ht_1200_2500,/DYJetsToLL_M-50_HT-1200to2500_TuneCP5_PSweights_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15*/MINIAODSIM,0.1514
+zll_ht_2500_Inf,/DYJetsToLL_M-50_HT-2500toInf_TuneCP5_PSweights_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15*/MINIAODSIM,0.003565
 #
 # xs from https://twiki.cern.ch/twiki/bin/viewauth/CMS/StandardModelCrossSectionsat13TeV
 #wlnu,/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM,61526.7
