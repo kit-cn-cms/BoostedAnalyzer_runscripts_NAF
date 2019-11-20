@@ -1,12 +1,12 @@
 # cross sections from xsdb https://cms-gen-dev.cern.ch/xsdb
 # xs probably has to be scaled by factor of 3 (3 neutrino generations)
-znunu_ht_100_200,/ZJetsToNuNu_HT-100To200_13TeV-madgraph/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,302.8
-znunu_ht_200_400,/ZJetsToNuNu_HT-200To400_13TeV-madgraph/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,92.59
-znunu_ht_400_600,/ZJetsToNuNu_HT-400To600_13TeV-madgraph/*unIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v1/MINIAODSIM,13.18
-znunu_ht_600_800,/ZJetsToNuNu_HT-600To800_13TeV-madgraph/*unIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v1/MINIAODSIM,3.257
-znunu_ht_800_1200,/ZJetsToNuNu_HT-800To1200_13TeV-madgraph/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,1.49
-znunu_ht_1200_2500,/ZJetsToNuNu_HT-1200To2500_13TeV-madgraph/*unIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v1/MINIAODSIM,0.3419
-znunu_ht_2500_Inf,/ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,0.005146
+znunu_ht_100_200,/ZJetsToNuNu_HT-100To200_13TeV-madgraph/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,3.045e+02
+znunu_ht_200_400,/ZJetsToNuNu_HT-200To400_13TeV-madgraph/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,9.185e+01
+znunu_ht_400_600,/ZJetsToNuNu_HT-400To600_13TeV-madgraph/*unIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v1/MINIAODSIM,1.311e+01
+znunu_ht_600_800,/ZJetsToNuNu_HT-600To800_13TeV-madgraph/*unIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v1/MINIAODSIM,3.256
+znunu_ht_800_1200,/ZJetsToNuNu_HT-800To1200_13TeV-madgraph/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,1.499
+znunu_ht_1200_2500,/ZJetsToNuNu_HT-1200To2500_13TeV-madgraph/*unIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v1/MINIAODSIM,3.427e-01
+znunu_ht_2500_Inf,/ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,5.146e-03
 #
 # xs from https://twiki.cern.ch/twiki/bin/viewauth/CMS/SummaryTable1G25ns#DY_Z
 #zll,/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,6225.42
@@ -16,14 +16,14 @@ znunu_ht_2500_Inf,/ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph/*unIIFall17MiniAODv2-
 #zll_1J,/DYJetsToLL_1J_TuneCP5_13TeV-amcatnloFXFX-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,859.59
 #zll_2J,/DYJetsToLL_2J_TuneCP5_13TeV-amcatnloFXFX-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,338.26
 # cross sections from https://twiki.cern.ch/twiki/bin/viewauth/CMS/SummaryTable1G25ns#DY_Z
-zll_ht_70_100,/DYJetsToLL_M-50_HT-70to100_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,169.9
-zll_ht_100_200,/DYJetsToLL_M-50_HT-100to200_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/MINIAODSIM,147.40
-zll_ht_200_400,/DYJetsToLL_M-50_HT-200to400_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2/MINIAODSIM,40.99
-zll_ht_400_600,/DYJetsToLL_M-50_HT-400to600_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/MINIAODSIM,5.678
-zll_ht_600_800,/DYJetsToLL_M-50_HT-600to800_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/MINIAODSIM,1.367
-zll_ht_800_1200,/DYJetsToLL_M-50_HT-800to1200_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/MINIAODSIM,0.6304
-zll_ht_1200_2500,/DYJetsToLL_M-50_HT-1200to2500_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,0.1514
-zll_ht_2500_Inf,/DYJetsToLL_M-50_HT-2500toInf_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/MINIAODSIM,0.003565
+zll_ht_70_100,/DYJetsToLL_M-50_HT-70to100_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,1.470e+02
+zll_ht_100_200,/DYJetsToLL_M-50_HT-100to200_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/MINIAODSIM,1.608e+02
+zll_ht_200_400,/DYJetsToLL_M-50_HT-200to400_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2/MINIAODSIM,4.863e+01
+zll_ht_400_600,/DYJetsToLL_M-50_HT-400to600_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/MINIAODSIM,6.986
+zll_ht_600_800,/DYJetsToLL_M-50_HT-600to800_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/MINIAODSIM,1.743
+zll_ht_800_1200,/DYJetsToLL_M-50_HT-800to1200_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/MINIAODSIM,8.044e-01
+zll_ht_1200_2500,/DYJetsToLL_M-50_HT-1200to2500_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,1.927e-01
+zll_ht_2500_Inf,/DYJetsToLL_M-50_HT-2500toInf_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/MINIAODSIM,3.476e-03
 #
 # xs from https://twiki.cern.ch/twiki/bin/viewauth/CMS/StandardModelCrossSectionsat13TeV
 #wlnu,/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM,61526.7
@@ -32,14 +32,14 @@ zll_ht_2500_Inf,/DYJetsToLL_M-50_HT-2500toInf_TuneCP5_13TeV-madgraphMLM-pythia8/
 #wlnu_1J,/WJetsToLNu_1J_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14*-v1/MINIAODSIM,8426.09
 #wlnu_2J,/WJetsToLNu_2J_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14*/MINIAODSIM,3172.96
 # cross sections from xsdb https://cms-gen-dev.cern.ch/xsdb
-wlnu_ht_70_100,/WJetsToLNu_HT-70To100_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,1.
-wlnu_ht_100_200,/WJetsToLNu_HT-100To200_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2/MINIAODSIM,1395.0
-wlnu_ht_200_400,/WJetsToLNu_HT-200To400_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,407.9
-wlnu_ht_400_600,/WJetsToLNu_HT-400To600_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,57.48
-wlnu_ht_600_800,/WJetsToLNu_HT-600To800_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,12.87
-wlnu_ht_800_1200,/WJetsToLNu_HT-800To1200_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,5.366
-wlnu_ht_1200_2500,/WJetsToLNu_HT-1200To2500_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,1.074
-wlnu_ht_2500_Inf,/WJetsToLNu_HT-2500ToInf_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v3/MINIAODSIM,0.008001
+wlnu_ht_70_100,/WJetsToLNu_HT-70To100_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,1.294e+03
+wlnu_ht_100_200,/WJetsToLNu_HT-100To200_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2/MINIAODSIM,1.395e+03
+wlnu_ht_200_400,/WJetsToLNu_HT-200To400_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,4.093e+02
+wlnu_ht_400_600,/WJetsToLNu_HT-400To600_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,5.791e+01
+wlnu_ht_600_800,/WJetsToLNu_HT-600To800_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,1.293e+01
+wlnu_ht_800_1200,/WJetsToLNu_HT-800To1200_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,5.395
+wlnu_ht_1200_2500,/WJetsToLNu_HT-1200To2500_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,1.080
+wlnu_ht_2500_Inf,/WJetsToLNu_HT-2500ToInf_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v3/MINIAODSIM,8.053e-03
 #
 # cross sections from https://twiki.cern.ch/twiki/bin/view/LHCPhysics/TtbarNNLO#Top_quark_pair_cross_sections_at with BR(W->had)=0.6741
 ttbar_sl,/TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8/*unIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2/MINIAODSIM,365.46
