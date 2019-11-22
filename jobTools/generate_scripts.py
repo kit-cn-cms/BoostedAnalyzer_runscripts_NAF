@@ -220,14 +220,20 @@ def create_jobs(name,dataset,jobconfig):
         os.makedirs(user_config.outpath+'/'+name)       
 
     
+    total_events = 0
     for f,nev in zip(files,events):
         nevents_in_job+=nev
+        total_events += nev
         files_in_job.append(f)
         if nevents_in_job>user_config.min_events_per_job or f==files[-1] or len(files_in_job)==100:
             ijob+=1
             create_scripts(name,ijob,files_in_job,nevents_in_job,eventsinsample,jobconfig)
             nevents_in_job=0
             files_in_job=[]
+
+            if not jobconfig["maxEventsTotal"] == -1 and jobconfig["maxEventsTotal"] < total_events:
+                print("max number of entries {} reached for this sample".format(jobconfig["maxEventsTotal"]))
+                break
 
 
 #-------------------------------    
@@ -321,6 +327,11 @@ for row in reader:
     jobconfig['nSystematicVariationsPerJob']=user_config.nSystematicVariationsPerJob
     jobconfig['dataEra']=row['run']
     jobconfig['ProduceMemNtuples']=user_config.ProduceMemNtuples
+    
+    try:
+        jobconfig["maxEventsTotal"] = user_config.max_events_total
+    except:
+        jobconfig["MaxEventsTotal"] = -1
     #jobconfig['dataTrigger']=row['dataTrigger']
     if dataset=="''":
         continue
