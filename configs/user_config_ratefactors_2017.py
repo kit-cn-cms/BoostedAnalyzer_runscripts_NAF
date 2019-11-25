@@ -1,0 +1,13 @@
+outpath='/nfs/dust/cms/user/vdlinden/legacyTTH/ratefactors_legacy/ntuple_2017' # path of output of analyzer
+scriptpath='ratefactors_2017' # folder containing shell scripts that will have to be run on cluster
+samplelist='ttH_legacy_ratefactors_2017.csv' # samples list
+dataset_column='dataset' # run on the column with dataset or boosted_dataset?
+cmsswcfgpath='/nfs/dust/cms/user/vdlinden/legacyTTH/ratefactors_legacy/CMSSW_9_4_13/src/BoostedTTH/BoostedAnalyzer/test/boostedAnalysis_rateFactors.py'
+cmsswpath='/nfs/dust/cms/user/vdlinden/legacyTTH/ratefactors_legacy/CMSSW_9_4_13/'
+dbs="prod/global" # dbs instance: boosted miniaod is in prod/phys03, standard miniaod in prod/global
+min_events_per_job=50000 # min number of events per job 
+max_events_total=500000
+isBoostedMiniAOD=False # do the inputs contain fat jets?
+systematicVariations='noSysts.txt'
+nSystematicVariationsPerJob=4
+ProduceMemNtuples=False
