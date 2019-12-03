@@ -1,0 +1,12 @@
+name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,isData,generator,additionalSelection,run
+,,,,,,,,,,,
+SingleElectronB,/SingleElectron/Run2017B-31Mar2018-v1/MINIAOD,60537490,1,1,1.65186894931E-05,/SingleElectron/vanderli-KIT_tthbb_sl_skims_DATA_94X_LEG_2017B-7300fd54e471b7ab4a229a7c760bb30c/USER,94X_dataRun2_v11,TRUE,notSpecified,NONE,2017B
+SingleElectronC,/SingleElectron/Run2017C-31Mar2018-v1/MINIAOD,136637888,1,1,7.3186142924E-06,/SingleElectron/vanderli-KIT_tthbb_sl_skims_DATA_94X_LEG_2017C-98373db19b5941dd323d4060dccbe500/USER,94X_dataRun2_v11,TRUE,notSpecified,NONE,2017C
+SingleElectronD,/SingleElectron/Run2017D-31Mar2018-v1/MINIAOD,51526710,1,1,1.94074102538E-05,/SingleElectron/vanderli-KIT_tthbb_sl_skims_DATA_94X_LEG_2017D-357b71e72dd56be594402be42d48bf7c/USER,94X_dataRun2_v11,TRUE,notSpecified,NONE,2017D
+SingleElectronE,/SingleElectron/Run2017E-31Mar2018-v1/MINIAOD,102121689,1,1,9.79223913933E-06,/SingleElectron/vanderli-KIT_tthbb_sl_skims_DATA_94X_LEG_2017E-167c6797622b96a4af4b420364cc8dc3/USER,94X_dataRun2_v11,TRUE,notSpecified,NONE,2017E
+SingleElectronF,/SingleElectron/Run2017F-31Mar2018-v1/MINIAOD,128467223,1,1,7.7840866849E-06,/SingleElectron/vanderli-KIT_tthbb_sl_skims_DATA_94X_LEG_2017F-e4ef3cc51b7a4f272d15db8f1d3ecb95/USER,94X_dataRun2_v11,TRUE,notSpecified,NONE,2017F
+SingleMuonB,/SingleMuon/Run2017B-31Mar2018-v1/MINIAOD,136300266,1,1,7.33674283512E-06,/SingleMuon/vanderli-KIT_tthbb_sl_skims_DATA_94X_LEG_2017B-7300fd54e471b7ab4a229a7c760bb30c/USER,94X_dataRun2_v11,TRUE,notSpecified,NONE,2017B
+SingleMuonC,/SingleMuon/Run2017C-31Mar2018-v1/MINIAOD,165652756,1,1,6.03672419431E-06,/SingleMuon/vanderli-KIT_tthbb_sl_skims_DATA_94X_LEG_2017C-98373db19b5941dd323d4060dccbe500/USER,94X_dataRun2_v11,TRUE,notSpecified,NONE,2017C
+SingleMuonD,/SingleMuon/Run2017D-31Mar2018-v1/MINIAOD,70361660,1,1,1.42122854975E-05,/SingleMuon/vanderli-KIT_tthbb_sl_skims_DATA_94X_LEG_2017D-357b71e72dd56be594402be42d48bf7c/USER,94X_dataRun2_v11,TRUE,notSpecified,NONE,2017D
+SingleMuonE,/SingleMuon/Run2017E-31Mar2018-v1/MINIAOD,154630534,1,1,6.46702804506E-06,/SingleMuon/swieland-KIT_tthbb_sl_skims_DATA_94X_LEG_2017E-167c6797622b96a4af4b420364cc8dc3/USER,94X_dataRun2_v11,TRUE,notSpecified,NONE,2017E
+SingleMuonF,/SingleMuon/Run2017F-31Mar2018-v1/MINIAOD,242135500,1,1,4.12991899164E-06,/SingleMuon/swieland-KIT_tthbb_sl_skims_DATA_94X_LEG_2017F-e4ef3cc51b7a4f272d15db8f1d3ecb95/USER,94X_dataRun2_v11,TRUE,notSpecified,NONE,2017F

@@ -1,0 +1,12 @@
+outpath='/nfs/dust/cms/user/vdlinden/legacyTTZ/ntupleProduction/ttZ_2017_v1' # path of output of analyzer
+scriptpath='ttZ_2017_data' # folder containing shell scripts that will have to be run on cluster
+samplelist='ttZ_samples_2017_data.csv' # samples list
+dataset_column='boosted_dataset' # run on the column with dataset or boosted_dataset?
+cmsswcfgpath='/nfs/dust/cms/user/lbosch/ntuple_production/CMSSW_9_4_13/src/BoostedTTH/BoostedAnalyzer/test/boostedAnalysis_ntuples-ttZ_2017.py'
+cmsswpath='/nfs/dust/cms/user/lbosch/ntuple_production/CMSSW_9_4_13'
+dbs="prod/phys03" # dbs instance: boosted miniaod is in prod/phys03, standard miniaod in prod/global
+min_events_per_job=500000 # min number of events per job 
+isBoostedMiniAOD=False # do the inputs contain fat jets?
+systematicVariations='noSysts.txt'
+nSystematicVariationsPerJob=4
+ProduceMemNtuples=False
