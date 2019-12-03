@@ -331,7 +331,8 @@ for row in reader:
     try:
         jobconfig["maxEventsTotal"] = user_config.max_events_total
     except:
-        jobconfig["MaxEventsTotal"] = -1
+        jobconfig["maxEventsTotal"] = -1
+
     #jobconfig['dataTrigger']=row['dataTrigger']
     if dataset=="''":
         continue
