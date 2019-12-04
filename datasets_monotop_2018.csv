@@ -1,5 +1,4 @@
-# cross sections from xsdb https://cms-gen-dev.cern.ch/xsdb
-# xs probably has to be scaled by factor of 3 (3 neutrino generations)
+# cross sections calculated by myself with genxsecanalyzer
 znunu_ht_100_200,/ZJetsToNuNu_HT-100To200_13TeV-madgraph/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,3.034e+02
 znunu_ht_200_400,/ZJetsToNuNu_HT-200To400_13TeV-madgraph/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,9.171e+01
 znunu_ht_400_600,/ZJetsToNuNu_HT-400To600_13TeV-madgraph/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM,1.310e+01
@@ -15,7 +14,8 @@ znunu_ht_2500_Inf,/ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph/*unIIAutumn18MiniAOD-
 #zll_0J,/DYJetsToLL_0J_TuneCP5_13TeV-amcatnloFXFX-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,4620.52
 #zll_1J,/DYJetsToLL_1J_TuneCP5_13TeV-amcatnloFXFX-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,859.59
 #zll_2J,/DYJetsToLL_2J_TuneCP5_13TeV-amcatnloFXFX-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,338.26
-# cross sections from https://twiki.cern.ch/twiki/bin/viewauth/CMS/SummaryTable1G25ns#DY_Z
+#
+# cross sections calculated by myself with genxsecanalyzer
 zll_ht_70_100,/DYJetsToLL_M-50_HT-70to100_TuneCP5_PSweights_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,1.467e+02
 zll_ht_100_200,/DYJetsToLL_M-50_HT-100to200_TuneCP5_PSweights_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM,1.608e+02
 zll_ht_200_400,/DYJetsToLL_M-50_HT-200to400_TuneCP5_PSweights_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM,4.863e+01
@@ -31,7 +31,8 @@ zll_ht_2500_Inf,/DYJetsToLL_M-50_HT-2500toInf_TuneCP5_PSweights_13TeV-madgraphML
 #wlnu_0J,/WJetsToLNu_0J_TuneCP5_13TeV-amcatnloFXFX-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,50131.98
 #wlnu_1J,/WJetsToLNu_1J_TuneCP5_13TeV-amcatnloFXFX-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,8426.09
 #wlnu_2J,/WJetsToLNu_2J_TuneCP5_13TeV-amcatnloFXFX-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,3172.96
-# cross sections from xsdb https://cms-gen-dev.cern.ch/xsdb
+#
+# cross sections calculated by myself with genxsecanalyzer
 wlnu_ht_70_100,/WJetsToLNu_HT-70To100_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,1.289e+03
 wlnu_ht_100_200,/WJetsToLNu_HT-100To200_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,1.392e+03
 wlnu_ht_200_400,/WJetsToLNu_HT-200To400_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,4.103e+02
@@ -40,6 +41,13 @@ wlnu_ht_600_800,/WJetsToLNu_HT-600To800_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIA
 wlnu_ht_800_1200,/WJetsToLNu_HT-800To1200_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,5.451
 wlnu_ht_1200_2500,/WJetsToLNu_HT-1200To2500_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,1.084
 wlnu_ht_2500_Inf,/WJetsToLNu_HT-2500ToInf_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,8.061e-03
+#
+# cross sections calculated by myself with genxsecanalyzer
+gjets_ht_40_100,/GJets_HT-40To100_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,1.857e+04
+gjets_ht_100_200,/GJets_HT-100To200_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-4cores5k_102X_upgrade2018_realistic_v15-v1/MINIAODSIM,8.604e+03
+gjets_ht_200_400,/GJets_HT-200To400_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,2.194e+03
+gjets_ht_400_600,/GJets_HT-400To600_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,2.578e+02
+gjets_ht_600_Inf,/GJets_HT-600ToInf_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM,8.492e+01
 #
 # cross sections from https://twiki.cern.ch/twiki/bin/view/LHCPhysics/TtbarNNLO#Top_quark_pair_cross_sections_at with BR(W->had)=0.6741
 ttbar_sl,/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,365.46
