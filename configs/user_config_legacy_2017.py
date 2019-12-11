@@ -13,5 +13,5 @@ dbs="prod/phys03" # dbs instance: boosted miniaod is in prod/phys03, standard mi
 min_events_per_job=100000 # min number of events per job 
 isBoostedMiniAOD=False # do the inputs contain fat jets?
 systematicVariations='systematicVariations_new.txt'
-nSystematicVariationsPerJob=4
+nSystematicVariationsPerJob=3
 ProduceMemNtuples=False
