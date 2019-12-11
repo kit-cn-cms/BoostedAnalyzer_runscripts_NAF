@@ -1,0 +1,31 @@
+# total JEC and JER uncertainties
+JES		
+JER			
+
+# 11 JES groups
+JESAbsolute
+JESAbsoluteyear
+JESFlavorQCD
+JESBBEC1year
+JESEC2
+JESEC2year
+JESHF
+JESHFyear
+JESRelativeBal
+JESRelativeSampleyear
+
+#add. HEM source for 2018
+JESHEM
+
+#JER sources according to HiggsMuMu
+
+JERpt0eta0
+JERpt0eta1
+JERpt1eta0
+JERpt1eta1
+JEReta2
+
+
+# Total 18 Sources
+
+
