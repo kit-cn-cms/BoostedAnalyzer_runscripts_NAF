@@ -86,6 +86,11 @@ def split_for_systematic_variations(jobconfig):
         systs_str=""
         isyst=1
         for syst in jobconfig['systematicVariations']:
+            if syst == "nominal":
+                cfg = jobconfig.copy()
+                cfg["systematicVariations"] = "nominal"
+                jobconfigs.append(cfg)
+                continue
             if len(systs_str)>0:
                 systs_str+=","
             systs_str+=str(syst)
@@ -101,11 +106,16 @@ def split_for_systematic_variations(jobconfig):
             cfg=jobconfig.copy()
             cfg['systematicVariations']=systs_str
             jobconfigs.append(cfg)
-
     return jobconfigs    
     
 
 def create_script(name,ijob,isyst,files_in_job,nevents_in_job,eventsinsample,jobconfig):
+    dirname = name
+    if "nominal" in jobconfig["systematicVariations"]:
+        dirname+="_nominal"
+        if not os.path.exists(current_scriptpath+'/'+dirname):
+            os.makedirs(current_scriptpath+'/'+dirname)
+
     outfilename=user_config.outpath+'/'+name+'/'+name+'_'+str(ijob)
     jobconfig['inputFiles']=','.join(files_in_job)
     jobconfig['outName']=outfilename
@@ -129,7 +139,7 @@ def create_script(name,ijob,isyst,files_in_job,nevents_in_job,eventsinsample,job
     script+='fi\n'
 
     script+=get_metainfo(outfilename,nevents_in_job,jobconfig)
-    filename=current_scriptpath+'/'+name+'/'+name+'_'+str(ijob)+'_'+str(isyst)+'.sh'
+    filename=current_scriptpath+'/'+dirname+'/'+name+'_'+str(ijob)+'_'+str(isyst)+'.sh'
     f=open(filename,'w')
     f.write(script)
     f.close()
@@ -228,9 +238,8 @@ def create_jobs(name,dataset,jobconfig):
     if not os.path.exists(folder):
         os.makedirs(folder)       
     if not os.path.exists(user_config.outpath+'/'+name):
-        #print ">>>> os.makedirs("+str(user_config.outpath+'/'+name)+")"
         os.makedirs(user_config.outpath+'/'+name)       
-
+    
     
     total_events = 0
     for f,nev in zip(files,events):
