@@ -184,7 +184,7 @@ for sample in samples:
             if missing_file:
                 n_missing_scripts+=1
                 #print scripts_path+sample+"/"+sample+"_"+number+"_"+str(systematic_number)+".sh"
-                missing_files+=" "+os.path.join(scripts_path,sample)+"/"+sample+"_"+number+"_"+str(systematic_number)+".sh"
+                missing_files+=" "+os.path.join(scripts_path,dirname)+"/"+sample+"_"+number+"_"+str(systematic_number)+".sh"
                 
         print "Have to resubmit ", n_missing_scripts, " scripts."
         print(missing_files)
