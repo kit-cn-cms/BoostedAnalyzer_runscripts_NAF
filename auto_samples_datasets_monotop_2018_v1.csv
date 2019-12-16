@@ -100,6 +100,16 @@ WJetsToLNu_HT-1200To2500_TuneCP5_13TeV-madgraphMLM-pythia8,/WJetsToLNu_HT-1200To
 ,,,,,,,,,,,
 WJetsToLNu_HT-2500ToInf_TuneCP5_13TeV-madgraphMLM-pythia8,/WJetsToLNu_HT-2500ToInf_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,3273980,0.974761755425,0.008061,2.52588990778e-06,/WJetsToLNu_HT-2500ToInf_TuneCP5_13TeV-madgraphMLM-pythia8/mwassmer-KIT_Monotop_skims_2018_102X-b265976b89bb126e5ad256e20f210219/USER,102X_upgrade2018_realistic_v20,FALSE,MadGraph,NONE,2018
 ,,,,,,,,,,,
+GJets_HT-40To100_TuneCP5_13TeV-madgraphMLM-pythia8,/GJets_HT-40To100_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,9371355,0.999862313413,18570.0,1.98184330783,,102X_upgrade2018_realistic_v20,FALSE,MadGraph,NONE,2018
+,,,,,,,,,,,
+GJets_HT-100To200_TuneCP5_13TeV-madgraphMLM-pythia8,/GJets_HT-100To200_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-4cores5k_102X_upgrade2018_realistic_v15-v1/MINIAODSIM,9798176,0.999742129969,8604.0,0.878349121922,,102X_upgrade2018_realistic_v20,FALSE,MadGraph,NONE,2018
+,,,,,,,,,,,
+GJets_HT-200To400_TuneCP5_13TeV-madgraphMLM-pythia8,/GJets_HT-200To400_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,19062809,0.999450079695,2194.0,0.115156543246,,102X_upgrade2018_realistic_v20,FALSE,MadGraph,NONE,2018
+,,,,,,,,,,,
+GJets_HT-400To600_TuneCP5_13TeV-madgraphMLM-pythia8,/GJets_HT-400To600_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,4655985,0.998874545635,257.8,0.0554319803532,,102X_upgrade2018_realistic_v20,FALSE,MadGraph,NONE,2018
+,,,,,,,,,,,
+GJets_HT-600ToInf_TuneCP5_13TeV-madgraphMLM-pythia8,/GJets_HT-600ToInf_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM,4981121,0.997577511686,84.92,0.0170897710107,,102X_upgrade2018_realistic_v20,FALSE,MadGraph,NONE,2018
+,,,,,,,,,,,
 EGamma_2018A,/EGamma/Run2018A-17Sep2018-v2/MINIAOD,327843843,1.0,1.0,1.0,/EGamma/mwassmer-KIT_Monotop_skims_102X_v1_Run2018A-f70e117c100419257658e1ae4ed22847/USER,102X_dataRun2_v12,TRUE,notSpecified,NONE,2018A
 ,,,,,,,,,,,
 EGamma_2018B,/EGamma/Run2018B-17Sep2018-v1/MINIAOD,153822427,1.0,1.0,1.0,/EGamma/mwassmer-KIT_Monotop_skims_102X_v1_Run2018B-f70e117c100419257658e1ae4ed22847/USER,102X_dataRun2_v12,TRUE,notSpecified,NONE,2018B
