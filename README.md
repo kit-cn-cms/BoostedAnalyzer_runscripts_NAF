@@ -38,10 +38,12 @@ After a batch of jobs has finished you should check if alle jobs run successfull
     * This will create a file called `broken_files.txt`
 2. Delete the broken files:
     * run `python jobTools/deleteNtuples.py -f broken_files.txt`
-3. Check the Log files to find out which job failed:
+3. Check the output to find out which jobs failed:
      * run  
-       ```python jobTools/getScriptToRerun.py -d 'workdir/path/to/yout/jobdir/and/batch/logs'```
-     * wildcards are allowed
+       ```python jobTools/check_files.py -f BASEPATHtoNUTPLEFOLDER -s BASEPATHtoSCRIPTSFolder -n N_SYSTSPERJOB SAMPLE1 SAMPLE2 ```
+     * wildcards are for samples to check
+     * use `--nominal` flag for data or nominal ntuples
+     * make sure your samplename matches with the scriptfolder and and foldername in ntuple directory 
      * This will create a file called `scriptsToRerun.txt`
      * Hint: It might be useful to check, why certain jobs failed, e.g. too mich memory consumption or too long runtime
 4. Resubmit failed jobs:
