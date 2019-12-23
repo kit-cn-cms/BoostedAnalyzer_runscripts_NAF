@@ -28,7 +28,7 @@ def get_splitting_of_systematics(systematics,nvariations):
     systematics_=[]
     systematics_tmp=[]
     i=0
-    k=0
+    k=1
     for systematic in systematics:
         systematics_tmp.append(systematic)
         i+=1
@@ -38,8 +38,9 @@ def get_splitting_of_systematics(systematics,nvariations):
             systematics_numbers.append(k)
             i=0
             systematics_tmp=[]
-    systematics_.append(systematics_tmp)
-    systematics_numbers.append(k+1)
+    if len(systematics_tmp)>0:
+        systematics_.append(systematics_tmp)
+        systematics_numbers.append(k+1)
     return systematics_,systematics_numbers
 
 
