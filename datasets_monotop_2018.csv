@@ -70,7 +70,7 @@ wz,/WZ_TuneCP5*_13TeV-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v1
 zz,/ZZ_TuneCP5_13TeV-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM,16.91
 #
 # cross sections from https://twiki.cern.ch/twiki/bin/viewauth/CMS/SummaryTable1G25ns#QCD
-qcd_ht_50_100,/QCD_HT50to100_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,1.
+qcd_ht_50_100,/QCD_HT50to100_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,1.854e+08
 qcd_ht_100_200,/QCD_HT100to200_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,27990000
 qcd_ht_200_300,/QCD_HT200to300_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,1712000
 qcd_ht_300_500,/QCD_HT300to500_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,347700

@@ -68,7 +68,7 @@ wz,/WZ_TuneCUETP8M1_13TeV-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_
 zz,/ZZ_TuneCUETP8M1_13TeV-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,16.91
 #
 # cross sections from https://twiki.cern.ch/twiki/bin/viewauth/CMS/SummaryTable1G25ns#QCD
-qcd_ht_50_100,/QCD_HT50to100_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM,1.
+qcd_ht_50_100,/QCD_HT50to100_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM,2.463e+08
 qcd_ht_100_200,/QCD_HT100to200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM,27990000
 qcd_ht_200_300,/QCD_HT200to300_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_*-v2/MINIAODSIM,1712000
 qcd_ht_300_500,/QCD_HT300to500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,347700
