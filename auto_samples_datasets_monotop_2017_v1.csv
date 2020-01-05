@@ -80,7 +80,7 @@ WZ_TuneCP5_13TeV-pythia8,/WZ_TuneCP5_13TeV-pythia8/RunIIFall17MiniAODv2-PU2017_1
 ,,,,,,,,,,,
 ZZ_TuneCP5_13TeV-pythia8,/ZZ_TuneCP5_13TeV-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/MINIAODSIM,1925931,1.0,16.91,0.00878016917532,/ZZ_TuneCP5_13TeV-pythia8/mwassmer-KIT_Monotop_skims_2017_102X_v1-d8bec36752da6ec4bbe9d87aa052e37f/USER,102X_mc2017_realistic_v7,FALSE,pythia8,NONE,2017
 ,,,,,,,,,,,
-QCD_HT50to100_TuneCP5_13TeV-madgraphMLM-pythia8,/QCD_HT50to100_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,40456172,0.0,1.0,1.0,/QCD_HT50to100_TuneCP5_13TeV-madgraphMLM-pythia8/mwassmer-KIT_Monotop_skims_2017_102X_v1-d8bec36752da6ec4bbe9d87aa052e37f/USER,102X_mc2017_realistic_v7,FALSE,MadGraph,NONE,2017
+QCD_HT50to100_TuneCP5_13TeV-madgraphMLM-pythia8,/QCD_HT50to100_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,40456172,0.999983213637,185800000.0,4592.70142906,/QCD_HT50to100_TuneCP5_13TeV-madgraphMLM-pythia8/mwassmer-KIT_Monotop_skims_2017_102X_v1-d8bec36752da6ec4bbe9d87aa052e37f/USER,102X_mc2017_realistic_v7,FALSE,MadGraph,NONE,2017
 ,,,,,,,,,,,
 QCD_HT100to200_TuneCP5_13TeV-madgraph-pythia8,/QCD_HT100to200_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2/MINIAODSIM,93231801,0.999709086747,27990000.0,300.306813031,/QCD_HT100to200_TuneCP5_13TeV-madgraph-pythia8/mwassmer-KIT_Monotop_skims_2017_102X_v1-d8bec36752da6ec4bbe9d87aa052e37f/USER,102X_mc2017_realistic_v7,FALSE,MadGraph,NONE,2017
 ,,,,,,,,,,,
