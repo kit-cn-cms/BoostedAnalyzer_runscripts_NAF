@@ -158,6 +158,7 @@ for dataset in opts.dataset.split(","):
                         os.system(cmd)
                         if getEntries(currentOutName) != currentEntries:
                             print("WARNING # Events doesn't match up")
+                            print("Current Entries: {0} CurrentOutname: {1}".format(currentEntries,getEntries(currentOutName)))
                             failedjobs.append({dataset:systname})
                         with open(currentOutName.replace(".root","_Cutflow.txt"), "w") as txtf:
                             txtf.write(text)
