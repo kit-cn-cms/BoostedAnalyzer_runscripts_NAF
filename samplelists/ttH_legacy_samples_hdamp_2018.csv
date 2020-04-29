@@ -1,0 +1,5 @@
+name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,isData,generator,additionalSelection,run
+,,,,,,,,,,,
+TTbb_4f_TTToHadronic_hdampDOWN_TuneCP5-Powheg-Openloops-Pythia8,/TTbb_4f_TTToHadronic_hdampDOWN_TuneCP5-Powheg-Openloops-Pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,2307693,18.878013571,377.96,0.00867583959062,/TTbb_4f_TTToHadronic_hdampDOWN_TuneCP5-Powheg-Openloops-Pythia8/vanderli-KIT_tthbb_sl_skims_MC_102X_LEG_2018-b9899da800e5578fdd124c7a0a5f7739/USER,94X_mc2017_realistic_v17,FALSE,notSpecified,NONE,2018
+,,,,,,,,,,,
+TTbb_4f_TTToSemiLeptonic_hdampDOWN_TuneCP5-Powheg-Openloops-Pythia8,/TTbb_4f_TTToSemiLeptonic_hdampDOWN_TuneCP5-Powheg-Openloops-Pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,1910400,18.1143284126,365.46,0.0105607145293,/TTbb_4f_TTToSemiLeptonic_hdampDOWN_TuneCP5-Powheg-Openloops-Pythia8/vanderli-KIT_tthbb_sl_skims_MC_102X_LEG_2018-b9899da800e5578fdd124c7a0a5f7739/USER,94X_mc2017_realistic_v17,FALSE,notSpecified,NONE,2018
