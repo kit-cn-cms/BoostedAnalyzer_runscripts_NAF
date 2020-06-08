@@ -126,8 +126,17 @@ def create_script(name,ijob,isyst,files_in_job,nevents_in_job,eventsinsample,job
     script+='# check release\n'
     script+='OS="`uname -r`"\n'
 
-    script+='cd '+user_config.cmsswpath+'/src\neval `scram runtime -sh`\n'
-    script+='cmsRun '+user_config.cmsswcfgpath+get_vars(jobconfig)
+    script+='if [[ $OS == *"el6"* ]]; then\n'
+    script+='  echo detected SL6, running ' + user_config.cmsswpathSL6 + '\n'
+    script+='  cd '+user_config.cmsswpathSL6+'/src\neval `scram runtime -sh`\n'
+    script+='  cmsRun '+user_config.cmsswcfgpathSL6+get_vars(jobconfig)
+    # script+='fi\n'
+
+    script+='elif [[ $OS == *"el7"* ]]; then\n'
+    script+='  echo detected SL7, running ' + user_config.cmsswpathSL7 + '\n'
+    script+='  cd '+user_config.cmsswpathSL7+'/src\neval `scram runtime -sh`\n'
+    script+='  cmsRun '+user_config.cmsswcfgpathSL7+get_vars(jobconfig)
+    script+='fi\n'
 
     script+=get_metainfo(outfilename,nevents_in_job,jobconfig)
     filename=current_scriptpath+'/'+dirname+'/'+name+'_'+str(ijob)+'_'+str(isyst)+'.sh'
@@ -261,8 +270,10 @@ else:
 
 print 'outpath',user_config.outpath
 print 'scriptpath',user_config.scriptpath
-print 'cmsswcfgpath',user_config.cmsswcfgpath
-print 'cmsswpath',user_config.cmsswpath
+print 'cmsswcfgpathSL6',user_config.cmsswcfgpathSL6
+print 'cmsswpathSL6',user_config.cmsswpathSL6
+print 'cmsswcfgpathSL7',user_config.cmsswcfgpathSL7
+print 'cmsswpathSL7',user_config.cmsswpathSL7
 print 'samplelist',user_config.samplelist
 print 'systematicVariations',user_config.systematicVariations
 
@@ -284,14 +295,22 @@ if not os.path.exists(current_scriptpath):
     print 'COULD NOT CREATE SCRIPTPATH!'
     print current_scriptpath
     sys.exit()
-if not os.path.exists(user_config.cmsswpath):
-    print 'WRONG CMSSW PATH!'
-    print user_config.cmsswpath
+if not os.path.exists(user_config.cmsswpathSL6):
+    print 'WRONG CMSSW PATH SL6!'
+    print user_config.cmsswpathSL6
     sys.exit()
-if not os.path.exists(user_config.cmsswcfgpath):
-    print 'WRONG CMSSW CONFIG PATH!'
-    print user_config.cmsswcfgpath
+if not os.path.exists(user_config.cmsswpathSL7):
+    print 'WRONG CMSSW PATH SL7!'
+    print user_config.cmsswpathSL7
     sys.exit()
+if not os.path.exists(user_config.cmsswcfgpathSL6):
+    print 'WRONG CMSSW CONFIG PATH SL6!'
+    print user_config.cmsswcfgpathSL6
+    sys.exit()
+if not os.path.exists(user_config.cmsswcfgpathSL7):
+    print 'WRONG CMSSW CONFIG PATH! SL7'
+    print user_config.cmsswcfgpathSL7
+    sys.exit()  
 if user_config.dataset_column == "dataset" and not user_config.dbs == "prod/global":
     print "If you use the dataset column which is for global samples, you have to you prod/global as dbs instance"
     print "You used ",user_config.dbs
@@ -350,3 +369,4 @@ for row in reader:
     create_jobs(name,dataset,jobconfig)
 
 f_list.close()
+
