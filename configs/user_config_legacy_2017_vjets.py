@@ -1,5 +1,5 @@
 outpath='/nfs/dust/cms/user/vdlinden/legacyTTH/ntupling/2017_vjets' # path of output of analyzer
-scriptpath='legacy_2017_vjets' # folder containing shell scripts that will have to be run on cluster
+scriptpath='legacy_2017_lo_vjets_jec' # folder containing shell scripts that will have to be run on cluster
 samplelist='ttH_legacy_lo_vjets_2017.csv' # samples list
 dataset_column='boosted_dataset' # run on the column with dataset or boosted_dataset?
 
@@ -12,6 +12,6 @@ cmsswpathSL7='/nfs/dust/cms/user/swieland/ttH_legacy/ntuple_JECgroups/CC7/CMSSW_
 dbs="prod/phys03" # dbs instance: boosted miniaod is in prod/phys03, standard miniaod in prod/global
 min_events_per_job=100000 # min number of events per job 
 isBoostedMiniAOD=False # do the inputs contain fat jets?
-systematicVariations='noSysts.txt'
+systematicVariations='systematicVariations_new.txt'
 nSystematicVariationsPerJob=3
 ProduceMemNtuples=False
