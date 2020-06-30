@@ -1,12 +1,12 @@
 # cross sections from xsdb https://cms-gen-dev.cern.ch/xsdb
 # xs probably has to be scaled by factor of 3 (3 neutrino generations)
-znunu_ht_100_200,/ZJetsToNuNu_HT-100To200_13TeV-madgraph/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,302.8
-znunu_ht_200_400,/ZJetsToNuNu_HT-200To400_13TeV-madgraph/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,92.59
-znunu_ht_400_600,/ZJetsToNuNu_HT-400To600_13TeV-madgraph/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,13.18
-znunu_ht_600_800,/ZJetsToNuNu_HT-600To800_13TeV-madgraph/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM,3.257
-znunu_ht_800_1200,/ZJetsToNuNu_HT-800To1200_13TeV-madgraph/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM,1.49
-znunu_ht_1200_2500,/ZJetsToNuNu_HT-1200To2500_13TeV-madgraph/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v1/MINIAODSIM,0.3419
-znunu_ht_2500_Inf,/ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM,0.005146
+znunu_ht_100_200,/ZJetsToNuNu_HT-100To200_13TeV-madgraph/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,9.357e+01
+znunu_ht_200_400,/ZJetsToNuNu_HT-200To400_13TeV-madgraph/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,2.590e+01
+znunu_ht_400_600,/ZJetsToNuNu_HT-400To600_13TeV-madgraph/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,3.585e+00
+znunu_ht_600_800,/ZJetsToNuNu_HT-600To800_13TeV-madgraph/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM,8.568e-01
+znunu_ht_800_1200,/ZJetsToNuNu_HT-800To1200_13TeV-madgraph/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM,3.934e-01
+znunu_ht_1200_2500,/ZJetsToNuNu_HT-1200To2500_13TeV-madgraph/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v1/MINIAODSIM,9.553e-02
+znunu_ht_2500_Inf,/ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM,2.304e-03
 #
 # xs from https://indico.cern.ch/event/673253/contributions/2756806/attachments/1541203/2416962/20171016_VJetsXsecsUpdate_PH-GEN.pdf (slide 13)
 #zll_pt_50_100,/DYJetsToLL_Pt-50To100_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*/MINIAODSIM,363.81
@@ -15,14 +15,14 @@ znunu_ht_2500_Inf,/ZJetsToNuNu_HT-2500ToInf_13TeV-madgraph/*unIISummer16MiniAODv
 #zll_pt_400_650,/DYJetsToLL_Pt-400To650_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*/MINIAODSIM,0.43604
 #zll_pt_650_Inf,/DYJetsToLL_Pt-650ToInf_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*/MINIAODSIM,0.04098
 #
-zll_ht_70_100,/DYJetsToLL_M-50_HT-70to100_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM,169.9
-zll_ht_100_200,/DYJetsToLL_M-50_HT-100to200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,147.40
-zll_ht_200_400,/DYJetsToLL_M-50_HT-200to400_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,40.99
-zll_ht_400_600,/DYJetsToLL_M-50_HT-400to600_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,5.678
-zll_ht_600_800,/DYJetsToLL_M-50_HT-600to800_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM,1.367
-zll_ht_800_1200,/DYJetsToLL_M-50_HT-800to1200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM,0.6304
-zll_ht_1200_2500,/DYJetsToLL_M-50_HT-1200to2500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM,0.1514
-zll_ht_2500_Inf,/DYJetsToLL_M-50_HT-2500toInf_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM,0.003565
+zll_ht_70_100,/DYJetsToLL_M-50_HT-70to100_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM,1.701e+02
+zll_ht_100_200,/DYJetsToLL_M-50_HT-100to200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,1.489e+02
+zll_ht_200_400,/DYJetsToLL_M-50_HT-200to400_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,4.090e+01
+zll_ht_400_600,/DYJetsToLL_M-50_HT-400to600_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,5.676e+00
+zll_ht_600_800,/DYJetsToLL_M-50_HT-600to800_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM,1.359e+00
+zll_ht_800_1200,/DYJetsToLL_M-50_HT-800to1200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM,6.236e-01
+zll_ht_1200_2500,/DYJetsToLL_M-50_HT-1200to2500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM,1.512e-01
+zll_ht_2500_Inf,/DYJetsToLL_M-50_HT-2500toInf_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM,3.659e-03
 #
 # xs from https://twiki.cern.ch/twiki/bin/viewauth/CMS/StandardModelCrossSectionsat13TeV
 #wlnu,/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/*unIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM,61526.7
@@ -32,14 +32,14 @@ zll_ht_2500_Inf,/DYJetsToLL_M-50_HT-2500toInf_TuneCUETP8M1_13TeV-madgraphMLM-pyt
 #wlnu_pt_400_600,/WJetsToLNu_Pt-400To600_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*/MINIAODSIM,3.1101
 #wlnu_pt_600_Inf,/WJetsToLNu_Pt-600ToInf_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*/MINIAODSIM,0.46832
 #
-wlnu_ht_70_100,/WJetsToLNu_HT-70To100_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM,1.
-wlnu_ht_100_200,/WJetsToLNu_HT-100To200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,1395.0
-wlnu_ht_200_400,/WJetsToLNu_HT-200To400_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,407.9
-wlnu_ht_400_600,/WJetsToLNu_HT-400To600_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,57.48
-wlnu_ht_600_800,/WJetsToLNu_HT-600To800_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,12.87
-wlnu_ht_800_1200,/WJetsToLNu_HT-800To1200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,5.366
-wlnu_ht_1200_2500,/WJetsToLNu_HT-1200To2500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,1.074
-wlnu_ht_2500_Inf,/WJetsToLNu_HT-2500ToInf_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,0.008001
+wlnu_ht_70_100,/WJetsToLNu_HT-70To100_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM,1.353e+03
+wlnu_ht_100_200,/WJetsToLNu_HT-100To200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,1.346e+03
+wlnu_ht_200_400,/WJetsToLNu_HT-200To400_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,3.591e+02
+wlnu_ht_400_600,/WJetsToLNu_HT-400To600_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,4.896e+01
+wlnu_ht_600_800,/WJetsToLNu_HT-600To800_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,1.205e+01
+wlnu_ht_800_1200,/WJetsToLNu_HT-800To1200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,5.487e+00
+wlnu_ht_1200_2500,/WJetsToLNu_HT-1200To2500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,1.329e+00
+wlnu_ht_2500_Inf,/WJetsToLNu_HT-2500ToInf_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/*unIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,3.215e-02
 #
 gjets_ht_40_100,/GJets_HT-40To100_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,2.081e+04
 gjets_ht_100_200,/GJets_HT-100To200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3*-v2/MINIAODSIM,9.239e+03
