@@ -64,6 +64,7 @@ error  = {dir}/{name}submitScript.$(Cluster)_$(ProcId).err
 log    = {dir}/{name}submitScript.$(Cluster)_$(ProcId).log
 output = {dir}/{name}submitScript.$(Cluster)_$(ProcId).out
 run_as_owner = true
+#Requirements = (OpSysAndVer == "CentOS7")
 RequestMemory = {memory}
 RequestDisk = {disk}
 +RequestRuntime = {runtime}
