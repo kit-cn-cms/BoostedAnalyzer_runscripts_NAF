@@ -104,7 +104,7 @@ EGamma_2018B,/EGamma/Run2018B-17Sep2018-v1/MINIAOD,153822427,1.0,1.0,1.0,/EGamma
 ,,,,,,,,,,,
 EGamma_2018C,/EGamma/Run2018C-17Sep2018-v1/MINIAOD,147827904,1.0,1.0,1.0,/EGamma/mwassmer-KIT_Monotop_skims_2018_102X_Run2018C_v5-32e892a14856f78e1352bfbcba2efef4/USER,102X_dataRun2_v12,TRUE,notSpecified,NONE,2018C
 ,,,,,,,,,,,
-EGamma_2018D,/EGamma/Run2018D-22Jan2019-v2/MINIAOD,754798781,1.0,1.0,1.0,/EGamma/mwassmer-KIT_Monotop_skims_2018_102X_Run2018D_v5-2c9f830e3ae48540f353e321c94d5c96/USER,102X_dataRun2_v12,TRUE,notSpecified,NONE,2018D
+EGamma_2018D,/EGamma/Run2018D-22Jan2019-v2/MINIAOD,754798781,1.0,1.0,1.0,/EGamma/kelmorab-KIT_Monotop_skims_2018_102X_Run2018D_v5-2a70a62d0dde71ba5cb2f508cb9344a9/USER,102X_dataRun2_v12,TRUE,notSpecified,NONE,2018D
 ,,,,,,,,,,,
 SingleMuon_2018A,/SingleMuon/Run2018A-17Sep2018-v2/MINIAOD,241608232,1.0,1.0,1.0,/SingleMuon/mwassmer-KIT_Monotop_skims_2018_102X_Run2018A_v5-4651784ff6eff4c03f67da207a72e121/USER,102X_dataRun2_v12,TRUE,notSpecified,NONE,2018A
 ,,,,,,,,,,,
@@ -112,7 +112,7 @@ SingleMuon_2018B,/SingleMuon/Run2018B-17Sep2018-v1/MINIAOD,119918017,1.0,1.0,1.0
 ,,,,,,,,,,,
 SingleMuon_2018C,/SingleMuon/Run2018C-17Sep2018-v1/MINIAOD,110032072,1.0,1.0,1.0,/SingleMuon/mwassmer-KIT_Monotop_skims_2018_102X_Run2018C_v5-32e892a14856f78e1352bfbcba2efef4/USER,102X_dataRun2_v12,TRUE,notSpecified,NONE,2018C
 ,,,,,,,,,,,
-SingleMuon_2018D,/SingleMuon/Run2018D-22Jan2019-v2/MINIAOD,514116477,1.0,1.0,1.0,/SingleMuon/mwassmer-KIT_Monotop_skims_2018_102X_Run2018D_v5-2c9f830e3ae48540f353e321c94d5c96/USER,102X_dataRun2_v12,TRUE,notSpecified,NONE,2018D
+SingleMuon_2018D,/SingleMuon/Run2018D-22Jan2019-v2/MINIAOD,514116477,1.0,1.0,1.0,/SingleMuon/kelmorab-KIT_Monotop_skims_2018_102X_Run2018D_v5-2a70a62d0dde71ba5cb2f508cb9344a9/USER,102X_dataRun2_v12,TRUE,notSpecified,NONE,2018D
 ,,,,,,,,,,,
 MET_2018A,/MET/Run2018A-17Sep2018-v1/MINIAOD,52744621,1.0,1.0,1.0,/MET/mwassmer-KIT_Monotop_skims_2018_102X_Run2018A_v5-4651784ff6eff4c03f67da207a72e121/USER,102X_dataRun2_v12,TRUE,notSpecified,NONE,2018A
 ,,,,,,,,,,,
@@ -120,4 +120,4 @@ MET_2018B,/MET/Run2018B-17Sep2018-v1/MINIAOD,29714277,1.0,1.0,1.0,/MET/mwassmer-
 ,,,,,,,,,,,
 MET_2018C,/MET/Run2018C-17Sep2018-v1/MINIAOD,31237456,1.0,1.0,1.0,/MET/mwassmer-KIT_Monotop_skims_2018_102X_Run2018C_v5-32e892a14856f78e1352bfbcba2efef4/USER,102X_dataRun2_v12,TRUE,notSpecified,NONE,2018C
 ,,,,,,,,,,,
-MET_2018D,/MET/Run2018D-PromptReco-v2/MINIAOD,162272551,1.0,1.0,1.0,/MET/mwassmer-KIT_Monotop_skims_2018_102X_Run2018D_v5-2c9f830e3ae48540f353e321c94d5c96/USER,102X_dataRun2_v12,TRUE,notSpecified,NONE,2018D
+MET_2018D,/MET/Run2018D-PromptReco-v2/MINIAOD,162272551,1.0,1.0,1.0,/MET/kelmorab-KIT_Monotop_skims_2018_102X_Run2018D_v5-2a70a62d0dde71ba5cb2f508cb9344a9/USER,102X_dataRun2_v12,TRUE,notSpecified,NONE,2018D
