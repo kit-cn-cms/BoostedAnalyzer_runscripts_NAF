@@ -1,6 +1,6 @@
 name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,isData,generator,additionalSelection,run
 ,,,,,,,,,,,
-ZJetsToNuNu_HT-100To200_13TeV-madgraph,/ZJetsToNuNu_HT-100To200_13TeV-madgraph/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,23702894,0.998918905196,303.4,0.0128139778692,/ZJetsToNuNu_HT-100To200_13TeV-madgraph/pkeicher-KIT_Monotop_skims_2018_102X_v5-8a90dde647cb33811b6481edb2b97780/USER,102X_upgrade2018_realistic_v20,FALSE,MadGraph,NONE,2018
+ZJetsToNuNu_HT-100To200_13TeV-madgraph,/ZJetsToNuNu_HT-100To200_13TeV-madgraph/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,23702894,0.998918905196,303.4,0.0128139778692,/ZJetsToNuNu_HT-100To200_13TeV-madgraph/mwassmer-KIT_Monotop_skims_2018_102X_v5-8a90dde647cb33811b6481edb2b97780/USER,102X_upgrade2018_realistic_v20,FALSE,MadGraph,NONE,2018
 ,,,,,,,,,,,
 ZJetsToNuNu_HT-200To400_13TeV-madgraph,/ZJetsToNuNu_HT-200To400_13TeV-madgraph/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,23276346,0.99817110078,91.71,0.00394727057536,/ZJetsToNuNu_HT-200To400_13TeV-madgraph/pkeicher-KIT_Monotop_skims_2018_102X_v5-8a90dde647cb33811b6481edb2b97780/USER,102X_upgrade2018_realistic_v20,FALSE,MadGraph,NONE,2018
 ,,,,,,,,,,,
@@ -84,7 +84,7 @@ QCD_HT50to100_TuneCP5_13TeV-madgraphMLM-pythia8,/QCD_HT50to100_TuneCP5_13TeV-mad
 ,,,,,,,,,,,
 QCD_HT100to200_TuneCP5_13TeV-madgraphMLM-pythia8,/QCD_HT100to200_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,93972378,0.999711078623,27990000.0,297.939563118,/QCD_HT100to200_TuneCP5_13TeV-madgraphMLM-pythia8/swieland-KIT_Monotop_skims_2018_102X_v5-8a90dde647cb33811b6481edb2b97780/USER,102X_upgrade2018_realistic_v20,FALSE,MadGraph,NONE,2018
 ,,,,,,,,,,,
-QCD_HT200to300_TuneCP5_13TeV-madgraphMLM-pythia8,/QCD_HT200to300_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,54289442,0.999,1712000.0,31.566,/QCD_HT200to300_TuneCP5_13TeV-madgraphMLM-pythia8/swieland-KIT_Monotop_skims_2018_102X_v5-8a90dde647cb33811b6481edb2b97780/USER,102X_upgrade2018_realistic_v20,FALSE,MadGraph,NONE,2018
+QCD_HT200to300_TuneCP5_13TeV-madgraphMLM-pythia8,/QCD_HT200to300_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,54289442,0.999,1712000.0,31.566,/QCD_HT200to300_TuneCP5_13TeV-madgraphMLM-pythia8/mwassmer-KIT_Monotop_skims_2018_102X_v5-8a90dde647cb33811b6481edb2b97780/USER,102X_upgrade2018_realistic_v20,FALSE,MadGraph,NONE,2018
 ,,,,,,,,,,,
 QCD_HT300to500_TuneCP5_13TeV-madgraphMLM-pythia8,/QCD_HT300to500_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,54661579,0.998792825195,347700.0,6.36864591828,/QCD_HT300to500_TuneCP5_13TeV-madgraphMLM-pythia8/swieland-KIT_Monotop_skims_2018_102X_v5-8a90dde647cb33811b6481edb2b97780/USER,102X_upgrade2018_realistic_v20,FALSE,MadGraph,NONE,2018
 ,,,,,,,,,,,
