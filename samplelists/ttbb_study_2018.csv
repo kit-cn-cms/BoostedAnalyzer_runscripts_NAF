@@ -1,5 +1,0 @@
-name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,isData,generator,additionalSelection,run
-,,,,,,,,,,,
-TTbb_4f_TTToSemiLeptonic_TuneCP5-Powheg-Openloops-Pythia8,/TTbb_4f_TTToSemiLeptonic_TuneCP5-Powheg-Openloops-Pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,6123100,19.1085001753,15.7286210473,0.00013442891,/TTbb_4f_TTToSemiLeptonic_TuneCP5-Powheg-Openloops-Pythia8/swieland-KIT_tthbb_sl_skims_MC_102X_LEG_v2_2018-b9899da800e5578fdd124c7a0a5f7739/USER,102X_upgrade2018_realistic_v19,FALSE,notSpecified,NONE,2018
-,,,,,,,,,,,
-TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8,/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,101550000,300.745639286,365.46,1.19663191947E-05,/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/mschrode-KIT_tthbb_skims_MC_94X_LEG_2018-b9899da800e5578fdd124c7a0a5f7739/USER,102X_upgrade2018_realistic_v19,FALSE,POWHEG,NONE,2018
