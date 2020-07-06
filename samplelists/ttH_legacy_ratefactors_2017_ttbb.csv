@@ -1,3 +1,0 @@
-name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,isData,generator,additionalSelection,run
-,,,,,,,,,,,
-TTbb_Powheg_Openloops_new_pmx,/TTbb_Powheg_Openloops/mhorzela-RunIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v1-corrected-5f646ecd4e1c7a39ab0ed099ff55ceb9/USER,5527979,27.2523031304,1,6.63789539912E-06,/TTbb_Powheg_Openloops/mhorzela-RunIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v1-corrected-5f646ecd4e1c7a39ab0ed099ff55ceb9/USER,94X_mc2017_realistic_v17,FALSE,notSpecified,NONE,2017
