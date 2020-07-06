@@ -34,7 +34,7 @@ Todo
 ### Check output and resubmit broken jobs
 After a batch of jobs has finished you should check if alle jobs run successfully. To do so use the following instructions:
 1. Find broken ROOT files:
-    * run `python jobTools/findCorruptFiles.py /path/to/ntuple/folder/of/sample/to/be/checked
+    * run `python jobTools/findCorruptFiles.py /path/to/ntuple/folder/of/sample/to/be/checked`
     * This will create a file called `broken_files.txt`
 2. Delete the broken files:
     * run `python jobTools/deleteNtuples.py -f broken_files.txt`
