@@ -10,7 +10,7 @@ import optparse
 import sys
 
 
-def submitToBatch(workdir, list_of_shells, memory_ = "1000", disk_ = "1000000", runtime_ = "43200", use_proxy = False, proxy_dir_ = "", name_ = ""):
+def submitToBatch(workdir, list_of_shells, memory_ = "1000", disk_ = "1000000", runtime_ = "43200", use_proxy = False, proxy_dir_ = "", name_ = "", requirement_ = ""):
     ''' submit the list of shell script to the NAF batch system '''
 
     if name_!="":
@@ -20,7 +20,7 @@ def submitToBatch(workdir, list_of_shells, memory_ = "1000", disk_ = "1000000", 
     arrayScript = writeArrayScript(workdir, list_of_shells, name_)
 
     # write submit script for submission
-    submitScript = writeSubmitScript(workdir, arrayScript, len(list_of_shells), memory_, disk_, runtime_, use_proxy, proxy_dir_, name_)
+    submitScript = writeSubmitScript(workdir, arrayScript, len(list_of_shells), memory_, disk_, runtime_, use_proxy, proxy_dir_, name_, requirement_)
         
     # submit the whole thing
     jobID = condorSubmit( submitScript)
@@ -51,11 +51,18 @@ echo "$SGE_TASK_ID"
     return path
 
 
-def writeSubmitScript(workdir, arrayScript, nScripts, memory_, disk_, runtime_, use_proxy, proxy_dir_, name_):
+def writeSubmitScript(workdir, arrayScript, nScripts, memory_, disk_, runtime_, use_proxy, proxy_dir_, name_, requirement_):
     path = workdir+"/"+name_+"submitScript.sub"
     logdir = workdir+"/logs"
     if not os.path.exists(logdir):
         os.makedirs(logdir)
+
+    if requirement_ == "CentOS7":
+        requirement = "(OpSysAndVer == \"CentOS7\")"
+    elif requirement_ == "SL6":
+        requirement = "(OpSysAndVer == \"SL6\")"
+    else:
+        requirement = "(OpSysAndVer == \"CentOS7\" || OpSysAndVer == \"SL6\")"
 
     code = """
 universe = vanilla
@@ -65,7 +72,7 @@ error  = {dir}/{name}submitScript.$(Cluster)_$(ProcId).err
 log    = {dir}/{name}submitScript.$(Cluster)_$(ProcId).log
 output = {dir}/{name}submitScript.$(Cluster)_$(ProcId).out
 run_as_owner = true
-Requirements = ( OpSysAndVer == "CentOS7" || OpSysAndVer == "SL6" )
+Requirements = {requirement}
 RequestMemory = {memory}
 RequestDisk = {disk}
 +RequestRuntime = {runtime}
@@ -77,6 +84,7 @@ JobBatchName = {batchname}
         disk = disk_,
         runtime = runtime_,
         name = name_,
+        requirement = requirement,
         batchname = name_.split("_Tune")[0])
     if use_proxy:
         code+="""
@@ -218,6 +226,8 @@ if __name__ == "__main__":
     parser.add_option("-n","--name",type="string",default="",dest="name",metavar = "NAME",
         help = "Name for this submit job")
 
+    parser.add_option("--OS", "--req", type = "string", default = "", dest = "requirement",
+        help = "choose between 'CentOS7' and 'SL6' when a requirement of the OS is set. leave blank otherwise")
     (opts, args) = parser.parse_args()
 
     if opts.useproxy and not opts.vomsproxy:
@@ -255,7 +265,7 @@ if __name__ == "__main__":
 
 
     # submit to batch
-    jobIDs = submitToBatch(workdir, submit_files, opts.memory, str(int(opts.disk)*1000), str(int(opts.runtime)*60), opts.useproxy, opts.vomsproxy, opts.name)
+    jobIDs = submitToBatch(workdir, submit_files, opts.memory, str(int(opts.disk)*1000), str(int(opts.runtime)*60), opts.useproxy, opts.vomsproxy, opts.name, opts.requirement)
     print("submitted jobs with IDs: {}".format(jobIDs))
     
     # monitor job status

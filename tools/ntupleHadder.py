@@ -9,7 +9,7 @@ pnfs = "/pnfs/desy.de/cms/tier2/store/user/"
 naming = "ntuples_{syst}_Tree*.root"
 local_naming = "{dataset}_*_{syst}_Tree.root"
 
-usage = "\n\nExample:\npython ntupleHadder.py --local -i /ABSOLUTE/PATH/TO/INPUT/DIRECTORY -o /ABSOLUTE/PATH/TO/OUTPUT/DIRECTORY -d DatasetNameInInputDirectory -s RELATIVE/PATH/TO/SYSTEMATIC/FILE.txt --hadd 10000 --do\n"
+usage = "\n\nExample:\npython ntupleHadder.py --local -i /ABSOLUTE/PATH/TO/INPUT/DIRECTORY -o /ABSOLUTE/PATH/TO/OUTPUT/DIRECTORY -s RELATIVE/PATH/TO/SYSTEMATIC/FILE.txt --hadd 10000 --do DATASETS\n"
 
 parser = optparse.OptionParser(usage=usage)
 pnfsOpts = optparse.OptionGroup(parser, "PNFS options", "Options to set path to pnfs as 'PNFSBASEDIR/USERNAME/DATASET/TAG/*/*/NAMING'. NAMING is set in file.")
@@ -26,8 +26,6 @@ parser.add_option("-i",dest="local_path",
 
 parser.add_option("-o","--output",dest="outPath",
     help = "output path to where ntuples are written")
-parser.add_option("-d","--dataset",dest="dataset",
-    help = "dataset names (comma separated) as given in pnfs directories or local directory")
 parser.add_option("-s","--systematics",dest="systematics",
     help = "file with systematics listed")
 parser.add_option("--hadd",dest="hadd_entries",default=-1,
@@ -93,7 +91,7 @@ def mergeCutflows(files):
     return text
 
 failedjobs = []
-for dataset in opts.dataset.split(","):
+for dataset in args:
     print("\n\n"+"="*50)
     print("handling dataset {}".format(dataset))
 

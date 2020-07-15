@@ -117,7 +117,7 @@ for row in csv_array:
         #    boosted_datasets_string+=boosted_datasets[i][k]
         #boosted_datasets_string+='"'
         if len(boosted_datasets[i])>0:
-            boosted_datasets_string=str(boosted_datasets[i][0])
+            boosted_datasets_string=str(boosted_datasets[i][-1])
         else:
            boosted_datasets_string=""
         name = str(names[i]).split("/")[1]
