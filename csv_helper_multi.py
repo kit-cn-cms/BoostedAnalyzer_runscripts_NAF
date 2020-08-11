@@ -35,9 +35,9 @@ def get_first_file(dataset_name):
         for f in d['file']:
             if not 'nevents' in f: continue
             files.append(f['name'])
-            if(len(files)>=5):
+            if(len(files)>=1):
                 break
-        if(len(files)>=5):
+        if(len(files)>=1):
             break
     return files
 
@@ -191,7 +191,7 @@ def get_x(name):
     # print "blablablablablablablablaaaaaaaaaaaaaa",name[0], "Run2016" not in name[0]
     # if (name[0].find("Run2016")==-1 or name[0].find("Run2017")==-1 or name[0].find("Run2018")==-1):
     if ("Run2016" in name[0] or "Run2017" in name[0] or "Run2018" in name[0]):
-        x=1.
+        x=0.
     else:
         x=0.
         n_tried=0
@@ -221,7 +221,7 @@ def get_weights(nevents_array,neg_fractions_array,xs):
 	if(neg_fractions_array[i]!=0. and nevents_array[i]!=0):
 	  weights.append(xs*(10**3)/(neg_fractions_array[i]*nevents_array[i]))
 	else:
-	  weights.append(0.)
+	  weights.append(1.)
     return weights
 
 def get_children_array(parent_dataset):
@@ -245,7 +245,7 @@ def get_children_array(parent_dataset):
 	except TypeError:
             continue
 	#print "teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeest",child_candidate
-	if(child_candidate.find("KIT_tthbb_sl_skims_MC")!=-1 or child_candidate.find("KIT_tthbb_sl_skims_DATA")!=-1):
+	if(child_candidate.find("KIT_Monotop_skims")!=-1):#and child_candidate.find("v5")!=-1
 	    name_array.append(child_candidate)
         #print "#children ",len(name_array)
     return name_array

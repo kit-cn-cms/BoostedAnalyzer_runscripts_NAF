@@ -71,6 +71,7 @@ pool.join()
 # print broken files
 print ("\n\n\n\n")
 print ("to delete\n")
+output_string = ""
 for subFileList in brokenFiles:
     for File in subFileList:
-        print(File)
+        output_string+=" "+File

@@ -24,7 +24,7 @@ def checkROOTFiles(path="",treename_="MVATree"):
             if nevents < 0:
                 isGOOD = False
                 print ("BROKEN    ", path)
-            if nevents > 150000:
+            if nevents > 80000:
                 isGOOD = False
                 print ("TOO MANY EVENTS!!!", path)
     if rf != None:
