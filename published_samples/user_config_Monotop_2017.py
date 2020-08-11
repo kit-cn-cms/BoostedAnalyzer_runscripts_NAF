@@ -1,6 +1,6 @@
-outpath='/nfs/dust/cms/user/mwassmer/MonoTop/ntuples_2018/' # path of output of analyzer
-scriptpath='MonoTop_2018' # folder containing shell scripts that will have to be run on cluster
-samplelist='../auto_samples_datasets_monotop_2018_v5.csv' # samples list
+outpath='/nfs/dust/cms/user/mwassmer/MonoTop/ntuples_2017/' # path of output of analyzer
+scriptpath='MonoTop_2017' # folder containing shell scripts that will have to be run on cluster
+samplelist='../auto_samples_datasets_monotop_2017_v2.csv' # samples list
 dataset_column='boosted_dataset' # run on the column with dataset or boosted_dataset?
 cmsswcfgpath='/nfs/dust/cms/user/mwassmer/MonoTop/test/slc7/CMSSW_10_2_18/src/BoostedTTH/BoostedAnalyzer/test/boostedAnalysis_ntuples-Legacy_2016_2017_2018_cfg_sync.py'
 cmsswpath='/nfs/dust/cms/user/mwassmer/MonoTop/test/slc7/CMSSW_10_2_18/'
