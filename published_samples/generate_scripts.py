@@ -299,10 +299,10 @@ if __name__ == '__main__':
     f_list=open(current_scriptpath+'/joblist.txt','w')
 
     for row in reader:
-        dataset="'"+row[user_config.dataset_column]+"'"
         name=row['name']
         if "#" in name:
             continue
+        dataset="'"+row[user_config.dataset_column]+"'"
         if 'weight' in reader.fieldnames:
             weight=row['weight']
         else:
