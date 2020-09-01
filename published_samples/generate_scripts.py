@@ -212,7 +212,7 @@ def get_dataset_files(dataset):
     print nfiles,'files with total size',size/(1024*1024),'MB containing',nevents,'events'
     return files,events_in_files
 
-def create_jobs(name,dataset,jobconfig):
+def create_jobs(name,dataset,jobconfig,min_events_per_job):
     files,events=get_dataset_files(dataset)
     nevents_in_job=0
     files_in_job=[]
@@ -229,7 +229,7 @@ def create_jobs(name,dataset,jobconfig):
     for f,nev in zip(files,events):
         nevents_in_job+=nev
         files_in_job.append(f)
-        if nevents_in_job>user_config.min_events_per_job or f==files[-1] or len(files_in_job)==100:
+        if nevents_in_job>min_events_per_job or f==files[-1] or len(files_in_job)==100:
             ijob+=1
             create_scripts(name,ijob,files_in_job,nevents_in_job,eventsinsample,jobconfig)
             nevents_in_job=0
@@ -328,9 +328,12 @@ if __name__ == '__main__':
         jobconfig['nSystematicVariationsPerJob']=user_config.nSystematicVariationsPerJob
         jobconfig['dataEra']=row['run']
         jobconfig['ProduceMemNtuples']=user_config.ProduceMemNtuples
+        jobconfig['min_events_per_job']=user_config.min_events_per_job
         #jobconfig['dataTrigger']=row['dataTrigger']
         if dataset=="''":
             continue
-        create_jobs(name,dataset,jobconfig)
+        if (("WJetsToLNu_HT-100To200_TuneCUETP8M1_13TeV" in dataset) or ("WJetsToLNu_HT-200To400_TuneCUETP8M1_13TeV" in dataset)) and jobconfig['dataEra']=="2016":
+           jobconfig['min_events_per_job']=10
+        create_jobs(name,dataset,jobconfig,jobconfig['min_events_per_job'])
 
     f_list.close()
