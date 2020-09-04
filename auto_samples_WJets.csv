@@ -1,0 +1,7 @@
+name,dataset,nGen,Npos-Nneg/Ntotal,XS,weight,boosted_dataset,globalTag,isData,generator,additionalSelection,run
+,,,,,,,,,,,
+WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_2018,/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM,71026861,0.999098636628,61526.7,0.867027024418,/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/mwassmer-KIT_Monotop_skims_2018_102X_v5-8a90dde647cb33811b6481edb2b97780/USER,102X_upgrade2018_realistic_v21,FALSE,MadGraph,NONE,2018
+,,,,,,,,,,,
+WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_2017,/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v3/MINIAODSIM,30008250,0.999118535097,61526.7,2.05213504532,/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/mwassmer-KIT_Monotop_skims_2017_102X_v1-d8bec36752da6ec4bbe9d87aa052e37f/USER,102X_mc2017_realistic_v8,FALSE,MadGraph,NONE,2017
+,,,,,,,,,,,
+WJetsToLNu_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_2016,/WJetsToLNu_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM,29514020,1.0,61526.7,2.08466010391,/WJetsToLNu_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/mwassmer-KIT_Monotop_skims_2016_102X_v1-fd0d4d238020ad5fd1c20e4dbf22a8a1/USER,102X_mcRun2_asymptotic_v8,FALSE,MadGraph,NONE,2016
