@@ -16,10 +16,10 @@ ssl._create_default_https_context = ssl._create_unverified_context
 #das_client=imp.load_source("das_client", "/cvmfs/cms.cern.ch/slc6_amd64_gcc530/cms/das_client/v02.17.04/bin/das_client.py")
 import Utilities.General.cmssw_das_client as das_client
 import time
-import timeout_decorator
+#import timeout_decorator
 from concurrent.futures import TimeoutError
 
-@timeout_decorator.timeout(30,use_signals=False)
+#@timeout_decorator.timeout(30,use_signals=False)
 def get_n_events(root_file, tree_name):
     f=ROOT.TFile.Open(root_file)
     t=f.Get(tree_name)
@@ -196,9 +196,9 @@ def get_dataset_files(dataset):
                 n_events = get_n_events(f,"Events")
             except TimeoutError:
                 continue
-            except timeout_decorator.timeout_decorator.TimeoutError:
-                print f," could not be included"
-                continue
+            #except timeout_decorator.timeout_decorator.TimeoutError:
+                #print f," could not be included"
+                #continue
             events_in_files.append(n_events)
             files_without_prefix.append(f)
         
