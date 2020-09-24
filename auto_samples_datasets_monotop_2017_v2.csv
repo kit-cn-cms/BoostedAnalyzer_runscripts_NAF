@@ -98,6 +98,10 @@ QCD_HT1500to2000_TuneCP5_13TeV-madgraph-pythia8,/QCD_HT1500to2000_TuneCP5_13TeV-
 ,,,,,,,,,,,
 QCD_HT2000toInf_TuneCP5_13TeV-madgraph-pythia8,/QCD_HT2000toInf_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2/MINIAODSIM,5941306,0.98043857996,25.24,0.0043329835227,/QCD_HT2000toInf_TuneCP5_13TeV-madgraph-pythia8/swieland-KIT_Monotop_skims_2017_102X_v2-91b703368ee84eb28ae2bf5f724ef6a3/USER,102X_mc2017_realistic_v8,FALSE,MadGraph,NONE,2017
 ,,,,,,,,,,,
+WJetsToLNu_Wpt-0To50_TuneCP5_13TeV-amcatnloFXFX-pythia8,/WJetsToLNu_Wpt-0To50_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,120180624,162230.2108,62330.0,3.19691389896e-06,/WJetsToLNu_Wpt-0To50_TuneCP5_13TeV-amcatnloFXFX-pythia8/mwassmer-KIT_Monotop_skims_2017_102X_v2-91b703368ee84eb28ae2bf5f724ef6a3/USER,102X_mc2017_realistic_v8,FALSE,aMC,NONE,2017
+,,,,,,,,,,,
+WJetsToLNu_Pt-50To100_TuneCP5_13TeV-amcatnloFXFX-pythia8,/WJetsToLNu_Pt-50To100_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM,18242254,8581.85790168,3563.0,2.2759148247e-05,/WJetsToLNu_Pt-50To100_TuneCP5_13TeV-amcatnloFXFX-pythia8/mwassmer-KIT_Monotop_skims_2017_102X_v2-91b703368ee84eb28ae2bf5f724ef6a3/USER,102X_mc2017_realistic_v8,FALSE,aMC,NONE,2017
+,,,,,,,,,,,
 SingleElectron_2017B,/SingleElectron/Run2017B-31Mar2018-v1/MINIAOD,60537490,1.0,1.0,1.0,/SingleElectron/mwassmer-KIT_Monotop_skims_2017_102X_Run2017B_v2-fedfbd555089079ae7e6682e1f14da50/USER,102X_dataRun2_v13,TRUE,notSpecified,NONE,2017B
 ,,,,,,,,,,,
 SingleElectron_2017C,/SingleElectron/Run2017C-31Mar2018-v1/MINIAOD,136637888,1.0,1.0,1.0,/SingleElectron/mwassmer-KIT_Monotop_skims_2017_102X_Run2017C_v2-d7ae7cb6f06d26def6abe1714a4d8d87/USER,102X_dataRun2_v13,TRUE,notSpecified,NONE,2017C

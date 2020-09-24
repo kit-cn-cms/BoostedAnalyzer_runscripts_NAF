@@ -98,6 +98,12 @@ QCD_HT1500to2000_TuneCP5_13TeV-madgraphMLM-pythia8,/QCD_HT1500to2000_TuneCP5_13T
 ,,,,,,,,,,,
 QCD_HT2000toInf_TuneCP5_13TeV-madgraphMLM-pythia8,/QCD_HT2000toInf_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,5475677,0.988209070182,25.24,0.00466447417438,/QCD_HT2000toInf_TuneCP5_13TeV-madgraphMLM-pythia8/swieland-KIT_Monotop_skims_2018_102X_v5-8a90dde647cb33811b6481edb2b97780/USER,102X_upgrade2018_realistic_v21,FALSE,MadGraph,NONE,2018
 ,,,,,,,,,,,
+WJetsToLNu_Wpt-0To50_TuneCP5_13TeV-amcatnloFXFX-pythia8,/WJetsToLNu_Wpt-0To50_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,115673829,162082.40134,62510.0,3.3340992576e-06,/WJetsToLNu_Wpt-0To50_TuneCP5_13TeV-amcatnloFXFX-pythia8/mwassmer-KIT_Monotop_skims_2018_102X_v5-8a90dde647cb33811b6481edb2b97780/USER,102X_upgrade2018_realistic_v21,FALSE,aMC,NONE,2018
+,,,,,,,,,,,
+# actual number of total events is 17254644  because some blocks were not on disk ...
+# therfore xs weight needs to be corrected by factor 19671032/17254644 which leads to xs weight of 2.4143470815429438e-05
+WJetsToLNu_Pt-50To100_TuneCP5_13TeV-amcatnloFXFX-pythia8,/WJetsToLNu_Pt-50To100_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,19671032,8586.44185453,3577.0,2.4143470815429438e-05,/WJetsToLNu_Pt-50To100_TuneCP5_13TeV-amcatnloFXFX-pythia8/mwassmer-KIT_Monotop_skims_2018_102X_v5-8a90dde647cb33811b6481edb2b97780/USER,102X_upgrade2018_realistic_v21,FALSE,aMC,NONE,2018
+,,,,,,,,,,,
 EGamma_2018A,/EGamma/Run2018A-17Sep2018-v2/MINIAOD,327843843,1.0,1.0,1.0,/EGamma/mwassmer-KIT_Monotop_skims_2018_102X_Run2018A_v5-4651784ff6eff4c03f67da207a72e121/USER,102X_dataRun2_v13,TRUE,notSpecified,NONE,2018A
 ,,,,,,,,,,,
 EGamma_2018B,/EGamma/Run2018B-17Sep2018-v1/MINIAOD,153822427,1.0,1.0,1.0,/EGamma/mwassmer-KIT_Monotop_skims_2018_102X_Run2018B_v5-4278c382a345a148d4c823ebeb7fc694/USER,102X_dataRun2_v13,TRUE,notSpecified,NONE,2018B
