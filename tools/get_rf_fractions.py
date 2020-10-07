@@ -36,19 +36,18 @@ with open(opts.samplefile, "rb") as f:
 
 ############################################################
 
-line_template = "{sample},{branch},{fiducial},{inclusive}\n"
-
 # print(files)
 if not os.path.exists(opts.output):
     os.makedirs(opts.output)
 
-rffile = opts.output+"/ratefactors_new.csv"
+rffile = opts.output+"/ratefactor_ratios.csv"
 fobj_out = open(rffile, "w")
-fobj_out.write("sample,variation,fiducial_xs_norm,inclusive_xs_norm" + "\n")
+fobj_out.write("sample,variation,ttB_frac,ttOther_frac,ttC_frac,ttLF_frac" + "\n")
 
 file_ = ROOT.TChain("MVATree", "MVATree")
 
 branches = [
+    "nominal",
     "Weight_scale_variation_muR_1p0_muF_1p0",
     "Weight_scale_variation_muR_2p0_muF_1p0",
     "Weight_scale_variation_muR_2p0_muF_2p0",
@@ -76,16 +75,18 @@ branches += [
 
 for i in range(len(samples)):
     sample = samples[i].replace(directory, "").replace("/","")
+    if not sample in sample_dict:
+        print("sample {} not in sample list".format(sample))
+        continue
     print("\n"*4+"="*50)
     print (sample)
     print("\n")
-    if not sample in sample_dict: continue
+
     # define fiducial selection:
-    selection = "1."
-    if sample.startswith("TTTo"):
-        selection = "1.*(GenEvt_I_TTPlusBB==0)"
-    if sample.startswith("TTbb"):
-        selection = "1.*(GenEvt_I_TTPlusBB>=1)"
+    selection_ttbb = "1.*(GenEvt_I_TTPlusBB>=1)"
+    selection_ttother = "1.*(GenEvt_I_TTPlusBB==0)"
+    selection_ttlf = "1.*(GenEvt_I_TTPlusBB==0)*(GenEvt_I_TTPlusCC==0)"
+    selection_ttcc = "1.*(GenEvt_I_TTPlusBB==0)*(GenEvt_I_TTPlusCC==1)"
     #if not os.path.exists(opts.output+"/"+sample):
     #    os.makedirs(opts.output+"/"+sample)
 
@@ -103,65 +104,60 @@ for i in range(len(samples)):
     # file_.GetListOfBranches().Print()
     for branch in branches:
         branch_name = branch
+        branch_weight = "1." if branch_name == "nominal" else branch_name       
         print ("\tchecking branch {}".format(branch_name))
 
-        if not branch_name in file_branches:
+        if not branch_name in file_branches and not branch_name == "nominal":
             print("branch {} not in file - skipping.".format(branch_name))
             continue
-
-
-        ### FIDUCIAL
         #canvas=ROOT.TCanvas()
-        test_var = ROOT.TH1D(sample+branch_name, sample+branch_name, 1, -20, 20)
-        test_nom = ROOT.TH1D(sample+branch_name+"nom", sample+branch_name+"nom", 1, -20, 20)
-        file_.Draw(
-            "1."+">>"+sample+branch_name,
-            selection+"*Weight_GEN_nom*"+branch_name,
-            "goff",
-        )
-        file_.Draw(
-            "1."+">>"+sample+branch_name+"nom",
-            selection+"*Weight_GEN_nom",
-            "goff",
-        )
-        try:
-            if test_nom.Integral() > 0.0 and test_var.Integral() > 0.0:
-                fiducial_factor = test_nom.Integral() / test_var.Integral()
-            else:
-                fiducial_factor = 1.0
-        except AttributeError:
-            fiducial_factor = 1.0
+        frac_ttbb = -1.
+        frac_ttother = -1.
+        frac_ttcc = -1.
+        frac_ttlf = -1.
 
-        ### INCLUSIVE
-        #canvas=ROOT.TCanvas()
-        test_var = ROOT.TH1D(sample+branch_name+"incl", sample+branch_name, 1, -20, 20)
-        test_nom = ROOT.TH1D(sample+branch_name+"incl"+"nom", sample+branch_name+"nom", 1, -20, 20)
-        file_.Draw(
-            "1."+">>"+sample+branch_name+"incl",
-            "Weight_GEN_nom*"+branch_name,
-            "goff",
-        )
-        file_.Draw(
-            "1."+">>"+sample+branch_name+"incl"+"nom",
-            "Weight_GEN_nom",
-            "goff",
-        )
-        try:
-            if test_nom.Integral() > 0.0 and test_var.Integral() > 0.0:
-                inclusive_factor = test_nom.Integral() / test_var.Integral()
-                # print(factor)
-            else:
-                inclusive_factor = 1.0
-        except AttributeError:
-            inclusive_factor = 1.0
+        if sample.startswith("TT") or sample.startswith("TTbb"):
+            test_ttbb = ROOT.TH1D(sample+branch_name+"ttbb",sample+branch_name+"ttbb",1,-20,20)
+            test_ttother = ROOT.TH1D(sample+branch_name+"ttother",sample+branch_name+"ttother",1,-20,20)
+            test_ttcc = ROOT.TH1D(sample+branch_name+"ttcc",sample+branch_name+"ttcc",1,-20,20)
+            test_ttlf = ROOT.TH1D(sample+branch_name+"ttlf",sample+branch_name+"ttlf",1,-20,20)
+            file_.Draw(
+                "1."+">>"+sample+branch_name+"ttbb",
+                selection_ttbb+"*Weight_GEN_nom*"+branch_weight ,
+                "goff",
+            )
+            file_.Draw(
+                "1."+">>"+sample+branch_name+"ttother",
+                selection_ttother+"*Weight_GEN_nom*"+branch_weight,
+                "goff",
+            )
+            file_.Draw(
+                "1."+">>"+sample+branch_name+"ttcc",
+                selection_ttcc+"*Weight_GEN_nom*"+branch_weight,
+                "goff",
+            )
+            file_.Draw(
+                "1."+">>"+sample+branch_name+"ttlf",
+                selection_ttlf+"*Weight_GEN_nom*"+branch_weight,
+                "goff",
+            )
+            try:
+                if test_ttbb.Integral() > 0.0 and test_ttother.Integral() > 0.0:
+                    frac_ttbb = test_ttbb.Integral() / (test_ttbb.Integral()+test_ttother.Integral())
+                    frac_ttother = test_ttother.Integral() / (test_ttbb.Integral()+test_ttother.Integral())
+                    frac_ttcc = test_ttcc.Integral() / (test_ttbb.Integral()+test_ttother.Integral())
+                    frac_ttlf = test_ttlf.Integral() / (test_ttbb.Integral()+test_ttother.Integral())
+                    # print(factor)
+            except:
+                pass
 
-        line = line_template.format(**{
-            "sample": sample_dict[sample],
-            "branch": branch_name,
-            "fiducial": str(fiducial_factor),
-            "inclusive": str(inclusive_factor)})
+        line = "{},{},{:.6f},{:.6f},{:.6f},{:.6f}\n".format(
+            sample_dict[sample], branch_name, frac_ttbb, frac_ttother, frac_ttcc, frac_ttlf)
         print("\t\t"+line)
         fobj_out.write(line)
+        # print(1./test.GetMean())
+        #canvas.Print(opts.output+"/"+sample+"/"+branch_name+".pdf")
+        #del canvas
     file_.Reset()
 
 fobj_out.close
