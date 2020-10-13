@@ -104,6 +104,11 @@ WJetsToLNu_Wpt-0To50_TuneCP5_13TeV-amcatnloFXFX-pythia8,/WJetsToLNu_Wpt-0To50_Tu
 # therfore xs weight needs to be corrected by factor 19671032/17254644 which leads to xs weight of 2.4143470815429438e-05
 WJetsToLNu_Pt-50To100_TuneCP5_13TeV-amcatnloFXFX-pythia8,/WJetsToLNu_Pt-50To100_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM,19671032,8586.44185453,3577.0,2.4143470815429438e-05,/WJetsToLNu_Pt-50To100_TuneCP5_13TeV-amcatnloFXFX-pythia8/mwassmer-KIT_Monotop_skims_2018_102X_v5-8a90dde647cb33811b6481edb2b97780/USER,102X_upgrade2018_realistic_v21,FALSE,aMC,NONE,2018
 ,,,,,,,,,,,
+GJets_1j_Gpt-100To250_5f_NLO,,13598404,1166.2326719,1.183e+03,7.386570831853457e-05,/GJets_1j_Gpt-100To250_5f_NLO_Autumn18/mwassmer-KIT_Monotop_skims_2018_102X_v5-8a90dde647cb33811b6481edb2b97780/USER,102X_upgrade2018_realistic_v21,FALSE,MadGraph,NONE,2018
+GJets_1j_Gpt-250To400_5f_NLO,,8226000,25.5566673589,2.583e+01,0.00012207009834677131,/GJets_1j_Gpt-250To400_5f_NLO_Autumn18/mwassmer-KIT_Monotop_skims_2018_102X_v5-8a90dde647cb33811b6481edb2b97780/USER,102X_upgrade2018_realistic_v21,FALSE,MadGraph,NONE,2018
+GJets_1j_Gpt-400To650_5f_NLO,,17171322,3.13817899186,3.149e+00,5.842192720746914e-05,/GJets_1j_Gpt-400To650_5f_NLO_Autumn18/mwassmer-KIT_Monotop_skims_2018_102X_v5-8a90dde647cb33811b6481edb2b97780/USER,102X_upgrade2018_realistic_v21,FALSE,MadGraph,NONE,2018
+GJets_1j_Gpt-650ToInf_5f_NLO,,1150600,0.287672727751,2.887e-01,0.0008711580463890607,/GJets_1j_Gpt-650ToInf_5f_NLO_Autumn18/mwassmer-KIT_Monotop_skims_2018_102X_v5_smaller_splitting-8a90dde647cb33811b6481edb2b97780/USER,102X_upgrade2018_realistic_v21,FALSE,MadGraph,NONE,2018
+,,,,,,,,,,,
 EGamma_2018A,/EGamma/Run2018A-17Sep2018-v2/MINIAOD,327843843,1.0,1.0,1.0,/EGamma/mwassmer-KIT_Monotop_skims_2018_102X_Run2018A_v5-4651784ff6eff4c03f67da207a72e121/USER,102X_dataRun2_v13,TRUE,notSpecified,NONE,2018A
 ,,,,,,,,,,,
 EGamma_2018B,/EGamma/Run2018B-17Sep2018-v1/MINIAOD,153822427,1.0,1.0,1.0,/EGamma/mwassmer-KIT_Monotop_skims_2018_102X_Run2018B_v5-4278c382a345a148d4c823ebeb7fc694/USER,102X_dataRun2_v13,TRUE,notSpecified,NONE,2018B
