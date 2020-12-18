@@ -126,7 +126,7 @@ def create_script(name,ijob,isyst,files_in_job,nevents_in_job,eventsinsample,job
     script+='# check release\n'
     script+='OS="`uname -r`"\n'
 
-    script+='elif [[ $OS == *"el7"* ]]; then\n'
+    script+='if [[ $OS == *"el7"* ]]; then\n'
     script+='  echo detected SL7, running ' + user_config.cmsswpathSL7 + '\n'
     script+='  cd '+user_config.cmsswpathSL7+'/src\neval `scram runtime -sh`\n'
     script+='  cmsRun '+user_config.cmsswcfgpathSL7+get_vars(jobconfig)
