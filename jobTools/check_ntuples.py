@@ -15,6 +15,8 @@ parser.add_option("-o", "--outfile", dest = "outfile",
 with open(opts.joblist, "r") as jf:
     jobs = jf.readlines()
 
+jobs=[x.replace("\n","") for x in jobs]
+#print(jobs)
 
 
 brokenFiles = []
@@ -30,9 +32,9 @@ class JobInfo(object):
         job = job.replace("\n","")
         with open(job, "r") as j:
             lines = j.readlines()
-
+	#print(lines)
         for l in lines:
-            l = l.replace("\n","")
+            l = l.replace("\n","").lstrip(' ')
             if l.startswith("cmsRun"):
                 runCommand = l.split(" ")
                 for command in runCommand:
