@@ -33,7 +33,7 @@ class JobInfo(object):
 
         for l in lines:
             l = l.replace("\n","")
-            if l.startswith("cmsRun"):
+            if l.startswith("cmsRun") or l.strip(" ").startswith("cmsRun"):
                 runCommand = l.split(" ")
                 for command in runCommand:
                     if command.startswith("systematicVariations"):

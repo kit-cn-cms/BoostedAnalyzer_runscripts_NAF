@@ -19,5 +19,8 @@ parser.add_option(
 with open(options.file,"r") as errorFile:
     for line in errorFile:
         print("deleting {}".format(line))
+        if not os.path.exists(line.rstrip("\n")):
+            print("file does not exist".format(line))
+            continue
         os.remove(line.rstrip("\n")) 
 
