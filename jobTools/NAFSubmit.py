@@ -226,7 +226,7 @@ if __name__ == "__main__":
     parser.add_option("-n","--name",type="string",default="",dest="name",metavar = "NAME",
         help = "Name for this submit job")
 
-    parser.add_option("--OS", "--req", type = "string", default = "", dest = "requirement",
+    parser.add_option("--OS", "--req", type = "string", default = "CentOS7", dest = "requirement",
         help = "choose between 'CentOS7' and 'SL6' when a requirement of the OS is set. leave blank otherwise")
     (opts, args) = parser.parse_args()
 
