@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # checks if the jobs corresponding to a list scripts finished successful
 # usage: ./check_jobs.py joblist.txt
 import os
