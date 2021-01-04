@@ -85,6 +85,7 @@ def writeSubmitCode(script, isArray, nTasks):
     #submitCode += "max_retries = 3\n"
     #submitCode += "retry_until = ExitCode == 0\n"
     submitCode += "run_as_owner = true\n"
+    #submitCode += "Requirements = (OpSysAndVer == 'CentOS7')\n"
     if isArray:
         submitCode += "error = logs/" + fileName + "_$(Cluster)_$(ProcId).err\n"
         submitCode += "output = logs/" + fileName + "_$(Cluster)_$(ProcID).out\n"
